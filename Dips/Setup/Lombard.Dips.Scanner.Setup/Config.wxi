@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define Name = "FXA DIPS Scanner" ?>
+  <?define Manufacturer = "Fuji Xerox" ?>
+  <?define Version = "2.4.36786.0" ?>
+  <?define UpgradeCode = "{988b4570-eeb2-4aaa-b9b4-c31c3d393140}" ?>
+</Include>

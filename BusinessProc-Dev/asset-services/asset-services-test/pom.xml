@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>asset-services-test</artifactId>
+    <packaging>jar</packaging>
+    <name>FXA Asset Services - Test</name>
+    <version>0.0.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.fujixerox.aus.asset-services</groupId>
+        <artifactId>asset-services-base</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath>../asset-services-base/pom.xml</relativePath>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

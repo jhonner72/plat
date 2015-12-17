@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.Integration.RabbitMQ</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Lombard Integration RabbitMQ Queue and Exchange deployment package</description>
+    </metadata>
+    <files>
+      <file src="config.xml" />
+      <file src="Deploy.ps1" />
+      <file src="PostDeploy.ps1" />
+      <file src="rabbitmqadmin" />
+      <file src="Logging\*" target="Logging"/>
+    </files>
+</package> 

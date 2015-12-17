@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_0CBA88B5_2E6F_4b65_B9D1_4FA93BF181A6" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_C9699240_ADBC_4549_998F_824F1811B8FC" name="Close Surplus Items And Suspense Pools" isExecutable="true">
+    <bpmn:endEvent id="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA" name="End">
+      <bpmn:incoming>SequenceFlow_9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_1" camunda:expression="${camelClosePools.sendTo('direct:lombard-service-outclearings-getreleaseditems-request')}" name="Get Released Items">
+      <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_6" name="" sourceRef="ServiceTask_1" targetRef="ReceiveTask_1"/>
+    <bpmn:serviceTask id="ServiceTask_2" camunda:expression="${camelClosePools.sendTo('direct:lombard-service-outclearings-generatevouchers-request')}" name="Generate Corresponding Vouchers">
+      <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_7" name="" sourceRef="ServiceTask_2" targetRef="ReceiveTask_2"/>
+    <bpmn:receiveTask id="ReceiveTask_2" name="WaitGenerateCorrespondingVouchers" messageRef="Message_2">
+      <bpmn:incoming>SequenceFlow_7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_4</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_4" name="" sourceRef="ReceiveTask_2" targetRef="ServiceTask_3"/>
+    <bpmn:receiveTask id="ReceiveTask_3" name="WaitAssociateGeneratedVoucher" messageRef="Message_3">
+      <bpmn:incoming>SequenceFlow_8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_5</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_5" name="" sourceRef="ReceiveTask_3" targetRef="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA"/>
+    <bpmn:serviceTask id="ServiceTask_3" camunda:expression="${camelClosePools.sendTo('direct:lombard-service-outclearings-associategeneratedvouchers-request')}" name="Associate Generated Voucher">
+      <bpmn:incoming>SequenceFlow_4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_8" name="" sourceRef="ServiceTask_3" targetRef="ReceiveTask_3"/>
+    <bpmn:receiveTask id="ReceiveTask_1" name="WaitGetReleaseItems" messageRef="Message_1">
+      <bpmn:incoming>SequenceFlow_6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_2" name="" sourceRef="ReceiveTask_1" targetRef="ExclusiveGateway_1"/>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1" name="Any vouchers retrieved?">
+      <bpmn:incoming>SequenceFlow_2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_3" name="Yes" sourceRef="ExclusiveGateway_1" targetRef="ServiceTask_2">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${vouchersRemaining == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_9" name="No" sourceRef="ExclusiveGateway_1" targetRef="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${vouchersRemaining == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0" name="Start">
+      <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0" targetRef="ServiceTask_1"/>
+  </bpmn:process>
+  <bpmn:message id="Message_1" name="lombard.service.outclearings.getreleaseditems.response"/>
+  <bpmn:message id="Message_2" name="lombard.service.outclearings.generatevouchers.response"/>
+  <bpmn:message id="Message_3" name="lombard.service.outclearings.associategeneratedvouchers.response"/>
+  <bpmndi:BPMNDiagram id="EAID_309D6479_F042_493d_89C2_CAC2CCA15D4C" name="CloseSurplusAndSuspensePool">
+    <bpmndi:BPMNPlane id="EAID_PL000000_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_C9699240_ADBC_4549_998F_824F1811B8FC">
+      <bpmndi:BPMNShape id="EAID_DO000000_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0">
+        <dc:Bounds height="30.0" width="30.0" x="72.0" y="90.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_2544_4ce0_BCBF_6A2D23F6BAA0" labelStyle="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+          <dc:Bounds height="22.0" width="34.0" x="70.0" y="124.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000001_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA">
+        <dc:Bounds height="30.0" width="30.0" x="960.0" y="90.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_7570_4c0f_9E2D_F5E658DD45AA" labelStyle="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+          <dc:Bounds height="22.0" width="29.0" x="989.0" y="119.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="EAID_DO000000_F042_493d_89C2_CAC2CCA15D4C" targetElement="_BPMNShape_ServiceTask_2">
+        <di:waypoint xsi:type="dc:Point" x="102.0" y="105.0"/>
+        <di:waypoint xsi:type="dc:Point" x="168.0" y="105.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="99.0" y="105.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_2" bpmnElement="ServiceTask_1">
+        <dc:Bounds height="60.0" width="145.0" x="168.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_ReceiveTask_2" targetElement="_BPMNShape_ExclusiveGateway_2">
+        <di:waypoint xsi:type="dc:Point" x="312.0" y="212.0"/>
+        <di:waypoint xsi:type="dc:Point" x="347.0" y="212.0"/>
+        <di:waypoint xsi:type="dc:Point" x="347.0" y="104.0"/>
+        <di:waypoint xsi:type="dc:Point" x="378.0" y="104.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="344.0" y="196.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ExclusiveGateway_2" bpmnElement="ExclusiveGateway_1" isMarkerVisible="true">
+        <dc:Bounds height="50.0" width="50.0" x="378.0" y="79.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="143.0" x="333.0" y="59.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="_BPMNShape_ExclusiveGateway_2" targetElement="_BPMNShape_ServiceTask_3">
+        <di:waypoint xsi:type="dc:Point" x="428.0" y="104.0"/>
+        <di:waypoint xsi:type="dc:Point" x="492.0" y="105.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="29.0" x="426.0" y="104.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_3" bpmnElement="ServiceTask_2">
+        <dc:Bounds height="60.0" width="148.0" x="492.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="_BPMNShape_ReceiveTask_3" targetElement="_BPMNShape_ServiceTask_4">
+        <di:waypoint xsi:type="dc:Point" x="640.0" y="210.0"/>
+        <di:waypoint xsi:type="dc:Point" x="686.0" y="210.0"/>
+        <di:waypoint xsi:type="dc:Point" x="686.0" y="105.0"/>
+        <di:waypoint xsi:type="dc:Point" x="732.0" y="105.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="688.0" y="210.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_4" bpmnElement="ServiceTask_3">
+        <dc:Bounds height="60.0" width="157.0" x="732.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="_BPMNShape_ReceiveTask_4" targetElement="EAID_DO000001_F042_493d_89C2_CAC2CCA15D4C">
+        <di:waypoint xsi:type="dc:Point" x="888.0" y="208.0"/>
+        <di:waypoint xsi:type="dc:Point" x="932.0" y="208.0"/>
+        <di:waypoint xsi:type="dc:Point" x="932.0" y="105.0"/>
+        <di:waypoint xsi:type="dc:Point" x="960.0" y="105.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="941.0" y="152.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_2" bpmnElement="ReceiveTask_1">
+        <dc:Bounds height="61.0" width="145.0" x="168.0" y="182.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_6" sourceElement="_BPMNShape_ServiceTask_2" targetElement="_BPMNShape_ReceiveTask_2">
+        <di:waypoint xsi:type="dc:Point" x="240.0" y="135.0"/>
+        <di:waypoint xsi:type="dc:Point" x="240.0" y="182.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="237.0" y="159.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_3" bpmnElement="ReceiveTask_2">
+        <dc:Bounds height="61.0" width="148.0" x="492.0" y="180.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="_BPMNShape_ServiceTask_3" targetElement="_BPMNShape_ReceiveTask_3">
+        <di:waypoint xsi:type="dc:Point" x="566.0" y="135.0"/>
+        <di:waypoint xsi:type="dc:Point" x="566.0" y="180.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="565.0" y="161.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_4" bpmnElement="ReceiveTask_3">
+        <dc:Bounds height="61.0" width="157.0" x="732.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="_BPMNShape_ServiceTask_4" targetElement="_BPMNShape_ReceiveTask_4">
+        <di:waypoint xsi:type="dc:Point" x="810.0" y="135.0"/>
+        <di:waypoint xsi:type="dc:Point" x="810.0" y="178.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="920.0" y="158.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="_BPMNShape_ExclusiveGateway_2" targetElement="EAID_DO000001_F042_493d_89C2_CAC2CCA15D4C">
+        <di:waypoint xsi:type="dc:Point" x="403.0" y="129.0"/>
+        <di:waypoint xsi:type="dc:Point" x="403.0" y="273.0"/>
+        <di:waypoint xsi:type="dc:Point" x="975.0" y="273.0"/>
+        <di:waypoint xsi:type="dc:Point" x="975.0" y="120.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="22.0" x="418.0" y="242.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <import resource="classpath:/spring/preferences/dfc-preferences.xml"/>
+    <import resource="classpath:/spring/auth/shiro-preferences.xml"/>
+    <import resource="classpath:/spring/mapping/cvol-vipro-dctm-fxa_voucher-mapping.xml"/>
+
+    <!-- Camel -->
+    <bean id="compatRoute" class="com.fujixerox.aus.asset.app.route.CompatRoute" depends-on="preferencesLoader">
+        <!-- wildcard path for rest -->
+        <constructor-arg name="contextPath" value="{}"/>
+        <constructor-arg name="loginProcessor" ref="loginProcessor"/>
+        <constructor-arg name="logoutProcessor" ref="logoutProcessor"/>
+        <constructor-arg name="indexQueryProcessor" ref="cvolViproDctmFxaVoucherIndexQueryProcessor"/>
+        <constructor-arg name="fallBackProcessor" ref="fallBackProcessor"/>
+    </bean>
+
+    <!-- fallback -->
+    <bean id="fallbackDataProvider" class="com.fujixerox.aus.asset.impl.processor.BeanFallbackDataProvider">
+        <constructor-arg name="blankLocation" value="images/blank.png"/>
+        <constructor-arg name="noResultLocation" value="images/nodata.png"/>
+        <constructor-arg name="fallbackLocation" value="images/nodata.png"/>
+        <constructor-arg name="mapping">
+            <null/>
+        </constructor-arg>
+    </bean>
+
+    <!-- Processors -->
+    <bean id="loginProcessor" class="com.fujixerox.aus.asset.impl.processor.loginmanager.LoginProcessor">
+        <constructor-arg name="credentialManager" ref="credentialManager"/>
+        <constructor-arg name="authenticationRequired" ref="authenticationRequired"/>
+    </bean>
+
+    <bean id="logoutProcessor" class="com.fujixerox.aus.asset.impl.processor.loginmanager.LogoutProcessor">
+        <constructor-arg name="credentialManager" ref="credentialManager"/>
+        <constructor-arg name="authenticationRequired" ref="authenticationRequired"/>
+    </bean>
+
+    <bean id="cvolViproDctmFxaVoucherIndexQueryProcessor" class="com.fujixerox.aus.asset.impl.processor.inquiry.query.IndexQueryProcessor">
+        <constructor-arg name="credentialManager" ref="credentialManager"/>
+        <constructor-arg name="authenticationRequired" ref="authenticationRequired"/>
+        <constructor-arg name="attributeMapping" ref="cvolViproDctmFxaVoucherMapping"/>
+        <constructor-arg name="fallbackDataProvider" ref="fallbackDataProvider"/>
+        <constructor-arg name="maxRows" value="1000"/>
+    </bean>
+
+    <bean id="fallBackProcessor" class="com.fujixerox.aus.asset.impl.processor.fallback.FallBackProcessor"/>
+
+    <camel:camelContext id="camelContext">
+        <camel:routeBuilder ref="compatRoute"/>
+    </camel:camelContext>
+
+</beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ImageExchange" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ImageExchange" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ImageExchangeRequest" type="tns:ImageExchangeRequest"/>
+	<xs:complexType name="ImageExchangeRequest">
+		<xs:sequence>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="maxQuerySize" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

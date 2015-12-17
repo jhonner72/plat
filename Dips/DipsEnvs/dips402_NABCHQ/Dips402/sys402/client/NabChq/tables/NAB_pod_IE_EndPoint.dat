@@ -1,0 +1,23 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-xx-xx		Dinesh		Created
+//2015-08-10        Dinesh      Changed FSV to FIS
+//_______________________________________________________________________
+// Column 1 = Bank Name
+// Column 2 = End Point Name 
+//_Note: BWA is part of CBA and STG is part of WBC but are listed separately as these are listed separately in rba_pod_bankstate lookup table.
+//________________________________________________________________________________________ 
+WBC,FIS
+CBA,FIS
+BWA,FIS
+STG,FIS
+ANZ,ANZ
+RBA,RBA
+NAB,NAB
+//NAB Agency Banks that need special handling. Other Agency banks will default to NAB
+CUS,CUS
+MQG,MQG
+BQL,BQL
+JPM,JPM
+CIT,CIT
+ARB,ARB

@@ -1,0 +1,207 @@
+<form stylesheet="single_decorations.css">
+  <label>Scheduler Monitoring</label>
+  <search id="baseQuery">
+    <query>index=camunda source="D:\\NAB\\logs\\LombardScheduler-*.log" "Hangfire Server Stopped" OR "Starting Hangfire Server" | head 1 | convert mktime(_time) AS eventtime | rex "(?&lt;hangstate&gt;Starting Hangfire Server|Hangfire Server Stopped)" | eval Status=if(hangstate="Hangfire Server Stopped","Hangfire Server is down","Hangfire Server is up") | eval reltime=relative_time(now(),"-$SchedulerAlertWindow$M") | eval EventAge=if(eventtime &gt; reltime,"event happened within $SchedulerAlertWindow$ minute(s) of now","event happened more than $SchedulerAlertWindow$ minute(s) ago") | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table Time Status EventAge</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <search id="SODBaseQuery">
+    <query>index=camunda source="D:\\NAB\\logs\\LombardScheduler-*.log" "SOD" "non processing day" OR "task was started" | head 1 | convert mktime(_time) AS eventtime | rex "(?&lt;isSODStarted&gt;non processing day|task was started)" | eval Result=if(isSODStarted="task was started","Start of Day has run","Non-Processing Day - SOD did not run") | eval todayDate=strftime(time(),"%d/%m/%Y")| eval currentScheduledRun=strptime(todayDate+" $SODTime$","%d/%m/%Y %I:%M %p") | eval nextScheduledRun=relative_time(strptime(todayDate+" $SODTime$","%d/%m/%Y %I:%M %p"),"+1d") | eval alertWindow=relative_time(currentScheduledRun,"+$SODAlertWindow$M")| table eventtime _time Result currentScheduledRun alertWindow nextScheduledRun</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <search id="EODFBaseQuery">
+    <query>index=camunda source="D:\\NAB\\logs\\LombardScheduler-*.log" "EODF" "EOD Final Process was started" OR "Message published successfully to RabbitMQ" | head 1 | convert mktime(_time) AS eventtime | rex "(?&lt;isEODStarted&gt;Message published successfully to RabbitMQ|EOD Final Process was started)" | eval Result=if(isEODStarted="EOD Final Process was started","End of Day Final scheduler started","End of Day Final start up message sent") | eval todayDate=strftime(time(),"%d/%m/%Y")| eval currentScheduledRun=strptime(todayDate+" $EODFTime$","%d/%m/%Y %I:%M %p") | eval nextScheduledRun=relative_time(strptime(todayDate+" $EODFTime$","%d/%m/%Y %I:%M %p"),"+1d") | eval alertWindow=relative_time(currentScheduledRun,"+$EODFAlertWindow$M")| table eventtime _time Result currentScheduledRun alertWindow nextScheduledRun | append [search source=BpmInstanceEODFinal StartTime&gt;CurrentScheduledRun | convert mktime(_time) AS eventtime | dedup ProcessInstanceId sortby +EndTime | eval Result = if(EndTime == "null", "EOD is in progress", "EOD has completed successfully") | rename BusinessKey as "Business Key", StartTime as "RunTime" | table RunTime ProcessInstanceId "Business Key" Result | join ProcessInstanceId type=outer [search index="camunda" source=BpmActivityEODFinal State=2 | eval Result = "EOD process was cancelled" | table ProcessInstanceId Result ]| sort -RunTime | head 1] | sort -RunTime | table eventtime _time RunTime Result currentScheduledRun alertWindow nextScheduledRun</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <search id="EODIBaseQuery">
+    <query>index=camunda source="D:\\NAB\\logs\\LombardScheduler-*.log" "EODI" "EOD Initial Process was started" OR "Message published successfully to RabbitMQ" | head 1 | convert mktime(_time) AS eventtime | rex "(?&lt;isEODStarted&gt;Message published successfully to RabbitMQ|EOD Inital Process was started)" | eval Result=if(isEODStarted="EOD Inital Process was started","End of Day Initial scheduler started","End of Day Initial start up message sent") | eval todayDate=strftime(time(),"%d/%m/%Y")| eval currentScheduledRun=strptime(todayDate+" $EODITime$","%d/%m/%Y %I:%M %p") | eval nextScheduledRun=relative_time(strptime(todayDate+" $EODITime$","%d/%m/%Y %I:%M %p"),"+1d") | eval alertWindow=relative_time(currentScheduledRun,"+$EODIAlertWindow$M")| table eventtime _time Result currentScheduledRun alertWindow nextScheduledRun | append [search source=BpmInstanceEODInitial StartTime&gt;CurrentScheduledRun | convert mktime(_time) AS eventtime | dedup ProcessInstanceId sortby +EndTime | eval Result = if(EndTime == "null", "EOD is in progress", "EOD has completed successfully") | rename BusinessKey as "Business Key", StartTime as "RunTime" | table RunTime ProcessInstanceId "Business Key" Result | join ProcessInstanceId type=outer [search index="camunda" source=BpmActivityEODInitial State=2 | eval Result = "EOD process was cancelled" | table ProcessInstanceId Result ]| sort -RunTime | head 1] | sort -RunTime | table eventtime _time RunTime Result currentScheduledRun alertWindow nextScheduledRun</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <title>Scheduled processes</title>
+      <html>
+        <style>.btn-primary { margin: 5px 10px 5px 0; }</style>
+        <a href="eod_final" class="btn btn-primary" target="_blank">End of Day Final</a>
+        <a href="eod_initial" class="btn btn-primary" target="_blank">End of Day Initial</a>
+        <a href="vif_generation" class="btn btn-primary" target="_blank">Vif</a>
+        <a href="ie_file_generation" class="btn btn-primary" target="_blank">Image Exchange Outbound</a>
+        <a href="inwards_ie" class="btn btn-primary" target="_blank">Image Exchange Inbound</a>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Hangfire Status</title>
+      <input type="text" searchWhenChanged="true" token="SchedulerAlertWindow">
+        <label>Scheduler Down Alert Window (minutes)</label>
+        <default>1</default>
+      </input>
+      <single>
+        <search base="baseQuery">
+          <query>| eval value=if(Status=="Hangfire Server is up","low","severe")</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+      </single>
+      <table>
+        <search base="baseQuery">
+          <query></query>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="refresh.time.visible">false</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Start of Day Monitoring</title>
+      <input type="text" searchWhenChanged="true" token="SODTime">
+        <label>Scheduled Time (H:MM AM/PM)</label>
+        <default>8:00 AM</default>
+      </input>
+      <input type="text" searchWhenChanged="true" token="SODAlertWindow">
+        <label>Alert Window after Schedule (Minutes)</label>
+        <default>30</default>
+      </input>
+      <single>
+        <search base="SODBaseQuery">
+          <query>| eval Message=if(eventtime &lt; currentScheduledRun AND now() &lt; currentScheduledRun,"SOD not scheduled to run yet",if(eventtime &lt; currentScheduledRun AND now() &lt; alertWindow,"Ready",if(eventtime &lt; currentScheduledRun AND now() &gt; alertWindow, "ALERT: SOD has not run within given Alert Window",if(eventtime &gt; currentScheduledRun AND eventtime &lt; alertWindow,"Event occurred on schedule","Event occurred after given Alert Window")))) | eval value=if(Message=="ALERT: SOD has not run within given Alert Window","severe",if(Message=="Event occurred on schedule","low", if( Message=="Event occurred after given Alert Window","high","")))</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">Message</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </single>
+      <table>
+        <search base="SODBaseQuery">
+          <query>| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(nextScheduledRun) AS NextScheduledRun | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(alertWindow) AS AlertWindow |convert timeformat="%Y-%m-%d %H:%M:%S" ctime(currentScheduledRun) AS CurrentScheduledRun| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS RunTime | table RunTime Result CurrentScheduledRun AlertWindow NextScheduledRun</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>EOD Initial Monitoring</title>
+      <input type="text" searchWhenChanged="true" token="EODITime">
+        <label>Scheduled Time (H:MM AM/PM)</label>
+        <default>3:30 PM</default>
+      </input>
+      <input type="text" searchWhenChanged="true" token="EODIAlertWindow">
+        <label>Alert Window after Schedule (Minutes)</label>
+        <default>30</default>
+      </input>
+      <single>
+        <search base="EODIBaseQuery">
+          <query>| head 1 | eval Message=if(eventtime &lt; currentScheduledRun AND now() &lt; currentScheduledRun,"EODF not scheduled to run yet",if(eventtime &lt; currentScheduledRun AND now() &lt; alertWindow,"Ready",if(eventtime &lt; currentScheduledRun AND now() &gt; alertWindow, "ALERT: EODI has not run within given Alert Window",if(eventtime &gt; currentScheduledRun AND eventtime &lt; alertWindow,"Event occurred on schedule","Event occurred after given Alert Window")))) | eval value=if(Message=="ALERT: EODI has not run within given Alert Window","severe",if(Message=="Event occurred on schedule","low", if( Message=="Event occurred after given Alert Window","high","")))</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">Message</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </single>
+      <table>
+        <search base="EODIBaseQuery">
+          <query>convert timeformat="%Y-%m-%d %H:%M:%S" ctime(nextScheduledRun) AS NextScheduledRun | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(alertWindow) AS AlertWindow |convert timeformat="%Y-%m-%d %H:%M:%S" ctime(currentScheduledRun) AS CurrentScheduledRun| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS RunTime | table RunTime Result CurrentScheduledRun AlertWindow NextScheduledRun</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </table>
+    </panel>
+    <panel>
+      <title>EOD Final Monitoring</title>
+      <input type="text" searchWhenChanged="true" token="EODFTime">
+        <label>Scheduled Time (H:MM AM/PM)</label>
+        <default>2:30 AM</default>
+      </input>
+      <input type="text" searchWhenChanged="true" token="EODFAlertWindow">
+        <label>Alert Window after Schedule (Minutes)</label>
+        <default>30</default>
+      </input>
+      <single>
+        <search base="EODFBaseQuery">
+          <query>| head 1 | eval Message=if(eventtime &lt; currentScheduledRun AND now() &lt; currentScheduledRun,"EODF not scheduled to run yet",if(eventtime &lt; currentScheduledRun AND now() &lt; alertWindow,"Ready",if(eventtime &lt; currentScheduledRun AND now() &gt; alertWindow, "ALERT: EODF has not run within given Alert Window",if(eventtime &gt; currentScheduledRun AND eventtime &lt; alertWindow,"Event occurred on schedule","Event occurred after given Alert Window")))) | eval value=if(Message=="ALERT: EODF has not run within given Alert Window","severe",if(Message=="Event occurred on schedule","low", if( Message=="Event occurred after given Alert Window","high","")))</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">Message</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </single>
+      <table>
+        <search base="EODFBaseQuery">
+          <query>convert timeformat="%Y-%m-%d %H:%M:%S" ctime(nextScheduledRun) AS NextScheduledRun | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(alertWindow) AS AlertWindow |convert timeformat="%Y-%m-%d %H:%M:%S" ctime(currentScheduledRun) AS CurrentScheduledRun| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS RunTime | table RunTime Result CurrentScheduledRun AlertWindow NextScheduledRun</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+        <option name="refresh.auto.interval">600</option>
+        <option name="refresh.time.visible">false</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Scheduler Log</title>
+      <input type="multiselect" searchWhenChanged="true" token="task_search">
+        <label>Task Search</label>
+        <delimiter> OR </delimiter>
+        <default></default>
+        <search>
+          <query>index=camunda source="*LombardScheduler-*.log" | rex "\[Information\] (?&lt;task&gt;[A-Za-z]+):" |dedup task | table task</query>
+        </search>
+        <fieldForLabel>task</fieldForLabel>
+        <fieldForValue>task</fieldForValue>
+        <choice value="">All</choice>
+      </input>
+      <event>
+        <search>
+          <query>index=camunda source="D:\\NAB\\logs\\LombardScheduler-*.log" $task_search$ "[Information]" OR "[Error]"</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="count">10</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">0</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="refresh.link.visible">true</option>
+        <fields>[]</fields>
+      </event>
+    </panel>
+  </row>
+</form>

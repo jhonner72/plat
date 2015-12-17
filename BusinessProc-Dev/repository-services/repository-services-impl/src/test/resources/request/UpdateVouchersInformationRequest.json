@@ -1,0 +1,60 @@
+{
+	"voucherInformation": [{
+		"voucher": {
+			"documentReferenceNumber": "385300213",
+			"processingDate": "2015-06-10"
+		},
+		"voucherProcess": {
+			"adjustedFlag": false,
+			"adjustmentLetterRequired": false,
+			"adjustmentReasonCode": 0,
+			"adjustmentsOnHold": false,
+			"highValueFlag": false,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": false,
+			"manualRepair": 0,
+			"micrFlag": false,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false
+		}
+	},
+	{
+		"voucher": {
+			"documentReferenceNumber": "385300214",
+			"processingDate": "2015-06-10"
+		},
+		"voucherProcess": {
+			"adjustedFlag": false,
+			"adjustmentLetterRequired": false,
+			"adjustmentReasonCode": 0,
+			"adjustmentsOnHold": false,
+			"highValueFlag": false,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": false,
+			"manualRepair": 0,
+			"micrFlag": false,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false
+		}
+	}],
+	"voucherTransferStatusFrom": "AdjustmentOnHold",
+	"voucherTransferStatusTo": "New"
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="raiseSlaIncidentRoute" class="com.fujixerox.aus.outclearings.RaiseSlaIncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.outclearings.valueinstructionfile.incident"
+          p:queueName="lombard.service.support.incident"
+          p:subject="slaincident"
+          p:predicate="raise"
+            />
+
+    <bean id="getVouchersForValueInstructionFileRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse"
+          p:serviceName="lombard.service.outclearings.getvouchersforvalueinstructionfile"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="get"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="createValueInstructionFileRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.createvalueinstructionfile.CreateValueInstructionFileResponse"
+          p:serviceName="lombard.service.outclearings.createvalueinstructionfile"
+          p:consumeType="Lombard.Vif.Service.Messages.XsdImports.CreateValueInstructionFileRequest:Lombard.Vif.Service"
+          p:subject="valueinstructionfile"
+          p:predicate="create"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="copyValueInstructionFileRoute"  parent="copyFileRoute"
+          p:serviceName="lombard.service.outclearings.sendvalueinstructionfile"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="valueinstructionfile"
+          p:predicate="copy"
+            />
+
+    <bean id="updateValueInstructionFileVouchersStatusRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+          p:serviceName="lombard.service.outclearings.updatevalueinstructionfilevouchersstatus"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="update"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="retrieveVifAckFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.outclearings.retrievevalueinstructionfileack"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="valueinstructionfileack"
+          p:predicate="retrieve"
+          p:skipStoreJobRequest="true"
+          p:skipStoreJobResponse="true"
+            />
+
+    <bean id="processValueInstructionFileAckRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.processvalueinstructionfileacknowledgment.ProcessValueInstructionFileAcknowledgmentResponse"
+          p:serviceName="lombard.service.outclearings.processvalueinstructionfileack"
+          p:consumeType="Lombard.Vif.Service.Messages.XsdImports.ProcessValueInstructionFileAcknowledgmentRequest:Lombard.Vif.Acknowledgement.Service"
+          p:subject="valueinstructionfileack"
+          p:predicate="process"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="raiseErrorVoucherIncidentRoute" class="com.fujixerox.aus.integration.service.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.outclearings.processvalueinstructionfileack.incident"
+          p:subject="valueinstructionfileack"
+          p:predicate="process"
+            />
+
+    <bean id="updateValueInstructionFileVouchersAckStatusRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+          p:serviceName="lombard.service.outclearings.updatevalueinstructionfilevouchersackstatus"
+          p:consumeType=""
+          p:subject="vouchersack"
+          p:predicate="update"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <context:property-placeholder location="classpath:properties-integration.txt"/>
+
+    <bean id="brokerUsername" class="java.lang.String">
+        <constructor-arg value="lombard"/>
+    </bean>
+    <bean id="brokerPassword" class="java.lang.String">
+        <constructor-arg value="lombard"/>
+    </bean>
+    <bean id="brokerHostname" class="java.lang.String">
+        <constructor-arg value="localhost"/>
+    </bean>
+    <bean id="brokerPort" class="java.lang.String">
+        <constructor-arg value="5672"/>
+    </bean>
+
+    <jdbc:embedded-database id="jobDataSource" type="H2">
+        <jdbc:script location="classpath:job-schema.sql"/>
+    </jdbc:embedded-database>
+
+    <jdbc:embedded-database id="repositoryDataSource" type="H2">
+        <jdbc:script location="classpath:repository-schema.sql"/>
+    </jdbc:embedded-database>
+
+    <!--configure databaseSchemaUpdate from property -->
+    <bean id="processEngineConfiguration" class="org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration"
+        p:databaseSchemaUpdate="true"
+        p:history="full"
+        p:authorizationEnabled="false"
+        p:dataSource-ref="jobDataSource"
+        p:transactionManager-ref="transactionManager">
+
+        <property name="deploymentResources"
+            value="classpath*:/bpmn/clear-adjustments.bpmn"/>
+    </bean>
+
+    <bean id="processEngine" class="org.camunda.bpm.engine.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+    </bean>
+
+    <import resource="classpath:/spring/lombard-integration-app-context.xml" />
+    <import resource="classpath:/spring/lombard-integration-app-generate-adjustment-letter-context.xml" />
+</beans>

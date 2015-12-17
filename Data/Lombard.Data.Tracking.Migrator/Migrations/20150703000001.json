@@ -1,0 +1,6 @@
+{
+    "workflowNames": [
+            "WF_Surplus_Suspense_pool",
+            "WF_ThirdParty_Suspense_Pool"
+        ]
+}

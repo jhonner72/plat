@@ -1,0 +1,42 @@
+{
+	"adjustmentLetters": [{
+		"documentReferenceNumber": "11111111",
+		"filename": "adjust1.pdf",
+		"jobIdentifier": "JOB_ADJUSTMENT_LETTER",
+		"processingDate": "2015-08-06",
+		"scannedBatchNumber": "BATCH_1111",
+		"transactionLinkNumber": "TRANLINK_1111"
+	},
+	{
+		"documentReferenceNumber": "22222222",
+		"filename": "adjust2.pdf",
+		"jobIdentifier": "JOB_ADJUSTMENT_LETTER",
+		"processingDate": "2015-08-06",
+		"scannedBatchNumber": "BATCH_1111",
+		"transactionLinkNumber": "TRANLINK_1111"
+	},
+	{
+		"documentReferenceNumber": "33333333",
+		"filename": "adjust3.pdf",
+		"jobIdentifier": "JOB_ADJUSTMENT_LETTER",
+		"processingDate": "2015-08-06",
+		"scannedBatchNumber": "BATCH_1111",
+		"transactionLinkNumber": "TRANLINK_1111"
+	},
+	{
+		"documentReferenceNumber": "44444444",
+		"filename": "adjust4.pdf",
+		"jobIdentifier": "JOB_ADJUSTMENT_LETTER",
+		"processingDate": "2015-08-06",
+		"scannedBatchNumber": "BATCH_1111",
+		"transactionLinkNumber": "TRANLINK_1111"
+	},
+	{
+		"documentReferenceNumber": "55555555",
+		"filename": "adjust5.pdf",
+		"jobIdentifier": "JOB_ADJUSTMENT_LETTER",
+		"processingDate": "2015-08-06",
+		"scannedBatchNumber": "BATCH_1111",
+		"transactionLinkNumber": "TRANLINK_1111"
+	}]
+}

@@ -1,0 +1,446 @@
+{
+    "job":
+    {
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "initiatingJobIdentifier":null,
+        "processIdentifier":null,
+        "subject":"valuefromsurplusitem",
+        "predicate":"collect",
+        "activity":[
+						{
+							"jobIdentifier":null,
+							"activityIdentifier":null,
+							"subject":null,
+							"predicate":null,
+							"requestDateTime":"2015-11-13T11:11:42.837+11",
+							"request":{
+								"@type":"com.fujixerox.aus.lombard.common.receipt.ReceivedFile",
+								"fileIdentifier":"OUTCLEARINGSPKG_13112015_NSBS64100032.zip",
+								"receivedDateTime":"2015-11-13T11:11:42.837+11"
+							},
+							"responseDateTime":null,
+							"response":null,
+							"failed":false
+						}
+					],
+						"status":0
+				},
+		"activityCount": 21,
+		"activities": [
+		{
+			"implemented" : true,
+			"activityName": "lombard.service.outclearings.surplus.checkduplicatefile",
+			"exchangeName": "lombard.service.repository.checkduplicatefile",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.checkduplicatefile",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileRequest",
+				"filename":"OUTCLEARINGSPKG_13112015_NSBS64100032.zip"
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileResponse",
+				"isDuplicatedFile": "false"
+			}
+		},
+		{
+			"implemented" : true,
+			"activityName": "lombard.service.outclearings.surplus.unpackagevoucher",
+			"exchangeName": "lombard.service.outclearings.surplus.unpackagevoucher",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.unpackagevoucher",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherRequest",
+				"jobIdentifier": "#JOB_IDENTIFIER#",
+				"receivedFile":{
+					"fileIdentifier":"OUTCLEARINGSPKG_13112015_NSBS64100032.zip",
+					"receivedDateTime":"2015-11-13T11:11:42.837+11"
+				}
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherResponse",
+				"batch": {
+					"batchAccountNumber": "0000000099",
+					"batchAuxDom": "",
+					"batchNumber": "64100032",
+					"batchType": "",
+					"captureBsb": "082082",
+					"client": "NabChq",
+					"collectingBank": "083000",
+					"operator": "a",
+					"processingDate": "2015-11-13",
+					"processingState": "NSW",
+					"source": "DIPS",
+					"subBatchType": "",
+					"unitID": "041",
+					"voucher": [
+						{
+							"accountNumber": "257755943",
+							"amount": "",
+							"auxDom": "200764",
+							"bsbNumber": "012635",
+							"creditNoteFlag": false,
+							"documentReferenceNumber": "141000007",
+							"documentType": "DBT",
+							"extraAuxDom": "",
+							"inactiveFlag": false,
+							"micrFlag": true,
+							"micrUnprocessableFlag": false,
+							"processingDate": "2015-11-13",
+							"rawMICR": "-200764-012.635+257755943-",
+							"rawOCR": "!2007!!!0!!!!!!!!!!!!!!0>!!",
+							"traceID": "641000093",
+							"transactionCode": ""
+						}
+					],
+					"workType": "NABCHQ_SURPLUS"
+				}
+			}
+		},
+		{
+			"activityName": "lombard.service.outclearings.surplus.recognisecourtesyamount",
+			"exchangeName": "lombard.service.outclearings.recognisecourtesyamount",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.recognisecourtesyamount",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountRequest",
+				"jobIdentifier": "#JOB_IDENTIFIER#",
+				"voucher": [
+					{
+						"documentReferenceNumber": "141000007",
+						"processingDate": "2015-11-13",
+						"transactionCode": ""
+					}
+				]
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountResponse",
+				"jobIdentifier": "#JOB_IDENTIFIER#",
+				"voucher": [
+					{
+						"documentReferenceNumber": "141000007",
+						"imageRotation": null,
+						"capturedAmount": "28685",
+						"amountConfidenceLevel": "92",
+						"amountRegionOfInterest": {
+							"top" : 195, "left" : 1297, "height" : 97, "width" : 388
+						}
+					}
+				]
+			}
+		},
+		{
+			"activityName": "lombard.service.outclearings.surplus.validatecodeline",
+			"exchangeName": "lombard.service.outclearings.validatecodeline",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.validatecodeline",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineRequest",
+				"voucher": [
+					{
+						"accountNumber": "257755943",
+						"amountConfidenceLevel": "92",
+						"auxDom": "200764",
+						"bsbNumber": "012635",
+						"capturedAmount": "28685",
+						"documentReferenceNumber": "141000007",
+						"documentType": "DBT",
+						"extraAuxDom": "",
+						"processingDate": "2015-11-13",
+						"transactionCode": ""
+					}
+				],
+				"voucherBatch": {
+					"batchAccountNumber": "0000000099",
+					"batchType": "",
+					"captureBsb": "082082",
+					"client": "NabChq",
+					"collectingBank": "083000",
+					"processingState": "NSW",
+					"scannedBatchNumber": "64100032",
+					"source": "DIPS",
+					"subBatchType": "",
+					"unitID": "041",
+					"workType": "NABCHQ_SURPLUS"
+				}
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineResponse",
+				"voucher": [
+					{
+						"accountNumberStatus": true,
+						"amountStatus": false,
+						"auxDomStatus": true,
+						"bsbNumberStatus": true,
+						"documentReferenceNumber": "141000007",
+						"documentType": "DBT",
+						"extraAuxDomStatus": true,
+						"processingDate": "2015-11-13T00:00:00.000+11:00",
+						"targetEndPoint": "",
+						"transactionCodeStatus": true
+					}
+				],
+				"voucherBatch": {
+					"batchAccountNumber": "0000000099",
+					"batchType": "",
+					"captureBsb": "082082",
+					"client": null,
+					"collectingBank": "083000",
+					"processingState": "NSW",
+					"scannedBatchNumber": "64100032",
+					"source": null,
+					"subBatchType": "",
+					"unitID": "041",
+					"workType": "NABCHQ_SURPLUS"
+				}
+			}
+		},
+		{
+			"activityName": "lombard.service.outclearings.surplus.correctcodeline",
+			"exchangeName": "lombard.service.outclearings.correctcodeline",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.correctcodeline",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineRequest",
+				"jobIdentifier": "#JOB_IDENTIFIER#",
+				"voucher": [
+					{
+						"accountNumber": "257755943",
+						"accountNumberStatus": true,
+						"amount": "",
+						"amountConfidenceLevel": "92",
+						"amountStatus": false,
+						"auxDom": "200764",
+						"auxDomStatus": true,
+						"bsbNumber": "012635",
+						"bsbNumberStatus": true,
+						"capturedAmount": "28685",
+						"creditNoteFlag": false,
+						"documentReferenceNumber": "141000007",
+						"documentType": "DBT",
+						"extraAuxDom": "",
+						"extraAuxDomStatus": true,
+						"processingDate": "2015-11-13",
+						"repostFromDRN": null,
+						"repostFromProcessingDate": null,
+						"transactionCode": "",
+						"transactionCodeStatus": true
+					}
+				],
+				"voucherBatch": {
+					"batchAccountNumber": "0000000099",
+					"batchType": "",
+					"captureBsb": "082082",
+					"collectingBank": "083000",
+					"processingState": "NSW",
+					"scannedBatchNumber": "64100032",
+					"subBatchType": "",
+					"unitID": "041",
+					"workType": "NABCHQ_SURPLUS"
+				}
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineResponse",
+				"voucher": [
+					{
+						"accountNumber": "257755943",
+						"amount": "28685",
+						"auxDom": "200764",
+						"bsbNumber": "012635",
+						"collectingBank": "083000",
+						"creditNoteFlag": false,
+						"dips_override": "",
+						"documentReferenceNumber": "141000007",
+						"documentType": "DBT",
+						"extraAuxDom": "",
+						"forValueIndicator": "",
+						"manualRepair": 0,
+						"operatorID": "a",
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"presentationMode": "",
+						"processingDate": "2015-11-13T00:00:00.000+11:00",
+						"repostFromDRN": "",
+						"repostFromProcessingDate": "1950-01-01T00:00:00.000+11:00",
+						"targetEndPoint": "ANZ",
+						"transactionCode": "",
+						"transactionLink": "",
+						"unprocessable": false
+					}
+				],
+				"voucherBatch": {
+					"batchAccountNumber": "0000000099",
+					"batchType": "",
+					"captureBsb": "082082",
+					"client": null,
+					"collectingBank": "083000",
+					"processingState": "NSW",
+					"scannedBatchNumber": "64100032",
+					"source": null,
+					"subBatchType": "",
+					"unitID": "041",
+					"workType": "NABCHQ_SURPLUS"
+				}
+			}
+		},
+		{
+			"implemented" : true,
+			"activityName": "lombard.service.outclearings.surplus.storebatchvoucher",
+			"exchangeName": "lombard.service.repository.storevouchers",
+			"routingKey": "NSBS",
+			"queueName": "lombard.service.outclearings.surplus.storebatchvoucher",
+			"request": {
+				"@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest",
+				"jobIdentifier": "#JOB_IDENTIFIER#",
+				"origin": "VOUCHER_INBOUND",
+				"receipt": {
+					"fileIdentifier": "OUTCLEARINGSPKG_13112015_NSBS64100032.zip",
+					"receivedDateTime": "2015-11-13T11:11:42.837+11",
+					"transmissionDateTime": "2015-11-13T11:11:42.837+11"
+				},
+				"voucher": [
+					{
+						"transferEndpoints": [
+							{
+								"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+								"endpoint": "ANZ",
+								"filename": null,
+								"voucherStatus": "OnHold"
+							},
+							{
+								"documentExchange": "VIF_OUTBOUND",
+								"endpoint": "082082",
+								"filename": null,
+								"voucherStatus": "OnHold"
+							},
+							{
+								"documentExchange": "VIF_ACK_OUTBOUND",
+								"endpoint": "082082",
+								"filename": null,
+								"voucherStatus": "OnHold"
+							}
+						],
+						"voucher": {
+							"accountNumber": "257755943",
+							"amount": "28685",
+							"auxDom": "200764",
+							"bsbNumber": "012635",
+							"documentReferenceNumber": "141000007",
+							"documentType": "Sp",
+							"extraAuxDom": "",
+							"processingDate": "2015-11-13",
+							"transactionCode": ""
+						},
+						"voucherAudit": [
+							{
+								"attribute_name": "operator_name",
+								"operator": "a",
+								"subject_area": "dips"
+							},
+							{
+								"attribute_name": "captured_amt",
+								"operator": null,
+								"post_value": "28685",
+								"pre_value": "",
+								"subject_area": "car"
+							},
+							{
+								"attribute_name": "timings",
+								"operator": null,
+								"post_value": "13112015 11:11:45",
+								"pre_value": "13112015 11:11:43",
+								"subject_area": "car"
+							},
+							{
+								"attribute_name": "amount_status",
+								"operator": null,
+								"post_value": "false",
+								"subject_area": "cdv"
+							},
+							{
+								"attribute_name": "timings",
+								"operator": null,
+								"post_value": "13112015 11:11:57",
+								"pre_value": "13112015 11:11:45",
+								"subject_area": "cdv"
+							},
+							{
+								"attribute_name": "timings",
+								"operator": null,
+								"post_value": "13112015 11:16:37",
+								"pre_value": "13112015 11:11:57",
+								"subject_area": "cdc"
+							},
+							{
+								"attribute_name": "unprocessable_item_flag",
+								"operator": "a",
+								"post_value": "false",
+								"subject_area": "cdc"
+							},
+							{
+								"attribute_name": "ptqa_codeline",
+								"operator": "a",
+								"post_value": "false",
+								"subject_area": "cdc"
+							},
+							{
+								"attribute_name": "for_value_indicator",
+								"operator": "a",
+								"post_value": "",
+								"subject_area": "cdc"
+							}
+						],
+						"voucherProcess": {
+							"adjustedFlag": false,
+							"adjustmentLetterRequired": false,
+							"adjustmentReasonCode": 0,
+							"apPresentmentType": null,
+							"creditNoteFlag": false,
+							"customerLinkNumber": null,
+							"documentRetrievalDate": null,
+							"documentRetrievalFlag": false,
+							"forValueType": null,
+							"highValueFlag": false,
+							"inactiveFlag": false,
+							"isGeneratedBulkCredit": false,
+							"isReservedForBalancing": false,
+							"isRetrievedVoucher": false,
+							"manualRepair": 0,
+							"micrFlag": true,
+							"postTransmissionQaAmountFlag": false,
+							"postTransmissionQaCodelineFlag": false,
+							"preAdjustmentAmount": null,
+							"presentationMode": "E",
+							"rawMICR": "-200764-012.635+257755943-",
+							"rawOCR": "!2007!!!0!!!!!!!!!!!!!!0>!!",
+							"releaseFlag": null,
+							"repostFromDRN": null,
+							"repostFromProcessingDate": null,
+							"surplusItemFlag": true,
+							"suspectFraud": false,
+							"thirdPartyCheckFailed": false,
+							"thirdPartyMixedDepositReturnFlag": false,
+							"thirdPartyPoolFlag": false,
+							"transactionLinkNumber": "",
+							"unencodedECDReturnFlag": false,
+							"unprocessable": false
+						}
+					}
+				],
+				"voucherBatch": {
+					"batchAccountNumber": "0000000099",
+					"batchType": "",
+					"captureBsb": "082082",
+					"collectingBank": "083000",
+					"processingState": "NSW",
+					"scannedBatchNumber": "64100032",
+					"subBatchType": "",
+					"unitID": "041",
+					"workType": "NABCHQ_SURPLUS"
+				}
+			},
+			"response": {
+				"@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+			}
+		}
+    ]
+}

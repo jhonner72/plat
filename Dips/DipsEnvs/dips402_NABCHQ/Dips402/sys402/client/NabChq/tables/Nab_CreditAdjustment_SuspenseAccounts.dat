@@ -1,0 +1,36 @@
+// This lookup table contains the following information:
+// - Column 1: BSB
+// - Column 2: Account
+// - Column 3: Debit Trancode
+// - Column 4: Credit Trancode
+// - Column 5: EAD
+// - Column 6: AuxDom
+// - Column 7: Bank Mnemonic
+// - Column 8: Bank Name
+083029,899919946,26,65,,,NAB,National Australia Bank
+124001,10457814,,95,,DDMMYY,BQL,Bank Of Queensland
+182222,052666104,26,99,,,MQG,Macquarie Bank Ltd
+21XXXX,999999912,44,60,,,JPM,JP Morgan Chase N.A With Agent Number
+21XXXX,999999912,44,50,,,JPM,JP Morgan Chase N.A Without Agent Number
+21XXXX,999999912,44,99,,,JPM,JP Morgan Chase N.A For Interbank
+917101,818965036,26,99,,,ARB,Arab Bank Ltd
+242200,999999915,33,95,,,CIT,Citigroup Consumer Ltd
+242200,9002260007,33,95,,,CIT,Citigroup Corporate Ltd
+633110,012110000,,69,,,NAB,Bendigo & Adelaide Bank Ltd (633 BBL)
+610101,999999915,26,99,,,NAB,Bendigo & Adelaide Bank Ltd (610 ADL)
+343001,999999912,26,99,,,NAB,HSBC Bank Australia Ltd
+343001,999999912,26,99,,,NAB,HongKong & Shanghai
+942101,827998,26,99,,,NAB,Bank of Sydney
+819002,110000502,26,99,,,NAB,Industrial & Commercial Bank of China
+452001,810605036,26,99,,,NAB,Overseas-Chinese Banking Corp
+952868,000045500,26,95,,,NAB,Royal Bank of Scotland	
+082172,017685165,26,95,,,CUS,Cuscal Ltd
+313140,999999915,26,95,,,CUS,MECU
+514000,999999915,26,99,,,CUS,QT Mutual Bank	
+512000,999999915,26,95,,,CUS,Community First CU Ltd
+642000,999999915,26,95,,,CUS,Australian Defence CU
+812000,999999915,26,95,,,CUS,Teachers Credit Union
+813999,999999915,26,99,,,CUS,Capricornia Credit Union
+814999,999999915,26,99,,,CUS,Credit Union Australia Limited
+815000,999999915,26,95,,,CUS,Police Department CU
+817002,999999915,26,95,,,CUS,Warwick Credit Union

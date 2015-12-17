@@ -1,0 +1,25 @@
+{
+  "financialEntities": [
+    {
+      "workType": "BQL_POD",
+      "bundleType": "1",
+      "financialInstitution": "BQL"
+    },
+    {
+      "workType": "BQL_INWARDFV",
+      "bundleType": "6",
+      "financialInstitution": "BQL"
+    },
+    {
+      "workType": "NABCHQ_INWARDFV",
+      "bundleType": "6",
+      "financialInstitution": "NAB"
+    },
+    {
+      "workType": "NABCHQ_POD",
+      "bundleType": "1",
+      "financialInstitution": "NAB"
+    }
+  ]
+}
+

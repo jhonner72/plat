@@ -1,0 +1,63 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"imagesummary",
+    "predicate":"reconcile",
+    "status":0
+  },
+  "activityCount": 10,
+  "activities": [
+    {
+      "activityName": "lombard.service.inclearings.getreceivedfiles",
+      "exchangeName": "lombard.service.repository.getreceivedfiles",
+      "routingKey": "NRIE",
+      "queueName": "lombard.service.inclearings.getreceivedfiles",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getreceivedfiles.GetReceivedFilesRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "fileType": "IMAGE_EXCHANGE",
+        "receivedDate": "2012-06-30T00:00:00.000+1000",
+        "sourceOrganisation" : "RBA"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getreceivedfiles.GetReceivedFilesResponse",
+        "receivedFiles": [
+          {
+            "fileIdentifier": "IMGEXCH.20120704.20120705.223010.9999999999999999.ANZ.RBA.000001.zip",
+            "receivedDateTime": "2015-03-24T13:13:09.107+11:00",
+            "transmissionDateTime": "2015-03-24T13:13:09.107+11:00"
+
+          },
+          {
+            "fileIdentifier": "IMGEXCH.20120704.20120705.223010.9999999999999999.ANZ.RBA.000002.zip",
+            "receivedDateTime": "2015-03-24T13:13:09.107+11:00",
+            "transmissionDateTime": "2015-03-24T13:13:09.107+11:00"
+          }
+        ]
+      }
+    },
+    {
+      "activityName": "lombard.service.inclearings.storereceivedfiles",
+      "exchangeName": "lombard.service.reporting.storerepositoryreports",
+      "routingKey": "NRIE",
+      "queueName": "lombard.service.inclearings.storereceivedfiles",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "reports": [
+          {
+            "formatType" : "DAT",
+            "reportOutputFilename" : "IMGEXCHEOD.20120630.20120701.051020.RBA.FIS.DAT",
+            "reportProcessingDate" : "#DATETIME#",
+            "reportType" : "IE Reconcil"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsResponse"
+      }
+    }
+  ]
+}

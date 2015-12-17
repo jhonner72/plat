@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="$(var.Name)" Version="$(var.Version)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseUrl=""
+        xmlns:bal="http://schemas.microsoft.com/wix/BalExtension" />
+    </BootstrapperApplicationRef>
+
+    <Chain>
+      <ExePackage Id="RangerForSmartPVA" SourceFile="$(var.Source)\RangerInstall\RangerForSmartPVA_4.2.12.2-2.0.11.1.exe" DetectCondition="ExeDetectedVariable"
+                  InstallCommand="/S" UninstallCommand="/S" />
+      <MsiPackage Id="FxaRangerForSmartPVA" SourceFile="$(var.Lombard.Dips.Scanner.Setup.TargetPath)" />
+    </Chain>
+  </Bundle>
+</Wix>

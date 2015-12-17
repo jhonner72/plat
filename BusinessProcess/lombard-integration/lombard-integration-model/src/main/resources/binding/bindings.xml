@@ -1,0 +1,22 @@
+<jaxb:bindings
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_1.xsd"
+    jaxb:extensionBindingPrefixes="xjc" version="2.1">
+
+    <jaxb:globalBindings typesafeEnumMaxMembers="2000">
+        <jaxb:serializable />
+        <jaxb:javaType name="java.util.Date" xmlType="xs:dateTime"
+                       printMethod="com.fujixerox.aus.lombard.JaxbDateAdapter.marshalDateTime"
+                       parseMethod="com.fujixerox.aus.lombard.JaxbDateAdapter.unmarshalDateTime"
+                />
+        <jaxb:javaType name="java.util.Date" xmlType="xs:date"
+                       printMethod="com.fujixerox.aus.lombard.JaxbDateAdapter.marshalDate"
+                       parseMethod="com.fujixerox.aus.lombard.JaxbDateAdapter.unmarshalDate"
+                />
+        <xjc:simple/>
+    </jaxb:globalBindings>
+
+</jaxb:bindings>

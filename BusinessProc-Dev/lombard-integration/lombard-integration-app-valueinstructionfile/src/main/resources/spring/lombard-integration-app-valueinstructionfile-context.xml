@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <import resource="lombard-integration-app-valueinstructionfile-transform-context.xml"/>
+    <import resource="lombard-integration-app-valueinstructionfile-route-context.xml" />
+
+    <bean id="valueInstructionFile" class="com.fujixerox.aus.lombard.outclearings.valueinstructionfile.ValueInstructionFileJobAdapter"
+          p:jobStore-ref="jobStore"
+          p:metadataStore-ref="metadataStore"
+          p:sequenceNumberGenerator-ref="sequenceNumberGenerator"
+            />
+
+    <!-- Camel -->
+
+    <camel:camelContext id="camelContextValueInstructionFile">
+        <camel:routeBuilder ref="raiseSlaIncidentRoute" />
+        <camel:routeBuilder ref="getVouchersForValueInstructionFileRoute" />
+        <camel:routeBuilder ref="createValueInstructionFileRoute" />
+        <camel:routeBuilder ref="copyValueInstructionFileRoute" />
+        <camel:routeBuilder ref="updateValueInstructionFileVouchersStatusRoute" />
+        <camel:routeBuilder ref="retrieveVifAckFileRoute" />
+        <camel:routeBuilder ref="processValueInstructionFileAckRoute" />
+        <camel:routeBuilder ref="raiseErrorVoucherIncidentRoute" />
+        <camel:routeBuilder ref="updateValueInstructionFileVouchersAckStatusRoute" />
+    </camel:camelContext>
+
+    <bean id="camelVIF" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextValueInstructionFile"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,2 @@
+broker.options=connectionFactory=rabbitConnectionFactory&autoDelete=false&declare=false&autoAck=false
+sharedConsumer=false

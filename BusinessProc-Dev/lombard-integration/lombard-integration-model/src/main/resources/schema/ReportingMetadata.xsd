@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/reporting/metadata" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/reporting/metadata">
+	<xs:simpleType name="FormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CSV"/>
+			<xs:enumeration value="DAT"/>
+			<xs:enumeration value="TXT"/>
+			<xs:enumeration value="XLSX"/>
+			<xs:enumeration value="ZIP"/>
+			<xs:enumeration value="DOC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="EmailEndpointConfiguration" type="tns:EmailEndpointConfiguration"/>
+	<xs:complexType name="EmailEndpointConfiguration">
+		<xs:sequence>
+			<xs:element name="body" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The email body, may contain parameters as described in the Velocity template schema.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cc" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="endpointName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The logical name of the email details. Looked up from the DeliveryEndpoint.endpointName </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="from" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An email address from where the email was sent.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subject" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The email subject, may contain parameters as described in the Velocity template schema.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="to" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>One or more comma separated email addresses.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportDefinition" type="tns:ReportDefinition"/>
+	<xs:complexType name="ReportDefinition">
+		<xs:sequence>
+			<xs:element name="deliveryEndpoint" type="tns:DeliveryEndpoint" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Is the name of the endpoint to where the report is to be delivered. When the delivery endpoint is email, then this name is a lookup to the EmailEndpointConfiguration. When the delivery endpoint is b2b then the name is the folder location in the report drop zone.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="formatType" type="tns:FormatType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The report output format</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="outputFilenamePattern" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A template that will be merged with report parameters to determine the filename of the output report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parameterDefinitions" type="tns:ParameterDefinition" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="reportName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the SRS report to be executed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reportType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DeliveryEndpointType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="coin"/>
+			<xs:enumeration value="email"/>
+			<xs:enumeration value="b2b"/>
+			<xs:enumeration value="documentum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ReportGroup" type="tns:ReportGroup"/>
+	<xs:complexType name="ReportGroup">
+		<xs:sequence>
+			<xs:element name="frequency" type="tns:ReportFrequencyEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The point in time when the report process is invoked and the collection of reports are executed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reports" type="tns:ReportDefinition" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportRequest" type="tns:ReportRequest"/>
+	<xs:complexType name="ReportRequest">
+		<xs:annotation>
+			<xs:documentation>The parameter to the report job.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="businessDay" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date for which the report is to be run.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="frequency" type="tns:ReportFrequencyEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The report group to process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ParameterType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AgencyBank"/>
+			<xs:enumeration value="AgencyBankGroup"/>
+			<xs:enumeration value="BusinessDay"/>
+			<xs:enumeration value="FinancialInstitution"/>
+			<xs:enumeration value="StartMonthDate"/>
+			<xs:enumeration value="State"/>
+			<xs:enumeration value="StateOrdinal"/>
+			<xs:enumeration value="SystemDate"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DeliveryEndpoint" type="tns:DeliveryEndpoint"/>
+	<xs:complexType name="DeliveryEndpoint">
+		<xs:sequence>
+			<xs:element name="endpointName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The endpoint name will be specific to the endpoint type.
+
+For email, it is the name of the endpoint configuration in the metadata database.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endpointType" type="tns:DeliveryEndpointType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ReportFrequencyEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EndOfDay"/>
+			<xs:enumeration value="EndOfMonth"/>
+			<xs:enumeration value="StartOfDay"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ReportMetadata" type="tns:ReportMetadata"/>
+	<xs:complexType name="ReportMetadata">
+		<xs:sequence>
+			<xs:element name="emailConfiguration" type="tns:EmailEndpointConfiguration" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="reportGroups" type="tns:ReportGroup" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParameterDefinition" type="tns:ParameterDefinition"/>
+	<xs:complexType name="ParameterDefinition">
+		<xs:sequence>
+			<xs:element name="metadataName" type="tns:ParameterType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ssrsName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AdjustmentLettersMetadata" type="tns:AdjustmentLettersMetadata"/>
+	<xs:complexType name="AdjustmentLettersMetadata">
+		<xs:annotation>
+			<xs:documentation>Adjustment letters metadata is used to determine what the output filename should be. There are 4 possible output files:
+
+(1) cuscal_xxxx.pdf (for Cuscal letters that starts with certain ledger BSB)
+(2) coles_xxxx.pdf (for Coles letters with certain ledger BSB and account number) 
+(3) super_xxxx.pdf (for Super Partners letters with certain ledger BSB and account number) 
+(4) nbsb_xxxx.pdf (for all the other letters that don't belong to the above)
+
+where xxxx is a sequence number.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="letters" type="tns:AdjustmentLettersDetails" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportAgencyBanksMetadata" type="tns:ReportAgencyBanksMetadata"/>
+	<xs:complexType name="ReportAgencyBanksMetadata">
+		<xs:annotation>
+			<xs:documentation>This reference data store what agency banks reports should be generated.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="agencyBanks" type="tns:ReportAgencyBanksDetails" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportAgencyBanksDetails" type="tns:ReportAgencyBanksDetails"/>
+	<xs:complexType name="ReportAgencyBanksDetails">
+		<xs:sequence>
+			<xs:element name="agencyBankGroupCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="agencyBankName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="includeReports" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AdjustmentLettersDetails" type="tns:AdjustmentLettersDetails"/>
+	<xs:complexType name="AdjustmentLettersDetails">
+		<xs:sequence>
+			<xs:element name="customer" type="tns:CustomerDetails" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="outputFilenamePrefix" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CustomerDetails" type="tns:CustomerDetails"/>
+	<xs:complexType name="CustomerDetails">
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="bsb" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

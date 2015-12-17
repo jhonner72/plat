@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SpaceSchema.xsd">
+	<space>
+		<border-layout-container>
+			<data>
+				<border-layout-data layoutregion="WEST" maxSize="500" minSize="150" size="400" split="true"/>
+				<border-layout-data layoutregion="CENTER" split="true"/>
+				<border-layout-data layoutregion="SOUTH" split="true"/>
+				<border-layout-data layoutregion="EAST" maxSize="500" minSize="150" size="400" split="true"/>
+			</data>
+			<content>
+				<tab-container>
+					<content>
+					    <widget config="WG EXT UpdateDoclist"/>
+						<!-- <widget config="WG EXT Calendar"/>						
+						<widget config="WG Docbase browser"/>
+						<widget config="WG WF Task Folders"/> -->
+					</content>
+				</tab-container>
+				<tab-container>
+					<content>
+						<widget config="ptqacust_admin"/>					
+						<widget config="ptqacust"/>						
+						<widget config="WG Doclist"/>
+						<!-- <widget config="WG Thumbnails"/> -->					
+					</content>
+				</tab-container>
+				<tab-container>
+					<content>
+						<widget config="WG Locations"/>
+						<widget config="WG Versions"/>
+						<widget config="WG Renditions"/>
+						<widget config="WG Relations"/>
+						<widget config="WG Audit"/>
+					</content>
+				</tab-container>
+				<accordion-container>
+					<content>
+						<widget config="WG Preview"/>
+						<widget config="WG Properties"/>
+						<widget config="WG Predefined search"/>
+						<widget config="WG Virtual document" hidden="true"/>
+					</content>
+				</accordion-container>
+			</content>
+		</border-layout-container>
+	</space>
+</root>

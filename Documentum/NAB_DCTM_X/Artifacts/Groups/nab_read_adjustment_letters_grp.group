@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.group/nab_read_adjustment_letters_grp?name=nab_read_adjustment_letters_grp" categoryId="com.emc.ide.artifact.group" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="group:Group" groupName="nab_read_adjustment_letters_grp" groupAddress="adjletter@something.com" description="NAB Adjustment Letters Group" groupDisplayName="nab_read_adjustment_letters_grp">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+    <groupAdminRef xsi:type="group:UserTypeGropAdmin">
+      <user xsi:type="installparameter:UserParameter" href="urn:com.emc.ide.userparameter/NABDCPECM_SVC_E?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nabdcpecm_svc_e.parameter#//@dataModel"/>
+    </groupAdminRef>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

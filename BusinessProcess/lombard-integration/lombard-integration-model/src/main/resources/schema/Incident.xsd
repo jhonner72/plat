@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Incident" xmlns:tns="http://lombard.aus.fujixerox.com/common/Incident" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation>An incident is raised whenever an activity within a process determines that a condition has occurred that requires attention from the application's Operational Support.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="Incident" type="tns:Incident"/>
+	<xs:complexType name="Incident">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processDefintionName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="subject" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The subject of the activity raising the incident.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="predicate" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The predicate of the activity that raised the incident.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datetimeRaised" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The current time when the incident is raised.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="details" type="xs:anyType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Details pertaining to the incident.
+For each incident defined within the business process a specific Incident Details must be defined. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

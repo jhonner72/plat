@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/CopyFIle" xmlns:tns="http://lombard.aus.fujixerox.com/common/CopyFIle" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="CopyFileResponse" type="tns:CopyFileResponse"/>
+	<xs:complexType name="CopyFileResponse">
+		<xs:sequence>
+			<xs:element name="copyDate" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date time of when the Image Exchange file was transmitted</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CopyFileRequest" type="tns:CopyFileRequest"/>
+	<xs:complexType name="CopyFileRequest">
+		<xs:sequence>
+			<xs:element name="sourceFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The source of the filename to copied.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Destination filename</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

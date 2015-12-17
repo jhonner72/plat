@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:tns="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ReceivedFile" type="tns:ReceivedFile"/>
+	<xs:complexType name="ReceivedFile">
+		<xs:sequence>
+			<xs:element name="fileIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="receivedDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transmissionDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DocumentExchangeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IMAGE_EXCHANGE_INBOUND"/>
+			<xs:enumeration value="IMAGE_EXCHANGE_OUTBOUND"/>
+			<xs:enumeration value="INWARD_FOR_VALUE"/>
+			<xs:enumeration value="INWARD_NON_FOR_VALUE"/>
+			<xs:enumeration value="VIF_ACK_OUTBOUND"/>
+			<xs:enumeration value="VIF_OUTBOUND"/>
+			<xs:enumeration value="VOUCHER_INBOUND"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

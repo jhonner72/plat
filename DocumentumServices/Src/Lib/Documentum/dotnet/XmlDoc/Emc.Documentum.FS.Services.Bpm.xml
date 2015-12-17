@@ -1,0 +1,1928 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Services.Bpm</name>
+    </assembly>
+    <members>
+        <member name="T:Example.Ws_ht.Api.Wsdl.BpmServiceException">
+            <summary>
+            BpmServiceException is used for storing raised exception details and transferring them through SOAP<p/>
+            Private implementation.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.BpmServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.BpmServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.BpmServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.BpmServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.BpmServiceException.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.Wsdl.BpmServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="E:Example.Ws_ht.Api.Wsdl.BpmServiceException.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.ITaskManagementService">
+            <summary>
+            ITaskManagementService provides functionality to retrieve custom task lists for a user, work
+            queue, or work queue processor. It also provides functionality for handling and managing manual
+            tasks and notifications.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Remove(System.String)">
+            <summary>
+            This operation is applicable to notifications only. Notification recipients use this operation 
+            to remove a notification permanently from their task list client. The system will not return  
+            such a notification even if the user who removed it, attempts to retrieve it. 
+            </summary>
+            <param name="identifier">"The queue item object id of the notification."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.SetPriority(System.String,System.String)">
+            <summary>
+            Changes the priority of a task. The caller must specify the integer value of the new priority.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="priority">"The value of the new priority."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Start(System.String)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Resume(System.String)">
+            <summary>
+            Resumes a suspended task.	The status of a resumed task transitions to "InProgress".
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Stop(System.String)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Suspend(System.String)">
+            <summary>
+            Suspends a task that is in an active state such as "Ready", "Reserved", or "InProgress", 
+            and transitions it to the "Suspended" state. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Delegate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <summary>
+            Assigns a task that is in the "Ready", "Reserved", or "InProgress" state to another organizational entity, 
+            transitioning the task to the "Ready" state.
+            The organizationalEntity can contain only one user or one group/workqueue name.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="organizationalEntity">"The organizational entity to which the task is forwarded."</param>
+            <seealso cref="T:Example.Ws_ht.TOrganizationalEntity"/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Skip(System.String)">
+            <summary>
+            Skips the task. This operation is not supported. If the client calls this API,  
+            the UnsupportedOperationException fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Release(System.String)">
+            <summary>
+            The release operation is applicable to work queue tasks only. It releases a work queue task 
+            that is in the "Reserved" or "InProgress" state, for processing. A released work queue task 
+            is transitioned to the "Ready" state. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Query(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves task data.  All clauses assume a (pseudo-) SQL syntax. If maxTasks is specified,
+            then the number of tasks returned by the query will not exceed this limit. The taskIndexOffset
+            can be used to perform multiple identical queries and iterate over result sets where the
+            maxTasks size exceeds the query limit. 
+            </summary>
+            <param name="selectClause">"Mandatory. For example, "dmi_workitem.r_priority,Customer:id""</param>
+            <param name="whereClause">"Mandatory. For example, "((Customer:customerid ='001' 
+            and dmi_workitem.r_performer_name ='tuser1') or /boolean.bool_var=false)""</param>
+            <param name="orderByClause">"Optional. For example, "dmi_workitem.r_priority ASC, dmi_queue_item.date_sent DESC""</param>
+            <param name="maxTasks">"Default value is 100, if null."</param>
+            <param name="taskIndexOffset">"Default value is 0, if null."</param>
+            <returns>"query result"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetInput(System.String,System.String)">
+            <summary>
+            Gets process data as input for the task being processed. Process data is based on partName. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="partName">"The name of the process parameter, process variable, or package."</param>
+            <returns>"The value of the requested data. If partName is a primitive type process variable or
+            a primitive type process parameter, the corresponding value is returned in its type.
+            If it is a package or SDT process variable, a String containing the XML is returned."</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Fail(System.String,System.String,System.Object)">
+            <summary>
+            This operation enables the Actual owner of a task to complete the execution of the task by raising a fault.
+            The illegalOperationFault exception is returned if the task interface defines no faults.
+            If fault name or fault data is not set, the operation returns the illegalArgumentFault exception.
+            Currently, this function will always throw the illegalOperationFault exception.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="faultName">"The fault name."</param>
+            <param name="faultData">"The fault data."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Complete(System.String,Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData)">
+            <summary>
+            This operation enables the Actual owner of a task to complete a task. If no output data is set,
+            this operation returns the illegalArgumentFault exception.
+            Currently, null taskData is allowed. This operation works only for tasks that do
+            not require the signoff, set output paths, and select dynamic performer parameters to be set.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="tCompleteTaskData">"The task data required to complete a task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.SetOutput(System.String,System.String,System.Object)">
+            <summary>
+            Sets process data as output for the task being processed. Process data is based on  
+            partName that is passed in to the function.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="partName">"The name of the process parameter, process variable, or package."</param>
+            <param name="taskData">"The value corresponding to the partName."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetAttachments(System.String,System.String)">
+            <summary>
+            Gets the attributes and contents of all attachments associated with a selected task..
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="attachmentName">"The object name of the attachment. If null, all attachments associated with the task are returned."</param>
+            <returns>""</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetOutput(System.String,System.String)">
+            <summary>
+            Gets process data as output for the task being processed. Process data is based on partName.  
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="partName">"The name of the process parameter, process variable, or package."</param>
+            <returns>"The value of the requested data. If partName is a primitive type process variable or
+            a primitive type process parameter, the corresponding value is returned in its type.
+            If it is a package or a SDT process variable, a String containing the xml is returned."</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetFault(System.String,System.String@,System.Object@)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="faultName">"The fault name."</param>
+            <param name="faultData">"The fault data."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Claim(System.String)">
+            <summary>
+            This operation enables Potential owners and Business administrators to claim 
+            responsibility for a task and complete it. A Potential owner becomes the Actual owner 
+            of a task by explicitly claiming it. A claimed task is transitioned to
+            the "Reserved" state.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.SuspendUntil(System.String,Example.Ws_ht.Api.Xsd.TTime)">
+            <summary>
+            Suspends a task that is in an active state such as "Ready", "Reserved", or "InProgress", 
+            for a specific duration or until a specified time. The client must specify a duration or a fixed time. 
+            Such a task is transitioned to the "Suspended" state.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="time">"The duration for which the task must be suspended."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.AddAttachment(System.String,System.String,System.String,Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Adds an ad-hoc attachment to a selected task.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="attachmentName">"Not used."</param>
+            <param name="accessType">"Currently only the 'objectid'type is accepted.
+            The Unsupported exception is returned for all other values."</param>
+            <param name="attachment">"An ObjectIdentity identifying the attachment."</param>
+            <seealso cref="T:Emc.Documentum.FS.DataModel.Core.ObjectIdentity"/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetAttachmentInfos(System.String)">
+            <summary>
+            Gets the attributes of all attachments associated with a selected task.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <returns>"A list of TAttachmentInfo"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.DeleteAttachments(System.String,System.String)">
+            <summary>
+            Deletes all attachments with a specified name from a selected task. If the task is associated with  
+            multiple attachments of the same name, all attachments are deleted.
+            Attachments provided by the enclosing context are not affected by this operation.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="attachmentName">"The object name of the attachment. If null, no attachment is deleted."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.AddComment(System.String,System.String)">
+            <summary>
+            Adds a comment to the first package of a task, and forwards the comments to all 
+            subsequent activities in the process. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="text">"The text of the comment."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetComments(System.String)">
+            <summary>
+            Gets all comments associated with a task.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <returns>"A list of TComment"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Forward(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <summary>
+            Forwards a task that is in the "Ready", "Reserved", or "InProgress" state to another 
+            organizational entity, transitioning the task to the "Ready" state.
+            The organizational entity can contain only one user or workqueue name. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="organizationalEntity">"The organizational entity to which the task is forwarded."</param>
+            <seealso cref="T:Example.Ws_ht.TOrganizationalEntity"/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetRendering(System.Object,System.Xml.XmlQualifiedName)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="renderingType">"The rendering type."</param>
+            <returns>"return null"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetRenderingTypes(System.Object)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <returns>"null"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetTaskInfo(System.String)">
+            <summary>
+            Gets information about tasks and notifications.
+            This operation returns a data object of type TTask.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <returns>"TTask"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetTaskDescription(System.String,System.String)">
+            <summary>
+            Gets the presentation description of tasks and notifications in the specified mime type.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="contentType">"Optional. By default, the value is text/plain. Only text/plain content type is supported."</param>
+            <returns>"description string"</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.DeleteOutput(System.String)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.SetFault(System.String,System.String,System.Object)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="faultName">"The fault name."</param>
+            <param name="faultData">"The fault data."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.DeleteFault(System.String)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Activate(System.String)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned.
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.Nominate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <summary>
+            Assigns a task that is in the "Ready", "Reserved", or "InProgress" to another organizational entity, 
+            transitioning the task to the "Ready" state.
+            The organizational entity can contain only one user or one group or workqueue name. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="organizationalEntity">"The organizational entity to which the task is nominated."</param>
+            <seealso cref="T:Example.Ws_ht.TOrganizationalEntity"/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.SetGenericHumanRole(System.String,System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <summary>
+            This operation is not supported. If the client calls this API, the UnsupportedOperationException 
+            fault is returned.
+            The organizational entity can contain only one user or one group or workqueue name. 
+            </summary>
+            <param name="identifier">"The queue item object id of the task."</param>
+            <param name="genericHumanRole">"A generic human role."</param>
+            <param name="organizationalEntity">"A organizational entity."</param>
+            <seealso cref="T:Example.Ws_ht.TOrganizationalEntity"/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetMyTaskAbstracts(System.String,System.String,System.String,System.Collections.Generic.List{Example.Ws_ht.Api.TStatus},System.String,System.String,System.Int32)">
+            <summary>
+            Retrieves task abstracts. This operation is used to obtain the data that is required
+            to display a task list.
+            If a work queue is not specified, then only personal tasksof the user
+            are returned. If the work queue is specified then only tasks of that work queue are returned.
+            The whereClause is logically ANDed with the createdOn clause, which may reference only the
+            Task column. The CreatedOnClause uses the same operators as the whereClause. The combination of the two clauses
+            enables simple but restricted paging in a task list client.
+            If maxTasks is specified, then the number of task abstracts returned for this query will not
+            exceed this limit.  
+            </summary>
+            <param name="taskType">"(“ALL” | “TASKS” | “NOTIFICATIONS”)"
+            If querying work queue tasks, only tasks are returned.</param>
+            <param name="genericHumanRole">"("BusinessAdministrators" | "TaskStakeholders" | "PotentialOwners" | "ActualOwner")
+            Use ActualOwner if you are querying for the tasks you own.
+            Use PotentialOwners if you are querying for a user task list including the group tasks, or
+            if you are a work queue processor trying to cherry-pick a work queue task. 
+            You must pass in the work queue name to the workQueue parameter.
+            Use TaskStakeholders or BusinessAdministrators if you are a work queue manager
+            trying to view the work queue task list"</param>
+            <param name="workQueue">"Optional for PotentialOwners specified in generic HumanRole. You must provide this parameter
+            if you specify the BusinessAdministrators or TaskStakeholders generic human role."</param>
+            <param name="status">"("READY" | "RESERVED" | "IN_PROGRESS" | "SUSPENDED") Any other status will be ignored."</param>
+            <param name="whereClause">"For example, "dmi_workitem.r_priority>= 30""</param>
+            <param name="createdOnClause">"For example, "dmi_queue_item.date_sent = Date('1/21/2008')""</param>
+            <param name="maxTasks">"Default value is 100, if null."</param>
+            <returns>"A list of tasks."</returns>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.ITaskManagementService.GetMyTasks(System.String,System.String,System.String,System.Collections.Generic.List{Example.Ws_ht.Api.TStatus},System.String,System.String,System.Int32)">
+            <summary>
+            Retrieves task details. This operation is used to obtain data that is required to display
+            a task list. It is also used to obtain details of individual tasks.
+            If a work queue is not specified, then only personal tasks of a user are returned. If the work queue
+            is specified, then only tasks of that work queue are returned.
+            The whereClause is logically ANDed with the createdOnClause, which may reference only the
+            Task column. The CreatedOnClause uses the same operators as the whereClause. The combination 
+            of the two clauses enables simple but restricted paging in the task list client.
+            If maxTasks is specified, then the number of task details returned for this query, will not
+            exceed this limit. 
+            </summary>
+            <param name="taskType">"(“ALL” | “TASKS” | “NOTIFICATIONS”)"
+            If querying work queue tasks, only tasks are returned.</param>
+            <param name="genericHumanRole">"("BusinessAdministrators" | "TaskStakeholders" | "PotentialOwners" | "ActualOwner")
+            Use ActualOwner if you are querying for the tasks you own.
+            Use PotentialOwners if you are querying for a user task list including the group tasks, or
+            if you are a work queue processor trying to cherry-pick a work queue task. 
+            You must pass in the work queue name to the workQueue parameter.
+            Use TaskStakeholders or BusinessAdministrators if you are a work queue manager
+            trying to view the work queue task list"</param>
+            <param name="workQueue">"Optional for PotentialOwners specified in generic HumanRole. You must provide this parameter
+            if you specify the BusinessAdministrators or TaskStakeholders generic human role."</param>
+            <param name="status">"("READY" | "RESERVED" | "IN_PROGRESS" | "SUSPENDED") Any other status will be ignored."</param>
+            <param name="whereClause">"For example, "dmi_workitem.r_priority>= 30""</param>
+            <param name="createdOnClause">"For example, "dmi_queue_item.date_sent = Date('1/21/2008')""</param>
+            <param name="maxTasks">"Default value is 100, if null."</param>
+            <returns>"A list of tasks."</returns>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.remove(Example.Ws_ht.Api.Wsdl.removeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.setPriority(Example.Ws_ht.Api.Wsdl.setPriorityRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.start(Example.Ws_ht.Api.Wsdl.startRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.resume(Example.Ws_ht.Api.Wsdl.resumeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.stop(Example.Ws_ht.Api.Wsdl.stopRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.suspend(Example.Ws_ht.Api.Wsdl.suspendRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.delegate(Example.Ws_ht.Api.Wsdl.delegateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.skip(Example.Ws_ht.Api.Wsdl.skipRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.release(Example.Ws_ht.Api.Wsdl.releaseRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.query(Example.Ws_ht.Api.Wsdl.queryRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getInput(Example.Ws_ht.Api.Wsdl.getInputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.fail(Example.Ws_ht.Api.Wsdl.failRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.complete(Example.Ws_ht.Api.Wsdl.completeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.setOutput(Example.Ws_ht.Api.Wsdl.setOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getAttachments(Example.Ws_ht.Api.Wsdl.getAttachmentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getOutput(Example.Ws_ht.Api.Wsdl.getOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getFault(Example.Ws_ht.Api.Wsdl.getFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.claim(Example.Ws_ht.Api.Wsdl.claimRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.suspendUntil(Example.Ws_ht.Api.Wsdl.suspendUntilRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.addAttachment(Example.Ws_ht.Api.Wsdl.addAttachmentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getAttachmentInfos(Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.deleteAttachments(Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.addComment(Example.Ws_ht.Api.Wsdl.addCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getComments(Example.Ws_ht.Api.Wsdl.getCommentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.forward(Example.Ws_ht.Api.Wsdl.forwardRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getRendering(Example.Ws_ht.Api.Wsdl.getRenderingRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getRenderingTypes(Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getTaskInfo(Example.Ws_ht.Api.Wsdl.getTaskInfoRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getTaskDescription(Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.deleteOutput(Example.Ws_ht.Api.Wsdl.deleteOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.setFault(Example.Ws_ht.Api.Wsdl.setFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.deleteFault(Example.Ws_ht.Api.Wsdl.deleteFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.activate(Example.Ws_ht.Api.Wsdl.activateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.nominate(Example.Ws_ht.Api.Wsdl.nominateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.setGenericHumanRole(Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getMyTaskAbstracts(Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePort.getMyTasks(Example.Ws_ht.Api.Wsdl.getMyTasksRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#remove(Example.Ws_ht.Api.Wsdl.removeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.remove(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#setPriority(Example.Ws_ht.Api.Wsdl.setPriorityRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.setPriority(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#start(Example.Ws_ht.Api.Wsdl.startRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.start(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#resume(Example.Ws_ht.Api.Wsdl.resumeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.resume(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#stop(Example.Ws_ht.Api.Wsdl.stopRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.stop(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#suspend(Example.Ws_ht.Api.Wsdl.suspendRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.suspend(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#delegate(Example.Ws_ht.Api.Wsdl.delegateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.delegate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#skip(Example.Ws_ht.Api.Wsdl.skipRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.skip(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#release(Example.Ws_ht.Api.Wsdl.releaseRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.release(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#query(Example.Ws_ht.Api.Wsdl.queryRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.query(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getInput(Example.Ws_ht.Api.Wsdl.getInputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getInput(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#fail(Example.Ws_ht.Api.Wsdl.failRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.fail(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#complete(Example.Ws_ht.Api.Wsdl.completeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.complete(System.String,Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#setOutput(Example.Ws_ht.Api.Wsdl.setOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.setOutput(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getAttachments(Example.Ws_ht.Api.Wsdl.getAttachmentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getAttachments(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getOutput(Example.Ws_ht.Api.Wsdl.getOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getOutput(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getFault(Example.Ws_ht.Api.Wsdl.getFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getFault(System.String,System.String@,System.Object@)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#claim(Example.Ws_ht.Api.Wsdl.claimRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.claim(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#suspendUntil(Example.Ws_ht.Api.Wsdl.suspendUntilRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.suspendUntil(System.String,Example.Ws_ht.Api.Xsd.TTime)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#addAttachment(Example.Ws_ht.Api.Wsdl.addAttachmentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.addAttachment(System.String,System.String,System.String,Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getAttachmentInfos(Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getAttachmentInfos(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#deleteAttachments(Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.deleteAttachments(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#addComment(Example.Ws_ht.Api.Wsdl.addCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.addComment(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getComments(Example.Ws_ht.Api.Wsdl.getCommentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getComments(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#forward(Example.Ws_ht.Api.Wsdl.forwardRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.forward(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getRendering(Example.Ws_ht.Api.Wsdl.getRenderingRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getRendering(System.Object,System.Xml.XmlQualifiedName)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getRenderingTypes(Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getRenderingTypes(System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getTaskInfo(Example.Ws_ht.Api.Wsdl.getTaskInfoRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getTaskInfo(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getTaskDescription(Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getTaskDescription(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#deleteOutput(Example.Ws_ht.Api.Wsdl.deleteOutputRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.deleteOutput(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#setFault(Example.Ws_ht.Api.Wsdl.setFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.setFault(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#deleteFault(Example.Ws_ht.Api.Wsdl.deleteFaultRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.deleteFault(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#activate(Example.Ws_ht.Api.Wsdl.activateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.activate(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#nominate(Example.Ws_ht.Api.Wsdl.nominateRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.nominate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#setGenericHumanRole(Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.setGenericHumanRole(System.String,System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getMyTaskAbstracts(Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getMyTaskAbstracts(System.String,System.String,System.String,Example.Ws_ht.Api.TStatus[],System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Example#Ws_ht#Api#Wsdl#TaskManagementServicePort#getMyTasks(Example.Ws_ht.Api.Wsdl.getMyTasksRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.getMyTasks(System.String,System.String,System.String,Example.Ws_ht.Api.TStatus[],System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Remove(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.SetPriority(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Start(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Resume(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Stop(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Suspend(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Delegate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Skip(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Release(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Query(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetInput(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Fail(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Complete(System.String,Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.SetOutput(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetAttachments(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetOutput(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetFault(System.String,System.String@,System.Object@)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Claim(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.SuspendUntil(System.String,Example.Ws_ht.Api.Xsd.TTime)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.AddAttachment(System.String,System.String,System.String,Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetAttachmentInfos(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.DeleteAttachments(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.AddComment(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetComments(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Forward(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetRendering(System.Object,System.Xml.XmlQualifiedName)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetRenderingTypes(System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetTaskInfo(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetTaskDescription(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.DeleteOutput(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.SetFault(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.DeleteFault(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Activate(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.Nominate(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.SetGenericHumanRole(System.String,System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetMyTaskAbstracts(System.String,System.String,System.String,System.Collections.Generic.List{Example.Ws_ht.Api.TStatus},System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortClient.GetMyTasks(System.String,System.String,System.String,System.Collections.Generic.List{Example.Ws_ht.Api.TStatus},System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.removeRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.removeRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.removeRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.removeRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.removeResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.removeResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setPriorityRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setPriorityRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setPriorityRequest.priority">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setPriorityRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setPriorityRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setPriorityResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setPriorityResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.startRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.startRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.startRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.startRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.startResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.startResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.resumeRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.resumeRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.resumeRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.resumeRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.resumeResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.resumeResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.stopRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.stopRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.stopRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.stopRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.stopResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.stopResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.suspendRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.suspendRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.suspendResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.delegateRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.delegateRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.delegateRequest.organizationalEntity">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.delegateRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.delegateRequest.#ctor(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.delegateResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.delegateResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.skipRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.skipRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.skipRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.skipRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.skipResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.skipResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.releaseRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.releaseRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.releaseRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.releaseRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.releaseResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.releaseResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.queryRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryRequest.selectClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryRequest.whereClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryRequest.orderByClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryRequest.maxTasks">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryRequest.taskIndexOffset">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.queryRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.queryRequest.#ctor(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.queryResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.queryResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.queryResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.queryResponse.#ctor(Example.Ws_ht.Api.TTaskQueryResultRow[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getInputRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getInputRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getInputRequest.partName">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getInputRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getInputRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getInputResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getInputResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getInputResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getInputResponse.#ctor(System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.failRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.failRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.failRequest.faultName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.failRequest.faultData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.failRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.failRequest.#ctor(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.failResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.failResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.completeRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.completeRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.completeRequest.tCompleteTaskData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.completeRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.completeRequest.#ctor(System.String,Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.completeResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.completeResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setOutputRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setOutputRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setOutputRequest.partName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setOutputRequest.taskData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setOutputRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setOutputRequest.#ctor(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setOutputResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setOutputResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getAttachmentsRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getAttachmentsRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getAttachmentsRequest.attachmentName">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentsRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentsRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getAttachmentsResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getAttachmentsResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentsResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentsResponse.#ctor(Example.Ws_ht.Api.TAttachment[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getOutputRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getOutputRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getOutputRequest.partName">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getOutputRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getOutputRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getOutputResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getOutputResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getOutputResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getOutputResponse.#ctor(System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getFaultRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getFaultRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getFaultRequest.faultName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getFaultRequest.faultData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getFaultRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getFaultRequest.#ctor(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getFaultResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getFaultResponse.faultName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getFaultResponse.faultData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getFaultResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getFaultResponse.#ctor(System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.claimRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.claimRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.claimRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.claimRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.claimResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.claimResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.suspendUntilRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.suspendUntilRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.suspendUntilRequest.time">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendUntilRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendUntilRequest.#ctor(System.String,Example.Ws_ht.Api.Xsd.TTime)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.suspendUntilResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.suspendUntilResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.addAttachmentRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.attachmentName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.accessType">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.attachment">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addAttachmentRequest.#ctor(System.String,System.String,System.String,Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.addAttachmentResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addAttachmentResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentInfosRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getAttachmentInfosResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getAttachmentInfosResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentInfosResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getAttachmentInfosResponse.#ctor(Example.Ws_ht.Api.TAttachmentInfo[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest.attachmentName">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteAttachmentsRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteAttachmentsResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteAttachmentsResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.addCommentRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addCommentRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.addCommentRequest.text">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addCommentRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addCommentRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.addCommentResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.addCommentResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getCommentsRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getCommentsRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getCommentsRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getCommentsRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getCommentsResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getCommentsResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getCommentsResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getCommentsResponse.#ctor(Example.Ws_ht.Api.TComment[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.forwardRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.forwardRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.forwardRequest.organizationalEntity">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.forwardRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.forwardRequest.#ctor(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.forwardResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.forwardResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getRenderingRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getRenderingRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getRenderingRequest.renderingType">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingRequest.#ctor(System.Object,System.Xml.XmlQualifiedName)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getRenderingResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getRenderingResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingResponse.#ctor(System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingTypesRequest.#ctor(System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getRenderingTypesResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getRenderingTypesResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingTypesResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getRenderingTypesResponse.#ctor(System.Xml.XmlQualifiedName[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getTaskInfoRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getTaskInfoRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskInfoRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskInfoRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getTaskInfoResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getTaskInfoResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskInfoResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskInfoResponse.#ctor(Example.Ws_ht.Api.TTask)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest.contentType">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskDescriptionRequest.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getTaskDescriptionResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getTaskDescriptionResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskDescriptionResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getTaskDescriptionResponse.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteOutputRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.deleteOutputRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteOutputRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteOutputRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteOutputResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteOutputResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setFaultRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setFaultRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setFaultRequest.faultName">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setFaultRequest.faultData">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setFaultRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setFaultRequest.#ctor(System.String,System.String,System.Object)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setFaultResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setFaultResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteFaultRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.deleteFaultRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteFaultRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteFaultRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.deleteFaultResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.deleteFaultResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.activateRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.activateRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.activateRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.activateRequest.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.activateResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.activateResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.nominateRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.nominateRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.nominateRequest.organizationalEntity">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.nominateRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.nominateRequest.#ctor(System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.nominateResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.nominateResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest.identifier">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest.genericHumanRole">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest.organizationalEntity">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleRequest.#ctor(System.String,System.String,Example.Ws_ht.TOrganizationalEntity)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleResponse">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.setGenericHumanRoleResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.taskType">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.genericHumanRole">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.workQueue">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.status">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.whereClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.createdOnClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.maxTasks">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsRequest.#ctor(System.String,System.String,System.String,Example.Ws_ht.Api.TStatus[],System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTaskAbstractsResponse.#ctor(Example.Ws_ht.Api.TTaskAbstract[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getMyTasksRequest">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.taskType">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.genericHumanRole">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.workQueue">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.status">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.whereClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.createdOnClause">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.maxTasks">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTasksRequest.#ctor(System.String,System.String,System.String,Example.Ws_ht.Api.TStatus[],System.String,System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.getMyTasksResponse">
+            <exclude/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.Wsdl.getMyTasksResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTasksResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Wsdl.getMyTasksResponse.#ctor(Example.Ws_ht.Api.TTask[])">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Wsdl.TaskManagementServicePortChannel">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.IWorkflowService">
+            <summary>
+            IWorkflowService provides functionality to query available process templates, and start process.
+            </summary> 
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.IWorkflowService.GetProcessTemplates(System.String,System.String,System.String)">
+            <summary>
+            Obtain a list of installed process templates in the repository. If folderPath is passed in, only
+            the process templates within the folderPath will be returned.
+            </summary>
+            <param name="repositoryName"></param>
+            <param name="folderPath"></param>
+            <param name="additionalAttrs">additionalAttrs a comma separated list of attribute names</param>
+            <returns><see cref="T:Emc.Documentum.FS.DataModel.Core.DataPackage"/> to the installed templates.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.IWorkflowService.GetProcessInfo(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Obtain a <see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo"/> object for a specific process template in the repository.
+            </summary>
+            <param name="process">process <see cref="T:Emc.Documentum.FS.DataModel.Core.ObjectIdentity"/> to the process template. ObjectId is expected from this identity.</param>
+            <returns>A <see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo"/> object for setting the start process parameters.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.IWorkflowService.StartProcess(Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo)">
+            <summary>
+            Create and execute process.<p/>
+            
+            A process instance is a runtime instance of a dm_process object.  Process
+            objects store workflow definitions in the Documentum server.<para/>
+            To start a process, the process template must be in the installed state
+            and the user must have Relate and Execute permissions on
+            the process template.<para/>
+            This call should occur after a call to <see cref="M:Emc.Documentum.FS.Services.Bpm.IWorkflowService.GetProcessInfo(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)"/> which
+            provides the process template that the process is based on.
+            </summary>
+            <param name="info"><see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo"/> object that has be initialized with start process parameters.</param>
+            <returns><see cref="T:Emc.Documentum.FS.DataModel.Core.ObjectIdentity"/> of the process instance.</returns>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.WorkflowServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePort.getProcessTemplates(Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePort.getProcessInfo(Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePort.startProcess(Emc.Documentum.FS.Services.Bpm.startProcessRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.Emc#Documentum#FS#Services#Bpm#WorkflowServicePort#getProcessTemplates(Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.getProcessTemplates(System.String,System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.Emc#Documentum#FS#Services#Bpm#WorkflowServicePort#getProcessInfo(Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.getProcessInfo(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.Emc#Documentum#FS#Services#Bpm#WorkflowServicePort#startProcess(Emc.Documentum.FS.Services.Bpm.startProcessRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.startProcess(Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.GetProcessTemplates(System.String,System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.GetProcessInfo(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortClient.StartProcess(Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest.repositoryName">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest.folderPath">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest.additionalAttrs">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesRequest.#ctor(System.String,System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessTemplatesResponse.#ctor(Emc.Documentum.FS.DataModel.Core.DataPackage)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest.process">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessInfoRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.getProcessInfoResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.getProcessInfoResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessInfoResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.getProcessInfoResponse.#ctor(Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.startProcessRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.startProcessRequest.info">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.startProcessRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.startProcessRequest.#ctor(Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.startProcessResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Bpm.startProcessResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.startProcessResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Bpm.startProcessResponse.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Bpm.WorkflowServicePortChannel">
+            <exclude/>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1 @@
+broker.options=connectionFactory=rabbitConnectionFactory&autoDelete=false&declare=false

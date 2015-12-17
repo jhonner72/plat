@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Services.Collaboration</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException">
+            <summary>
+            CollaborationServiceException is used for storing raised exception details and transferring them through SOAP<p/>
+            Private implementation.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="E:Emc.Documentum.FS.Services.Collaboration.CollaborationServiceException.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.ICommentService">
+            <summary>
+            CommentService provides functionality to create, update, retrieve comments asssociated with a data object.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.GetComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Retrieves a comment identified by the commentIdentity
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.CreateComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity,Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <summary>
+            Creates and associates a comment with the object represented by parentIdentity.
+            The creator permission is set to "delete" and "read" to all members that
+            have "read/relate/write/delete" on the controlling sysobject
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.UpdateComment(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <summary>
+            Updates the comment's title and body attributes. If title is the passed commentData
+            is null of empty, the the title is not updated.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.EnumComments(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Returns a List of Comments associated with the object represented by parentIdentity
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.MarkRead(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Marks all the comments associated with the object represented by parentIdentity as read.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.ICommentService.MarkUnread(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Marks all the comments associated with the object represented by parentIdentity as Unread.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.CommentServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.getComment(Emc.Documentum.FS.Services.Collaboration.getCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.createComment(Emc.Documentum.FS.Services.Collaboration.createCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.updateComment(Emc.Documentum.FS.Services.Collaboration.updateCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.enumComments(Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.markRead(Emc.Documentum.FS.Services.Collaboration.markReadRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePort.markUnread(Emc.Documentum.FS.Services.Collaboration.markUnreadRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#getComment(Emc.Documentum.FS.Services.Collaboration.getCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.getComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#createComment(Emc.Documentum.FS.Services.Collaboration.createCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.createComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity,Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#updateComment(Emc.Documentum.FS.Services.Collaboration.updateCommentRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.updateComment(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#enumComments(Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.enumComments(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#markRead(Emc.Documentum.FS.Services.Collaboration.markReadRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.markRead(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.Emc#Documentum#FS#Services#Collaboration#CommentServicePort#markUnread(Emc.Documentum.FS.Services.Collaboration.markUnreadRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.markUnread(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.GetComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.CreateComment(Emc.Documentum.FS.DataModel.Core.ObjectIdentity,Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.UpdateComment(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.EnumComments(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.MarkRead(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.CommentServicePortClient.MarkUnread(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.getCommentRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.getCommentRequest.commentIdentity">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.getCommentRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.getCommentRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.getCommentResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.getCommentResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.getCommentResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.getCommentResponse.#ctor(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.createCommentRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.createCommentRequest.parentIdentity">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.createCommentRequest.commentData">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.createCommentRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.createCommentRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity,Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.createCommentResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.createCommentResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.createCommentResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.createCommentResponse.#ctor(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.updateCommentRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.updateCommentRequest.commentData">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.updateCommentRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.updateCommentRequest.#ctor(Emc.Documentum.FS.DataModel.Collaboration.Comment)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.updateCommentResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.updateCommentResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest.parentIdentity">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.enumCommentsRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.enumCommentsResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.enumCommentsResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.enumCommentsResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.enumCommentsResponse.#ctor(Emc.Documentum.FS.DataModel.Collaboration.Comment[])">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.markReadRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.markReadRequest.parentIdentity">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markReadRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markReadRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.markReadResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markReadResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.markUnreadRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Collaboration.markUnreadRequest.parentIdentity">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markUnreadRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markUnreadRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.markUnreadResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Collaboration.markUnreadResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Collaboration.CommentServicePortChannel">
+            <exclude/>
+        </member>
+    </members>
+</doc>

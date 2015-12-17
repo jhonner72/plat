@@ -1,0 +1,112 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM - Reporting Instance</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="text" searchWhenChanged="true" token="businessKey">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityReporting BusinessKey=$businessKey$ | eval value = if (State=2, "severe", if(EndTime == "null", "high", "low")) | table value Name</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>    
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>      
+      <single>
+        <title>Start Reporting</title>
+        <search base="baseQuery">
+          <query>| Search Name="Start Reporting"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Execute Reporting</title>
+        <search base="baseQuery">
+          <query>| search Name="Execute Report"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Execute Reporting</title>
+        <search base="baseQuery">
+          <query>| search Name="Wait Execute Report"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Copy Reports to Jscape for Transmission</title>
+        <search base="baseQuery">
+          <query>| search Name="CopyReportFiles"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Store Reports in Documentum</title>
+        <search base="baseQuery">
+          <query>| search Name="Store Reports in Documentum"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>WaitStoreReports in Documentum</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitStoreReports in Documentum"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>   
+    <panel>
+      <single>
+        <title>End Reporting</title>
+        <search base="baseQuery">
+          <query>| search Name="End Reporting"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

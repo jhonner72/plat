@@ -1,0 +1,20 @@
+[MaskTable]
+productName = A2iA CheckReader
+productVersion = 7.0
+productRelease = 1
+keyType = String
+
+[MaskTable.defaultDefinition.doc]
+documentType = Check
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.check]
+country = US
+paymentDocumentType = DepositTicket
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.check.fields.payeeNameZone]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+

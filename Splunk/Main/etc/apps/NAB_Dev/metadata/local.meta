@@ -1,0 +1,32 @@
+[app/ui]
+version = 6.2.3
+modtime = 1437026564.586026500
+
+[app/launcher]
+version = 6.2.3
+modtime = 1437026564.601651800
+
+[nav/default]
+version = 6.2.3
+modtime = 1437456358.549580800
+
+[props/generic_single_line/EXTRACT-Error_type]
+access = read : [ * ], write : [ * ]
+owner = admin
+version = 6.2.3
+modtime = 1437462848.981885400
+
+[indexes/camunda]
+owner = admin
+version = 6.2.3
+modtime = 1437611610.307263200
+
+[indexes/adapters]
+owner = admin
+version = 6.2.3
+modtime = 1437611675.975549800
+
+[indexes/rabbit]
+owner = admin
+version = 6.2.3
+modtime = 1437611695.221277200

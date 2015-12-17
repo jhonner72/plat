@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.Splunk</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Lombard Splunk Configuration deployment package</description>
+    </metadata>
+    <files>
+      <file src="etc\**\*.*" />
+    </files>
+</package> 

@@ -1,0 +1,42 @@
+//Indexing Sort Option: ALPHA
+//Description: Contains WorkType, BatchType and Account combinations for BatchHeader validation
+//			   Note: As BQL in Queensland only has OTC_Vouchers with acc num 0000000012, so it has different key
+//Modification History:
+//2015-05-05        Dinesh      Created
+//2015-06-25        Dinesh      Modified (Added key for BQL Queensland)
+//2015-06-30        Shraddha    Modified (Added mappings for Listings)
+// Format:
+//WorkType:BatchType:Account
+//
+NabChqScanPod:OTC_Vouchers:0000000012,
+NabChqScanPod:OTC_Vouchers_Q:0000000012,		//Bank of Queensland only allows account number 0000000012
+NabChqScanPod:OTC_Vouchers:0000000019,
+NabChqScanPod:ECD_Vouchers:0000000016,
+NabChqScanPod:EBD_Vouchers:0000000014,
+NabChqScanPod:IDM_Vouchers:0000000020,
+NabChqListings:OTC_Listings:0000000012,
+NabChqListings:OTC_Listings:0000000019,
+NabChqLBox:LRD1:0000000017,
+NabChqLBox:LSV1:0000000017,
+NabChqLBox:LCG1:0000000017,
+NabChqLBox:LCW1:0000000017,
+NabChqLBox:LCW2:0000000017,
+NabChqLBox:LCY1:0000000017,
+NabChqLBox:LEG1:0000000017,
+NabChqLBox:LRD2:0000000017,
+NabChqLBox:LGS1:0000000017,
+NabChqLBox:L​ML1:0000000017,
+NabChqLBox:L​OW1:0000000017,
+NabChqLBox:LPC1:0000000017,
+NabChqLBox:LSV2:0000000017,
+NabChqLBox:LSV3:0000000017,
+NabChqLBox:LSV4:0000000017,
+NabChqLBox:LHS1:0000000017,
+NabChqLBox:LSV5:0000000017,
+NabChqLBox:LNC1:0000000017,
+NabChqLBox:L​EA1:0000000017,
+NabChqLBox:LRC1:0000000017,
+NabChqLBox:LCS1:0000000017,
+NabChqLBox:LBC1:0000000017,
+NabChqLBox:LMC1:0000000017,
+NabChqAPost:Post:0000000077,

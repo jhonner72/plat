@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.userparameter/NABDC_SQL_D?name=NABDC_SQL_D" categoryId="com.emc.ide.userparameter" implicitlyCreated="true">
+  <dataModel xsi:type="installparameter:UserParameter" name="NABDC_SQL_D" defaultValue="dm_dbo"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

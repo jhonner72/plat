@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ScannedListing" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ScannedListing" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="ScannedListingBatchHeader" type="tns:ScannedListingBatchHeader"/>
+	<xs:complexType name="ScannedListingBatchHeader">
+		<xs:sequence>
+			<xs:element name="listingProcessingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Listing processing Date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Listing Batch Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>NABCHQ_LISTINGS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Batch Type for Listings</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanning Operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitId" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Listing scanner Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB of scanning location</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB of the collecting Branch. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction code on the listing header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Auxiliary Domestic on the Listing header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the Listing header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account Number on the Listing header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Listing Document Reference Number. Use this Document Reference Number to store Listing in Documentum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="listingPages" type="tns:ScannedListing" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ScannedListing" type="tns:ScannedListing"/>
+	<xs:complexType name="ScannedListing">
+		<xs:sequence>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document Reference Number generated for each page.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inactiveFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Soft Delete flag. Will be set by scanning. This page needs to exclude before merging the listing pages and doesn't required to store in Documentum.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

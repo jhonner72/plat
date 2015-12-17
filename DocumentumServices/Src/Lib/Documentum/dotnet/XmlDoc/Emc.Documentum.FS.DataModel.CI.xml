@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.DataModel.CI</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.DataModel.CI.AnalyticsResult">
+            <summary>
+            The AnalyticsResult class contains the results of the Analytics service processing for a single document. 
+            It gives access to the category assignements for a document submitted to the Analytics service.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.CI.AnalyticsResult.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.CI.AnalyticsResult.#ctor(System.Collections.Generic.List{Emc.Documentum.FS.DataModel.CI.CategoryAssign},Emc.Documentum.FS.DataModel.Core.ObjectIdentity)">
+            <summary>
+            Constructor that sets the list of CategoryAssigns and the object identity of the analytics result.
+            </summary>
+            <param name="catAssignList">a list of CategoryAssigns of a document</param>
+            <param name="objIdentity">representing the document</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.AnalyticsResult.CategoryAssignList">
+            <summary>
+            The list of Category Assign for a document.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.AnalyticsResult.ObjectIdentity">
+            <summary>
+            Object corresponding to the document.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.CI.Category">
+            <summary>
+            The Category class is a simplified representation of the repository Category object, capturing the category name, path, assignment thresholds and its object identity.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.Category.Identity">
+            <summary>
+            Category ID in the repository.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.Category.Path">
+            <summary>
+            Path where the category is located.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.Category.Name">
+            <summary>
+            Category name.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.Category.CandidateThreshold">
+            <summary>
+            Category candidate threeshold.
+            Number between 0 and 100 indicating the confidence score that a document must have for CIS server to assign it to
+            the category as a candidate requiring approval. If this optional attribute is not included, the category uses the
+            candidate threshold specified for the taxonomy it belongs to.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.Category.OnTargetThreshold">
+            <summary>
+            Category on target threeshold.
+            Number between 0 and 100 indicating the confidence score that a document must have for CIS server to assign it to
+            the category. If this optional attribute is not included, the category uses the on-target threshold specified for
+            the taxonomy it belongs to.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.CI.CategoryAssign">
+            <summary>
+            CategoryAssign captures the relationship between a document and a category, including the score (assignment strength or confidence) of that relationship.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.CI.CategoryAssign.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.CI.CategoryAssign.#ctor(Emc.Documentum.FS.DataModel.CI.Category,System.Int32)">
+            <summary>
+            Constructor that sets category and score of the category assign.
+            </summary>
+            <param name="category">a Category object representing the category on which a document matched</param>
+            <param name="strength">an integer representing the score of the matching between a category and a document</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.CategoryAssign.Category">
+            <summary>
+            The Category object corresponding to the Category on which the document matched.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.CI.CategoryAssign.Score">
+            <summary>
+            The strength of matching between the Category and the Document.
+            </summary>
+        </member>
+    </members>
+</doc>

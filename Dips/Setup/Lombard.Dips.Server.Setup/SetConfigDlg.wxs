@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <UI>
+      <Dialog Id="SetConfigDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="Next" />
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="Back" />
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+
+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="Update the configuration values and click Next" />
+        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\WixUI_Font_Title}Configurations" />
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+
+        <Control Id="SetConfigLabel" Type="Text" X="20" Y="60" Width="290" Height="18" NoPrefix="yes" Text="Please specify service account and password" />
+
+        <Control Id="SvcDomainLabel" Type="Text" X="20" Y="82" Width="100" Height="15" NoPrefix="yes" Text="Domain" />
+        <Control Id="SvcDomainControl" Type="Edit" X="120" Y="80" Width="120" Height="15" Property="SVC_DOMAIN" />
+
+        <Control Id="SvcUsrLabel" Type="Text" X="20" Y="97" Width="100" Height="15" NoPrefix="yes" Text="Account" />
+        <Control Id="SvcUsrControl" Type="Edit" X="120" Y="95" Width="120" Height="15" Property="SVC_USER" />
+
+        <Control Id="SvcPwdLabel" Type="Text" X="20" Y="112" Width="100" Height="15" NoPrefix="yes" Text="Password" />
+        <Control Id="SvcPwdControl" Type="Edit" X="120" Y="110" Width="120" Height="15" Password="yes" Property="SVC_PASSWORD" />
+      </Dialog>
+    </UI>
+	</Fragment>
+</Wix>

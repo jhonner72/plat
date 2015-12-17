@@ -1,0 +1,167 @@
+﻿{
+	"jobIdentifier" : "IntegrationTest/NoVoucherData",
+	"sequenceNumber" : 8034,
+	"state" : 3,
+	"businessDate" : "2015-10-30",
+	"captureBsb" : "083340",
+	"entity" : "NAB",
+    "collectingBsb": "083029",
+    "queryLinkType":  "TRANSACTION_LINK_NUMBER",
+	"recordTypeCode" : [{
+			"accountNumber" : null,
+			"bsb" : null,
+			"code" : "C",
+			"transactionCode" : "111"
+		}, {
+			"accountNumber" : null,
+			"bsb" : null,
+			"code" : "C",
+			"transactionCode" : "222"
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377872",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377873",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377874",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377876",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377877",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "377878",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "401795",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "430327",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "430328",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "430329",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "430330",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "433687",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "455701",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "455702",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "455703",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "455704",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "471527",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "490292",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "490289",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "531355",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "531356",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "531357",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "531358",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "531359",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "552061",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "552270",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "555001",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "556733",
+			"code" : "P",
+			"transactionCode" : null
+		}, {
+			"accountNumber" : null,
+			"bsb" : "558388",
+			"code" : "P",
+			"transactionCode" : null
+		}
+	]
+}

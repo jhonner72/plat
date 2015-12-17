@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:p="http://www.springframework.org/schema/p"
+               xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+<!-- Camel Outclearings Routes -->
+<bean id="triggerWorkflowRoute" parent="serviceRoute"
+      p:responseClass="com.fujixerox.aus.lombard.outclearings.triggerworkflow.TriggerWorkflowResponse"
+      p:serviceName="lombard.service.outclearings.triggerworkflow"
+      p:exchangeName="lombard.service.outclearings.triggerworkflow"
+      p:routingKey="DAY2"
+      p:queueName="lombard.service.outclearings.triggerworkflow"
+      p:consumeType="com.fujixerox.aus.lombard.outclearings.triggerworkflow.TriggerWorkflowRequest"
+      p:subject="day2workflow"
+      p:predicate="start"
+      p:consume="true"
+      p:produce="true"
+        />
+
+</beans>

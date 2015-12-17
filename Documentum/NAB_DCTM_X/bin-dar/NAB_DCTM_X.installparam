@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
+  <parameter key="Dar Install Folder" value="" defaultValue="/System/Applications/NAB_DCTM_X"/>
+  <parameter key="NABDCPECM_SVC_E" value="" defaultValue="NABDCPECM_SVC_E"/>
+  <parameter key="fxa_write_grp" value="" defaultValue="fxa_write_grp"/>
+  <parameter key="fxa_all_group" value="" defaultValue="fxa_all_group"/>
+  <parameter key="fxa_admin" value="" defaultValue="fxa_admin"/>
+  <parameter key="fxa_version_grp" value="" defaultValue="fxa_version_grp"/>
+  <parameter key="NABDC_SQL_D" value="" defaultValue="NABDC_SQL_D"/>
+  <parameter key="nab_all_group" value="" defaultValue="nab_all_group"/>
+  <parameter key="nab_read_adjustment_letters_grp" value="" defaultValue="nab_read_adjustment_letters_grp"/>
+  <parameter key="fxa_read_grp" value="" defaultValue="fxa_read_grp"/>
+  <parameter key="fxa_qa_post_tran_grp" value="" defaultValue="fxa_qa_post_tran_grp"/>
+  <parameter key="WF_Surplus_Suspense_pool[0]" value="" defaultValue="/System/Applications/NAB_DCTM/WF_Surplus_Suspense_pool"/>
+  <parameter key="fxa_workflow_relate_acl" value="" defaultValue="fxa_workflow_relate_acl"/>
+  <parameter key="WF_Doc_Retrieval[0]" value="" defaultValue="/System/Applications/NAB_DCTM/WF_Doc_Retrieval"/>
+  <parameter key="WF_ThirdParty_Suspense_Pool[0]" value="" defaultValue="/System/Applications/NAB_DCTM/WF_ThirdParty_Suspense_pool"/>
+  <parameter key="filestore_01" value="" defaultValue="filestore_01"/>
+  <parameter key="nab_wf_surplus_grp" value="" defaultValue="nab_wf_surplus_grp"/>
+  <parameter key="nab_wf_thirdparty_grp" value="" defaultValue="nab_wf_thirdparty_grp"/>
+  <parameter key="WF_Post_Transmission_QA[0]" value="" defaultValue="/System/Applications/NAB_DCTM/WF_Post_Transmission_QA"/>
+  <parameter key="fxa_doc_retrieval_grp" value="" defaultValue="fxa_doc_retrieval_grp"/>
+</installparam:InputFile>

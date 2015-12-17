@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Services.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.Services.Admin.AdminServiceException">
+            <summary>
+            Service Exception thrown by Admin Services
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.AdminServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.AdminServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.AdminServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.AdminServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.Services.Admin.AdminServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException">
+            <summary>
+            Core Service Exception thrown by Admin Services
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.IUserManagementService">
+             <summary>
+            UserManagementService provides fundamental operations for creating, getting, updating, and deleting repository users
+             and groups.
+             <p/>
+             All of the services can operate on multiple objects, enabling clients to optimize service usage by minimizing the
+             number of service interactions.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IUserManagementService.Get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+             <summary>
+            gets the properties of one or more number of users/groups
+            </summary>
+             <param name="adminObjectIdentitySet">represent a list of users/groups identities for which the properties are to be retrieved</param>
+             <param name="options">Represents the operation options</param>
+             <returns>
+            PrincipalPackage which contains the detailed information about the user/group retrieved from the repository
+            </returns>
+             <exception>CoreServiceException</exception>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePort.get(Emc.Documentum.FS.Services.Admin.getRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.Emc#Documentum#FS#Services#Admin#UserManagementServicePort#get(Emc.Documentum.FS.Services.Admin.getRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.Get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getRequest.adminObjectIdentitySet">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getRequest.options">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getRequest.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getResponse.#ctor(Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePortChannel">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.IVirtualDeploymentService">
+             <summary>
+            Virtual Deployment service is to support new dormant state mechanism, client
+             can call this service to get or change dormancy status of one repository or
+             some server of one repository.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IVirtualDeploymentService.GetDormancyStatus(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+             <summary>
+            Get the dormancy status of the repository or the specific servers.
+            </summary>
+             <param name="repositoryName">Name of the repository.</param>
+             <param name="serverOptions">Specify what to query: the repository status or statuses of
+                        some servers.</param>
+             <returns>
+            RepositoryDormancyStatus, in case ServerFilter is REPOSITORY, return repository status only,
+                     in case ServerFilter is also return statuses of specified servers.
+            </returns>
+             <exception cref="T:Emc.Documentum.FS.Services.Admin.AdminServiceException">if an error occurs while requesting status</exception>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IVirtualDeploymentService.MakeActive(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+             <summary>
+            Makes a request to change repository or some servers of a repository to
+             active.
+             
+             This method should not be called in transaction environment. 
+            </summary>
+             <param name="repositoryName">Name of the repository.</param>
+             <param name="serverOptions">Specify change what to active: the repository or some servers
+                        of a repository. In case ServerFilter is REPOSITORY,
+                        change the repository to active, all servers of the
+                        repository will be changed to active in background. 
+                        in case ServerFilter is SPECIFIED_SERVERSm
+                        only change the specified servers to active.</param>
+             <exception cref="T:Emc.Documentum.FS.Services.Admin.AdminServiceException">if an error occurs while handle this request</exception>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IVirtualDeploymentService.MakeDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+             <summary>
+            Makes a request to change repository or some servers of a repository to
+             dormant.
+             Only user in dm_datacenter_managers group is allowed to call this method.
+             
+             This method should not be called in transaction environment. 
+            </summary>
+             <param name="repositoryName">Name of the repository.</param>
+             <param name="serverOptions">Specify change what to dormant: the repository or some servers
+                        of a repository. In case ServerFilter is REPOSITORY,
+                        change the repository to dormant, all servers of the
+                        repository will be changed to dormant in background. 
+                        in case ServerFilter is SPECIFIED_SERVERS,
+                        only change the specified servers to dormant.</param>
+             <exception cref="T:Emc.Documentum.FS.Services.Admin.AdminServiceException">if an error occurs while handle this request</exception>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IVirtualDeploymentService.ProjectDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+             <summary>
+            Makes a request to change some servers of a repository to projected
+             dormant.
+             Only user in dm_datacenter_managers group is allowed to call this method.
+             
+             This method should not be called in transaction environment. 
+            </summary>
+             <param name="repositoryName">Name of the repository.</param>
+             <param name="serverOptions">Specify what servers will be changed to projected dormant.
+                        Be aware that only erverFilter.SPECIFIED_SERVERS is a valid option now.
+                        ServerFilter#REPOSITORY is not supported.</param>
+             <exception cref="T:Emc.Documentum.FS.Services.Admin.AdminServiceException">if an error occurs while handle this request</exception>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePort.getDormancyStatus(Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePort.makeActive(Emc.Documentum.FS.Services.Admin.makeActiveRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePort.makeDormant(Emc.Documentum.FS.Services.Admin.makeDormantRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePort.projectDormant(Emc.Documentum.FS.Services.Admin.projectDormantRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.Emc#Documentum#FS#Services#Admin#VirtualDeploymentServicePort#getDormancyStatus(Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.getDormancyStatus(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.Emc#Documentum#FS#Services#Admin#VirtualDeploymentServicePort#makeActive(Emc.Documentum.FS.Services.Admin.makeActiveRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.makeActive(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.Emc#Documentum#FS#Services#Admin#VirtualDeploymentServicePort#makeDormant(Emc.Documentum.FS.Services.Admin.makeDormantRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.makeDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.Emc#Documentum#FS#Services#Admin#VirtualDeploymentServicePort#projectDormant(Emc.Documentum.FS.Services.Admin.projectDormantRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.projectDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.GetDormancyStatus(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.MakeActive(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.MakeDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortClient.ProjectDormant(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest.repositoryName">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest.serverOptions">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getDormancyStatusRequest.#ctor(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getDormancyStatusResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getDormancyStatusResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getDormancyStatusResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getDormancyStatusResponse.#ctor(Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.makeActiveRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.makeActiveRequest.repositoryName">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.makeActiveRequest.serverOptions">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeActiveRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeActiveRequest.#ctor(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.makeActiveResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeActiveResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.makeDormantRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.makeDormantRequest.repositoryName">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.makeDormantRequest.serverOptions">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeDormantRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeDormantRequest.#ctor(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.makeDormantResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.makeDormantResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.projectDormantRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.projectDormantRequest.repositoryName">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.projectDormantRequest.serverOptions">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.projectDormantRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.projectDormantRequest.#ctor(System.String,Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.projectDormantResponse">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.projectDormantResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.VirtualDeploymentServicePortChannel">
+            <exclude/>
+        </member>
+    </members>
+</doc>

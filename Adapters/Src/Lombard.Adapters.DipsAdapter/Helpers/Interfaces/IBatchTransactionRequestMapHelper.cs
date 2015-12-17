@@ -1,0 +1,100 @@
+﻿using System;
+using Lombard.Adapters.Data.Domain;
+
+namespace Lombard.Adapters.DipsAdapter.Helpers.Interfaces
+{
+    public interface IBatchTransactionRequestMapHelper
+    {
+        DipsQueue CreateNewDipsQueue(
+            DipsLocationType locationType,
+            string batchNumber,
+            string traceId,
+            DateTime processingDate,
+            string jobId);
+
+        DipsDbIndex CreateNewDipsDbIndex(
+            string batchNumber,
+            string traceId);
+
+        DipsNabChq CreateNewDipsNabChqForCorrectTransactionRequest(
+            string batchNumber,
+            string traceId,
+            DateTime processingDate,
+            string reasonCode,
+            string transactionLinkNumber,
+            bool unprocessable,
+            string extraAuxDom,
+            bool extraAuxDomStatus,
+            string auxDom,
+            bool auxDomStatus,
+            string bsbNumber,
+            bool bsbNumberStatus,
+            string accountNumber,
+            bool accountNumberStatus,
+            string transactionCode,
+            bool transactionCodeStatus,
+            string capturedAmount,
+            bool amountStatus,
+            string documentType,
+            string jobId,
+            int manualRepair,
+            string presentationMode,
+            string rawMicr,
+            string rawOcr,
+            string captureBsb,
+            string batchAccountNumber,
+            bool surplusItemFlag,
+            bool suspectFraudFlag,
+            string processingState,
+            string collectingBank,
+            string unitId,
+            System.Nullable<bool> isGeneratedVoucher,
+            string targetEndPoint,
+            string forValueIndicator,
+            string dipsOverride,
+            bool thirdPartyCheckRequired,
+            bool unencodedEcdReturnFlag,
+            bool thirdPartyMixedDepositReturnFlag,
+            string batchType,
+            bool postTransmissionQaAmountFlag,
+            bool postTransmissionQaCodelineFlag,
+            string subBatchType,
+            bool creditNoteFlag,
+            string batchAuxDom);
+
+        DipsNabChq CreateNewDipsNabChqForValidateTransactionRequest(
+            string batchNumber,
+            string traceId,
+            DateTime processingDate,
+            string reasonCode,
+            string transactionLinkNumber,
+            bool unprocessable,
+            string extraAuxDom,
+            bool extraAuxDomStatus,
+            string auxDom,
+            bool auxDomStatus,
+            string bsbNumber,
+            bool bsbNumberStatus,
+            string accountNumber,
+            bool accountNumberStatus,
+            string transactionCode,
+            bool transactionCodeStatus,
+            string capturedAmount,
+            bool amountStatus,
+            string documentType,
+            string jobId,
+            string rawMicr,
+            string rawOcr,
+            string captureBsb,
+            string batchAccountNumber,
+            string processingState,
+            string collectingBank,
+            string unitId,
+            string forValueIndicator,
+            string dipsOverride,
+            string batchType,
+            bool postTransmissionQaAmountFlag,
+            bool postTransmissionQaCodelineFlag,
+            string subBatchType);
+    }
+}

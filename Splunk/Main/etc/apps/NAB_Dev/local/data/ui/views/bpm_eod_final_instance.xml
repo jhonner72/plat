@@ -1,0 +1,205 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM EOD Final Instance</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="text" token="businessKey" searchWhenChanged="true">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityEODFinal BusinessKey=$businessKey$ | eval value = if (State=2, "severe", if(EndTime == "null", "high", "low")) | table value Name</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Start End of Day Final</title>
+        <search base="baseQuery">
+          <query>| Search Name="Start Event"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Set End of Day Reference Data</title>
+        <search base="baseQuery">
+          <query>| search Name="Set EOD Reference"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>VIF Production</title>
+        <search base="baseQuery">
+          <query>| search Name="VIF Production"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Produced all VIFs</title>
+        <search base="baseQuery">
+          <query>| search Name="Anymore VIF vouchers?"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Image Exchange Outbound</title>
+        <search base="baseQuery">
+          <query>| search Name="Image Exchange Outbound"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Generate Agent Bank Files</title>
+        <search base="baseQuery">
+          <query>| search Name="Generate Agent Files"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Generate Adjustment Letters</title>
+        <search base="baseQuery">
+          <query>| search Name="Generate Adjustment Letters"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Generate EOD Reports</title>
+        <search base="baseQuery">
+          <query>| search Name="Generate EOD Reports"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Generate EOM Reports</title>
+        <search base="baseQuery">
+          <query>| search Name="Generate EOM Reports"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Day 2 Workflows</title>
+        <search base="baseQuery">
+          <query>| search Name="Day2 Workflow"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Update Reference Data</title>
+        <search base="baseQuery">
+          <query>| search Name="Update Reference Data"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Progress Pending Vouchers</title>
+        <search base="baseQuery">
+          <query>| search Name="Progress Pending Vouchers"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Asset Management</title>
+        <search base="baseQuery">
+          <query>| search Name="Asset Management"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>End of Day Final Complete</title>
+        <search base="baseQuery">
+          <query>| search Name="End Event"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

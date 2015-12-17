@@ -1,0 +1,54 @@
+//Indexing Sort Option: ALPHA
+//Description: Agent bank rules to check if the transaction is to be returned or balanced
+//Modification History:
+//2015-07-16        Shraddha      Created
+//_________________________________________________________________________________________________
+//BankId,Mnemonic Id, RebalanceState(1- Return entire deposit, 0- Rebalance deposit to the amount)
+//_________________________________________________________________________________________________
+
+12,BQL,1					//Bank of Queensland
+653,BQL,1					//Bank of Queensland
+639,BQL,1					//Bank of Queensland
+
+18,MBL,0					//Macquarie Bank Ltd.
+
+917,ARA,1					//Arab Bank Ltd.
+
+24,24X-100 to 24X-999,1		//Citigroup Ltd.
+
+633,BBL,1					//Bendigo and Adelaide Bank Ltd.
+610,ADL,1					//Bendigo and Adelaide Bank Ltd.
+
+34,HBA,1					//HSBC Bank Australia Ltd.
+
+985,HSB,1					//HongKong  Shanghai
+
+942,LBA,1					//Bank of Sydney
+
+819,IBK,1					//Industrial and commercial bank of china
+
+21,CMB,1                    //JP Morgan Chase N.A 
+
+45,OCB,1					//Overseas-Chinese Banking Group
+
+952,RBS,1					//Royal Bank of Scotland
+
+80,CRU,1					//CUSCAL Ltd
+
+313,MCU,1					//Mecu
+
+514,QTM,1					//QT Mutual Bank
+
+512,CFC,1					//Community First CU Ltd
+
+642,ADC,1					//Australian Defence CU
+
+812,TCU,1					//Teachers Credit Union
+
+813,CAP,1					//Capricornia Credit Union
+
+814,CUA,1					//Credit Union Australia Ltd
+
+815,PCU,1					//Police Department CU
+
+817,WCU,1					//Warwick Credit Union

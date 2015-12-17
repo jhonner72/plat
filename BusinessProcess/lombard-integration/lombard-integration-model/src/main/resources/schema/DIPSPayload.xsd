@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/DIPSPayload" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/DIPSPayload" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="DIPSBatch" type="tns:DIPSBatch"/>
+	<xs:complexType name="DIPSBatch">
+		<xs:sequence>
+			<xs:element name="client" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dips Client,  'NabChqEdit' for this sprint</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="batchNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique Batch identifier – Dips needs 8 digits, Dinesh &amp; Doug discussing, may or may not be the same as unique batch identifier used elsewhere in system</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Subclassification of Job/work type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subBatchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Subclassification of Batch</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name the scanning operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanning device Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingState" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Bank who is collecting the cheques</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="workType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dips Job Type, 'NabChqEditPod' for this sprint</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="tns:DIPSVoucher" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Voucher object. Batch could contain 200 vouchers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DIPSVoucher" type="tns:DIPSVoucher"/>
+	<xs:complexType name="DIPSVoucher">
+		<xs:complexContent>
+			<xs:extension base="vtns:Voucher">
+				<xs:sequence>
+					<xs:element name="rawMICR" type="xs:string" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Raw MICR</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="micrFlag" type="xs:string" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>flag to indicate if the codeline was a micr read</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="micrUnprocessableFlag" type="xs:string" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>flag to indicate if micr as unprocessable</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="micrSuspectFraudFlag" type="xs:string" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>suspect fraud flag</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.jardef/NAB_JOBS_JAR?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/JAR%20Definitions/nab_jobs_jar.jardef" categoryId="com.emc.ide.artifact.jardef.jardef">
+  <dataModel xsi:type="jardef:JarDef" objectName="NAB_JOBS_JAR" contentType="jar" jar_type="Implementation">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_jar?name=dmc_jar#//@dataModel"/>
+    <aspectName href="urn:com.emc.ide.artifact.aspectmoduledef/com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor?aspectname=com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/jar?name=jar#//@dataModel"/>
+    <resource xsi:type="jardef:JarResource" jarFile="//@contentStore/@contentEntries.0/@value"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="NabJobs.jar">
+      <value filePath="content/43/854708843/NabJobs[3].jar"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

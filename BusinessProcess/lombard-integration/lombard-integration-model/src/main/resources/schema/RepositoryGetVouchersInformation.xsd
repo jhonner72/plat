@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/GetVouchersInformation" xmlns:tns="http://lombard.aus.fujixerox.com/repository/GetVouchersInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rc="http://lombard.aus.fujixerox.com/repository/Common" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/repository/Common" schemaLocation="RepositoryCommon.xsd"/>
+	<xs:element name="GetVouchersInformationRequest" type="tns:GetVouchersInformationRequest"/>
+	<xs:complexType name="GetVouchersInformationRequest">
+		<xs:annotation>
+			<xs:documentation>This is a generic GetVouchersInformation service. Criteria to extract the vouchers should be mapped in respective functionality transformation mapping. 
+e.g GetAdjustmentsOnHold in End Of Day process.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="imageRequired" type="rc:ImageType" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Element to be set only if image is required with response. 
+
+So this is an optional field with nillable = 'true"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="imageResponseType" type="tns:ResponseType" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>If an image is required, it can be returned as either a file or base64 encoded in the message
+
+Note: This is an optional field with nillable = 'true"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The jobIdentifier will be set for all requests that are initiated from the BPM layer.
+
+Direct integration will not set the jobIdentifier</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="metadataResponseType" type="tns:ResponseType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>voucherInformation can be returned either in a response message or written to file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="searchCriteria" type="tns:Criteria" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This is a repeating field where  specific search criteria can be specified.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="updateCriteria" type="tns:Criteria" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This is a repeating field where specific attributes on the voucher can be updated when a search is performed. 
+
+i.e. updating a status field when retrieving a voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GetVouchersInformationResponse" type="tns:GetVouchersInformationResponse"/>
+	<xs:complexType name="GetVouchersInformationResponse">
+		<xs:sequence>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Return all the vouchers matching the criteria.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ResponseType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FILE"/>
+			<xs:enumeration value="MESSAGE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Criteria" type="tns:Criteria"/>
+	<xs:complexType name="Criteria">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Generic key/value pair information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Generic key/value pair information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

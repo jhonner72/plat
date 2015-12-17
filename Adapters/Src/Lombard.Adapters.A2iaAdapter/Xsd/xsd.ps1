@@ -1,0 +1,2 @@
+$xsd = "C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\x64\xsd.exe"   
+& $xsd /l:cs /n:Lombard.Adapters.A2iaAdapter.Messages.XsdImports /out:..\Messages\XsdImports /c "..\..\..\..\BusinessProcess\lombard-integration\lombard-integration-model\src\main\resources\schema\Voucher.xsd" "..\..\..\..\BusinessProcess\lombard-integration\lombard-integration-model\src\main\resources\schema\RecogniseCourtesyAmount.xsd"

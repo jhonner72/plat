@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.fujixerox.aus.lombard-integration</groupId>
+	<artifactId>lombard-integration</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.0-SNAPSHOT</version>
+	<name>FXA Lombard Integration</name>
+
+    <parent>
+        <groupId>com.fujixerox.aus.support</groupId>
+        <artifactId>fxa-build-assembly</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+	
+	<!--
+    <scm>
+        <connection>scm:git:</connection>
+        <developerConnection>scm:git:</developerConnection>
+    </scm>
+	-->
+
+    <modules>
+        <module>lombard-integration-base</module>
+        <module>lombard-integration-model</module>
+        <module>lombard-integration-store-api</module>
+        <module>lombard-integration-store-impl</module>
+        <module>lombard-integration-transform</module>
+        <module>lombard-integration-route</module>
+        <module>lombard-integration-bpm</module>
+        <module>lombard-integration-app-test</module>
+        <module>lombard-integration-app-base</module>
+        <module>lombard-integration-app</module>
+        <module>lombard-integration-app-voucher</module>
+        <module>lombard-integration-app-imageexchange</module>
+        <module>lombard-integration-app-valueinstructionfile</module>
+        <module>lombard-integration-app-inwardimageexchange</module>
+        <module>lombard-integration-app-forvaluevouchers</module>
+        <module>lombard-integration-app-reporting</module>
+        <module>lombard-integration-app-listing</module>
+        <module>lombard-integration-app-triggeringworkflow</module>
+        <module>lombard-integration-app-surplusitem</module>
+        <module>lombard-integration-app-progresspending</module>
+        <module>lombard-integration-app-clear-adjustment</module>
+        <module>lombard-integration-app-generate-adjustment-letter</module>
+        <module>lombard-integration-app-australiapost</module>
+        <module>lombard-integration-web</module>
+        <module>lombard-integration-test</module>
+        <module>lombard-integration-web-test</module>
+    </modules>
+</project>

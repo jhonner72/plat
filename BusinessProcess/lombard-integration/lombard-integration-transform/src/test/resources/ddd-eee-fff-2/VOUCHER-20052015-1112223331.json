@@ -1,0 +1,23 @@
+{
+  "voucher" :
+  {
+    "accountNumber": "291895392",
+    "amount": 2099,
+    "auxDom": "12",
+    "bsbNumber": "013133",
+    "documentReferenceNumber": "1112223330",
+    "documentType": "Cr",
+    "extraAuxDom": "34",
+    "processingDate": "2014-12-31",
+    "transactionCode": "99"
+  },
+  "voucherProcess" :
+  {
+    "forValueType": "Inward_For_Value"
+  },
+  "voucherBatch" :
+  {
+    "workType": "NABCHQ_INWARDFV",
+    "scannedBatchNumber" : "SHOULD_BE_NULL"
+  }
+}

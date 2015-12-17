@@ -1,0 +1,177 @@
+<dashboard>
+  <label>Home</label>
+  <description>Summary home page for NAB Dev</description>
+  <search id="baseQuery">
+    <query>index=camunda source="*LombardScheduler-*.log" "Hangfire Server Stopped" OR "Starting Hangfire Server" | head 1 | convert mktime(_time) AS eventtime | rex "(?&lt;hangstate&gt;Starting Hangfire Server|Hangfire Server Stopped)" | eval Status=if(hangstate="Hangfire Server Stopped","Hangfire Server is down","Hangfire Server is up") | eval reltime=relative_time(now(),"-1M") | eval EventAge=if(eventtime &gt; reltime,"event happened within 1 minute(s) of now","event happened more than 1 minute(s) ago") | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table Time Status EventAge</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <search id="bpm_baseQuery">
+    <query>index=camunda source="bpmJob*" |dedup ProcessName</query>
+    <earliest>-1d</earliest>
+    <latest>now</latest>
+  </search>
+  <search id="jscape_baseQuery">
+    <query>index=jscape_mft  |transaction eventId | table _time trigger eventId duration _raw</query>
+    <earliest>-4H</earliest>
+    <latest>now</latest>
+  </search>
+  <row>
+    <panel>
+      <html>
+                 <style>.btn-primary { margin: 5px 10px 5px 0; }</style>
+               <a href="business_processes" class="btn btn-primary">Business Processes</a> 
+               <a href="component_monitoring" class="btn btn-primary">Component Monitoring</a>
+               <a href="connectivity" class="btn btn-primary">Connectivity</a>
+        <a href="/app/splunk_app_windows_infrastructure/windows/performance/" class="btn btn-primary">Performance Monitoring</a>
+               <a href="operator_amount_keying_statistics" class="btn btn-primary">Operator Statistics Reports</a>
+               <a href="operator_station_volumes" class="btn btn-primary">Operator station volumes</a>
+           </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>JSCAPE MFT Alerts</title>
+      <single>
+        <search base="jscape_baseQuery">
+          <query>| where tonumber(duration)&gt;=5 |stats count as Failed | eval class=if(Failed&gt;5,"severe","high")</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="classField">class</option>
+        <option name="field">Failed</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+        <option name="afterLabel">Over 5s</option>
+        <option name="underLabel">Total Files Sit in Out/inbound</option>
+        <option name="linkView">search</option>
+        <option name="beforeLabel">4 hours ago</option>
+      </single>
+      <single>
+        <search base="jscape_baseQuery">
+          <query>|search trigger="Send IE to *" | stats count as Failed | eval class=if(Failed&gt;5,"severe","high")</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="classField">class</option>
+        <option name="field">Failed</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+        <option name="afterLabel">sent to COIN</option>
+        <option name="underLabel">Total Files</option>
+        <option name="linkView">search</option>
+        <option name="beforeLabel">4 hours ago</option>
+      </single>
+      <html>
+      <a href="/app/NAB_Dev/jscape_monitoring" class="btn btn-primary pull-right">Detail</a>
+      </html>
+    </panel>
+    <panel>
+      <title>BPM Processes Alerts</title>
+      <single>
+        <search base="bpm_baseQuery">
+          <query>| stats count as Failed by ProcessName | eval class=if(Failed&gt;5,"severe","high")</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="classField">class</option>
+        <option name="field">Failed</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+        <option name="afterLabel">Failed</option>
+        <option name="underLabel">Processes</option>
+        <option name="linkView">search</option>
+        <option name="beforeLabel">1 day ago</option>
+      </single>
+      <single>
+        <search>
+          <query>index=camunda source=bpmActivity* | where not EndTime="null" and Duration &gt;= 60000*30| stats count as Failed | eval class=if(Failed&gt;5,"severe","high")</query>
+          <earliest>-1d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="classField">class</option>
+        <option name="field">Failed</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+        <option name="afterLabel">Over 30 minutes</option>
+        <option name="underLabel">Activities</option>
+        <option name="linkView">search</option>
+        <option name="beforeLabel">1 day ago</option>
+      </single>
+      <html>
+      <a href="/app/NAB_Dev/camunda_monitoring" class="btn btn-primary pull-right">Detail</a>
+      </html>
+    </panel>
+    <panel>
+      <title>Hangfire Server Alerts</title>
+      <single>
+        <search base="baseQuery">
+          <query>| eval value=if(Status=="Hangfire Server is up","low","severe")</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">Status</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="additionalClass">icon-only</option>
+        <option name="refresh.time.visible">false</option>
+      </single>
+      <html>
+      <a href="/app/NAB_Dev/scheduler_monitoring" class="btn btn-primary pull-right">Detail</a>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Peak CPU Utilization</title>
+        <search>
+          <query>eventtype=perfmon_windows earliest_time=-1d object=Processor counter="% Processor Time" host="*" | sort -Value | dedup host | eval "% CPU In Use"=round(Value) | table host "% CPU In Use"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+        <option name="refresh.auto.interval">60</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Memory Usage</title>
+        <search>
+          <query>eventtype=perfmon_windows earliest_time=-1d object=Memory counter="% Committed Bytes In Use" host="*" |eval "% Memory In Use"=round(Value,0)| dedup host | table host "% Memory In Use"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">false</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="wrap">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.auto.interval">60</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <title>Logical Disk</title>
+        <search>
+          <query>eventtype="perfmon_windows" (Host="*") Host="*" object="LogicalDisk" counter="% Free Space" instance="*" | stats sparkline(avg(Value)) as Trend avg(Value) as Average, max(Value) as Peak, latest(Value) as Current, latest(_time) as "Last Updated" by Host | convert ctime("Last Updated") | sort - Current | eval Average=round(Average, 2) | eval Peak=round(Peak, 2) | eval Current=round(Current, 2)</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="refresh.auto.interval">60</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

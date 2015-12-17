@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="getVouchersForEclRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse"
+          p:serviceName="lombard.service.outclearings.geteclvouchers"
+          p:exchangeName="lombard.service.repository.getvouchers"
+          p:routingKey="NECL"
+          p:queueName="lombard.service.outclearings.geteclvouchers"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="get"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="copyVouchersFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.outclearings.copyvouchers"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="images"
+          p:predicate="copy"
+            />
+
+    <bean id="getJscapeResponseRoute" parent="copyImagesToDipsServiceRoute"
+          p:serviceName="lombard.service.outclearings.copyvouchers"
+          p:exchangeName="lombard.service.inclearings.copyimages"
+          p:routingKey="NECL"
+          p:queueName="lombard.service.outclearings.copyvouchers"
+          p:subject="images"
+          p:predicate="copy"
+            />
+
+    <bean id="matchVouchersRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.matchvoucher.MatchVoucherResponse"
+          p:serviceName="lombard.service.outclearings.matchvouchers"
+          p:exchangeName="lombard.service.outclearings.matchvouchers"
+          p:routingKey="NECL"
+          p:queueName="lombard.service.outclearings.matchvouchers"
+          p:consumeType="Lombard.Vif.Service.Messages.XsdImports.MatchVoucherRequest:Lombard.ECLMatchingEngine.Service"
+          p:subject="vouchers"
+          p:predicate="match"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="generateBulkCreditRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.generatebulkcredit.GenerateBatchBulkCreditResponse"
+          p:serviceName="lombard.service.outclearings.generatebulkcredit"
+          p:exchangeName="lombard.service.outclearings.generatebulkcredit"
+          p:routingKey="NECL"
+          p:queueName="lombard.service.outclearings.generatebulkcredit"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.GenerateBatchBulkCreditRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="bulkcredit"
+          p:predicate="generate"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="associateGeneratedVoucherEclRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.associatevouchers.AssociateVouchersResponse"
+          p:serviceName="lombard.service.outclearings.associategeneratedvouchersecl"
+          p:exchangeName="lombard.service.outclearings.associategeneratedvouchers"
+          p:routingKey="NECL"
+          p:queueName="lombard.service.outclearings.associategeneratedvouchersecl"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="associate"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="sendEclResponseFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.outclearings.sendeclresponse"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="eclresponse"
+          p:predicate="send"
+            />
+
+</beans>

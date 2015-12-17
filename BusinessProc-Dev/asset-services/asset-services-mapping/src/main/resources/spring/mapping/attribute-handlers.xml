@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Attribute types -->
+    <bean id="baseStringHandler" class="com.fujixerox.aus.asset.impl.query.handlers.StringAttributeHandler">
+        <constructor-arg name="range" value="false"/>
+        <constructor-arg name="wildCard" value="false"/>
+    </bean>
+
+    <bean id="rangeStringHandler" class="com.fujixerox.aus.asset.impl.query.handlers.StringAttributeHandler">
+        <constructor-arg name="range" value="true"/>
+        <constructor-arg name="wildCard" value="false"/>
+    </bean>
+
+    <bean id="amountStringHandler" class="com.fujixerox.aus.asset.impl.query.handlers.AmountAttributeHandler">
+        <constructor-arg name="range" value="true"/>
+        <constructor-arg name="wildCard" value="false"/>
+    </bean>
+
+    <bean id="wildcardStringHandler" class="com.fujixerox.aus.asset.impl.query.handlers.StringAttributeHandler">
+        <constructor-arg name="range" value="true"/>
+        <constructor-arg name="wildCard" value="true"/>
+    </bean>
+
+    <bean id="dateHanlder" class="com.fujixerox.aus.asset.impl.query.handlers.DateAttributeHandler">
+        <constructor-arg name="dateFormat" value="yyyyMMdd"/>
+    </bean>
+
+    <bean id="integerHandler" class="com.fujixerox.aus.asset.impl.query.handlers.IntegerAttributeHandler"/>
+
+    <bean id="bigIntegerHandler" class="com.fujixerox.aus.asset.impl.query.handlers.BigIntegerAttributeHandler"/>
+
+    <bean id="booleanHandler" class="com.fujixerox.aus.asset.impl.query.handlers.BooleanAttributeHandler"/>
+
+    <bean id="zeroDummyHandler" class="com.fujixerox.aus.asset.impl.query.handlers.DummyAttributeHandler">
+        <constructor-arg name="dummyValue" value="0"/>
+    </bean>
+
+    <bean id="stateEnumHanlder" class="com.fujixerox.aus.asset.impl.query.handlers.MapStringAttributeHandler">
+        <constructor-arg name="range" value="false"/>
+        <constructor-arg name="fromValues">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+                <value>5</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="toValues">
+            <list>
+                <value>NSW</value>
+                <value>QLD</value>
+                <value>SA</value>
+                <value>VIC</value>
+                <value>WA</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="integerToStringHandler" class="com.fujixerox.aus.asset.impl.query.handlers.IntegerToStringAttributeHandler"/>
+    
+    <bean id="compositeHandler" class="com.fujixerox.aus.asset.impl.query.handlers.CompositeAttributeHandler">
+    	<constructor-arg name="range" value="true"/>
+    	<constructor-arg name="requestFields" value="date"/>
+        <constructor-arg name="dctmFxaVoucherFields" value="fxa_processing_date"/>
+        <constructor-arg name="types" value="date"/>
+    </bean>
+
+    <!-- <bean id="entryNumberHandler" class="com.fujixerox.aus.asset.impl.query.handlers.AssociatedQueryAttributeDataHandler">
+        <constructor-arg name="position" value="0"/>
+    </bean> 
+
+    <bean id="batchNumberHandler" class="com.fujixerox.aus.asset.impl.query.handlers.AssociatedQueryAttributeDataHandler">
+        <constructor-arg name="position" value="1"/>
+    </bean> 
+
+    <bean id="balSeqForDepositHandler" class="com.fujixerox.aus.asset.impl.query.handlers.AssociatedQueryAttributeDataHandler">
+        <constructor-arg name="position" value="2"/>
+    </bean>
+
+    <bean id="siteHandler" class="com.fujixerox.aus.asset.impl.query.handlers.AssociatedQueryAttributeDataHandler">
+        <constructor-arg name="position" value="3"/>
+    </bean> -->
+
+</beans>

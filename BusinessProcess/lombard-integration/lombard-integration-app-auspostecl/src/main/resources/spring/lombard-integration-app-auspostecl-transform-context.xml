@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+        >
+
+    <bean id="transform.lombard.service.outclearings.geteclvouchers.request" class="com.fujixerox.aus.integration.transform.outclearings.GetEclVouchersTransform" />
+    <bean id="transform.lombard.service.outclearings.geteclvouchers.response" class="com.fujixerox.aus.integration.transform.outclearings.GetVouchersForImageExchangeResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.copyvouchers.request" class="com.fujixerox.aus.integration.transform.inclearings.CopyImagesTransform"
+          p:lockerPath-ref="lockerPath"
+          p:fileDropPath-ref="fileDropPath"
+            />
+    <bean id="transform.lombard.service.outclearings.copyvouchers.response" class="com.fujixerox.aus.integration.transform.inclearings.CopyImagesResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.matchvouchers.request" class="com.fujixerox.aus.integration.transform.outclearings.MatchVouchersTransform" />
+    <bean id="transform.lombard.service.outclearings.matchvouchers.response" class="com.fujixerox.aus.integration.transform.outclearings.MatchVouchersResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.generatebulkcredit.request" class="com.fujixerox.aus.integration.transform.outclearings.GenerateBulkCreditTransform"
+          p:metadataStore-ref="metadataStore"
+          p:jobStore-ref="jobStore"
+            />
+    <bean id="transform.lombard.service.outclearings.associategeneratedvouchersecl.request" class="com.fujixerox.aus.integration.transform.outclearings.AssociateGeneratedEclVouchersTransform"
+          p:metadataStore-ref="metadataStore"
+          p:jobStore-ref="jobStore"
+            />
+    <bean id="transform.lombard.service.outclearings.sendeclresponse.request" class="com.fujixerox.aus.integration.transform.outclearings.SendEclResponseTransform"
+          p:lockerPath-ref="lockerPath"
+          p:fileDropPath-ref="fileDropPath"
+            />
+</beans>

@@ -1,0 +1,10 @@
+﻿
+     Totals for Batch #        {0}
+
+  Debit Count  {1,10}          Batch Header  {2,12:C2}        Debit Reject Count  {3,7}
+ Credit Count  {4,10}          Debit Amount  {5,12:C2}        Credit Reject Count {6,7}
+                                   Credit Amount {7,12:C2}
+
+                                               {8,14:C2}
+
+

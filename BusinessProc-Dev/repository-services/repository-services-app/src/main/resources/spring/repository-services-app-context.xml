@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
+       
+    <bean id="fileUtils" class="com.fujixerox.aus.repository.util.FileUtil"
+          p:lockerPath-ref="lockerPath"
+          />
+
+    <bean id="documentumSessionFactory" class="com.fujixerox.aus.repository.util.dfc.DocumentumSessionFactory"
+          p:repositoryHost-ref="repositoryHostname"
+          p:repositoryPort-ref="repositoryPort"
+          p:repositoryUsername-ref="repositoryUsername"
+          p:repositoryPassword-ref="repositoryPassword"
+          />
+
+    <bean id="repositoryService" class="com.fujixerox.aus.repository.api.RepositoryServiceImpl"
+          p:fileUtil-ref="fileUtils"
+          p:documentumSessionFactory-ref="documentumSessionFactory"
+          />
+
+    <bean id="rabbitConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+        <property name="host" ref="brokerHostname"/>
+        <property name="port" ref="brokerPort"/>
+        <property name="username" ref="brokerUsername"/>
+        <property name="password" ref="brokerPassword"/>
+    </bean>
+
+
+    <bean id="objectMapper" factory-method="createWithAnnotations" class="com.fujixerox.aus.lombard.JaxbMapperFactory" />
+
+    <bean id="json-gson" class="org.apache.camel.component.jackson.JacksonDataFormat">
+        <constructor-arg index="0" ref="objectMapper"/>
+        <constructor-arg index="1"><null/></constructor-arg>
+    </bean>
+    
+    
+    <!-- Camel -->
+    <bean id="repositoryRoute" class="com.fujixerox.aus.repository.route.RepositoryRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+            />
+
+    <camel:camelContext id="camelContext">
+        <camel:routeBuilder ref="repositoryRoute" />
+    </camel:camelContext>
+       
+    
+   	<!-- <import resource="classpath:/spring/repository-services-route-context.xml"/>
+   
+   	<camel:camelContext id="camelContext">
+        <camel:routeBuilder ref="storeVoucherRoute" />
+        <camel:routeBuilder ref="queryVoucherRoute" />
+        <camel:routeBuilder ref="updateVoucherForVIFRoute" />
+        <camel:routeBuilder ref="updateVoucherForVIFAckRoute" />
+        <camel:routeBuilder ref="updateVoucherForIERoute" />
+        <camel:routeBuilder ref="repostVoucherRoute" />
+        <camel:routeBuilder ref="storeListingRoute" />
+        <camel:routeBuilder ref="triggerWorkflowRoute" />
+        <camel:routeBuilder ref="storeReportRoute" />
+        <camel:routeBuilder ref="queryVoucherInfoRoute" />
+        <camel:routeBuilder ref="queryVoucherInfoForAdjustmentLetterRoute" />
+        <camel:routeBuilder ref="updateVoucherInfoRoute" />
+        <camel:routeBuilder ref="storeAdjustmentLetterRoute" />
+    </camel:camelContext>  -->
+
+</beans>

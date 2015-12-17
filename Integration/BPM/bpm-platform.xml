@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpm-platform xmlns="http://www.camunda.org/schema/1.0/BpmPlatform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.camunda.org/schema/1.0/BpmPlatform http://www.camunda.org/schema/1.0/BpmPlatform ">
+
+  <job-executor>
+    <job-acquisition name="default">
+		<properties>
+		  <property name="maxJobsPerAcquisition">15</property>
+		  <property name="waitTimeInMillis">2000</property>
+		  <property name="lockTimeInMillis">300000</property>
+		</properties>
+	</job-acquisition>
+  </job-executor>
+
+  <process-engine name="default">
+    <job-acquisition>default</job-acquisition>
+    <configuration>org.camunda.bpm.engine.impl.cfg.StandaloneProcessEngineConfiguration</configuration>
+    <datasource>java:jdbc/ProcessEngine</datasource>
+
+    <properties>
+      <property name="history">full</property>
+      <property name="databaseSchemaUpdate">true</property>
+      <property name="authorizationEnabled">true</property>
+      <property name="jobExecutorDeploymentAware">true</property>
+    </properties>
+
+    <plugins>
+      <!-- plugin enabling Process Application event listener support -->
+      <plugin>
+        <class>org.camunda.bpm.application.impl.event.ProcessApplicationEventListenerPlugin</class>
+      </plugin>
+      
+      <!-- plugin enabling integration of camunda Spin -->
+      <plugin>
+        <class>org.camunda.spin.plugin.impl.SpinProcessEnginePlugin</class>
+      </plugin>
+
+      <!-- plugin enabling connect support -->
+      <plugin>
+        <class>org.camunda.connect.plugin.impl.ConnectProcessEnginePlugin</class>
+      </plugin>
+
+    <!-- LDAP CONFIGURATION -->
+    <!-- Uncomment this section in order to enable LDAP support for this process engine -->
+    <!-- Adjust configuration, see ( http://docs.camunda.org/latest/guides/user-guide/#process-engine-identity-service-the-ldap-identity-service ) -->
+
+      <plugin>
+        <class>org.camunda.bpm.identity.impl.ldap.plugin.LdapIdentityProviderPlugin</class>
+        <properties>
+          <property name="serverUrl">ldap://#{LdapServer}:389/</property>
+          <property name="acceptUntrustedCertificates">true</property>
+          <property name="managerDn">#{BindUserDn}</property>
+          <property name="managerPassword">#{BindUserPassword}</property>
+          <property name="baseDn"></property>
+          <property name="userSearchBase">#{LookupBaseDn}</property>
+          <property name="userSearchFilter">(objectclass=*)</property>
+          <property name="userIdAttribute">samaccountname</property>
+          <property name="userFirstnameAttribute">cn</property>
+          <property name="userLastnameAttribute">sn</property>
+          <property name="userEmailAttribute">mail</property>
+          <property name="userPasswordAttribute">userpassword</property>
+          <property name="groupSearchBase">#{AdminGroupDn}</property>
+          <property name="groupSearchFilter">(objectclass=*)</property>
+          <property name="groupIdAttribute">cn</property>
+          <property name="groupNameAttribute">cn</property>
+          <property name="groupMemberAttribute">member</property>
+        </properties>
+      </plugin>
+
+      <!-- LDAP CONFIGURATION -->
+      <!-- The following plugin allows you to grant administrator authorizations to an existing LDAP user -->
+
+      <plugin>
+        <class>org.camunda.bpm.engine.impl.plugin.AdministratorAuthorizationPlugin</class>
+        <properties>
+          <!-- property name="administratorUserName"></property -->
+          <property name="administratorGroupName">#{AdminGroupName}</property>
+        </properties>
+      </plugin>
+
+    </plugins> 
+  </process-engine>
+</bpm-platform>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.fujixerox.aus.lombard-integration</groupId>
+	<artifactId>lombard-integration-base</artifactId>
+	<packaging>pom</packaging>
+	<name>FXA Lombard Integration - Base</name>
+	<version>2.4.0-SNAPSHOT</version>
+
+	<parent>
+		<groupId>com.fujixerox.aus.support</groupId>
+		<artifactId>fxa-build-code</artifactId>
+		<version>0.0.0-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<org.apache.camel.version>2.14.1</org.apache.camel.version>
+		<org.springframework.version>4.0.7.RELEASE</org.springframework.version>
+		<org.camunda.bpm.extension.camel.version>0.3.6-SNAPSHOT</org.camunda.bpm.extension.camel.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>camunda-default</id>
+			<activation>
+                <property>
+                    <name>!camunda-ee</name>
+                </property>
+   			</activation>
+			<properties>
+				<org.camunda.bpm.version>7.2.0</org.camunda.bpm.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>camunda-os</id>
+			<activation>
+				<property>
+					<name>camunda-ee</name>
+					<value>false</value>
+				</property>
+			</activation>
+			<properties>
+				<org.camunda.bpm.version>7.2.0</org.camunda.bpm.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>camunda-ee</id>
+			<activation>
+				<property>
+					<name>camunda-ee</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<properties>
+				<org.camunda.bpm.version>7.2.3-ee</org.camunda.bpm.version>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

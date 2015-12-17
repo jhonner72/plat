@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.storageparameter/MyStorageParameter?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Installation%20Parameters/mystorageparameter.parameter" categoryId="com.emc.ide.storageparameter">
+  <dataModel xsi:type="installparameter:StorageParameter" name="EncryptedFileStore" description="Encrypted Filestore for all FXA documents and subtypes." defaultValue="encrypted_filestore_01"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

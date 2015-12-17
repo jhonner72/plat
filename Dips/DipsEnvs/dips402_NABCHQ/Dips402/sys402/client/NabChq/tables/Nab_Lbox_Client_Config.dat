@@ -1,0 +1,35 @@
+//Description: To find the corresponding client number and the credit voucher used for a client for performing codeline validation
+//Created by Rakesh on 19/08/2015
+//Schema: Batch Header, Client Number, Voucher
+
+991304,004690,Standard    //Bayside City Council
+991306,001859,Standard    //City of Whitehorse
+991312,001617,Standard    //City of Whitehorse – Animal Registration
+991308,005217,Standard    //City of Yarra
+991313,001651,Standard    //East Gippsland Shire Council
+991309,002819,Standard    //Glenelg Shire Council
+991206,000015,Standard    //Hill Shire Council
+991307,001860,Standard    //Maroondah City Council
+991201,000303,Standard    //Pittwater Council
+991205,003911,Standard    //St Vincent’s Mater Hospital
+991210,004597,Standard    //St Vincents and Mater Health Sydney Limited
+991212,004603,Standard    //St Vincents Curran Foundation
+991208,004472,Standard    //St Vincents Hospital Sydney Limited
+991209,004657,Standard    //St Vincents Private Hospital Sydney Limited
+991207,004357,Standard    //Trustee of St Vincents Hospital Sydney
+991303,020039,Standard    //Computershare 
+991211,002521,Standard    //MLC Limited
+
+
+991002, ,NationalCards 	                    //National Credit Card Payments
+991202,002521,MLCCards              //MLC Ltd Cards
+991302,001625,RDNSHomeCareCards              //RDNS Homecare - Cards
+991012,006563,RDNCards              //Royal District Nurses 
+
+
+992030,002030,Officeworks              //Officeworks
+991004,003004,EANACheque              //European Article Numbering Australia
+991314,001625,RDNSCheque              //RDNS Homecare - Cheques
+991316,001625,RDNSCheque
+994700,004700,CGUCheque             //CGU
+991305,004700,CGUCheque             //CGU

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loginmanager>
+	<login user="fxa_user" password="fxa_user"/>
+</loginmanager>

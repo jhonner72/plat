@@ -1,0 +1,54 @@
+<nav search_view="search" color="#65A637">
+  
+  <view name="default" default='true'/>  
+  <collection label="Business Processes">    
+    <a href="/app/NAB_Dev/business_processes" name="Business Processes">Business Processes Overview</a>
+    <divider />
+    
+    <collection label="Processing Workflows">
+    
+    <a href="/app/NAB_Dev/voucher_processing" name="Voucher Processing">Voucher Processing</a>
+    <a href="/app/NAB_Dev/inwards_ie" name="Inwards Image Exchange">Inwards Image Exchange</a>
+    <a href="/app/NAB_Dev/surplus_items_processing" name="Surplus Items Processing">Surplus Items Processing</a>
+    <a href="/app/NAB_Dev/for_value_processing" name="For Value Processing">For Value Processing</a>
+    <a href="/app/NAB_Dev/listing_process" name="Listing Process">Listing Process</a>
+    </collection>
+    
+    <collection label="File Generation Workflows">
+    
+    <a href="/app/NAB_Dev/eod_initial" name="eod_initial">End of Day Initial</a>
+    <a href="/app/NAB_Dev/eod_final" name="eod_final">End of Day Final</a>
+    <a href="/app/NAB_Dev/vif_generation" name="vif_generation">Value Instruction File (VIF) Generation</a>
+    <a href="/app/NAB_Dev/ie_file_generation" name="ie_file_generation">Image Exchange File Generation</a>
+    <a href="/app/NAB_Dev/report_generation" name="report_generation">Report Generation</a>
+    </collection>
+    
+  </collection>
+  <collection label="Component Monitoring">
+    <a href="/app/NAB_Dev/component_monitoring" name="Component Monitoring">Component Monitoring Overview</a>
+    <divider />
+    
+    <a href="/app/NAB_Dev/scheduler_monitoring" name="Voucher Processing">Scheduler</a>
+    <a href="/app/NAB_Dev/jscape_monitoring" name="Voucher Processing">JScape</a>
+    <a href="/app/NAB_Dev/camunda_monitoring" name="Voucher Processing">Camunda</a>
+	<a href="/app/NAB_Dev/nab_adapters_monitoring" name="Voucher Processing">Adapters</a>
+  </collection>
+  
+  <collection label="Connectivity">
+    <a href="/app/NAB_Dev/connectivity" name="Connectivity">Connectivity Overview</a>
+  </collection>
+  
+  <collection label="Performance Monitoring">
+    <a href="http://localhost:8000/dj/en-us/splunk_app_windows_infrastructure/windows/performance/" name="Performance monitoring">Performance Monitoring Overview</a>
+  </collection>
+   
+  <collection label="Operations">
+    <a href="/app/NAB_Dev/operator_amount_keying_statistics" name="Operator Statistics">Operator Statistics Reports</a>
+    <a href="/app/NAB_Dev/operator_station_volumes" name="Operator Station Volumes">Operator Station Volumes</a>
+  </collection>
+  
+  <view name="search"  />
+  <view name="reports" />
+  <view name="alerts" />
+  <view name="dashboards" />
+</nav>

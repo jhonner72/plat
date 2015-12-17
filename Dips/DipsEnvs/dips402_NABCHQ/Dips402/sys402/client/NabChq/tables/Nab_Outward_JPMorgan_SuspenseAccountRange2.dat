@@ -1,0 +1,16 @@
+// Column 1: Start BSB
+// Column 2: End BSB
+// Column 3: Account
+// Column 4: Debit/credit Trancode
+// Column 5: Default BSB
+// Column 6: Mnemonic
+// Column 7: Bank Name
+211001,211999,999999912,44-50,,JPM,JP Morgan Chase N.A
+212001,212999,999999912,44-50,,JPM,JP Morgan Chase N.A
+213001,213999,999999912,44-50,,JPM,JP Morgan Chase N.A
+214001,214999,999999912,44-50,,JPM,JP Morgan Chase N.A
+215001,215999,999999912,44-50,,JPM,JP Morgan Chase N.A
+216001,216999,999999912,44-50,,JPM,JP Morgan Chase N.A
+217001,217999,999999912,44-50,,JPM,JP Morgan Chase N.A
+218001,218999,999999912,44-50,,JPM,JP Morgan Chase N.A
+219001,219999,999999912,44-50,,JPM,JP Morgan Chase N.A

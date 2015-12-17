@@ -1,0 +1,59 @@
+/* Custom Icons */
+
+td.icon {
+    text-align: center;
+}
+
+td.icon i {
+    font-size: 25px;
+    text-shadow: 1px 1px #aaa;
+}
+
+td.icon .severe {
+    color: #ff1f24;
+}
+
+td.icon .high {
+    color: #ff7e00;
+}
+
+td.icon .low {
+    color: #00b932;
+}
+
+/* Row Coloring */
+
+#highlight tr td {
+    background-color: #c1ffc3 !important;
+}
+
+#highlight tr.range-elevated td {
+    background-color: #ffc57a !important;
+}
+
+#highlight tr.range-severe td {
+    background-color: #d59392 !important;
+}
+
+
+#highlight .table td {
+    border-top: 1px solid #fff;
+}
+
+#highlight td.range-severe, td.range-elevated {
+    font-weight: bold;
+}
+
+.icon-inline i {
+    font-size: 18px;
+    margin-left: 5px;
+}
+.icon-inline i.icon-alert-circle {
+    color: #ff7e00;
+}
+.icon-inline i.icon-x-circle {
+    color: #ff1f24;
+}
+.icon-inline i.icon-check-circle {
+    color: #00b932;
+}

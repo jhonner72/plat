@@ -1,0 +1,15 @@
+{
+  "incidentTypes":
+  [
+    {
+      "type": "timeout",
+      "priority": "2",
+      "urgency": "2"
+    },
+    {
+      "type": "error",
+      "priority": "1",
+      "urgency": "1"
+    }
+  ]
+}

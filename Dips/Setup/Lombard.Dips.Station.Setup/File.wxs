@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="DIPS402.INI" Guid="{1F21692F-07D7-40C6-AED6-90F8E11D337E}">
+        <File Id="DIPS402.INI" KeyPath="yes" Source="$(var.DipsSource)\DIPS402.INI"  />
+        <IniFile Id="UnitIDIniSetting" Action="addLine" Directory="INSTALLFOLDER" Key="UnitID" Name="DIPS402.INI" Section="xpt_mngr" Value="[UNITID]" />
+        <IniFile Id="NABUnitIDIniSetting" Action="addLine" Directory="INSTALLFOLDER" Key="NABUnitID" Name="DIPS402.INI" Section="xpt_mngr" Value="[NABUNITID]" />
+        <IniFile Id="ProcessingStateIniSetting" Action="addLine" Directory="INSTALLFOLDER" Key="ProcessingState" Name="DIPS402.INI" Section="xpt_mngr" Value="[STATECOMBO]" />
+        <IniFile Id="Drive0IniSetting" Action="addLine" Directory="INSTALLFOLDER" Key="drive_0" Name="DIPS402.INI" Section="mappings" Value="G:=\\[SCANSVR]\dips402_NABCHQ_SCANNING" />
+      </Component>
+      <Component Id="MapShareDrive.bat" Guid="{9567EF49-4322-4524-90BE-41905034D3D1}">
+        <File Id="MapShareDrive.bat" KeyPath="yes" Source="$(var.DipsSource)\MapShareDrive.bat" />
+      </Component>
+      <Component Id="RbaPodSettings.Ini" Guid="{A1A67B23-7D0E-4363-AAE1-C92832FEDE91}">
+        <File Id="RbaPodSettings.Ini" KeyPath="yes" Source="$(var.DipsSource)\RbaPodSettings.Ini" />
+      </Component>
+      <Component Id="rototype.pkt" Guid="{D290AFC9-F2B6-44A6-AEB5-776E8CFF32CF}">
+        <File Id="rototype.pkt" KeyPath="yes" Source="$(var.DipsSource)\rototype.pkt" />
+      </Component>
+      <Component Id="rtp_phys.pkt" Guid="{2A653079-A5A7-47E9-A7A0-A53603DE83A8}">
+        <File Id="rtp_phys.pkt" KeyPath="yes" Source="$(var.DipsSource)\rtp_phys.pkt" />
+      </Component>
+      <Component Id="TIMETEST.OUT" Guid="{7388E65B-75FD-4D24-923B-44009A74867E}">
+        <File Id="TIMETEST.OUT" KeyPath="yes" Source="$(var.DipsSource)\TIMETEST.OUT" />
+      </Component>
+      <Component Id="UnmapShareDrive.bat" Guid="{11679E39-0C50-4FA1-80C5-EE71986865FF}">
+        <File Id="UnmapShareDrive.bat" KeyPath="yes" Source="$(var.DipsSource)\UnmapShareDrive.bat" />
+      </Component>
+      <Directory Id="Data" Name="Data">
+        <Component Id="__35258237_6492_4A9E_A7F5_6DDDAAE3C105_" Guid="{835AD480-C133-4FF9-93CB-CF251EBB23C3}" KeyPath="yes">
+          <CreateFolder />
+        </Component>
+        <Directory Id="ArchDrp" Name="ArchDrp">
+          <Component Id="__38D65792_C2E9_4A4C_B52F_0203DF8B049B_" Guid="{4B5BFF73-910D-4D14-B9EE-30C1D0716E4A}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Dab" Name="Dab">
+          <Component Id="__34C5522A_C02C_4F2D_BABD_A29AB4477F16_" Guid="{A2999C45-56D8-4504-9C59-E158DA43C4EE}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="edit" Name="edit">
+          <Component Id="__B8BE92F3_CD46_4433_81C1_AACFE915669F_" Guid="{450371C8-D3BA-480F-B7DE-1BDFF3F2DC23}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Import" Name="Import">
+          <Component Id="__6FB075B3_7CA8_4E02_AB80_EEDA929B0119_" Guid="{BBC5ADEB-62F0-4A6D-8231-47F80C2D7565}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Purge" Name="Purge">
+          <Component Id="__48AE715E_C2E2_4024_9A89_16D56B9D141C_" Guid="{12C3F049-BD73-493D-BB6E-A8E8FD24B71F}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="RACV_Barcode" Name="RACV_Barcode">
+          <Component Id="__9B76691D_4F74_4E81_AEDA_35767DAC5DA7_" Guid="{ED38AAFA-1A99-4F07-B0E8-847B4B88B7FC}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Rototype" Name="Rototype">
+          <Component Id="__414D9B1C_17F7_4A32_9E22_343945BB587A_" Guid="{C34A700A-133E-49E0-9E29-962095C1ED35}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Rototype_Suspend" Name="Rototype Suspend">
+          <Component Id="__525478CE_9BBD_457E_A6A1_7B20AB3F09FC_" Guid="{AA3A1BBD-10F6-4D2C-9032-9D7EE708AD38}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+        <Directory Id="Unrec" Name="Unrec">
+          <Component Id="__CB1DAAC4_706B_4F33_91AD_112173443831_" Guid="{9D778C82-55E9-4DE2-88FA-EF49DDEDD7D6}" KeyPath="yes">
+            <CreateFolder />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="Ranger" Name="Ranger">
+        <Component Id="image.front.jpg" Guid="{FE041F26-D212-44BA-B2E2-5E1E303AC544}">
+          <File Id="image.front.jpg" KeyPath="yes" Source="$(var.DipsSource)\Ranger\image.front.jpg" />
+        </Component>
+        <Component Id="image.front.tif" Guid="{11D7C2A7-84A9-46C3-BD24-3C10F2383C0B}">
+          <File Id="image.front.tif" KeyPath="yes" Source="$(var.DipsSource)\Ranger\image.front.tif" />
+        </Component>
+        <Component Id="image.rear.jpg" Guid="{9E41CAF0-2E97-44A6-BAAB-0559EEA3D3D5}">
+          <File Id="image.rear.jpg" KeyPath="yes" Source="$(var.DipsSource)\Ranger\image.rear.jpg" />
+        </Component>
+        <Component Id="image.rear.tif" Guid="{F5F0896E-801D-4475-BD3A-6E02F4BFAA7A}">
+          <File Id="image.rear.tif" KeyPath="yes" Source="$(var.DipsSource)\Ranger\image.rear.tif" />
+        </Component>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <ComponentRef Id="DIPS402.INI" />
+      <ComponentRef Id="MapShareDrive.bat" />
+      <ComponentRef Id="RbaPodSettings.Ini" />
+      <ComponentRef Id="rototype.pkt" />
+      <ComponentRef Id="rtp_phys.pkt" />
+      <ComponentRef Id="TIMETEST.OUT" />
+      <ComponentRef Id="UnmapShareDrive.bat" />
+      <ComponentRef Id="__35258237_6492_4A9E_A7F5_6DDDAAE3C105_" />
+      <ComponentRef Id="__38D65792_C2E9_4A4C_B52F_0203DF8B049B_" />
+      <ComponentRef Id="__34C5522A_C02C_4F2D_BABD_A29AB4477F16_" />
+      <ComponentRef Id="__B8BE92F3_CD46_4433_81C1_AACFE915669F_" />
+      <ComponentRef Id="__6FB075B3_7CA8_4E02_AB80_EEDA929B0119_" />
+      <ComponentRef Id="__48AE715E_C2E2_4024_9A89_16D56B9D141C_" />
+      <ComponentRef Id="__9B76691D_4F74_4E81_AEDA_35767DAC5DA7_" />
+      <ComponentRef Id="__414D9B1C_17F7_4A32_9E22_343945BB587A_" />
+      <ComponentRef Id="__525478CE_9BBD_457E_A6A1_7B20AB3F09FC_" />
+      <ComponentRef Id="__CB1DAAC4_706B_4F33_91AD_112173443831_" />
+      <ComponentRef Id="image.front.jpg" />
+      <ComponentRef Id="image.front.tif" />
+      <ComponentRef Id="image.rear.jpg" />
+      <ComponentRef Id="image.rear.tif" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

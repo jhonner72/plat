@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.groupparameter/nab_read_adjustment_letters_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_read_adjustment_letters_grp.parameter" categoryId="com.emc.ide.groupparameter" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="installparameter:GroupParameter" name="nab_read_adjustment_letters_grp" description="Accessor to Parameterized ACL" defaultValue="nab_read_adjustment_letters_grp"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

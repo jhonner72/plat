@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Runtime.Ucf</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.Impl.AssemblySettings">
+            <exclude/>
+            <summary>
+            This class reads settings delcared in Emc.Documentum.FS.Runtime.Ucf.dll.config
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.AssemblySettings.#ctor">
+            <summary>
+            Creates a instance of AssemblySettings, no input parameters required.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.Runtime.Ucf.Impl.AssemblySettings.Item(System.String)">
+            <summary>
+            Reads the value of the setting associated with the provided key
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.Impl.IUcfConnector">
+            <exclude/>
+            <summary>
+            Interface that abstracts out a UCF connection, no matter whether it's established through a local UCF installer or 
+            downloaded UCF installer.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.IUcfConnector.GetUcfId">
+            <summary>
+            Returns the UCF session id associated with this connection.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.IUcfConnector.UpdateRequired">
+            <summary>
+            Check whether current UCF client needs to upgrade
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.IUcfConnector.Install">
+            <summary>
+            Install UCF client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.DownloadedUcfConnector.#ctor(System.Uri,System.String)">
+            <summary>
+            This class downloads a remote UcfInstaller.dll, verifies the signer of the assembly as well as its integrity. 
+            If all security tests pass, it allows creating UCF sessions. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.DownloadedUcfConnector.GetUcfId">
+            <summary>
+            Returns the UCF session id associated with this connection.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.DownloadedUcfConnector.UpdateRequired">
+            <summary>
+            Check whether current UCF client needs to upgrade
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.DownloadedUcfConnector.Install">
+            <summary>
+            Install UCF client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.Impl.LocalUcfConnector">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.LocalUcfConnector.#ctor(System.Uri,System.String)">
+            <summary>
+            This class uses a local instance of UcfInstaller.dll to create UCF sessions. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.LocalUcfConnector.GetUcfId">
+            <summary>
+            Returns the UCF session id associated with this connection.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.LocalUcfConnector.UpdateRequired">
+            <summary>
+            Check whether current UCF client needs to upgrade
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.LocalUcfConnector.Install">
+            <summary>
+            Install UCF client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfDynamicLoader">
+            <exclude/>
+            <summary>
+            This class loads a UcfInstaller.dll dynamically and wrap its functions.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfDynamicLoader.#ctor(System.Uri,System.String)">
+            <summary>
+            Constructor.  
+            </summary>
+            <param name="ucfServer">UCF Server URI to create the initial UCF connection</param>
+            <param name="cookiesHeader">Cookies header passed in for UCF call</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfDynamicLoader.GetUcfId">
+            <summary>
+            Returns the UCF session id associated with this connection.
+            </summary>
+            <returns>The UCF session Id.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfDynamicLoader.UpdateRequired">
+            <summary>
+            Check whether current UCF client needs to upgrade
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfDynamicLoader.Install">
+            <summary>
+            Install UCF client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfIdRetrieverFactory">
+            <exclude/>
+            <summary>
+            Factory to create UCF connections.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfIdRetrieverFactory.GetRetriever(System.Uri,System.String)">
+            <summary>
+            Returns a UCF connection instance. If the runtime can locate a UCF installer in the classpath it would use it. 
+            Otherwise it would try to download one from the target UCF server.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.Runtime.Ucf.Impl.UcfIdRetrieverFactory.Instance">
+            <summary>
+            Static instance of the factory.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.UcfConnection">
+            <summary>
+             This is an umbrella class to encapsulate the complexity of establishing an UCF connection to to
+             a UCF server. 
+             
+             If successfully established, the underlying HTTP session and UCF ids can be retrieved through
+             designated getter methods.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.#ctor(System.Uri)">
+            <summary>
+            Creates a UCF connection to the specified server. The HTTP session id and DFS target deployment id is
+            retrieved by the UcfConnection class.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.#ctor(System.Uri,System.Collections.Generic.ICollection{System.Net.Cookie},System.String)">
+            <summary>
+            Creates a UCF connection to the specified server based on the provided HTTP cookies / HTTP session id 
+            and DFS target service deployment id.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.#ctor(System.Uri,System.String,System.String)">
+            <summary>
+            Creates a UCF connection to the specified server based on the provided HTTP cookies / HTTP session id 
+            and DFS target service deployment id.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.GetUcfId">
+            <summary>
+            Returns the UCF session id associated with this connection.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.GetJsessionId">
+            <summary>
+            Returns the HTTP session id associated with this connection.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.GetDeploymentId">
+            <summary>
+            Returns the DFS target deployment id (unique per service deployment) associated with this connetion. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfConnection.GetCookies">
+            <summary>
+            Returns the HTTP cookies associated with this connection.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.Runtime.Ucf.UcfException">
+            <summary>
+            Exception which is raised when UCF content transfer errors occurs.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates exception
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfException.#ctor(System.String)">
+            <summary>
+            Creates exception
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Runtime.Ucf.UcfException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the UcfException class with serialized data.
+            </summary>
+            <param name="info"> The System.Runtime.Serialization.SerializationInfo that holds the serialized
+                object data about the exception being thrown</param>
+            <param name="context">The System.Runtime.Serialization.StreamingContext that contains contextual
+                information about the source or destination.</param>
+        </member>
+    </members>
+</doc>

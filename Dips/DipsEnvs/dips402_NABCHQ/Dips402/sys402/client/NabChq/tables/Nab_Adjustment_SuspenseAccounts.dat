@@ -1,0 +1,27 @@
+//Contains BankCode,BSB,AccountNumber,CreditTrancode,DebitTrancode
+//List of Banks and their respective Suspense BSB and Account Numbers
+NAB,083029,899919946,65,26,NAB
+BQL,124001,10457814,95, ,Bank Of Queensland
+MBL,182222,052666104,99,26,Macquarie Bank Ltd
+CMB,21XXXX,999999912,50,44,JP Morgan Chase Bank N.A
+ARA,917101,818965036,99,26,Arab Bank Ltd
+CTICON,242200,999999915,95,33,Citigroup Consumer Ltd
+CTICOR,242200,9002260007,95,33,Citigroup Corporate Ltd
+BBL,633110,012110000,69,9,Bendigo & Adelaide Bank Ltd (633 BBL)
+ADL,610101,999999915,99,26,Bendigo & Adelaide Bank Ltd (610 ADL)
+HBA,343001,999999912,99,26,HSBC Bank Australia Ltd
+HSB,343001,999999912,99,26,HongKong & Shanghai
+LBA,942101,827998,99,26,Bank of Sydney
+ICB,819002,110000502,99,26,Industrial & Commercial Bank of China
+OCB,452001,810605036,99,26,Overseas-Chinese Banking Corp
+RBS,952868,000045500,95,26,Royal Bank of Scotland	
+CUS,082172,017685165,95,26,Cuscal Ltd
+MCU,313140,999999915,95,26,Mecu
+QTM,514000,999999915,99,26,QT Mutual Bank	
+CFC,512000,999999915,95,26,Community First CU Ltd
+ADC,642000,999999915,95,26,Australian Defence CU
+TCU,812000,999999915,95,26,Teachers Credit Union
+CAP,813999,999999915,99,26,Capricornia Credit Union
+CUA,814999,999999915,99,26,Credit Union Australia Limited
+PCU,815000,999999915,95,26,Police Department CU
+WCU,817002,999999915,95,26,Warwick Credit Union

@@ -1,0 +1,15 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-08-20		Shraddha		Created
+
+//_______________________________________________________________________
+// Column 1 = Processing State
+// Column 2 = Collecting BSB
+//
+NSW,082037
+VIC,083029
+TAS,083029
+QLD,084024
+SA,085384
+NT,085384
+WA,086038

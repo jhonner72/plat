@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:method="http://documentum.emc.com/artifact/12012007/method" urn="urn:com.emc.ide.artifact.method/UserSynchMethod?name=UserSynchMethod" categoryId="com.emc.ide.artifact.method" implicitlyCreated="true">
+  <dataModel xsi:type="method:Method" objectName="UserSynchMethod" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" methodVerb="UserSynch" launchDirect="true" traceLaunch="true" runAsServer="true" useMethodServer="true" successStatus="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_method?name=dm_method#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

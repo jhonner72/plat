@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/UpdateVouchersInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/UpdateVouchersInformation" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="UpdateVouchersInformationResponse" type="tns:UpdateVouchersInformationResponse"/>
+	<xs:complexType name="UpdateVouchersInformationResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="UpdateVouchersInformationRequest" type="tns:UpdateVouchersInformationRequest"/>
+	<xs:complexType name="UpdateVouchersInformationRequest">
+		<xs:annotation>
+			<xs:documentation>Pass all the vouchers with the metadata to update in voucher table.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Pass all the vouchers with the metadata to update in voucher table.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherTransferStatusFrom" type="v:VoucherStatus" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="voucherTransferStatusTo" type="v:VoucherStatus" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

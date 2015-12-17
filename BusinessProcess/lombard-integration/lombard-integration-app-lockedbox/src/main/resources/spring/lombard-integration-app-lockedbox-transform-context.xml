@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <bean id="transform.lombard.service.outclearings.lockedbox.checkduplicatefile.request" class="com.fujixerox.aus.integration.transform.outclearings.CheckDuplicateFileRequestTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.checkduplicatefile.response" class="com.fujixerox.aus.integration.transform.outclearings.CheckDuplicateFileResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.unpackagevoucher.request" class="com.fujixerox.aus.integration.transform.outclearings.UnpackageBatchVoucherTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.recognisecourtesyamount.request" class="com.fujixerox.aus.integration.transform.outclearings.RecogniseBatchCourtesyAmountTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.recognisecourtesyamount.response" class="com.fujixerox.aus.integration.transform.outclearings.RecogniseBatchCourtesyAmountResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.validatecodeline.request" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchCodelineTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.validatecodeline.response" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchCodelineResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.correctcodeline.request" class="com.fujixerox.aus.integration.transform.outclearings.CorrectBatchCodelineTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.validatetransaction.request" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchTransactionTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.validatetransaction.response" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchTransactionResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.correcttransaction.request" class="com.fujixerox.aus.integration.transform.outclearings.CorrectBatchTransactionTransform" />
+    <bean id="transform.lombard.service.outclearings.lockedbox.storebatchvoucher.request" class="com.fujixerox.aus.integration.transform.outclearings.StoreBatchVoucherTransform"
+          p:metadataStore-ref="metadataStore"
+            />
+    <bean id="transform.lombard.service.outclearings.lockedboxprocess.checkduplicatefile.incident" class="com.fujixerox.aus.integration.transform.integration.DuplicateFileIncidentTransform" />
+</beans>

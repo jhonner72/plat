@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/StoreBatchVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/StoreBatchVoucher" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="StoreVoucherResponse" type="tns:StoreVoucherResponse"/>
+	<xs:complexType name="StoreVoucherResponse">
+		<xs:sequence>
+			<xs:element name="storedStatus" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherResponse" type="tns:StoreBatchVoucherResponse"/>
+	<xs:complexType name="StoreBatchVoucherResponse">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:StoreVoucherResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreVoucherRequest" type="tns:StoreVoucherRequest"/>
+	<xs:complexType name="StoreVoucherRequest">
+		<xs:sequence>
+			<xs:element name="voucher" type="vtns:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher object</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="manualRepair" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valid values are 1 or 0. Show "1" if one or more fields have been manually entered or altered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The agent/bank that the outclearing files should go.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unprocessable" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>true if voucher was not able to process</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="suspectFraudFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction Link Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="listingPageNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Listing Page Number used for balancing the transaction. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inactiveFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherRequest" type="tns:StoreBatchVoucherRequest"/>
+	<xs:complexType name="StoreBatchVoucherRequest">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:StoreVoucherRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingState" type="vtns:StateEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Batch processing date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Batch number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanning device Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Bank who is collecting the cheques</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier represents the unique Id in the system and same as the name of the batch.zip = JobIdentifier.zip
+batch.xml = JobIdentifier.xml
+Please refer the naming convention page on Wiki Page
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="source" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="batchAccountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The account number on the batch header:
+
+Institution lodgement – Over the Counter (Unencoded) - 0000000012
+Express Business Deposit (will include cash) - 0000000014
+Express Cheque Deposits (cheque only) - 0000000016
+Locked Box - 0000000017
+Institution lodgement at TPC (Unencoded) - 0000000019
+Institution lodgement at TPC (Proof of Deposit) - 0000000022
+Set sub-trancode field where the input trancode is equal to 94, 95 or 96. - 0000000027
+Institution lodgement at TPC (encoded) - 0000000029
+BUNDLE TYPE 6 (Inclearings) - 0000000040
+BUNDLE TYPE 7 (Outclearings – customer encoded) Not used for Fiserv processing - 0000000041
+Australia Post – GIRO Post - 0000000080
+Australia Post – Business Post - 0000000081
+RESERVED – COGHLANS (Ian Jones) - 0000000088</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

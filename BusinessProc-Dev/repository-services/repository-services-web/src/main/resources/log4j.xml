@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/repository_services.log"/>
+        <param name="Threshold" value="DEBUG"/>
+
+        <!-- Rollover at midnight each day -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <!--  param name="ConversionPattern" value="#+#%d{yyyy-MM-dd HH-mm-ss-SSS}:%-5p:%X{contextId}:%X{requestId}:%F:%L:%m#-#%n"/ -->
+            <param name="ConversionPattern" value="#+#%d{yyyy-MM-dd HH-mm-ss-SSS}:%-5p:%F:%L:%t:%m#-#%n"/>
+        </layout>
+    </appender>
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="com.fujixerox.aus" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <root>
+        <priority value ="info" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</log4j:configuration>

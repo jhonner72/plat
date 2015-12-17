@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Metadata" xmlns:tns="http://lombard.aus.fujixerox.com/common/Metadata" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="BusinessCalendar" type="tns:BusinessCalendar"/>
+	<xs:complexType name="BusinessCalendar">
+		<xs:sequence>
+			<xs:element name="businessDay" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="closedDays" type="xs:date" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>A list of upcoming dates for when the next processing day will be skipped.
+It is assumed that saturdays and sundays will be ignored implicitly.
+Hence this will be typically national public holidays.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inEndOfDay" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>End of day processing has commenced.
+
+Effect processes such as voucher processing that will make all received vouchers as pending. So that they are not included in the EOD VIF and IE.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isEndOfMonth" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isEndOfWeek" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgencyBankDetails" type="tns:AgencyBankDetails"/>
+	<xs:complexType name="AgencyBankDetails">
+		<xs:sequence>
+			<xs:element name="bsb" type="xs:string" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ledger bsb that starts with this digit belongs to the agency bank.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fileType" type="tns:ImageExchangeType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="fourCharactersEndpointName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="includeCredit" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicate if the credit vouchers have to go into the Agency Bank xml</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndpoint" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Agency 3 characters name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ImageExchangeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AgencyXML"/>
+			<xs:enumeration value="Cuscal"/>
+			<xs:enumeration value="ImageExchange"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ValueInstructionFile" type="tns:ValueInstructionFile"/>
+	<xs:complexType name="ValueInstructionFile">
+		<xs:sequence>
+			<xs:element name="ackFileWaitPeriod" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The wait period on the VIF acknowledgement file</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="maxQuerySize" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The maximum number of vouchers to be extracted per target.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordTypeCodes" type="tns:RecordTypeCode" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identify the type of record:
+C = cash slips
+D = detail records
+M = detail merchant transactions
+P = credit card deposits
+S = summary total merchant transactions
+V = other bank value transactions</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="slaPeriod" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The SLA period for the entire VIF process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targets" type="tns:ValueInstructionFileWorkTypeGroup" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgencyBanksImageExchange" type="tns:AgencyBanksImageExchange"/>
+	<xs:complexType name="AgencyBanksImageExchange">
+		<xs:sequence>
+			<xs:element name="agencyBanks" type="tns:AgencyBankDetails" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Indicate if this agency bank requires the credit vouchers in their Agency XML.
+
+true = Include credit vouchers
+false = Do not include credit vouchers </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StateOrdinal" type="tns:StateOrdinal"/>
+	<xs:complexType name="StateOrdinal">
+		<xs:sequence>
+			<xs:element name="ordinal" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="state" type="vtns:StateEnum" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssetManagement" type="tns:AssetManagement"/>
+	<xs:complexType name="AssetManagement">
+		<xs:sequence>
+			<xs:element name="assetRetention" type="tns:AssetRetention" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EndOfDayWorkflow" type="tns:EndOfDayWorkflow"/>
+	<xs:complexType name="EndOfDayWorkflow">
+		<xs:sequence>
+			<xs:element name="workflowName" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssetRetention" type="tns:AssetRetention"/>
+	<xs:complexType name="AssetRetention">
+		<xs:sequence>
+			<xs:element name="assetName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="retentionDays" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ForValueReference" type="tns:ForValueReference"/>
+	<xs:complexType name="ForValueReference">
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="bsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="documentType" type="vtns:DocumentTypeEnumStore" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValueInstructionFileTarget" type="tns:ValueInstructionFileTarget"/>
+	<xs:complexType name="ValueInstructionFileTarget">
+		<xs:annotation>
+			<xs:documentation>The state and the workType define a unique target for the value instruction file.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="batchType" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field contains the customer code for LBOX and Corporate processing. Blank in other scenarios.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Required for the header field for VIF.
+
+If NAB processing:
+Nab Proof  BSB
+
+NSW  082-082
+VIC    083-340
+QLD   084-014
+SA      085-015
+WA     086-016
+
+If BQL processing:
+BQL Proof  BSB
+124-001</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>If NAB processing:
+NAB AMS BSB
+
+NSW  082-037
+VIC    083-029
+QLD   084-024
+SA      085-384
+WA     086-038
+
+If BQL processing:
+BQL Day 2 BSB
+124-001</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="financialInstitution" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>NAB or BQL. This value is set based on capture BSB</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="state" type="vtns:StateEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>One 
+VIC
+QLD
+NSW
+SA
+WA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TierOneBanksImageExchange" type="tns:TierOneBanksImageExchange"/>
+	<xs:complexType name="TierOneBanksImageExchange">
+		<xs:sequence>
+			<xs:element name="maxQuerySize" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The maximum number of vouchers that may be extracted at any one time for any one endpoint.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndpoint" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ImageExchange" type="tns:ImageExchange"/>
+	<xs:complexType name="ImageExchange">
+		<xs:sequence>
+			<xs:element name="targetEndpoint" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecordTypeCode" type="tns:RecordTypeCode"/>
+	<xs:complexType name="RecordTypeCode">
+		<xs:annotation>
+			<xs:documentation>Identify the type of record:
+C = cash slips
+D = detail records
+M = detail merchant transactions (Now obsolete)
+P = credit card deposits
+S = summary total merchant transactions (Now obsolete)
+V = other bank value transactions (Now obsolete)
+
+The reference data for this field is as follows:
+    "recordTypeCodes": [
+        {
+            "code": "C",
+            "transactionCode": "111"
+        },
+        {
+            "code": "C",
+            "transactionCode": "222"
+        },
+        {
+            "code": "P",
+            "bsb": "377872"
+        },
+        {
+            "code": "P",
+            "bsb": "377873"
+        },
+        {
+            "code": "P",
+            "bsb": "377874"
+        },
+        {
+            "code": "P",
+            "bsb": "377876"
+        },
+        {
+            "code": "P",
+            "bsb": "377877"
+        },
+        {
+            "code": "P",
+            "bsb": "377878"
+        },
+        {
+            "code": "P",
+            "bsb": "401795"
+        },
+        {
+            "code": "P",
+            "bsb": "430327"
+        },
+        {
+            "code": "P",
+            "bsb": "430328"
+        },
+        {
+            "code": "P",
+            "bsb": "430329"
+        },
+        {
+            "code": "P",
+            "bsb": "430330"
+        },
+        {
+            "code": "P",
+            "bsb": "433687"
+        },
+        {
+            "code": "P",
+            "bsb": "455701"
+        },
+        {
+            "code": "P",
+            "bsb": "455702"
+        },
+        {
+            "code": "P",
+            "bsb": "455703"
+        },
+        {
+            "code": "P",
+            "bsb": "455704"
+        },
+        {
+            "code": "P",
+            "bsb": "471527"
+        },
+        {
+            "code": "P",
+            "bsb": "490292"
+        },
+        {
+            "code": "P",
+            "bsb": "490289"
+        },
+        {
+            "code": "P",
+            "bsb": "531355"
+        },
+        {
+            "code": "P",
+            "bsb": "531356"
+        },
+        {
+            "code": "P",
+            "bsb": "531357"
+        },
+        {
+            "code": "P",
+            "bsb": "531358"
+        },
+        {
+            "code": "P",
+            "bsb": "531359"
+        },
+        {
+            "code": "P",
+            "bsb": "552061"
+        },
+        {
+            "code": "P",
+            "bsb": "552270"
+        },
+        {
+            "code": "P",
+            "bsb": "555001"
+        },
+        {
+            "code": "P",
+            "bsb": "556733"
+        },
+        {
+            "code": "P",
+            "bsb": "558388"
+        }
+
+Default to "D" if none of the code matches the reference data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="bsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValueInstructionFileWorkTypeGroup" type="tns:ValueInstructionFileWorkTypeGroup"/>
+	<xs:complexType name="ValueInstructionFileWorkTypeGroup">
+		<xs:sequence>
+			<xs:element name="targetDetails" type="tns:ValueInstructionFileTarget" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StateOrdinals" type="tns:StateOrdinals"/>
+	<xs:complexType name="StateOrdinals">
+		<xs:annotation>
+			<xs:documentation>Each processing state has an associated ordinal number. This metadata provides the mapping.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="stateOrdinal" type="tns:StateOrdinal" minOccurs="1" maxOccurs="5"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SchedulerDetails" type="tns:SchedulerDetails"/>
+	<xs:complexType name="SchedulerDetails">
+		<xs:choice>
+			<xs:element name="batchType" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Customer code </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endOfWeekDelay" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The number of minutes to delay if the current day is end of week</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique process name to start in scheduler</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recurringInterval" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Interval, in minutes, for recurring BPM processes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="startTime" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Start time for the process in HH:MM:SS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="workType" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>workType for the process</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="SchedulerReference" type="tns:SchedulerReference"/>
+	<xs:complexType name="SchedulerReference">
+		<xs:sequence>
+			<xs:element name="scheduler" type="tns:SchedulerDetails" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

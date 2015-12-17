@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inquiry sectoken="%s" sessionname="{1}" applname="{2}" images="N" mediastatus="Y" count="N" maxrows="0">
+  <object name="vipro"/>
+  <resultfield name="PostingDate"/>
+  <resultfield name="Classification"/>
+  <resultfield name="Amount"/>
+  <resultfield name="DIN"/>
+  <resultfield name="CollectingBSB"/>
+  <resultfield name="EAD"/>
+  <resultfield name="Serial"/>
+  <resultfield name="BankBranch"/>
+  <resultfield name="AccountNumber"/>
+  <resultfield name="TranCode"/>
+  <resultfield name="EntryNumber"/>
+  <resultfield name="BatchNumber"/>
+  <resultfield name="BoxNumber"/>
+  <resultfield name="TrayNumber"/>
+  <resultfield name="BalSeqForDeposit"/>
+  <resultfield name="BalancedSequence"/>
+  <resultfield name="UpdateFlag"/>
+  <resultfield name="AdjReasonCode"/>
+  <resultfield name="Site"/>
+  <resultfield name="objecthandle"/>
+  <resultfield name="StateNumber"/>
+  <sortfield name="PostingDate" order="DSC"/>
+  <indexquery queryname="nab-vol2-search">
+    <qfield name="PostingDate" low="20130601" high="20130609"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+    <qfield name="EntryNumber" low="94" high="97"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+    <qfield name="BatchNumber" low="1233" high="1233"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+    <qfield name="BalSeqForDeposit" low="7" high="7"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+    <qfield name="Site" low="3" high="3"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+  </indexquery>
+</inquiry>

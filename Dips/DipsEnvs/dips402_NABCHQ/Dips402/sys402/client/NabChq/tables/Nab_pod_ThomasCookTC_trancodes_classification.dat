@@ -1,0 +1,6 @@
+//NDEX OPTION: Alpha
+// Format : Trancode,Voucher Class
+00,TCTC
+09,TCTC
+9,TCTC
+E,TCTC	//Empty TranCode

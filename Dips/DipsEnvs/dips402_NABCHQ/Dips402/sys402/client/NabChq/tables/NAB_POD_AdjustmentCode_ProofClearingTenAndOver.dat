@@ -1,0 +1,17 @@
+//Indexing Sort Option: ALPHA
+//Description: Adjustment Codes for Proof Clearing with Amounts Ten and Over (Applies to Adjustment Code TOPCL in NAB_POD_AdjustmentRules Table)
+//Modification History:
+//2015-06-04        Dinesh      Created
+//_______________________________________________________________________
+//Display String,AdjustmentCode, Adjustment Description
+52 - Error in Additions,52,Error in Additions
+53 - Total Brought Forward Incorrectly,53,Total Brought Forward Incorrectly					
+54 - Cash Received differs to Customer Listings,54,Cash Received differs to Customer Listings
+55 - Chq/Merch Env incorrectly listed,55,Chq/Merch Env incorrectly listed
+56 - Chq/Merch Env listed/not received,56,Chq/Merch Env listed/not received
+57 - Multi Credit and correct Credit unknown,57,Multi Credit and correct Credit unknown
+58 - No Deposit Listing Received,58,No Deposit Listing Received
+59 - Foreign Item unable to process,59,Foreign Item unable to process
+60 - Other,60,Other
+76 - Chq/Merch Env rcvd not listed,76,Chq/Merch Env rcvd not listed
+77 - No credit received,77,No credit received

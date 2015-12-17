@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ImageExchangeVoucherDetails" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ietns="http://lombard.aus.fujixerox.com/outclearings/ImageExchangeVoucherDetails" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="ImageExchangeVoucher" type="ietns:ImageExchangeVoucher"/>
+	<xs:complexType name="ImageExchangeVoucher">
+		<xs:sequence>
+			<xs:element name="voucher" type="vtns:Voucher" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherBatch" type="vtns:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherProcess" type="vtns:VoucherProcess" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>D - Indicator that image is delayed
+N - Indicator that image has been sent on a delayed basis
+or Blank</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ImageExchangeStatusEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Completed">
+				<xs:annotation>
+					<xs:documentation>The voucher has been transmitted successfully via Image Exchange</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Error">
+				<xs:annotation>
+					<xs:documentation>The voucher has error during Image Exchange transmission.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="InProgress">
+				<xs:annotation>
+					<xs:documentation>The voucher is currently being transmitted via Image Exchange process</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="New">
+				<xs:annotation>
+					<xs:documentation>The voucher is ready for Image Exchange processing</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="imageExchangeBatchFileStatusEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Completed">
+				<xs:annotation>
+					<xs:documentation>Completed: The file has  been transmitted.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Created">
+				<xs:annotation>
+					<xs:documentation>Created: The file has been created</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Error">
+				<xs:annotation>
+					<xs:documentation>Error: The file has failed transmission.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

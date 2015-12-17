@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.groupparameter/fxa_doc_retrieval_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_doc_retrieval_grp.parameter" categoryId="com.emc.ide.groupparameter" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="installparameter:GroupParameter" name="fxa_doc_retrieval_grp" description="fxa_doc_retrieval_grp" defaultValue="fxa_doc_retrieval_grp"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,34 @@
+100001,Batch Open %1 Operator = %2 Job = %3
+100002,Batch Close %1
+100003,Batch Cancel %1
+100004,Batch Release %1
+100005,Batch Suspend %1
+100006,Batch Suspend %1 Cancelled/Failed
+100010,%1 MICR LINE = %2
+100011,%1 Blank Scanline Selected
+100020,%1 %2 %3 Deleted
+100030,%1 %2 %3 Undeleted
+100040,%1 %2 %3 Reprocessed
+100050,%1 %2 Online Correction
+100060,%1 %2 %3 FV_IND = %4
+100070,%1 %2 %3 %4
+100080,%1 Transaction DBT = %2 CRT = %3
+100090,%1 Item Rejected
+100100,Transaction %1 Deleted - Trace No. Range = %2 %3
+100200,Transaction %1 Undeleted
+100300,%1 sent to pending queue.  ICR success rate of %2 percentage < specified %3 threshold.
+101000,EAD = %1
+102000,Serial = %1
+103000,BSB = %1
+104000,Account = %1
+105000,Trancode = %1
+106000,Amount = %1 %2
+110000,%1 %2 %3 Force Balance Selected
+120000,%1 %2 %3 Incomplete Account Selected - %4 %5
+130000,%1 Force Override Selected - EAD = %2, Serial = %3, BSB = %4, Account = %5, Trancode = %6
+140000,%1 Create Non Physical CSA Item Selected - Account = %2, Amount = %3
+150000,%1 Suspend CSA Item Selected
+160000,%1 Force Override Credit Selected - Account = %2
+170000,%1 Suspense Account Selected - EAD = %2, Serial = %3, BSB = %4, Account = %5, Trancode = %6, Suspense BSB = %7, Suspense Account = %8
+
+

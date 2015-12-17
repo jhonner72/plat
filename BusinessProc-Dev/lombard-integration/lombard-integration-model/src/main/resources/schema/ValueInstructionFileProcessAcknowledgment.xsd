@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ProcessValueInstructionFileAcknowledgment" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ProcessValueInstructionFileAcknowledgment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ProcessValueInstructionFileAcknowledgmentRequest" type="tns:ProcessValueInstructionFileAcknowledgmentRequest"/>
+	<xs:complexType name="ProcessValueInstructionFileAcknowledgmentRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The location of extracted vouchers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProcessValueInstructionFileAcknowledgmentResponse" type="tns:ProcessValueInstructionFileAcknowledgmentResponse"/>
+	<xs:complexType name="ProcessValueInstructionFileAcknowledgmentResponse">
+		<xs:sequence>
+			<xs:element name="ackStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>True when the acknowledgement from NAB is success.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="errorCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The error code supplied by the NAB when ackSuccess is false.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

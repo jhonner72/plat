@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>ReportStore</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@processdate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Date</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>usp_rpt_FXA_OCR_vs_Human</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Machine_ID">
+        <DataField>Machine ID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Items_through_CAR">
+        <DataField>Items through CAR</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Total_Vouchers_Processed">
+        <DataField>Total Vouchers Processed</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Pass_CAR_confidence_level">
+        <DataField>Pass CAR confidence level</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Fail_CAR_confidence_level">
+        <DataField>Fail CAR confidence level</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Items_Captured">
+        <DataField>Items Captured</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Pass_initial_codeline_validation">
+        <DataField>Pass initial codeline validation</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Fail_initial_codeline_validation">
+        <DataField>Fail initial codeline validation</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Transactions_through_auto_balancing">
+        <DataField>Transactions through auto balancing</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Pass_auto_balancing">
+        <DataField>Pass auto balancing</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Failed_auto_balancing">
+        <DataField>Failed auto balancing</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

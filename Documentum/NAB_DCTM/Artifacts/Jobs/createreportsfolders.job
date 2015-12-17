@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/CreateDishonoursFolders?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Jobs/createreportsfolders.job" categoryId="com.emc.ide.artifact.job">
+  <dataModel xsi:type="job:Job" objectName="CreateReportsFolders" runMode="Week(s)">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <methodName href="urn:com.emc.ide.artifact.method/CreateFolders?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Methods/createfolders.method#//@dataModel"/>
+    <methodArguments>-folderObjType &quot;fxa_folder&quot;</methodArguments>
+    <methodArguments>-docbase_name &quot;NAB&quot;</methodArguments>
+    <methodArguments>-user_name &quot;NABDctm_SVC_D&quot;</methodArguments>
+    <methodArguments>-daysFolderPathsSepByComma &quot;/Reports&quot;</methodArguments>
+    <methodArguments>-folderACLName &quot;fxa_report_acl&quot;</methodArguments>
+    <methodArguments>-folderACLDomain &quot;dm_dbo&quot;</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

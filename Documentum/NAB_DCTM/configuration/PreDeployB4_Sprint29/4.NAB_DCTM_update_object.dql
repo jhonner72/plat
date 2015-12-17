@@ -1,0 +1,2 @@
+update dm_registered object set owner_table_permit=15 set world_table_permit = 7 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name ='fxa_voucher_audit'
+GO

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inquiry sectoken="%s" sessionname="{1}" applname="{2}" images="Y" mediastatus="N" maxrows="1">
+  <resultfield name="objecthandle"/>
+  <sortfield name="objecthandle" order="ASC"/>
+  <indexquery queryname="3">
+    <qfield name="objecthandle" 
+		    low="date='20130607' object='vipro' Udk='0114052702210000104484' RSN='0'" 
+		    high="date='20130608' object='vipro' Udk='0114052702210000104484' RSN='0'"/>
+    <ProcessContent>
+      <GetTiffPage Pages="1">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+      <GetTiffPage Pages="2">
+        <TranscodeContent RequestedContentDescriptor="PNG"/>
+      </GetTiffPage>
+    </ProcessContent>
+  </indexquery>
+</inquiry>

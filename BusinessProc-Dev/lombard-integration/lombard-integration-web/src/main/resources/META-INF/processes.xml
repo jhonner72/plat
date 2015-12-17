@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process-application
+        xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <process-archive name="lombard">
+        <process-engine>default</process-engine>
+        <resource>bpmn/asset_management.bpmn</resource>
+        <resource>bpmn/clear_adjustments.bpmn</resource>
+        <resource>bpmn/generate_adjustment_letters.bpmn</resource>
+        <resource>bpmn/close_pools.bpmn</resource>
+        <resource>bpmn/day2_workflow.bpmn</resource>
+        <resource>bpmn/end_of_day_final.bpmn</resource>
+        <resource>bpmn/end_of_day_initial.bpmn</resource>
+        <resource>bpmn/for_value_vouchers_processing.bpmn</resource>
+        <resource>bpmn/image_exchange_file.bpmn</resource>
+        <resource>bpmn/image_exchange_agency_banks.bpmn</resource>
+        <resource>bpmn/image_exchange_tier_one_banks.bpmn</resource>
+        <resource>bpmn/inward_image_exchange_file.bpmn</resource>
+        <resource>bpmn/progress_pending_vouchers.bpmn</resource>
+        <resource>bpmn/reporting.bpmn</resource>
+        <resource>bpmn/value_instruction_file_states.bpmn</resource>
+        <resource>bpmn/value_instruction_file.bpmn</resource>
+        <resource>bpmn/voucher_processing.bpmn</resource>
+        <resource>bpmn/listing_processing.bpmn</resource>
+        <resource>bpmn/surplus_items_processing.bpmn</resource>
+        <resource>bpmn/australia_post.bpmn</resource>
+        <properties>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">true</property>
+        </properties>
+    </process-archive>
+
+</process-application>

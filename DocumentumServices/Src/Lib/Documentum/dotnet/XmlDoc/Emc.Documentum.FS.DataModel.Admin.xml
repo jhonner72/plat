@@ -1,0 +1,771 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.DataModel.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.ClientCapabilities">
+            <summary>
+            Specifies the values that are valid for the client capability field of a repository user. The repository does ignore
+            this roles and these roles will be used by client applications such as webtop
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ClientCapabilities.CONSUMER">
+            <summary>
+            An user with Consumer capability comes with a basic prvileges of checkin and checkout of a repository object
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ClientCapabilities.CONTRIBUTOR">
+             <summary>
+             An user with Contributer capabilty comes with a privileges of creating objects, deleting objects etc apart from
+            inhering consumer privilges
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ClientCapabilities.COORDINATOR">
+             <summary>
+             An user with coordinator capability can participate in workflow related activities apart from inheriting
+            contributer privileges
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ClientCapabilities.SYSTEM_ADMINISTRATOR">
+             <summary>
+             An user with system administrator capabilities get an access to administrator node of webtop apart from inhering
+            coordinators privileges
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.CustomUser">
+            <summary>
+            Custom user class
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.User">
+            <summary>
+            User represents a dm_user object in the repository.It is a subtype of Principal
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.Principal">
+            <summary>
+            This is the base class for the User and Group classes. This has the adminobjectidentity of a user/group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Principal.Identity">
+            <summary>
+            Object Identity associated with the principal
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity)">
+            <summary>
+            
+            Constructs User object with an identity
+            </summary>
+            <param name="identity">User object Identity</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.UserPrivilege">
+            <summary>
+            User privilege
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.UserPrivilegeSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.ClientCapabilities">
+            <summary>
+            Client Capability
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.ClientCapabilitiesSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.ExtendedPrivilege">
+            <summary>
+            Extended privilege for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.ExtendedPrivilegeSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.RestrictedFolderIds">
+            <summary>
+            Restricted folder Id's for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.DefaultFolderPath">
+            <summary>
+            Default folder path for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.AliasSetId">
+            <summary>
+            Alias set Id for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.UserState">
+            <summary>
+            user state
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.UserStateSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.FailedAuthenticationFeature">
+            <summary>
+            tells whether failed authentication feature iks turned on or not
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.FailedAuthenticationFeatureSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.Name">
+            <summary>
+            User Display Name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.LoginName">
+            <summary>
+            login name of the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.LoginDomain">
+            <summary>
+            Login domain for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.OSName">
+            <summary>
+            OS name for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.OSDomain">
+            <summary>
+            Os domain for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.DefaultGroupName">
+            <summary>
+            Default group name for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.Address">
+            <summary>
+            Mail Address for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.DbName">
+            <summary>
+            Database Name for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.HomeDocbase">
+            <summary>
+            Home docbase for the user
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.AclName">
+            <summary>
+            default acl name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.AdminName">
+            <summary>
+            Administrators Name
+            </summary>
+            
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.UserSource">
+            <summary>
+            Describes the user source
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.IsGloballyManaged">
+            <summary>
+            Tells if the user is global user or not. 
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.IsWorkflowDisabled">
+            <summary>
+            Tells if user can be part for workflow related activities
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.User.Password">
+            <summary>
+            Password for the user
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.CustomUser.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.CustomUser.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity)">
+            <summary>
+            Constructs custom user object using admin object identity
+            </summary>
+            <param name="identity">Admin Object Identity for custom user</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.CustomUser.Properties">
+            <summary>
+            Custom properties
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.CustomUser.Type">
+            <summary>
+            The custom object type of the custom user
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges">
+            <summary>
+            specifies the extended privileges of a repository user, used typically for audit
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.NONE">
+            <summary>
+            User has no special extended privileges
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.CONFIG_AUDIT">
+            <summary>
+            User can execute methods to start and stop auditing
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.PURGE_AUDIT">
+            <summary>
+             User can remove audit trail entried from the repository
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.CONFIG_PURGE_AUDIT">
+             <summary>
+             User can execute methods to start and stop auditing as well as
+            remove entries from the repository
+            remove entries from the repository
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.VIEW_AUDIT">
+            <summary>
+            User can view audit trail entries
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.CONFIG_VIEW_AUDIT">
+             <summary>
+             User can execute methods to start and stop auditing
+            and also view audit trail entries
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.VIEW_PURGE_AUDIT">
+            <summary>
+            User can view audit trail entries and
+              remove them from repository
+              </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.ExtendedPrivileges.CONFIG_VIEW_PURGE_AUDIT">
+             <summary>
+             User can execute methods to start and stop auditing
+            and view audit trail entries and
+            remove them from repository
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.FailedAuthenticationFeature">
+            <summary>
+            Lists possible values for the FailedAuthentication Feature for an user
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.FailedAuthenticationFeature.ENABLE">
+            <summary>
+            Enables the failed authentication feature for the user
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.FailedAuthenticationFeature.DISABLE">
+            <summary>
+            Disables the failed authentication feature for the user
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group">
+            <summary>
+            Group represents a dm_group object in the repository. Group can have members(users and groups). Group is a subtype of Principal
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity)">
+            <summary>
+            Constructor which constructs group object using admin object Identity
+            </summary>
+            <param name="identity">Identity</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.AliasSetId">
+            <summary>
+            Alias set field
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.NativeRoomId">
+            <summary>
+            Native room Id for group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.DirectoryId">
+            <summary>
+            Directory Id for the group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.MemberInfos">
+            <summary>
+            Member infos
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.Name">
+            <summary>
+            Group Name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.DisplayName">
+            <summary>
+            Group Display name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.Address">
+            <summary>
+            Address field of the group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.OwnerName">
+            <summary>
+            Group owners name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.GroupClass">
+            <summary>
+            Class of the group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.AdminName">
+            <summary>
+            Group Administrators name
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.GlobalUniqueId">
+            <summary>
+            Global unique Id of the group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsPrivate">
+            <summary>
+            Tells if the group is private
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsProtected">
+            <summary>
+            Tells if the group is protected
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsDynamic">
+            <summary>
+            Tells if the group is dynamic
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsDynamicDefault">
+             <summary>
+             Tells if the group is dynamic by default
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsGloballyManaged">
+            <summary>
+            Tells if the group is globally managed
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.IsModuleOnly">
+            <summary>
+            Tells if group is module only
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.Group.GroupSource">
+            <summary>
+            Source of Group
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo">
+            <summary>
+            This class contains details about the member name and member type(user/group). Member here implies member of a Group
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.#ctor">
+            <summary>
+            Default Constructor for MemberInfo
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.MemberType">
+            <summary>
+            Type of the member if it is user or group
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.MemberTypeSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.OperationType">
+            <summary>
+            Type of the operation if it is Add or removal of a member
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.OperationTypeSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberInfo.MemberName">
+            <summary>
+            Name of the member
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberType">
+            <summary>
+            Lists the possible type of members the group can hold
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberType.USER">
+            <summary>
+            Idenitfies the member to be a user
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.MemberType.GROUP">
+            <summary>
+            Identifies the member to be a group
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.OperationType">
+            <summary>
+            Lists possible operations on the members of a group.Typically the members can be added to or removed from a group
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.OperationType.REMOVE_MEMBERS">
+            <summary>
+            Used to denote members are removed
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.OperationType.ADD_MEMBERS">
+            <summary>
+             Used to denote members are added
+             </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage">
+            <summary>
+            PrincipalPackage is the container for Principals which can either be of type User(CustomUser) or Group. This class is used in get,create and update  operations
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage.#ctor(Emc.Documentum.FS.DataModel.Admin.UserManagement.Principal)">
+            <summary>
+            Constructs a principle package using a principal
+            </summary>
+            <param name="principal">principal object</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage.AddPrincipal(Emc.Documentum.FS.DataModel.Admin.UserManagement.Principal)">
+            <summary>
+            Adds a principal to principal package
+            </summary>
+            <param name="principal">principal object to be added to collection</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage.Principals">
+            <summary>
+            List of the principals in the package
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage.RepositoryName">
+            <summary>
+            Repository Name
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges">
+            <summary>
+            specifies the valid user privileges for a repository user.
+            These privileges control the permissions of auser to perform actions on any docbase objects
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.NONE">
+            <summary>
+             User has no special privilege
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_TYPE">
+            <summary>
+             UUser can create object types
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_CABINET">
+            <summary>
+             User can create cabinets
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_TYPE_CABINET">
+            <summary>
+             User can create object type as well as cabinets 
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_GROUP">
+            <summary>
+             ser can create groups
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_GROUP_TYPE">
+            <summary>
+             User can create groups as well as object type
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_GROUP_CABINET">
+            <summary>
+             User can create group group as well as cabinet
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.CREATE_GROUP_TYPE_CABINET">
+            <summary>
+             User can create group, type and cabinet
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.SYSADMIN">
+            <summary>
+             Sysadmins can perform a bunch of actions, please refer to Content Server Administration Guide for more details
+             </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserPrivileges.SUPERUSER">
+            <summary>
+             Superusers can do additional actions what Sysadmins can do, Please refer to Content Server Adminstration guide for more details
+             </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserStates">
+            <summary> 
+            Specifies the various states of a repository user.Based on the state, the user is allowed to login to the docbase
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserStates.ACTIVE">
+            <summary>
+            User can login to the repository
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserStates.INACTIVE">
+            <summary>
+            User cannot login to the repository 
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserStates.LOCKED">
+            <summary>
+             User is locked
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.UserManagement.UserStates.LOCKED_INACTIVE">
+            <summary>
+             User is both locked and inactive
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus">
+             <summary>
+            RepositoryDormancyStatus represents the name and status of a repository, in
+            case ServerFilter is SPECIFIED_SERVERS, also includes a list of
+            ServerDormancyStatus.
+             </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus.RepositoryName">
+            repository name.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus.RepositoryStatus">
+            repository status.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus.RepositoryStatusSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.RepositoryDormancyStatus.ServerStatuses">
+            a list of ServerDormancyStatus in case ServerFilter is SPECIFIED_SERVERS.
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerDormancyStatus">
+            <summary>
+            ServerDormancyStatus represents the name and status of a server in a repository.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerDormancyStatus.SeverName">
+            server name.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerDormancyStatus.ServerStatus">
+            server dormancy status.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerDormancyStatus.ServerStatusSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerFilter">
+            ServerFilter enum sets whether operations in virtual deployment service would
+            operation on repository level or only on specified servers.
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerFilter.SPECIFIED_SERVERS">
+            The operations in virtual deployment service would take effect on the servers specified in ServerOptions.
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerFilter.REPOSITORY">
+            The operations in virtual deployment service would take effect on repository level.
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions">
+            <summary>
+            ServerOptions sets whether operations in virtual deployment service would 
+            operation on repository level or only on specified servers. In latter case,
+            specify a list of server names that you want to change.
+            </summary>
+            <summary>
+             ServerOptions sets whether operations in virtual deployment service would
+             operation on repository level or only on specified servers. In latter case, 
+             specify a list of server names that you want to change..
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions.#ctor">
+            <summary>
+            Default Constructor.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions.#ctor(Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerFilter,System.Collections.Generic.List{System.String})">
+            <summary>
+            Constructor.
+            <param name="serverFilter">whether operations in virtual deployment service would
+            operation on repository level or only on specified servers.</param>
+            <param name="servers">List of server names, it only take effects when ServerFilter
+            is SPECIFIED_SERVERS; when ServerFilter is REPOSITORY, thi will be ignored.</param>
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions.Servers">
+            List of server names, it only take effects when ServerFilter is 
+            SPECIFIED_SERVERS; when ServerFilter is REPOSITORY, this will be ignored.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions.ServerFilter">
+            serverFilter, whether operations in virtual deployment service
+            would operation on repository level or only on specified servers.
+            This is a required property.
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.VirtualDeployment.ServerOptions.ServerFilterSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity">
+             <summary>
+             The AdminObjectIdentity prvoides the functionality to uniquely identify the an Administration Object in the
+             repository like stores,users,groups,storageplocies etc. As most of the admin types are uniquely identified by object
+             name the AdminObjectIdentity provides the capability of specifying the identity by either ObjectId or ObjectKey,
+            Qualification
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.#ctor(System.String)">
+            <summary>
+            Construct Admin Object Identity using Repository Name
+            </summary>
+            <param name="repositoryName">The Name of the repository</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.#ctor(System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value">The value of the identity</param>
+            <param name="repositoryName">The repository Name</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.GetValueAsString">
+            <summary>
+            Returns the string representation of the value. Should not be confused with ObjectIdentity.ToString() and
+            ObjectIdentity.Value.ToString();
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.Item">
+            <summary>
+            Identity value
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.ValueType">
+            <summary>
+            Admin Object Identity type
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.ValueTypeSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity.RepositoryName">
+            <summary>
+            Repository Name
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet">
+             <summary>
+             AdminObjectIdentitySet holds the collection of AdminObjectIdentities, will be generally consumed by get and delete API of all Admin Services
+            to fetch the information about more than one repository object
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity)">
+            <summary>
+            Constructs an AdminObjectIdentitySet with a single identity<seealso cref="T:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity"/>
+            </summary>
+            <param name="identity">Identity object</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet.AddIdentity(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentity)">
+            <summary>
+            Adds an Identity to AdminObjectIdentitySet
+            </summary>
+            <param name="identity">The identity of user or group</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet.Identities">
+            <summary>
+            List of identities
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet.IsInternal">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentityType">
+            <remarks>
+            Identifies type of AdminIdentity. Each and AdminObject can be uniquely identified by either object name or objectId
+            in the repository
+            </remarks>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentityType.UNDEFINED">
+            <remarks>
+            Undefined type
+            </remarks>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentityType.OBJECT_ID">
+             <remarks>
+             Object ID represents some proprietary mechanism (public URI structure is not required) for combining object and
+             repository identification. For example in Documentum, ObjectId would be a string based identifier with position
+            encoded repository ID. This repository ID can be uniquely mapped to a repositoryName. Object ID would normally
+            require persistent object schema helpers to identify repository name
+            </remarks>  
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentityType.OBJECT_KEY">
+            <remarks>
+             A set of properties that together (logical AND) compose the object identity.  Note that PropertyBasedIdentity
+            also contains repositoryName necessary to globally identify the object
+            </remarks>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentityType.QUALIFICATION">
+            <remarks>
+            Qualfication object is used, containing qualification expression as well as repository name. For example,
+            Qualification object can contain a portion of a DQL query without "select &lt;attr_list&gt;" clause. Constraint:
+            If Qualification is used as object identity it must be resolvable to a unique object
+            </remarks>
+        </member>
+    </members>
+</doc>

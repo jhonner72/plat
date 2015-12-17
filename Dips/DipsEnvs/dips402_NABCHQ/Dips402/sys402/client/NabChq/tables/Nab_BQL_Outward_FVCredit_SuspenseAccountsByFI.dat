@@ -1,0 +1,15 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-07-06        Dinesh      Created
+//_______________________________________________________________________
+// Column 1 = Bank Number
+// Column 2 = Suspense BSB
+// Column 3 = Suspense Account
+// Column 4 = Bank Name
+//
+ANZ,124001,10457814,ANZ
+RBA,124001,10457814,Reserve Bank of Australia
+WBC,124001,10457814,Westpac Banking Corporation
+CBA,124002,10457814,Commonwealth Bank of Australia
+BQL,124001,10457814,Bank of Queensland
+NAB,124001,10457814,National Australia Bank

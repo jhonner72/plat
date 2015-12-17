@@ -1,0 +1,33 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-08-28        Dinesh      Modified (Suspense account for Bank of Sydney changed to 942101 from 942202)
+//Format
+// Column 1: Suspense BSB - Account
+// Column 2: Debit Trancode
+// Column 3: Credit Trancode
+// Column 4: Voucher Type i.e. Empty/Cheque/Draft
+// Column 5: Mnemonic
+// Column 6: Bank Name.
+082039-999999912,44,99,Draft,NAB,NAB - AUD Drafts
+124001-10457814,,95,,BQL,Bank of Queensland
+182222-052951001,26,99,,MQG,Macquarie Bank Ltd
+917101-818965036,26,99,,ARB,Arab Bank Ltd N.A
+633106-999999915,26,99,,NAB,Bendigo & Adelaide Bank Ltd
+610101-999999915,26,99,,NAB,Bendigo & Adelaide Bank Ltd
+343001-999999912,26,99,,NAB,HSBC Bank Australia Ltd
+942101-827998,26,99,,NAB,Bank of Sydney
+819002-110000502,26,99,,NAB,Industrial & Commercial Bank of China
+452001-810605036,26,99,,NAB,Overseas-Chinese Banking Group
+952868-000045500,26,95,,NAB,Royal Bank of Scotland
+082172-017685165,26,95,,CUS,Cuscal Ltd
+313140-999999915,26,95,,CUS,MECU
+514000-999999915,26,99,,CUS,QT Mutual Bank
+512000-999999915,26,95,,CUS,Community First CU Ltd
+642000-999999915,26,95,,CUS,Australian Defence CU
+812000-999999915,26,95,,CUS,Teachers Credit Union
+813999-999999915,26,99,,CUS,Capricornia Credit Union
+814999-999999915,26,99,,CUS,Credit Union Australia Ltd
+815000-999999915,26,95,,CUS,Police Department CU
+817002-999999915,26,95,,CUS,Warwick Credit Union
+242200-9002260007,33,95,,CIT,CIT,Citigroup Ltd N.A
+242200-999999915,33,95,,CIT,CIT,Citigroup Ltd N.A

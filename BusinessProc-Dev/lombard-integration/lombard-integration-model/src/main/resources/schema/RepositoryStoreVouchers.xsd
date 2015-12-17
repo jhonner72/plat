@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" xmlns:r="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="VoucherAudit" type="tns:VoucherAudit"/>
+	<xs:complexType name="VoucherAudit">
+		<xs:sequence>
+			<xs:element name="attribute_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="operator" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="post_value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="pre_value" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="subject_area" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreVoucher" type="tns:StoreVoucher"/>
+	<xs:complexType name="StoreVoucher">
+		<xs:annotation>
+			<xs:documentation>When vouchers are stored by writing to file.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="transferEndpoints" type="tns:TransferEndpoint" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherResponse" type="tns:StoreBatchVoucherResponse"/>
+	<xs:complexType name="StoreBatchVoucherResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="TransferEndpoint" type="tns:TransferEndpoint"/>
+	<xs:complexType name="TransferEndpoint">
+		<xs:sequence>
+			<xs:element name="documentExchange" type="r:DocumentExchangeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="endpoint" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="filename" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="transmissionDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="voucherStatus" type="v:VoucherStatus" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherRequest" type="tns:StoreBatchVoucherRequest"/>
+	<xs:complexType name="StoreBatchVoucherRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="origin" type="r:DocumentExchangeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The location from which the vouchers were received from.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="receipt" type="r:ReceivedFile" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucher" type="tns:StoreVoucherRequest" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher Batch object</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreVoucherResponse" type="tns:StoreVoucherResponse"/>
+	<xs:complexType name="StoreVoucherResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="StoreVoucherRequest" type="tns:StoreVoucherRequest"/>
+	<xs:complexType name="StoreVoucherRequest">
+		<xs:sequence>
+			<xs:element name="transferEndpoints" type="tns:TransferEndpoint" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="voucher" type="v:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher object</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherAudit" type="tns:VoucherAudit" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="voucherProcess" type="v:VoucherProcess" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

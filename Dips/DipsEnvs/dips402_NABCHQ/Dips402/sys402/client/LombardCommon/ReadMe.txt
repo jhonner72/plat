@@ -1,0 +1,1 @@
+LombardCommon is a spaceholder pseudo client folder for any functionality shared between Fxa Lombard clients such as NAB & RBA

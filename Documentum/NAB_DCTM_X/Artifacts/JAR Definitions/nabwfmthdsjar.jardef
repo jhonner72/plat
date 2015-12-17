@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.jardef/nabwfmthdsjar?language_code=&amp;location=%2FSystem%2FApplications%2FNAB_DCTM_X&amp;name=nabwfmthdsjar&amp;type=dmc_jar" categoryId="com.emc.ide.artifact.jardef.jardef">
+  <dataModel xsi:type="jardef:JarDef" objectName="nabwfmthdsjar" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="jar" specialApp="" languageCode="" category="" controllingApp="" status="" jar_type="Implementation" minimum_vm_version="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_jar?name=dmc_jar#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <aspectName href="urn:com.emc.ide.artifact.aspectmoduledef/com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor?aspectname=com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor#//@dataModel"/>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/jar?name=jar#//@dataModel"/>
+    <resource xsi:type="jardef:JarResource" jarFile="//@contentStore/@contentEntries.0/@value"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="nabwfmthdsjar.jar">
+      <value filePath="content/51/-1191891951/nabwfmthdsjar.jar"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

@@ -1,0 +1,252 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"pools",
+    "predicate":"close",
+    "status":0
+  },
+  "activityCount": 3,
+  "activities": [
+    {
+      "activityName": "lombard.service.outclearings.getreleaseditems",
+      "exchangeName": "lombard.service.repository.getvouchersinformation",
+      "routingKey": "NCST",
+      "queueName": "lombard.service.outclearings.getreleaseditems",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "imageRequired": "NONE",
+        "imageResponseType": "FILE",
+        "metadataResponseType":"MESSAGE",
+        "searchCriteria": [
+          {
+            "name":"voucherProcess.releaseFlag",
+            "value":"release"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationResponse",
+        "voucherInformation" : [
+          {
+            "voucher" : {
+              "accountNumber": "12345678",
+              "amount": "2001",
+              "auxDom": "333",
+              "bsbNumber": "000999",
+              "documentReferenceNumber": "000111223",
+              "documentType": "Cr",
+              "extraAuxDom": "999",
+              "processingDate": "2015-01-01",
+              "transactionCode": "22"
+            },
+            "voucherProcess" : {
+              "manualRepair": 1,
+              "unprocessable": false,
+              "transactionLinkNumber": 111,
+              "presentationMode": "E"
+            },
+            "voucherBatch" : {
+              "workType": "NABCHQ_INWARDFV",
+              "scannedBatchNumber": "111",
+              "processingState": "VIC",
+              "captureBsb": "083340",
+              "collectingBank": "083029"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.generatevouchers",
+      "exchangeName": "lombard.service.outclearings.generatevouchers",
+      "routingKey": "NCST",
+      "queueName": "lombard.service.outclearings.generatevouchers",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.generatecorrespondingvoucher.GenerateCorrespondingVoucherRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "generateVoucher" : [
+          {
+            "voucher" : {
+              "accountNumber": "12345678",
+              "amount": "2001",
+              "auxDom": "333",
+              "bsbNumber": "000999",
+              "documentReferenceNumber": "000111223",
+              "documentType": "Cr",
+              "extraAuxDom": "999",
+              "processingDate": "2015-01-01",
+              "transactionCode": "22"
+            },
+            "voucherProcess" : {
+              "manualRepair": 1,
+              "unprocessable": false,
+              "transactionLinkNumber": 111,
+              "presentationMode": "E"
+            },
+            "voucherBatch" : {
+              "workType": "NABCHQ_INWARDFV",
+              "scannedBatchNumber": "111",
+              "processingState": "VIC",
+              "captureBsb": "083340",
+              "collectingBank": "083029"
+            }
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.generatecorrespondingvoucher.GenerateCorrespondingVoucherResponse",
+        "generatedVoucher" : [
+          {
+            "voucher" : {
+              "accountNumber": "12345678",
+              "amount": "2001",
+              "auxDom": "333",
+              "bsbNumber": "000999",
+              "documentReferenceNumber": "000111223",
+              "documentType": "CRT",
+              "extraAuxDom": "999",
+              "processingDate": "2015-01-01",
+              "transactionCode": "22"
+            },
+            "voucherProcess" : {
+              "manualRepair": 1,
+              "unprocessable": false,
+              "transactionLinkNumber": 111,
+              "presentationMode": "E"
+            },
+            "voucherBatch" : {
+              "workType": "NABCHQ_INWARDFV",
+              "scannedBatchNumber": "111",
+              "processingState": "VIC",
+              "captureBsb": "083340",
+              "collectingBank": "083029"
+            }
+          }
+        ],
+        "updateVoucher" : [
+          {
+            "voucher" : {
+              "accountNumber": "12345678",
+              "amount": "2001",
+              "auxDom": "333",
+              "bsbNumber": "000999",
+              "documentReferenceNumber": "000111224",
+              "documentType": "DBT",
+              "extraAuxDom": "999",
+              "processingDate": "2015-01-01",
+              "transactionCode": "22"
+            },
+            "voucherProcess" : {
+              "manualRepair": 1,
+              "unprocessable": false,
+              "transactionLinkNumber": 111,
+              "presentationMode": "E"
+            },
+            "voucherBatch" : {
+              "workType": "NABCHQ_INWARDFV",
+              "scannedBatchNumber": "111",
+              "processingState": "VIC",
+              "captureBsb": "083340",
+              "collectingBank": "083029"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.associategeneratedvouchers",
+      "exchangeName": "lombard.service.outclearings.associategeneratedvouchers",
+      "routingKey": "NCST",
+      "queueName": "lombard.service.outclearings.associategeneratedvouchers",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.associatevouchers.AssociateVouchersRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "insertVouchers": [
+          {
+            "voucher" : {
+              "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111223",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2015-01-01",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111,
+                "presentationMode": "E",
+                "releaseFlag": "release_sent"
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "scannedBatchNumber": "111",
+                "processingState": "VIC",
+                "captureBsb": "083340",
+                "collectingBank": "083029"
+              }
+            },
+            "transferEndpoints": [
+              {
+                "endpoint" : "083340",
+                "documentExchange": "VIF_OUTBOUND",
+                "voucherStatus": "New"
+              },
+              {
+                "endpoint" : "083340",
+                "documentExchange": "VIF_ACK_OUTBOUND",
+                "voucherStatus": "New"
+              }
+            ]
+          }
+        ],
+        "updateVouchers": [
+          {
+            "voucher" : {
+              "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111224",
+                "documentType": "Dr",
+                "extraAuxDom": "999",
+                "processingDate": "2015-01-01",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111,
+                "presentationMode": "E",
+                "releaseFlag": "release_sent"
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "scannedBatchNumber": "111",
+                "processingState": "VIC",
+                "captureBsb": "083340",
+                "collectingBank": "083029"
+              }
+            },
+            "transferEndpoints": [
+              {
+                "voucherStatus": "New"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.associatevouchers.AssociateVouchersResponse"
+      }
+    }
+  ]
+}

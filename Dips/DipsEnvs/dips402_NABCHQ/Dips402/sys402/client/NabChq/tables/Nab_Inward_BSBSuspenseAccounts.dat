@@ -1,0 +1,31 @@
+//Indexing Sort Option: ALPHA
+//Description: List of BSB and Suspense Accounts
+//Modification History:
+//2015-06-12        Dinesh      Created
+//_______________________________________________________________________
+//BSB_Account
+083029_823300223,				//NAB
+082039_999999912,				//NAB (AUD Drafts)
+182222_052951001,				//Macquarie Bank Ltd
+212817_000999117,				//JP Morgan Chase Bank N.A
+917101_818965036,				//Arab Bank Ltd
+242200_999999915,				//Citigroup Ltd
+633000_109729871,				//Bendigo & Adelaide Bank Ltd (633 BBL)
+633000_153357066,				//Bendigo & Adelaide Bank Ltd (610 – ADL)
+342089_910640001,				//HSBC Bank Australia Ltd
+342089_910640001,				//HongKong & Shanghai
+942202_827998,					//Bank of Sydney
+819002_110000502,				//Industrial & Commercial Bank of China
+452001_810605036,				//Overseas-Chinese Banking Corp
+952868_000045500,				//Royal Bank of Scotland	
+124001_10457814,				//Bank Of Queensland
+082172_017685165,				//Cuscal Ltd
+082172_017685165,				//Mecu
+082172_017685165,				//QT Mutual Bank	
+082172_017685165,				//Community First CU Ltd
+082172_017685165,				//Australian Defence CU
+082172_017685165,				//Teachers Credit Union
+082172_017685165,				//Capricornia Credit Union
+082172_017685165,				//Credit Union Australia Limited
+082172_017685165,				//Police Department CU
+082172_017685165,				//Warwick Credit Union

@@ -1,0 +1,30 @@
+{
+	"imageRequired": "NONE",
+	"jobIdentifier": "NPAH-a4dea1c6-5cbb-4c68-92a4-fc09b51f8e57",
+	"voucherInformation": {
+		"voucher": {
+			"processingDate": "2015-08-13"
+		},
+		"voucherProcess": {
+			"adjustedFlag": false,
+			"adjustmentLetterRequired": false,
+			"adjustmentReasonCode": 0,
+			"adjustmentsOnHold": true,
+			"highValueFlag": false,
+			"inactiveFlag": false,
+			"manualRepair": 0,
+			"micrFlag": false,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false
+		}
+	}
+}

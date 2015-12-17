@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Vif.Service", "Lombard.Vif.Service\Lombard.Vif.Service.csproj", "{90425299-D552-472B-AE9E-453DF6CD079A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Vif.IntegrationTests", "Lombard.Vif.IntegrationTests\Lombard.Vif.IntegrationTests.csproj", "{38CFE419-5C6C-4551-BA86-BCF9F8532AA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Vif.UnitTests", "Lombard.Vif.UnitTests\Lombard.Vif.UnitTests.csproj", "{3656E6E4-105D-4A0D-938E-800847E48553}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Lombard.Vif.UnitTests\\Lombard.Vif.UnitTests.csproj
+		SccProjectName1 = Lombard.Vif.UnitTests
+		SccLocalPath1 = Lombard.Vif.UnitTests
+		SccProjectUniqueName2 = Lombard.Vif.IntegrationTests\\Lombard.Vif.IntegrationTests.csproj
+		SccProjectName2 = Lombard.Vif.IntegrationTests
+		SccLocalPath2 = Lombard.Vif.IntegrationTests
+		SccProjectUniqueName3 = Lombard.Vif.Service\\Lombard.Vif.Service.csproj
+		SccProjectName3 = Lombard.Vif.Service
+		SccLocalPath3 = Lombard.Vif.Service
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90425299-D552-472B-AE9E-453DF6CD079A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90425299-D552-472B-AE9E-453DF6CD079A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90425299-D552-472B-AE9E-453DF6CD079A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90425299-D552-472B-AE9E-453DF6CD079A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38CFE419-5C6C-4551-BA86-BCF9F8532AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38CFE419-5C6C-4551-BA86-BCF9F8532AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38CFE419-5C6C-4551-BA86-BCF9F8532AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38CFE419-5C6C-4551-BA86-BCF9F8532AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3656E6E4-105D-4A0D-938E-800847E48553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3656E6E4-105D-4A0D-938E-800847E48553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3656E6E4-105D-4A0D-938E-800847E48553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3656E6E4-105D-4A0D-938E-800847E48553}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

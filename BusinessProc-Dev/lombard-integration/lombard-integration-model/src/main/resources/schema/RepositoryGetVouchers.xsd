@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/GetVouchers" xmlns:tns="http://lombard.aus.fujixerox.com/repository/GetVouchers" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rc="http://lombard.aus.fujixerox.com/repository/Common" xmlns:r="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:annotation>
+		<xs:documentation>This is the common GetVouchers service that retrieves Voucher Information based on the voucher transfer table.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/repository/Common" schemaLocation="RepositoryCommon.xsd"/>
+	<xs:element name="GetVouchersResponse" type="tns:GetVouchersResponse"/>
+	<xs:complexType name="GetVouchersResponse">
+		<xs:sequence>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherCount" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The number of vouchers extracted.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vouchersRemaining" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>It is expected that there are more vouchers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GetVouchersRequest" type="tns:GetVouchersRequest"/>
+	<xs:complexType name="GetVouchersRequest">
+		<xs:sequence>
+			<xs:element name="imageType" type="rc:ImageType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The format of images to extract</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The jobIdentifier is used to determine which file location to put the images in.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="maxReturnSize" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates the maximum number of records to return. When set to -1, all records are to be returned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minReturnSize" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates the minimum number of records to return. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="queryLinkType" type="tns:QueryLinkTypeEnum" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field is used to determine whether the query should be searching/sorting by Transaction Link Number or Customer Link Number.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The endpoint to query against. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherStatusFrom" type="v:VoucherStatus" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extract vouchers of this status.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherStatusTo" type="v:VoucherStatus" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Once extracted set the transfer status to this value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherTransfer" type="r:DocumentExchangeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The purpose of the transfer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="QueryLinkTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CUSTOMER_LINK_NUMBER"/>
+			<xs:enumeration value="TRANSACTION_LINK_NUMBER"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

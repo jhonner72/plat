@@ -1,0 +1,32 @@
+//Indexing Sort Option: ALPHA
+//Description: Adjustment Rules
+//Modification History:
+//2015-06-03        Dinesh      Created
+//2015-08-12        Dinesh      Modified (changed DTC and CTC as per modified list)
+//2015-08-19        Dinesh      Modified (AdjustmentLetter modified- Only NAB Tier1 gets adjustment letters)
+//_______________________________________________________________________
+//Note: Convert Date to Current Date in the calling Tree
+//AdjustmentTypeCode,AmountAdjustmentType (AV-Adjustment Value, AD- Alter Deposit),EAD,AUD,BSB,ACCOUNT,DTC(Debit TranCode),CTC(Credit TranCode),Letter Required
+UTALL,AV,,,083029,899916251,21,62,0					//Under Ten, ALL Account
+
+
+TOPCL,AV,,,083029,899919946,26,65,0					//Ten and Over, Proof Clearing Account
+
+TOCSP,AV,,,083029,899919946,26,65,0					//Ten and Over, Cash Slip Account
+
+TONAB,AD,,,,,,,1									//Ten and Over, NAB All Other Account
+TOOTH,AD,,,,,,,0									//Ten and Over, All Other Account
+
+AAML1,AV,,,082401,558302825,26,65,0					//All Amount, MLC Account-1
+AAML2,AV,,,082401,562337094,26,65,0					//All Amount, MLC Account-2
+
+TOMBL,AV,,,182222,052666104,26,99,0					//Ten and Over, MBL Account
+
+TOCT1,AV,1602,333333,242200,000518423,33,95,0		//Ten and Over, CITI Bank Account-1
+TOCT2,AV,,333333,242200,9522580004,33,95,0			//Ten and Over, CITI Bank Account-2
+
+UTBQL,AV,,DDMMYY,124001,10457814,,95,0				//Under Ten, BQL Bank Account
+TOBQL,AV,,DDMMYY,124001,10457814,,95,0				//Ten and Over, BQL Bank Account
+
+MULTI,AV,,,,,,,0
+NBFI,AD,,,,,,,0									//NBFI credit - Posting record needed? AV creates; AD does not

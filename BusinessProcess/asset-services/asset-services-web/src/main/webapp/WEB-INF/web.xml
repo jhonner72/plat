@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+    <resource-env-ref>
+        <description>Documentum Docbroker host</description>
+        <resource-env-ref-name>docbroker/host</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.String</resource-env-ref-type>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <description>Documentum Docbroker port</description>
+        <resource-env-ref-name>docbroker/port</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.Integer</resource-env-ref-type>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <description>Documentum docbase name</description>
+        <resource-env-ref-name>documentum/docbase</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.String</resource-env-ref-type>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <description>Whether is required to honour sectoken</description>
+        <resource-env-ref-name>imagemark/authenticationrequired</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.Boolean</resource-env-ref-type>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <description>Documentum username</description>
+        <resource-env-ref-name>documentum/username</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.String</resource-env-ref-type>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <description>Documentum password</description>
+        <resource-env-ref-name>documentum/password</resource-env-ref-name>
+        <resource-env-ref-type>java.lang.String</resource-env-ref-type>
+    </resource-env-ref>
+
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+        <init-param>
+            <param-name>modRewriteConf</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ThreadLocalCacheFilter</filter-name>
+        <filter-class>com.fujixerox.aus.asset.web.filter.ThreadLocalCacheFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ThreadLocalCacheFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>com.fujixerox.aus.asset.web.resource.DfcCleanupListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/application-context.xml</param-value>
+    </context-param>
+
+    <servlet>
+        <display-name>Camel Http Transport Servlet</display-name>
+        <servlet-name>CamelServlet</servlet-name>
+        <servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CamelServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

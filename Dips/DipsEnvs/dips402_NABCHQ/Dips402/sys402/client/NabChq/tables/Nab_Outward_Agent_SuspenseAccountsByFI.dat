@@ -1,0 +1,41 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-08-28        Dinesh      Modified (Suspense account for Bank of Sydney changed to 942101 from 942202)
+//Format
+// Column 1: Mnemonic
+// Column 2: Bank Name
+// Column 3: Suspense BSB
+// Column 4: Suspense Account
+// Column 5: Debit Trancode
+// Column 6: Credit Trancode
+// Column 7: Voucher Type i.e. Empty/Cheque/Draft
+// Column 8: Additional Lookup Table Name where Suspense BSB is not specified
+// Column 9: Lookup Table Type
+NAB,National Australia Bank,,999999971,44,99,,Nab_SuspenseAccountRange,Range
+NAB,National Australia Bank - AUD Drafts,082039,999999912,44,99,Draft,,
+BQL,Bank of Queensland,124001,10457814,,95,,,
+MQG,Macquarie Bank Ltd,182222,052951001,26,99,,,
+JPM,JP Morgan Chase N.A With Agent Number,,999999912,44,60,,Nab_Outward_JPMorgan_SuspenseAccountRange1,Range
+JPM,JP Morgan Chase N.A Without Agent Number,,999999912,44,50,,Nab_Outward_JPMorgan_SuspenseAccountRange2,Range
+JPM,JP Morgan Chase N.A For Interbank,,999999912,44,99,,Nab_Outward_JPMorgan_SuspenseAccountRange3,Range
+ARB,Arab Bank Ltd N.A,917101,818965036,26,99,,,
+CIT,Citigroup Ltd N.A (24X-000 to 24X-099),,9002260007,33,95,,Nab_Outward_Citi_SuspenseAccountRange1,Range
+CIT,Citigroup Ltd N.A (24X-100 to 24X-999),,999999915,33,95,,Nab_Outward_Citi_SuspenseAccountRange2,Range
+NAB,Bendigo Bank Ltd,633106,999999915,26,99,,,
+NAB,Adelaide Bank Ltd,610101,999999915,26,99,,,
+NAB,HSBC Bank Australia Ltd,343001,999999912,26,99,,,
+NAB,HongKong Shanghai,343001,999999912,26,99,,,
+NAB,Bank of Sydney,942101,827998,26,99,,,
+NAB,Industrial & Commercial Bank of China,819002,110000502,26,99,,,
+NAB,Overseas-Chinese Banking Group,452001,810605036,26,99,,,
+NAB,Royal Bank of Scotland,952868,000045500,26,95,,,
+CUS,CUSCAL Ltd,082172,017685165,26,95,,,
+CUS,MECU,313140,999999915,26,95,,,
+CUS,QT Mutual Bank,514000,999999915,26,99,,,
+CUS,Community First CU Ltd,512000,999999915,26,95,,,
+CUS,Australian Defence CU,642000,999999915,26,95,,,
+CUS,Teachers Credit Union,812000,999999915,26,95,,,
+CUS,Capricornia Credit Union,813999,999999915,26,99,,,
+CUS,Credit Union Australia Ltd,814999,999999915,26,99,,,
+CUS,Police Department CU,815000,999999915,26,95,,,
+CUS,Warwick Credit Union,817002,999999915,26,95,,,

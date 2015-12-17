@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="updatePendingVouchersRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse"
+          p:serviceName="lombard.service.outclearings.updatependingvouchers"
+          p:exchangeName="lombard.service.repository.getvouchers"
+          p:routingKey="NPPV"
+          p:queueName="lombard.service.outclearings.updatependingvouchers"
+          p:consumeType=""
+          p:subject="pendingvouchers"
+          p:predicate="update"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

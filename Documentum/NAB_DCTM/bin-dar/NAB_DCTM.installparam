@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
+  <parameter key="fxa_version_grp" value="" defaultValue="fxa_version_grp"/>
+  <parameter key="nab_read_report_grp" value="" defaultValue="nab_read_report_grp"/>
+  <parameter key="Dar Install Folder" value="" defaultValue="/System/Applications/NAB_DCTM"/>
+  <parameter key="fxa_image_importer_grp" value="" defaultValue="fxa_image_importer_grp"/>
+  <parameter key="NABDC_SQL_D" value="" defaultValue="dm_dbo"/>
+  <parameter key="EncryptedFileStore" value="" defaultValue="encrypted_filestore_01"/>
+  <parameter key="nab_read_voucher_grp" value="" defaultValue="nab_read_voucher_grp"/>
+  <parameter key="fxa_write_grp" value="" defaultValue="fxa_write_grp"/>
+  <parameter key="nab_all_group" value="" defaultValue="nab_all_group"/>
+  <parameter key="fxa_all_group" value="" defaultValue="fxa_all_group"/>
+  <parameter key="fxa_admin" value="" defaultValue="fxa_admin"/>
+  <parameter key="filestore_01" value="" defaultValue="filestore_01"/>
+  <parameter key="fxa_read_grp" value="" defaultValue="fxa_read_grp"/>
+</installparam:InputFile>

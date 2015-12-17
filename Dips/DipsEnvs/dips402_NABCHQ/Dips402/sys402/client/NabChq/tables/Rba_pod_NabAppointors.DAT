@@ -1,0 +1,22 @@
+// National Bank Appointers 
+// Changed by: A. Lee
+// Date Last Changed: 14/04/00
+// Columns = Bank number, Bank name, 
+// Changed by: T Seymour
+// Date Last Changed:08:06 31/07/2000
+// Reason: Bank 31 ABO deleted
+182,MBL,  // Macquarie Bank 
+183,MBL,  // Macquarie Bank
+184,MBL,  // Macquarie Bank
+185,MBL,  // Macquarie Bank
+186,MBL,  // Macquarie Bank
+187,MBL,  // Macquarie Bank
+342,HBA,  // HongKong Bank Aust
+343,HBA,  // HongKong Bank Aust
+344,HBA,  // HongKong Bank Aust
+345,HBA,  // HongKong Bank Aust
+346,HBA,  // HongKong Bank Aust
+347,HBA,  // HongKong Bank Aust
+915,JPM,  // JP Morgan Chase
+917,ARA,  // Arab Bank
+942,LBA,  // Beirut Hellenic Bank Ltd

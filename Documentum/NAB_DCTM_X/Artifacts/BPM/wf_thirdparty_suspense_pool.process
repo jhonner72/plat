@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:bpm="http://documentum.emc.com/artifact/12012007/bpm" xmlns:nsActivity="http://documentum.com/bpm/activity" xmlns:nsCommon="http://documentum.com/common" urn="urn:com.emc.ide.artifact.bpm.processContainer/WF_ThirdParty_Suspense_Pool?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_ThirdParty_Suspense_pool&amp;name=WF_ThirdParty_Suspense_Pool" categoryId="com.emc.ide.artifact.bpm.processContainer" modifiedByUser="false">
+  <dataModel xsi:type="bpm:ProcessContainer" objectName="WF_ThirdParty_Suspense_Pool" artifactVersion="D66" definitionState="installed" xpdlRendition="" processDiagram="" processEngineRequired="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_process?name=dm_process#//@dataModel"/>
+    <process name="WF_ThirdParty_Suspense_Pool" description="" webServiceTargetNamespace="" workflowInstructions="" showDocumentNameInPackage="true">
+      <creator xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_user">
+        <refValue href="urn:com.emc.ide.userparameter/NABDCPECM_SVC_E?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nabdcpecm_svc_e.parameter#//@dataModel"/>
+      </creator>
+      <owner xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_user">
+        <refValue href="urn:com.emc.ide.userparameter/NABDCPECM_SVC_E?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nabdcpecm_svc_e.parameter#//@dataModel"/>
+      </owner>
+      <acl xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_acl">
+        <refValue href="urn:com.emc.ide.aclparameter/fxa_workflow_relate_acl?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_workflow_relate_acl.parameter#//@dataModel"/>
+      </acl>
+      <activities name="Abort" description="" taskName="" taskInstructions="" sourceFlows="//@dataModel/@process/@flows[name='L15']" destFlows="//@dataModel/@process/@flows[name='L16']">
+        <trigger expectedEventName=""/>
+        <transition xsi:type="nsActivity:AllFlowsTransition"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="496" y="412"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:OutboundPerformerConfiguration" timeout="60">
+          <performer>
+            <dataResolutionConfig xsi:type="nsCommon:PreviousActivityPerfomerResolutionConfig"/>
+          </performer>
+          <method xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_method">
+            <refValue href="urn:com.emc.ide.artifact.method/WorkflowThirdPartyPoolMethod?name=WorkflowThirdPartyPoolMethod#//@dataModel"/>
+          </method>
+          <methodFailure/>
+        </performerConfig>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <activities name="NotifyThirdPartyPool" activityType="BEGIN" description="" taskName="" taskInstructions="" sourceFlows="//@dataModel/@process/@flows[name='GEN0']" destFlows="//@dataModel/@process/@flows[name='L2'] //@dataModel/@process/@flows[name='L1'] //@dataModel/@process/@flows[name='L15']">
+        <trigger numOfInputFlows="1" expectedEventName=""/>
+        <transition xsi:type="nsActivity:PerformerChoosenTransition" minNumOfPerformersToCompleteTask="0" maxNumOfSelectableActivities="1"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="274" y="335"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:ManualPerformerConfiguration">
+          <performerList assignmentPolicy="NotApplicable">
+            <performers xsi:type="nsActivity:Group" policy="Any">
+              <dataResolutionConfig xsi:type="nsCommon:ExternalReferenceResolutionConfig" valueArity="Single">
+                <reference xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_group">
+                  <refValue href="urn:com.emc.ide.groupparameter/nab_wf_thirdparty_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_wf_thirdparty_grp.parameter#//@dataModel"/>
+                </reference>
+              </dataResolutionConfig>
+            </performers>
+          </performerList>
+          <performerOperation delegationFailureOption="AssignToWorkflowSupervisor"/>
+        </performerConfig>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <activities name="Reject" description="" taskName="" taskInstructions="" sourceFlows="//@dataModel/@process/@flows[name='L2']" destFlows="//@dataModel/@process/@flows[name='L4']">
+        <trigger expectedEventName=""/>
+        <transition xsi:type="nsActivity:AllFlowsTransition"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="499" y="336"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:OutboundPerformerConfiguration" saveExectionResults="true" timeout="60">
+          <performer>
+            <dataResolutionConfig xsi:type="nsCommon:PreviousActivityPerfomerResolutionConfig"/>
+          </performer>
+          <method xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_method">
+            <refValue href="urn:com.emc.ide.artifact.method/WorkflowThirdPartyPoolMethod?name=WorkflowThirdPartyPoolMethod#//@dataModel"/>
+          </method>
+          <methodFailure/>
+        </performerConfig>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <activities name="End" activityType="END" description="" taskName="" taskInstructions="" sourceFlows="//@dataModel/@process/@flows[name='L4'] //@dataModel/@process/@flows[name='L3'] //@dataModel/@process/@flows[name='L16']">
+        <trigger numOfInputFlows="1" expectedEventName=""/>
+        <transition xsi:type="nsActivity:AllFlowsTransition"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="737" y="297"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:OutboundPerformerConfiguration" saveExectionResults="true" timeout="60">
+          <performer>
+            <dataResolutionConfig xsi:type="nsCommon:PreviousActivityPerfomerResolutionConfig"/>
+          </performer>
+          <method xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_method">
+            <refValue href="urn:com.emc.ide.artifact.method/WorkflowThirdPartyPoolMethod?name=WorkflowThirdPartyPoolMethod#//@dataModel"/>
+          </method>
+          <methodFailure/>
+        </performerConfig>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <activities name="Release" description="" taskName="" taskInstructions="" sourceFlows="//@dataModel/@process/@flows[name='L1']" destFlows="//@dataModel/@process/@flows[name='L3']">
+        <trigger expectedEventName=""/>
+        <transition xsi:type="nsActivity:AllFlowsTransition"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="494" y="210"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:OutboundPerformerConfiguration" saveExectionResults="true" timeout="60">
+          <performer>
+            <dataResolutionConfig xsi:type="nsCommon:PreviousActivityPerfomerResolutionConfig"/>
+          </performer>
+          <method xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_method">
+            <refValue href="urn:com.emc.ide.artifact.method/WorkflowThirdPartyPoolMethod?name=WorkflowThirdPartyPoolMethod#//@dataModel"/>
+          </method>
+          <methodFailure/>
+        </performerConfig>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <activities name="Initiate" activityType="INITIATE" taskName="" taskInstructions="" destFlows="//@dataModel/@process/@flows[name='GEN0']">
+        <trigger canRunMultipleTimes="true"/>
+        <transition xsi:type="nsActivity:AllFlowsTransition"/>
+        <uiinfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="49" y="336"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </uiinfo>
+        <performerConfig xsi:type="nsActivity:DefaultInitiatePerformerConfiguration"/>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </activities>
+      <processData>
+        <packages name="Package0">
+          <type xsi:type="nsCommon:ComposerArtifactReference" documentumType="dm_type">
+            <refValue href="urn:com.emc.ide.artifact.dclass/fxa_voucher?name=fxa_voucher#//@dataModel"/>
+          </type>
+        </packages>
+        <packageCharacteristics key="//@dataModel/@process/@processData/@packages[name='Package0']">
+          <value visible="true" reportable="false" mandatory="true" versionLabel="CURRENT"/>
+        </packageCharacteristics>
+      </processData>
+      <flows name="L4" from="//@dataModel/@process/@activities.2" to="//@dataModel/@process/@activities.3" fromActOutputPort="Output:0" toActInputPort="Input:1">
+        <uiinfo showPackageNames="true" srcActivityLocIndex="4" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="L3" from="//@dataModel/@process/@activities.4" to="//@dataModel/@process/@activities.3" fromActOutputPort="Output:0" toActInputPort="Input:0">
+        <uiinfo showPackageNames="true" srcActivityLocIndex="4" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="L2" from="//@dataModel/@process/@activities.1" to="//@dataModel/@process/@activities.2" fromActOutputPort="Output:1" toActInputPort="Input:0">
+        <uiinfo showPackageNames="true" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="L16" from="//@dataModel/@process/@activities.0" to="//@dataModel/@process/@activities.3" fromActOutputPort="Output:0" toActInputPort="Input:2">
+        <uiinfo showPackageNames="true" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="L1" from="//@dataModel/@process/@activities.1" to="//@dataModel/@process/@activities.4" fromActOutputPort="Output:0" toActInputPort="Input:0">
+        <uiinfo showPackageNames="true" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="L15" from="//@dataModel/@process/@activities.1" to="//@dataModel/@process/@activities.0" flowType="Rejected" fromActOutputPort="Output:2" toActInputPort="Input:0">
+        <uiinfo showPackageNames="true" srcActivityLocIndex="4" destActivityLocIndex="1">
+          <line multiSegment="true">
+            <points x="274" y="335"/>
+            <points x="370" y="335"/>
+            <points x="370" y="412"/>
+            <points x="467" y="412"/>
+          </line>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <flows name="GEN0" from="//@dataModel/@process/@activities.5" to="//@dataModel/@process/@activities.1">
+        <uiinfo labelText="" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Dialog" fontSize="10"/>
+        </uiinfo>
+      </flows>
+      <defaultSettings/>
+      <processUIInfo>
+        <endActivityUIInfo imageScale="100">
+          <image xsi:type="nsCommon:DocumentumProxyReference" documentumType="dm_document" fetchQuery="dm_sysobject where object_name='activity.gif' and FOLDER('/System/Workflow/Images/palette')"/>
+          <topLeftPoint x="955" y="296"/>
+          <textStyle fontName="Helvetica" fontSize="10">
+            <bgColor/>
+            <fgColor/>
+          </textStyle>
+        </endActivityUIInfo>
+        <startActivityLinkUIMap key="//@dataModel/@process/@activities.1"/>
+        <endSequenceFlowUIInfo labelText="" destActivityLocIndex="1">
+          <line/>
+          <labelStyle fontName="Helvetica" fontSize="10"/>
+        </endSequenceFlowUIInfo>
+      </processUIInfo>
+    </process>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

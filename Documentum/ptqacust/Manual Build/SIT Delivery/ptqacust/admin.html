@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Post Transmission QA</title>
+	<link type="text/css" rel="stylesheet" href="ptqa.css">
+	<script language='javascript' src="http://dctmmelb:8080/D2/container/external-api/OpenAjaxManagedHub-all.js"></script>
+	<script language='javascript' src="http://dctmmelb:8080/D2/container/external-api/D2-OAH.js"></script>
+
+
+<script type="text/javascript">
+	var d2OpenAjaxHub = new D2OpenAjaxHub();
+
+	///////////////////////////////
+	//
+	//	OPEN AJAX HUB CONNECTION
+	//
+	//////////////////////////////
+
+	/* Callback that is invoked upon successful connection to the Managed Hub
+	 */
+	function connectCompleted(hubClient, success, error) {
+		if (success) {
+
+			logit("Hub client connected");
+
+			// subscribe to events 
+			subscribeEvents();
+
+
+		} else
+			logit("Hub client NOT connected - please check console");
+	}
+
+	/* Callback that is invoked on widget activation -- Framework automatically subscribes to D2_EVENT_IFRAME_ACTIVE
+	 */
+	function onActiveWidget(bActiveFlag) {
+		logit("onWidgetActive: activate iframe widget, state=" + (bActiveFlag ? "active" : "inactive"));
+	}
+
+	/* Callback that is invoked on widget initialization -- Framework automatically subscribes to D2_EVENT_IFRAME_INIT
+	 */
+	function onInitWidget(message) {
+		logit("onWidgetInit: init iframe widget" );
+	}
+
+	/* Application initializes in response to document load event
+	 */
+	function loadEventHandler() {
+		logit("Widget/Open Ajax Iframe loaded");
+
+		//connecting hubclient 
+		d2OpenAjaxHub.connectHub(connectCompleted, onInitWidget, onActiveWidget);
+
+	}
+
+
+
+	///////////////////////////////
+	//
+	//	OPEN AJAX SUBSCRIBE EVENT
+	//
+	//////////////////////////////
+
+	/** Subscribe to events -- Subscribe to D2_EVENT_SELECT_OBJECT to get the selected object type and update out form (if checkbox is checked)
+	 *   
+	 */
+	function subscribeEvents() {
+		logit("subscribe to events...");
+		d2OpenAjaxHub.subscribeToChannel ("D2_EVENT_SELECT_OBJECT", selectObjectCallback, true);
+	}
+
+	/** Event Handler for "D2_EVENT_SELECT_OBJECT" -- Called when the event arrives.
+	 */
+	function selectObjectCallback(name, msg) {
+		logit("selectObjectCallback() called");
+		logit(" name: " + name);
+		logit(" msg.getId(): " + msg.getId());
+		logit(" msg.get(\"type\"): " + msg.get("type"));
+
+		// update object type in our form (if checked).
+		if (trackSelectedType.checked) {
+			r_object_type.value = msg.get("type");
+		}
+
+	}
+
+	/** console log wrapper */
+	function logit(s) {
+		console.log("[UpdateDocList Widget] " + s);
+	}
+
+
+</script>	
+</head>
+<body  onload="loadEventHandler();">
+	<div id="main">
+		<div id="decide_div">
+			<form id="getvou_id" action="runptqaquery" method="post">
+					Processing Date : <input type="text" name="proc_date" id="proc_date" placeholder="dd/mm/yyyy"> <br>
+					<input type="submit" name="submit_query" value="Submit" id="submit_query">
+			</form>
+		</div>
+		<hr>
+		<div id="amount" class="amtcl_d">
+			
+		</div>  <!-- end of amount -->
+	</div> <!-- end of main -->
+	<script src="includes/js/jquery-1.10.2.min.js"></script>
+	<script src="includes/js/ptqa_admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "GetReceivedFilesResponse": {
+    "receivedFiles": [
+      {
+        "fileIdentifier": "IMGEXCH.20120704.20120705.223010.9999999999999999.ANZ.RBA.000001.xml",
+        "receivedDateTime": "2008-09-29T11:49:45",
+        "transmissionDateTime": "2014-09-19T09:18:33"
+      },
+      {
+        "fileIdentifier": "IMGEXCH.20120704.20120705.223010.9999999999999999.ANZ.RBA.000002.xml",
+        "receivedDateTime": "2008-09-29T11:49:45",
+        "transmissionDateTime": "2014-09-19T09:18:33"
+      }
+    ]
+  }
+}

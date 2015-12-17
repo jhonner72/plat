@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Context antiResourceLocking="true">
+    <ResourceLink name="docbroker/host" global="docbroker/host" type="java.lang.String"/>
+    <ResourceLink name="docbroker/port" global="docbroker/port" type="java.lang.String"/>
+    <ResourceLink name="imagemark/authenticationrequired" global="imagemark/authenticationrequired" type="java.lang.Boolean"/>
+    <ResourceLink name="documentum/docbase" global="documentum/docbase" type="java.lang.String"/>
+    <ResourceLink name="documentum/username" global="documentum/username" type="java.lang.String"/>
+    <ResourceLink name="documentum/password" global="documentum/password" type="java.lang.String"/>
+</Context>

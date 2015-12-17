@@ -1,0 +1,49 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"image",
+    "predicate":"receive",
+    "status":0,
+    "activity":[
+      {
+        "requestDateTime":"2015-03-24T13:13:09.107+11:00",
+        "request":{
+          "@type":"com.fujixerox.aus.lombard.common.receipt.ReceivedFile",
+          "fileIdentifier":"INCLEARINGSPKG_17032015-3AEA-4069-A2DD-SSSS12345678.zip",
+          "receivedDateTime":"2015-03-24T13:13:09.107+11:00"
+        }
+      }
+    ]
+  },
+  "activityCount": 8,
+  "activities": [
+    {
+      "activityName": "lombard.service.inclearings.unpackimageexchangebatch",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.inclearings.unpackimageexchangebatch.UnpackImageExchangeBatchRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.inclearings.unpackimageexchangebatch.UnpackImageExchangeBatchResponse"
+      }
+    },
+    {
+      "activityName": "lombard.service.inclearings.storeinwardimageexchangedocumentum",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "origin":"IMAGE_EXCHANGE_INBOUND",
+        "receipt": {
+          "fileIdentifier":"INCLEARINGSPKG_17032015-3AEA-4069-A2DD-SSSS12345678.zip",
+          "receivedDateTime":"2015-03-24T13:13:09.107+11",
+            "transmissionDateTime":"2015-03-24T13:13:09.107+11"
+        }
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+      }
+    }
+  ]
+}

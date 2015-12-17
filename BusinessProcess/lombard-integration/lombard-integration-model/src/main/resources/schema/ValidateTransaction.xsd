@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ValidateTransaction" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ValidateTransaction" xmlns:vc="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:annotation>
+		<xs:documentation>Interface message schemas for the Validate Transaction service.
+
+This service will send a request to Auto Balance the vouchers and link to the transactions. DIPS can mark the vouchers to be checked by expert balancing, unprocessable , suspectFraud during the auto balancing. </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="ValidateBatchTransactionRequest" type="tns:ValidateBatchTransactionRequest"/>
+	<xs:complexType name="ValidateBatchTransactionRequest">
+		<xs:annotation>
+			<xs:documentation>Batch-level processing request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:ValidateTransactionRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of vouchers requiring auto-balancing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="vc:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch details and context.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateBatchTransactionResponse" type="tns:ValidateBatchTransactionResponse"/>
+	<xs:complexType name="ValidateBatchTransactionResponse">
+		<xs:annotation>
+			<xs:documentation>Batch-level request processing response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:ValidateTransactionResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of voucher-level responses from auto-balancing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="vc:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch context details. 
+
+Note: this information is not modified and should be a duplicate of the request batch information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateTransactionResponse" type="tns:ValidateTransactionResponse"/>
+	<xs:complexType name="ValidateTransactionResponse">
+		<xs:annotation>
+			<xs:documentation>Voucher-level validation processing response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="codelineFieldsStatus" type="vc:CodelineStatus" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Codeline validation result status.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dips_override" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>DIPS override indicator.
+
+DEPRECATED ATTRIBUTE: Inwards for value override does no go through auto-balancing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The DRN of the voucher is return to facilitate correlation between the auto-balancing response and the original voucher.
+
+Note: This is a 1:1 association as auto-balancing should never generate or filter any transactions.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field is set in DIPS to identify if the voucher is Outward For Value:
+
+	- For NAB or NAB's agency banks, the field will be set to "c" or "d" for credit and debit respectively.   
+	- For other banks, the field will be set to "C" or "D" for credit and debit respectively.   
+	- For normal, valid vouchers, this field will be blank. 
+
+
+DEPRECATED: It is not expected that ValidateTransaction should ever change this value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaAmountFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by DIPS to mark if the voucher requires Post Transmission QA on the amount field.
+
+This flag will be used by Documentum workflow for post transmission QA process when rules are passed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaCodelineFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by DIPS to mark if the voucher requires Post Transmission QA on the codeline fields.
+
+This flag will be used by Documentum workflow for post transmission QA process when rules are passed. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reasonCode" type="vc:ExpertBalanceReason" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>When auto-balancing invalidates a transaction, it flags it for expert balancing. The reason code is used to identify the reason why the voucher needs to be routed to Expert Balancing for further processing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="surplusItemFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag identifies the voucher is surplus or not.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="suspectFraudFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag indicates suspected fraud based on APCA rules, namely an invalid MICR line and it is a cheque (i.e. ignored for other scanned items).
+
+Note: When this flag is true, it is expected that the amount / transaction will be invalidated (forcing it into expert balancing)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdPartyCheckRequired" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>DIPS will mark the voucher as requiring third party checking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdPartyMixedDepositReturnFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Requirement: In the event where a multi credit ECD is received and one credit is a NAB deposit and the other is an Agent Bank deposit.
+
+NAB’s requirement is to remove the transaction from further processing and return back to NAB.
+
+thirdPartyMixedDepositReturnFlag will be set to true by DISPand save in Documentum
+
+If Y – No VIFS or IE created, items to be populated on the NAB ECD Exceptions Report, vouchers retrieved and returned to NAB.
+
+TODO: Is this set here, or in TPC?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction link number for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unencodedECDReturnFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>unencodedECDReturnFlag to identify certain agent bank ECD deposits which are unencoded. These items will not require TPC and will be removed from further processing i.e. no VIF or IE. However we still need to populate the Agent Bank’s ECD Exceptions report with these items.
+DIPS will mark this flag.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unprocessable" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher is unprocessable indicator.
+
+TODO: Confirm this requirement, potentially redundant.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="vc:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Generated voucher details.
+
+Note: If an existing voucher is returned, there is no expected change to the values as a result of auto-balancing.
+
+TODO: Do we need this returned? Are we saying auto-balancing can modify this information or do we need it for cross reference?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateTransactionRequest" type="tns:ValidateTransactionRequest"/>
+	<xs:complexType name="ValidateTransactionRequest">
+		<xs:annotation>
+			<xs:documentation>Voucher-level validation request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dips_override" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>DIPS override indicator used during inwards for value processing.
+
+TODO: Potentially deprecated as auto-balancing not relevant to inwards for value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher for value indicator.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaAmountFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by DIPS to mark if the voucher requires Post Transmission QA on the amount field.
+
+This flag will be used by Documentum workflow for post transmission QA process. 
+
+TODO: Has been previously set?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaCodelineFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by DIPS to mark if the voucher requires Post Transmission QA on the codeline fields.
+
+This flag will be used by Documentum workflow for post transmission QA process. 
+
+TODO: Has been previously set?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rawMICR" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>rawMICR is generated at the time of scanning the vouchers at scanner and used in auto balancing( validate transaction) and expert balancing ( correct transaction) for suspect fraud rules in DIPS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rawOCR" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>rawOCR is generated at the time of scanning the vouchers at scanner and used in auto balancing( validate transaction) and expert balancing ( correct transaction) for suspect fraud rules in DIPS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unprocessable" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher un-processable indicator.
+
+TODO: Maybe add a note as to whether these would be filtered out of the request.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="vc:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher-level details.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

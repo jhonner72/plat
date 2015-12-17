@@ -1,0 +1,32 @@
+{
+	"assetRetentions": [
+		{
+			"assetName": "jobfile",
+			"retentionDays": 7
+		},
+		{
+			"assetName": "inboundarchivefile",
+			"retentionDays": 14
+		},
+		{
+			"assetName": "outboundarchivefile",
+			"retentionDays": 14
+		},
+		{
+			"assetName": "jobdb",
+			"retentionDays": 7
+		},
+		{
+			"assetName": "camundadb",
+			"retentionDays": 60
+		},
+		{
+			"assetName": "filetransmissionlog",
+			"retentionDays": 90
+		},
+		{
+			"assetName": "batchauditlog",
+			"retentionDays": 90
+		}
+	]
+}

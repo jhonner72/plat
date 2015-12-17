@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd"
+        >
+
+
+    <!-- For the short term load a properties file that is bundled in the war
+         Later we will define a property in the tomcat context which shall define
+         the location of an external properties file.
+         -->
+    <context:property-placeholder location="classpath:properties.txt"/>
+    <!--<context:property-placeholder location="${lombard-root}/properties.txt"/>-->
+
+
+    <bean id="querySize" class="java.lang.Integer">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/imageexchange/querysize"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="fileDropPath" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/path/dropzone"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="brokerUsername" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/broker/username"/>
+        </constructor-arg>
+    </bean>
+    <bean id="brokerPassword" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/broker/password"/>
+        </constructor-arg>
+    </bean>
+    <bean id="brokerHostname" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/broker/hostname"/>
+        </constructor-arg>
+    </bean>
+    <bean id="brokerPort" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/broker/port"/>
+        </constructor-arg>
+    </bean>
+    
+    <!-- <bean id="incidentServerHost" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/incident/host"/>
+        </constructor-arg>
+    </bean>
+    <bean id="incidentServerAccount" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/incident/account"/>
+        </constructor-arg>
+    </bean>
+    <bean id="incidentServerUsername" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/incident/username"/>
+        </constructor-arg>
+    </bean>
+    <bean id="incidentServerPassword" class="java.lang.String">
+        <constructor-arg>
+            <jee:jndi-lookup jndi-name="java:comp/env/incident/password"/>
+        </constructor-arg>
+    </bean> -->
+
+    <bean id="jobDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/JobDatabase"/>
+    </bean>
+
+    <bean id="trackingDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/TrackingDatabase"/>
+    </bean>
+
+    <bean id="repositoryDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/RepositoryDatabase"/>
+    </bean>
+
+    <bean name="processEngineService" class="org.camunda.bpm.BpmPlatform" factory-method="getProcessEngineService" />
+
+    <!-- bind the default process engine as Spring Bean -->
+    <bean name="processEngine" factory-bean="processEngineService" factory-method="getDefaultProcessEngine" />
+
+    <bean id="processApplication" class="org.camunda.bpm.engine.spring.application.SpringServletProcessApplication" />
+
+    <import resource="classpath:/spring/lombard-integration-app-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-voucher-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-imageexchange-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-valueinstructionfile-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-inwardimageexchange-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-forvaluevouchers-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-reporting-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-listing-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-triggeringworkflow-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-surplusitem-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-progresspending-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-clear-adjustment-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-generate-adjustment-letter-context.xml"/>
+    <import resource="classpath:/spring/lombard-integration-app-australiapost-context.xml"/>
+    <import resource="classpath:/spring/services-context.xml"/>
+    <import resource="classpath:/spring/voucher-route-context.xml"/>
+    <!--import resource="classpath:/spring/repository-route-context.xml"/-->
+
+</beans>

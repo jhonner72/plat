@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>asset-services-model</artifactId>
+    <packaging>jar</packaging>
+    <name>FXA Asset Services - Model</name>
+
+    <parent>
+        <groupId>com.fujixerox.aus.asset-services</groupId>
+        <artifactId>asset-services-base</artifactId>
+        <version>2.4.0-SNAPSHOT</version>
+        <relativePath>../asset-services-base/pom.xml</relativePath>
+    </parent>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>request-schema</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <bindingFiles>request.xml</bindingFiles>
+                            <schemaFiles>request.xsd</schemaFiles>
+                            <clearOutputDir>false</clearOutputDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>response-schema</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <bindingFiles>response.xml</bindingFiles>
+                            <schemaFiles>response.xsd</schemaFiles>
+                            <clearOutputDir>false</clearOutputDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,36 @@
+<dashboard>
+  <label>Camunda Bpm Monitoring</label>
+  <row>
+    <panel>
+      <chart>
+        <title>Report Generation Activity</title>
+        <search>
+          <query>index=camunda source=BpmActivityReporting BusinessKey=NRPT_*| eval taskOrder=case(Name=="Execute Report", 1, Name=="Wait Execute Report", 2, Name=="Store Reports in Documentum", 3, Name=="WaitStoreReports in Documentum", 4, Name=="Deliver Email", 5, Name=="Deliver B2B", 6, Name=="End Reporting",7) | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | sort taskOrder | table Name, high, normal</query>
+          <earliest>-3d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">undefined</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>

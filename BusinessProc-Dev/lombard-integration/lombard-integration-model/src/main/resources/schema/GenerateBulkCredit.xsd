@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/GenerateBulkCredit" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/GenerateBulkCredit" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="GenerateBatchBulkCreditResponse" type="tns:GenerateBatchBulkCreditResponse"/>
+	<xs:complexType name="GenerateBatchBulkCreditResponse">
+		<xs:sequence>
+			<xs:element name="transactions" type="tns:GenerateBulkCreditResponse" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VoucherGroupCriteria" type="tns:VoucherGroupCriteria"/>
+	<xs:complexType name="VoucherGroupCriteria">
+		<xs:sequence>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GenerateBatchBulkCreditRequest" type="tns:GenerateBatchBulkCreditRequest"/>
+	<xs:complexType name="GenerateBatchBulkCreditRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="maxDebitVouchers" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The maximum number of debit vouchers to be group together for the bulk credit. Map to the VIF max query size - 1</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vouchers" type="tns:VoucherGroupCriteria" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GenerateBulkCreditResponse" type="tns:GenerateBulkCreditResponse"/>
+	<xs:complexType name="GenerateBulkCreditResponse">
+		<xs:sequence>
+			<xs:element name="associatedDebitVouchers" type="vtns:Voucher" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="bulkCreditVoucher" type="vtns:VoucherInformation" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="customerLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

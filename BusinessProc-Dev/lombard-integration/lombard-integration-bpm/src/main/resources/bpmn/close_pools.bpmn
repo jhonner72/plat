@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_0CBA88B5_2E6F_4b65_B9D1_4FA93BF181A6" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_C9699240_ADBC_4549_998F_824F1811B8FC" name="Close Surplus And Suspense Pools" isExecutable="true">
+    <bpmn:startEvent id="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0" name="StartEvent1">
+      <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA" name="EndEvent1">
+      <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0" targetRef="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="EAID_309D6479_F042_493d_89C2_CAC2CCA15D4C" name="CloseSurplusAndSuspensePool">
+    <bpmndi:BPMNPlane id="EAID_PL000000_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_C9699240_ADBC_4549_998F_824F1811B8FC">
+      <bpmndi:BPMNShape id="EAID_DO000000_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_4C07144B_2544_4ce0_BCBF_6A2D23F6BAA0">
+        <dc:Bounds height="30.0" width="30.0" x="80.0" y="90.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_2544_4ce0_BCBF_6A2D23F6BAA0" labelStyle="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+          <dc:Bounds height="15.0" width="57.0" x="81.0" y="130.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000001_F042_493d_89C2_CAC2CCA15D4C" bpmnElement="EAID_A2E2E067_7570_4c0f_9E2D_F5E658DD45AA">
+        <dc:Bounds height="30.0" width="30.0" x="360.0" y="90.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_7570_4c0f_9E2D_F5E658DD45AA" labelStyle="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+          <dc:Bounds height="15.0" width="54.0" x="361.0" y="130.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="EAID_DO000000_F042_493d_89C2_CAC2CCA15D4C" targetElement="EAID_DO000001_F042_493d_89C2_CAC2CCA15D4C">
+        <di:waypoint xsi:type="dc:Point" x="110.0" y="105.0"/>
+        <di:waypoint xsi:type="dc:Point" x="360.0" y="105.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_F042_493d_89C2_CAC2CCA15D4C">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <import resource="lombard-integration-app-lockedbox-transform-context.xml"/>
+    <import resource="lombard-integration-app-lockedbox-route-context.xml" />
+
+    <camel:camelContext id="camelContextLockedBox">
+    	<camel:routeBuilder ref="lockedBoxCheckDuplicateFileRoute" />
+        <camel:routeBuilder ref="lockedBoxUnpackageVoucherRoute" />
+        <camel:routeBuilder ref="lockedBoxRecogniseCourtesyAmountRoute" />
+        <camel:routeBuilder ref="lockedBoxValidateCodelineRoute" />
+        <camel:routeBuilder ref="lockedBoxCorrectCodelineRoute" />
+        <camel:routeBuilder ref="lockedBoxValidateTransactionRoute" />
+        <camel:routeBuilder ref="lockedBoxCorrectTransactionRoute" />
+        <camel:routeBuilder ref="lockedBoxStoreBatchVoucherRoute" />
+        <camel:routeBuilder ref="raiseLockedBoxProcessDuplicateIncidentRoute" />
+    </camel:camelContext>
+
+    <bean id="camelLockedBox" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextLockedBox"/>
+    </bean>
+
+</beans>

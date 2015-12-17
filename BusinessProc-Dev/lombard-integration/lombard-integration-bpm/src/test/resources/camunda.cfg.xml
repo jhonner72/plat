@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration" class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+
+
+    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" />
+
+    <!-- Database configurations -->
+    <property name="databaseSchemaUpdate" value="true" />
+
+    <!-- job executor configurations -->
+    <property name="jobExecutorActivate" value="false" />
+
+    <property name="customPostBPMNParseListeners">
+      <list>
+        <bean class="org.camunda.bpm.engine.impl.bpmn.parser.FoxFailedJobParseListener" />
+      </list>
+    </property>
+
+    <property name="failedJobCommandFactory" ref="foxFailedJobCommandFactory" />
+  </bean>
+
+    <bean id="processEngine" class="org.camunda.bpm.engine.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+    </bean>
+
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
+
+  <bean id="foxFailedJobCommandFactory" class="org.camunda.bpm.engine.impl.jobexecutor.FoxFailedJobCommandFactory" />
+
+    <bean id="camelVoucher" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelImageExchange" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelVIF" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelInIe" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelFV" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelRpt" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelDay2" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelListing" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelProgress" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+	<bean id="camelClearAdj" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelGenerateAdjLetter" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelAustraliaPost" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+    <bean id="camelCorporateLockedBox" class="com.fujixerox.aus.lombard.integration.AbstractBpmnTest$MockCamelService" />
+
+    
+    <bean id="mockJob" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.fujixerox.aus.integration.store.JobStore" />
+    </bean>
+
+    <bean id="mockMetadata" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.fujixerox.aus.integration.store.MetadataStore" />
+    </bean>
+
+    <bean id="mockGenerator" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.fujixerox.aus.integration.store.SequenceNumberGenerator" />
+    </bean>
+
+    <bean id="mockRepository" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.fujixerox.aus.integration.store.RepositoryStore" />
+    </bean>
+
+    <bean id="lockerPath" class="java.lang.String">
+        <constructor-arg value="src/test/resources/data/bitLockerPath"/>
+    </bean>
+
+    <bean id="imageExchange" class="com.fujixerox.aus.lombard.outclearings.imageexchange.ImageExchangeJobAdapter"
+          p:jobStore-ref="mockJob"
+          p:metadataStore-ref="mockMetadata"
+          />
+
+  <bean id="valueInstructionFile" class="com.fujixerox.aus.lombard.outclearings.valueinstructionfile.ValueInstructionFileJobAdapter"
+        p:jobStore-ref="mockJob"
+        p:sequenceNumberGenerator-ref="mockGenerator"
+        p:metadataStore-ref="mockMetadata"
+          />
+
+    <bean id="voucherProcessing" class="com.fujixerox.aus.lombard.outclearings.voucherprocessing.VoucherProcessingJobAdapter"
+        p:jobStore-ref="mockJob"
+          p:runtimeService-ref="runtimeService"
+          p:repositoryStore-ref="mockRepository"
+          p:documentExchange="VOUCHER_INBOUND"
+          />
+
+    <bean id="inwardImageExchange" class="com.fujixerox.aus.lombard.outclearings.voucherprocessing.VoucherProcessingJobAdapter"
+          p:jobStore-ref="mockJob"
+          p:runtimeService-ref="runtimeService"
+          p:repositoryStore-ref="mockRepository"
+          p:documentExchange="IMAGE_EXCHANGE_INBOUND"
+            />
+
+    <bean id="endOfDayProcessing" class="com.fujixerox.aus.lombard.outclearings.endofday.EndOfDayProcessingJobAdapter"
+          p:metadataStore-ref="mockMetadata"
+          p:jobStore-ref="mockJob"
+            />
+
+    <bean id="assetManagement" class="com.fujixerox.aus.lombard.outclearings.assetManagement.AssetManagementJobAdapter"
+          p:metadataStore-ref="mockMetadata"
+          p:jobStore-ref="mockJob"
+          p:runtimeService-ref="runtimeService"
+          p:historyService-ref="historyService"
+          p:bitLockerPath-ref="lockerPath"
+            />
+
+    <bean id="surplusProcessing" class="com.fujixerox.aus.lombard.outclearings.voucherprocessing.VoucherProcessingJobAdapter"
+          p:jobStore-ref="mockJob"
+          p:runtimeService-ref="runtimeService"
+          p:repositoryStore-ref="mockRepository"
+          p:documentExchange="VOUCHER_INBOUND"
+            />
+
+    <bean id="australiaPostProcessing" class="com.fujixerox.aus.lombard.outclearings.voucherprocessing.VoucherProcessingJobAdapter"
+          p:jobStore-ref="mockJob"
+          p:runtimeService-ref="runtimeService"
+          p:repositoryStore-ref="mockRepository"
+          p:documentExchange="VOUCHER_INBOUND"
+            />
+</beans>

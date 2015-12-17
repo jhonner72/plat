@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:acl="http://documentum.emc.com/artifact/12012007/acl" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.acl/fxa_adj_letters_folder_acl?name=fxa_adj_letters_folder_acl" categoryId="com.emc.ide.artifact.acl" modifiedByUser="false">
+  <dataModel xsi:type="acl:Acl" objectName="fxa_adj_letters_folder_acl" description="FXA Adjustment Letter Folder ACL" aclClass="Public ACL">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_acl?name=dm_acl#//@dataModel"/>
+    <owner xsi:type="installparameter:UserParameter" href="urn:com.emc.ide.userparameter/NABDC_SQL_D?name=NABDC_SQL_D#//@dataModel"/>
+    <entries accessorPermit="None" applicationPermit="" accessor="dm_world" isAlias="false">
+      <accessorXPermit/>
+    </entries>
+    <entries accessorPermit="Read" applicationPermit="" accessor="dm_owner" isAlias="false">
+      <accessorXPermit/>
+    </entries>
+    <entries accessorPermit="Browse" isGroup="true" applicationPermit="" isAlias="false">
+      <accessorXPermit/>
+      <accessor xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/nab_all_group?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_all_group.parameter#//@dataModel"/>
+    </entries>
+    <entries accessorPermit="Write" isGroup="true" applicationPermit="" isAlias="false">
+      <accessorXPermit/>
+      <accessor xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_admin?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_admin.parameter#//@dataModel"/>
+    </entries>
+    <entries accessorPermit="Browse" isGroup="true" applicationPermit="" isAlias="false">
+      <accessorXPermit/>
+      <accessor xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_all_group?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_all_group.parameter#//@dataModel"/>
+    </entries>
+    <entries accessorPermit="Write" isGroup="true" applicationPermit="" isAlias="false">
+      <accessorXPermit/>
+      <accessor xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_write_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_write_grp.parameter#//@dataModel"/>
+    </entries>
+    <relativeAliases xsi:type="acl:InternalAccessor" name="dm_world"/>
+    <relativeAliases xsi:type="acl:InternalAccessor" name="dm_owner"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/RepostVouchers" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/RepostVouchers" xmlns:rs="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" xmlns:cr="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:cv="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" schemaLocation="RepositoryStoreVouchers.xsd"/>
+	<xs:element name="RepostVouchersRequest" type="tns:RepostVouchersRequest"/>
+	<xs:complexType name="RepostVouchersRequest">
+		<xs:sequence>
+			<xs:element name="insertVoucher" type="rs:StoreVoucher" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transitionDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherAudit" type="rs:VoucherAudit" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="voucherStatus" type="cv:VoucherStatus" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherTransition" type="cr:DocumentExchangeEnum" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RepostVouchersResponse" type="tns:RepostVouchersResponse"/>
+	<xs:complexType name="RepostVouchersResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

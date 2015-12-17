@@ -1,0 +1,7 @@
+{
+	"jobIdentifier": "INPUT_JOB_FOR_VIF_UPDATE_VOUCHER",
+	"voucherTransition": "VIF_OUTBOUND",
+	"voucherStatus": "Completed",
+	"transitionDate": "2015-08-06T10:34:15.079+10",
+	"filename": "Test.txt"
+}

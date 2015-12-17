@@ -1,0 +1,70 @@
+{
+    "letters": [
+        {
+            "customer": [
+                {
+                    "accountNumber": "515096734",
+                    "bsb": "083001"
+                }
+            ],
+            "outputFilenamePrefix": "coles"
+        },
+        {
+            "customer": [
+                {
+                    "accountNumber": "537447494",
+                    "bsb": "083355"
+                },
+                {
+                    "accountNumber": "037558307",
+                    "bsb": "083355"
+                },
+                {
+                    "accountNumber": "036056284",
+                    "bsb": "084092"
+                },
+                {
+                    "accountNumber": "048720189",
+                    "bsb": "083355"
+                },
+                {
+                    "accountNumber": "478225567",
+                    "bsb": "084092"
+                },
+                {
+                    "accountNumber": "036057615",
+                    "bsb": "083355"
+                },
+                {
+                    "accountNumber": "036057228",
+                    "bsb": "084092"
+                },
+                {
+                    "accountNumber": "666986080",
+                    "bsb": "082001"
+                }
+            ],
+            "outputFilenamePrefix": "super"
+        },
+        {
+            "customer": [
+                {
+                    "bsb": "51"
+                },
+                {
+                    "bsb": "80"
+                },
+                {
+                    "bsb": "31"
+                },
+                {
+                    "bsb": "64"
+                },
+                {
+                    "bsb": "81"
+                }
+            ],
+            "outputFilenamePrefix": "cuscal"
+        }
+    ]
+}

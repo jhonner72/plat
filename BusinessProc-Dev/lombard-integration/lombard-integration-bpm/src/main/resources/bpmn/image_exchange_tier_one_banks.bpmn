@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_7155FDE8_4721_4060_9C19_90713F248224" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_CA99D859_42FD_4048_B795_D88B3EDE6254" name="Tier One Banks" isExecutable="true">
+    <bpmn:documentation>Image exchange for Tier One Banks occurs during the day. The exchange is limited to a maximum size of 100MB per transfer. If the number of vouchers returned from the extract matches the maximum then the loop repeats.</bpmn:documentation>
+    <bpmn:sequenceFlow id="SequenceFlow_3" name="" sourceRef="EAID_AF4B352D_11EB_4ad6_86EB_2B260D49D75B" targetRef="EAID_11DDE4A6_6BD0_4406_B552_55484700A8D3"/>
+    <bpmn:subProcess id="EAID_AF4B352D_11EB_4ad6_86EB_2B260D49D75B" name="InvokeImageExchangeTierOneBank">
+      <bpmn:incoming>SequenceFlow_4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics camunda:collection="${imageExchange.tierOneBanksEndpoints}" camunda:elementVariable="endpoint"/>
+      <bpmn:serviceTask id="EAID_5F25F28E_D8F8_4c9f_8332_9FCD07212FDF" camunda:expression="${imageExchange.createLimitedJob(endpoint, execution.processBusinessKey)}" camunda:resultVariable="jobIdentifier" name="CreateJob">
+        <bpmn:incoming>SequenceFlow_5</bpmn:incoming>
+        <bpmn:incoming>VouchersRemainingYes</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_5F25F28E_D8F8_4c9f_8332_9FCD07212FDF" targetRef="EAID_6220C3C1_1A01_4dd4_8629_323FEDFE776C"/>
+      <bpmn:callActivity id="EAID_6220C3C1_1A01_4dd4_8629_323FEDFE776C" name="ImageExchange" calledElement="EAID_860026AF_1EB0_4c90_9C56_B0F82AC54ECE">
+        <bpmn:extensionElements>
+          <camunda:in businessKey="#{jobIdentifier}"/>
+          <camunda:out source="vouchersRemaining" target="vouchersRemaining"/>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
+      </bpmn:callActivity>
+      <bpmn:sequenceFlow id="SequenceFlow_2" name="" sourceRef="EAID_6220C3C1_1A01_4dd4_8629_323FEDFE776C" targetRef="EAID_E2322D23_B134_4b47_B454_A20601BF6212"/>
+      <bpmn:exclusiveGateway id="EAID_E2322D23_B134_4b47_B454_A20601BF6212" name="VouchersRemaining">
+        <bpmn:incoming>SequenceFlow_2</bpmn:incoming>
+        <bpmn:outgoing>VouchersRemainingNo</bpmn:outgoing>
+        <bpmn:outgoing>VouchersRemainingYes</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="VouchersRemainingNo" name="No" sourceRef="EAID_E2322D23_B134_4b47_B454_A20601BF6212" targetRef="EndEvent_1">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${vouchersRemaining == false}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="VouchersRemainingYes" name="Yes" sourceRef="EAID_E2322D23_B134_4b47_B454_A20601BF6212" targetRef="EAID_5F25F28E_D8F8_4c9f_8332_9FCD07212FDF">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${vouchersRemaining ==true}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:startEvent id="StartEvent_1">
+        <bpmn:outgoing>SequenceFlow_5</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_5" name="" sourceRef="StartEvent_1" targetRef="EAID_5F25F28E_D8F8_4c9f_8332_9FCD07212FDF"/>
+      <bpmn:endEvent id="EndEvent_1">
+        <bpmn:incoming>VouchersRemainingNo</bpmn:incoming>
+      </bpmn:endEvent>
+    </bpmn:subProcess>
+    <bpmn:startEvent id="EAID_7D9E5B4D_29EB_481c_85DE_CACA5A07F084" name="Start Tier One Banks">
+      <bpmn:outgoing>SequenceFlow_4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_4" name="" sourceRef="EAID_7D9E5B4D_29EB_481c_85DE_CACA5A07F084" targetRef="EAID_AF4B352D_11EB_4ad6_86EB_2B260D49D75B"/>
+    <bpmn:endEvent id="EAID_11DDE4A6_6BD0_4406_B552_55484700A8D3" name="End Tier One Banks">
+      <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="EAID_E43CCE4D_8029_4b31_B46B_46A13E53F6DB" name="Tier One Banks">
+    <bpmndi:BPMNPlane id="EAID_PL000000_8029_4b31_B46B_46A13E53F6DB" bpmnElement="EAID_CA99D859_42FD_4048_B795_D88B3EDE6254">
+      <bpmndi:BPMNShape id="EAID_DO000001_8029_4b31_B46B_46A13E53F6DB" bpmnElement="EAID_7D9E5B4D_29EB_481c_85DE_CACA5A07F084">
+        <dc:Bounds height="30.0" width="30.0" x="60.0" y="234.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_29EB_481c_85DE_CACA5A07F084" labelStyle="EAID_LS000000_8029_4b31_B46B_46A13E53F6DB">
+          <dc:Bounds height="22.0" width="128.0" x="17.0" y="274.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000003_8029_4b31_B46B_46A13E53F6DB" bpmnElement="EAID_11DDE4A6_6BD0_4406_B552_55484700A8D3">
+        <dc:Bounds height="30.0" width="30.0" x="960.0" y="234.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_6BD0_4406_B552_55484700A8D3" labelStyle="EAID_LS000000_8029_4b31_B46B_46A13E53F6DB">
+          <dc:Bounds height="22.0" width="123.0" x="931.0" y="274.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="_BPMNShape_SubProcess_4" targetElement="EAID_DO000003_8029_4b31_B46B_46A13E53F6DB">
+        <di:waypoint xsi:type="dc:Point" x="816.0" y="249.0"/>
+        <di:waypoint xsi:type="dc:Point" x="960.0" y="249.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="859.0" y="249.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="EAID_DO000001_8029_4b31_B46B_46A13E53F6DB" targetElement="_BPMNShape_SubProcess_4">
+        <di:waypoint xsi:type="dc:Point" x="90.0" y="249.0"/>
+        <di:waypoint xsi:type="dc:Point" x="204.0" y="249.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="148.0" y="249.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_SubProcess_4" bpmnElement="EAID_AF4B352D_11EB_4ad6_86EB_2B260D49D75B" isExpanded="true">
+        <dc:Bounds height="210.0" width="613.0" x="204.0" y="144.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_34" bpmnElement="EAID_5F25F28E_D8F8_4c9f_8332_9FCD07212FDF">
+        <dc:Bounds height="80.0" width="100.0" x="275.0" y="210.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_CallActivity_8" bpmnElement="EAID_6220C3C1_1A01_4dd4_8629_323FEDFE776C">
+        <dc:Bounds height="80.0" width="100.0" x="432.0" y="210.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_ExclusiveGateway_7" bpmnElement="EAID_E2322D23_B134_4b47_B454_A20601BF6212" isMarkerVisible="true">
+        <dc:Bounds height="50.0" width="50.0" x="605.0" y="224.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="122.0" x="569.0" y="279.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_ServiceTask_34" targetElement="_BPMNShape_CallActivity_8">
+        <di:waypoint xsi:type="dc:Point" x="375.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="432.0" y="250.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="401.0" y="250.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_CallActivity_8" targetElement="_BPMNShape_ExclusiveGateway_7">
+        <di:waypoint xsi:type="dc:Point" x="532.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="568.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="568.0" y="249.0"/>
+        <di:waypoint xsi:type="dc:Point" x="605.0" y="249.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="565.0" y="249.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_EndEvent_7" bpmnElement="EndEvent_1">
+        <dc:Bounds height="30.0" width="30.0" x="768.0" y="235.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="783.0" y="270.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="VouchersRemainingNo" sourceElement="_BPMNShape_ExclusiveGateway_7" targetElement="_BPMNShape_EndEvent_7">
+        <di:waypoint xsi:type="dc:Point" x="655.0" y="249.0"/>
+        <di:waypoint xsi:type="dc:Point" x="710.0" y="249.0"/>
+        <di:waypoint xsi:type="dc:Point" x="710.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="768.0" y="250.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="22.0" x="700.0" y="250.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="VouchersRemainingYes" sourceElement="_BPMNShape_ExclusiveGateway_7" targetElement="_BPMNShape_ServiceTask_34">
+        <di:waypoint xsi:type="dc:Point" x="630.0" y="224.0"/>
+        <di:waypoint xsi:type="dc:Point" x="630.0" y="177.0"/>
+        <di:waypoint xsi:type="dc:Point" x="497.0" y="177.0"/>
+        <di:waypoint xsi:type="dc:Point" x="328.0" y="177.0"/>
+        <di:waypoint xsi:type="dc:Point" x="327.0" y="210.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="22.0" width="29.0" x="616.0" y="186.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_6" bpmnElement="StartEvent_1">
+        <dc:Bounds height="30.0" width="30.0" x="204.0" y="235.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="219.0" y="270.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_5" sourceElement="_BPMNShape_StartEvent_6" targetElement="_BPMNShape_ServiceTask_34">
+        <di:waypoint xsi:type="dc:Point" x="234.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="275.0" y="250.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="236.0" y="250.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_8029_4b31_B46B_46A13E53F6DB">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

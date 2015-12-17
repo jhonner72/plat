@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.folderparameter/WF_Post_Transmission_QA?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_post_transmission_qa.parameter" categoryId="com.emc.ide.folderparameter" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="installparameter:FolderParameter" name="WF_Post_Transmission_QA" description="Process Install location" defaultValue="/System/Applications/NAB_DCTM/WF_Post_Transmission_QA"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

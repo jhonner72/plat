@@ -1,0 +1,153 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM IE Instance</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="text" token="businessKey" searchWhenChanged="true">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityImageExchange BusinessKey=$businessKey$ | eval value = if (State=2, "severe", if(EndTime == "null", "high", "low")) | table value Name</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Start IE File Generation Process</title>
+        <search base="baseQuery">
+          <query>| search Name="Start Process "</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Get Vouchers for IE</title>
+        <search base="baseQuery">
+          <query>| Search Name="GetVouchersForImageExchange"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Get Vouchers</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitGetVouchers"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Test: Pending Vouchers for IE</title>
+        <search base="baseQuery">
+          <query>| search Name="Voucher Count greater than 0"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Create IE</title>
+        <search base="baseQuery">
+          <query>| search Name="CreateImageExchangeFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Wait Create IE</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitCreateFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Send IE File' Status</title>
+        <search base="baseQuery">
+          <query>| search Name="SendImageExchangeFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Update Vouchers status</title>
+        <search base="baseQuery">
+          <query>| search Name="UpdateVouchersImageExchangeStatus"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Update Voucher Status</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitUpdateStatus"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel> 
+    <panel>
+      <single>
+        <title>End IE Generation Process</title>
+        <search base="baseQuery">
+          <query>| search Name="End Process"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

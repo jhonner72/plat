@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:element name="loginmanagerresult" type="LoginManagerResult"/>
+    <xsd:element name="inquiryresult" type="InquiryResult"/>
+
+    <xsd:complexType name="LoginManagerResult">
+        <xsd:sequence>
+            <xsd:choice minOccurs="1" maxOccurs="1">
+                <xsd:element name="loginresult" type="LoginResult"/>
+                <xsd:element name="logoutresult" type="LogoutResult"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="sessionname" type="xsd:string"/>
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="LoginResult">
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+        <xsd:attribute name="sectoken" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="LogoutResult">
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="InquiryResult">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="indexqueryresult" type="IndexQueryResult"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+        <xsd:attribute name="sessionname" type="xsd:string"/>
+        <xsd:attribute name="batchname" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="IndexQueryResult">
+        <xsd:sequence>
+            <xsd:element name="item" type="Item" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="limitreached" type="LimitReached" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+        <xsd:attribute name="queryname" type="xsd:string"/>
+        <xsd:attribute name="ret_count" type="xsd:int"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="LimitReached"/>
+
+    <xsd:complexType name="Item">
+        <xsd:sequence>
+            <xsd:element name="rfield" type="RField" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="ProcessContentResult" type="ProcessContentResult" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="objectname" type="xsd:string"/>
+        <xsd:attribute name="mediastatus" type="MediaStatus"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProcessContentResult">
+        <xsd:choice>
+            <xsd:element name="GetImagePageResult" type="GetImagePageResult" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="GetTiffPageResult" type="GetImagePageResult" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="image" type="Image" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:choice>
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="GetImagePageResult">
+        <xsd:sequence>
+            <xsd:element name="image" type="Image" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="PageNumber" type="xsd:int"/>
+        <xsd:attribute name="code" type="xsd:int" use="required"/>
+        <xsd:attribute name="subcode" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="MediaStatus">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="m"/>
+            <xsd:enumeration value="n"/>
+            <xsd:enumeration value="t"/>
+            <xsd:enumeration value="V"/>
+            <xsd:enumeration value="v"/>
+            <xsd:enumeration value="mt"/>
+            <xsd:enumeration value=""/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="RField">
+        <xsd:attribute name="name"/>
+        <xsd:attribute name="value"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Image" mixed="true">
+        <xsd:attribute name="status" type="xsd:int" use="required"/>
+        <xsd:attribute name="encoded_len" type="xsd:int"/>
+        <xsd:attribute name="original_len" type="xsd:int"/>
+        <xsd:attribute name="encode_type" type="EncodeType" use="required" fixed="base64"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="EncodeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="base64"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

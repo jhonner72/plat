@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/reporting" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/reporting" xmlns:er="http://lombard.aus.fujixerox.com/reporting/metadata">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/reporting/metadata" schemaLocation="ReportingMetadata.xsd"/>
+	<xs:element name="Parameter" type="tns:Parameter"/>
+	<xs:complexType name="Parameter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ExecuteBatchReportRequest" type="tns:ExecuteBatchReportRequest"/>
+	<xs:complexType name="ExecuteBatchReportRequest">
+		<xs:annotation>
+			<xs:documentation>Request one or more reports to be executed with the output to be written into the bit locker under a folder representing the job identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="batchName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A name that describes all the reports in the batch. This name is not expected to be used in the request, but is provided for operational support.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The business process unique identifier that will be used to create a folder in the bit locker.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reports" type="tns:ExecuteReportRequest" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ExecuteBatchReportResponse" type="tns:ExecuteBatchReportResponse"/>
+	<xs:complexType name="ExecuteBatchReportResponse">
+		<xs:annotation>
+			<xs:documentation>The completion of all the reports in the batch.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="ExecuteReportRequest" type="tns:ExecuteReportRequest"/>
+	<xs:complexType name="ExecuteReportRequest">
+		<xs:sequence>
+			<xs:element name="outputFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The filename of the generated report. Is not concerned with the location or path of the report.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="outputFormatType" type="er:FormatType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The mime type of the output file.
+
+	- Excel (2010) - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+	- PDF - application/pdf</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parameters" type="tns:Parameter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="reportName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the report to run in SSRS. The report may contain a path of folders which will be separated with a forward slash.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

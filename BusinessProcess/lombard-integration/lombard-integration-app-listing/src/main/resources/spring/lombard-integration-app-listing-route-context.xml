@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Listing Outclearings Routes -->
+
+    <bean id="unpackageListingRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.unpackagelisting.UnpackageListingResponse"
+          p:serviceName="lombard.service.outclearings.unpackagelisting"
+          p:exchangeName="lombard.service.outclearings.unpackagelisting"
+          p:routingKey="NSBI"
+          p:queueName="lombard.service.outclearings.unpackagelisting"
+          p:consumeType="com.fujixerox.aus.lombard.outclearings.unpackagelisting.UnpackageListingRequest"
+          p:subject="listing"
+          p:predicate="unpackage"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="storeListingRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.storelisting.StoreListingResponse"
+          p:serviceName="lombard.service.outclearings.storelisting"
+          p:exchangeName="lombard.service.outclearings.storelisting"
+          p:routingKey="NSBI"
+          p:queueName="lombard.service.outclearings.storelisting"
+          p:consumeType="com.fujixerox.aus.lombard.outclearings.storelisting.StoreListingRequest"
+          p:subject="listing"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

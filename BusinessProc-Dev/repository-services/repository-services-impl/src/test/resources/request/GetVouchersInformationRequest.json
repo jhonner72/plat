@@ -1,0 +1,58 @@
+{
+	"imageRequired": "TIFF",
+	"jobIdentifier": "OUTPUT_JOB_FOR_QUERY_VOUCHER_INFO_TIFF_IMAGE",
+	"voucherInformation": {
+		"voucher": {
+			"accountNumber": "12345678",
+			"amount": "234.56",
+			"auxDom": "TEST",
+			"bsbNumber": "063813",
+			"documentReferenceNumber": "11111111",
+			"documentType": "Dr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-04-07",
+			"transactionCode": "12"
+		},
+		"voucherBatch": {
+			"batchAccountNumber": "234567",
+			"batchType": "test",
+			"captureBsb": "456544",
+			"client": "NAB",
+			"collectingBank": "333222",
+			"processingState": "NSW",
+			"scannedBatchNumber": "343434",
+			"source": "WestPC",
+			"subBatchType": "test",
+			"unitID": "5434565",
+			"workType": "NABCHQ_INWARDFV"
+		},
+		"voucherProcess": {
+			"adjustedBy": "5555555",
+			"adjustedFlag": false,
+			"adjustmentLetterRequired": false,
+			"adjustmentReasonCode": 0,
+			"adjustmentsOnHold": false,
+			"highValueFlag": false,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": false,
+			"listingPageNumber": "5555555",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "5555555",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "D"
+		}
+	}
+}

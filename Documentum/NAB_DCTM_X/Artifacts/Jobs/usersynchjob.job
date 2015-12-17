@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/UserSynchJob?location=%2FSystem%2FApplications%2FNAB_DCTM_X&amp;name=UserSynchJob" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="UserSynchJob" title="" subject="NAB User Synchronisation Job" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" passStandardArguments="true" runMode="Day(s)" methodTraceLevel="6">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/UserSynchMethod?name=UserSynchMethod#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

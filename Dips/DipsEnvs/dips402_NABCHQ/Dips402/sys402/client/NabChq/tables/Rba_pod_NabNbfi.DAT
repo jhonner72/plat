@@ -1,0 +1,67 @@
+// National Bank NBFI's
+// Changed by: A. Lee
+// Date Last Changed: 14/04/00
+// Columns = BSB , MODulus (MOD10/NOMOD/INVAL), Comment 
+// ______________________________________________________________________________________
+083428,MOD10, //Accident Compensation Commission*
+085234,MOD10, //Adelaide Bank
+085101,MOD10, //Adelaide Bank
+084053,NOMOD, //Amex Travellers Cheques 
+082190,NOMOD, //Colonial Mutual Funds Limited *
+082925,NOMOD, //Cuscal Act*
+082170,MOD10, //Cuscal Nsw**
+082142,NOMOD, //Chase Manhattan Bank Aust**
+083053,NOMOD, // Colonial Mutual Funds Ltd
+085118,MOD10, //Cuscal SA Nt*
+085249,MOD10, //Cuscal SA Saving *
+085109,MOD10, //Cuscal SA Trading*
+084132,NOMOD, //Cuscal Qld 
+086509,MOD10, //Cuscal WA Member*
+086505,MOD10, //Cuscal WA Corp *
+082044,NOMOD, //Custom Credit Corp Nsw
+084038,NOMOD, //Custom Credit Corp Qld
+085047,NOMOD, //Custom Credit Corp Sa
+083032,NOMOD, //Custom Credit Corp Vic
+086054,NOMOD, //Custom Credit Corp Wa
+085229,MOD10, //Elders Pastoral SA*
+082154,NOMOD, //First State Premier CMT**
+083286,MOD10, // IOOF Security Perm BS
+082685,MOD10, //Maitland Mutual Building Society
+083052,MOD10, //Merrill lynch Aust Cash Mgmnt Trust *
+082339,MOD10, //MLC Aust Trust *
+082363,MOD10, //NRMA Building Society NSW*
+082382,MOD10, //MLC Prime Cash Fund*
+082396,MOD10, //MLC Cash Management Trust*
+083452,MOD10, //NRMA Building Society Vic*
+083455,MOD10, //Premium Collection Agents*
+084179,MOD10, //CUSSL*
+084352,MOD10, //Roman Catholic Diocese - Cairns *
+082105,MOD10, //Trustees RC Diocese - Armidale**
+083422,MOD10, //Cuscal Vic*
+083973,MOD10, //JB Were Securities Ltd *
+083847,MOD10, //JB Were Capital Markets Ltd*
+082931,NOMOD, // Thomas Travellers Cheques
+083931,NOMOD, // Thomas Travellers Cheques	//Below are new codes
+082034,MOD10, //Cassa Commerciale – ACT
+082045,MOD10, //Bendigo Bank – NSW
+082047,MOD10, //Cassa Commerciale – NSW
+082049,MOD10, //Bendigo Bank – ACT
+082395,NOMOD, //Tower Trust Ltd
+082456,MOD10,
+082462,MOD10, //Challenger Financial Services
+082463,MOD10, //Challenger Managed Funds
+082940,MOD10,
+082941,MOD10,
+083126,MOD10, //Interstar Mortgage Perpetl ATF
+083133,MOD10, //Cassa Commerciale – VIC
+083188,MOD10, //NAB NBFI
+083545,MOD10,
+083613,MOD10, //Rural Finance Corp
+083728,MOD10, //Bendigo Bank – VIC
+084045,MOD10, //Bendigo Bank – QLD
+084058,MOD10, //Cassa Commerciale – QLD
+085037,MOD10, //Bendigo Bank – SA
+085040,MOD10, //Cassa Commerciale – SA
+086044,MOD10, //Bendigo Bank – WA
+086047,MOD10, //Cassa Commerciale – WA
+

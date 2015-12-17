@@ -1,0 +1,407 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-05-06		Dinesh		Added Column-4
+//2015-05-25        Dinesh      Added NAB Internal BSB (State 1 for Bank codes 05, 08, 75 and 78)
+//2015-06-01        Dinesh      Added NAB CreditCard Bank States
+//2015-07-01        Dinesh      Chase Manhattan Bank changed to JPMorgan Chase Bank and with JPM EndPoint
+//2015-07-16        Dinesh      Added CUS (Agency Bank name) for additional NBFIs
+//2015-08-26        Dinesh      Commented Morgan Guaranty (BankNumber 920)
+//_______________________________________________________________________
+// Column 1 = Bank Number and State Number.
+// Column 2 = Bank Name
+// Column 3 = Bank Name for Reporting only, not used in Viva Validation. 
+// Column 4 = Agency Bank Name (only Populated where specific handling is required for Image Exchange files)
+//
+// *****************************************************************************************
+// Inserts to this table should have a corresponding entry into the Rem_Ind table
+// ******************************************************************************************
+012,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+013,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+014,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+015,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+016,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+017,ANZ,Australia & New Zealand Banking Group Limited, , , , , 
+152,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+153,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+154,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+155,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+156,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+157,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Town & Country Bank
+222,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // BNP Paribas
+232,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Bank Of America
+412,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Deutsche Bank
+413,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Deutsche Bank
+638,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Heritage Building Society
+640,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Hume Building Society
+659,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // SGE Credit Union
+777,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Police and Nurses Limited
+913,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // State Street Bank
+932,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // New England Credit Union
+900,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+901,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+902,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+903,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+904,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+905,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+906,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+907,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+908,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+909,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Australia Post
+712,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+713,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+714,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+715,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+716,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+717,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+272,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+273,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+274,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+275,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+276,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+277,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // For Value
+282,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+283,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+284,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+285,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+286,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+287,ANZ,ANZ Bank of Australia Limited, , , , ,  // For Value
+924,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Queensland Industry Development Corp - For Value
+302,BWA,Bank of Western Australia Limited, , , , ,  // Bank West
+303,BWA,Bank of Western Australia Limited, , , , ,  // Bank West
+304,BWA,Bank of Western Australia Limited, , , , ,  // Bank West
+305,BWA,Bank of Western Australia Limited, , , , ,  // Bank West
+306,BWA,Bank of Western Australia Limited, , , , ,  // Bank West
+062,CBA,Commonwealth Bank of Australia, , , , , 
+063,CBA,Commonwealth Bank of Australia, , , , , 
+064,CBA,Commonwealth Bank of Australia, , , , , 
+065,CBA,Commonwealth Bank of Australia, , , , , 
+066,CBA,Commonwealth Bank of Australia, , , , , 
+067,CBA,Commonwealth Bank of Australia, , , , , 
+352,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China
+353,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China
+402,CBA,Commonwealth Bank of Australia, , , , ,  //Colonial State Bank
+403,CBA,Commonwealth Bank of Australia, , , , ,  //Colonial State Bank
+404,CBA,Commonwealth Bank of Australia, , , , ,  //Colonial State Bank
+405,CBA,Commonwealth Bank of Australia, , , , ,  //Colonial State Bank
+406,CBA,Commonwealth Bank of Australia, , , , ,  // Colonial State Bank
+407,CBA,Commonwealth Bank of Australia, , , , ,  //Colonial State Bank
+427,CBA,Commonwealth Bank of Australia, , , , ,  // Trust Bank Tasmania
+527,CBA,Commonwealth Bank of Australia, , , , ,  // Trust Bank Tasmania
+762,CBA,Commonwealth Bank of Australia, , , , , 
+763,CBA,Commonwealth Bank of Australia, , , , , 
+764,CBA,Commonwealth Bank of Australia, , , , , 
+765,CBA,Commonwealth Bank of Australia, , , , , 
+766,CBA,Commonwealth Bank of Australia, , , , , 
+767,CBA,Commonwealth Bank of Australia, , , , , 
+818,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of Communications Co. Ltd
+941,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of Cyprus
+162,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+163,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+164,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+165,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+166,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+167,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+172,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+173,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+174,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+175,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+176,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+177,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+602,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+603,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+604,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+605,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+606,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+607,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+862,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+863,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+864,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+865,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+866,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+867,CBA,Commonwealth Bank of Australia, , , , ,  // For Value
+980,CBA,Commonwealth Bank of Australia, , , , ,  //  Bank of China
+354,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China - For Value
+355,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China - For Value
+356,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China - For Value
+357,CBA,Commonwealth Bank of Australia, , , , ,  // Bank of China - For Value
+112,STG,St George Bank Limited, , , , ,      // ST George Bank
+113,STG,St George Bank Limited, , , , ,      // ST George Bank
+114,STG,St George Bank Limited, , , , ,      // ST George Bank
+115,STG,St George Bank Limited, , , , ,     // ST George Bank
+116,STG,St George Bank Limited, , , , ,      // ST George Bank
+117,STG,St George Bank Limited, , , , ,      // ST George Bank
+332,STG,St George Bank Limited, , , , ,      // ST George Bank
+333,STG,St George Bank Limited, , , , ,      // ST George Bank
+334,STG,St George Bank Limited, , , , ,     // ST George Bank
+335,STG,St George Bank Limited, , , , ,     // ST George Bank
+336,STG,St George Bank Limited, , , , ,      // ST George Bank
+337,STG,St George Bank Limited, , , , ,      // ST George Bank
+102,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+103,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+104,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+105,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+106,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+107,STG,St George Bank Limited, , , , ,      // Bank of South Australia
+192,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+193,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+194,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+195,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+196,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+197,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+198,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+199,STG,St George Bank Limited, , , , ,      // Bank of Melbourne
+502,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+503,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+504,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+505,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+506,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+507,STG,St George Bank Limited, , , , ,      // Bank of South Australia - For Value
+032,WBC,Westpac Banking Corporation, , , , , 
+033,WBC,Westpac Banking Corporation, , , , , 
+034,WBC,Westpac Banking Corporation, , , , , 
+035,WBC,Westpac Banking Corporation, , , , , 
+036,WBC,Westpac Banking Corporation, , , , , 
+037,WBC,Westpac Banking Corporation, , , , , 
+732,WBC,Westpac Banking Corporation, , , , , 
+733,WBC,Westpac Banking Corporation, , , , , 
+734,WBC,Westpac Banking Corporation, , , , , 
+735,WBC,Westpac Banking Corporation, , , , , 
+736,WBC,Westpac Banking Corporation, , , , , 
+737,WBC,Westpac Banking Corporation, , , , , 
+142,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+143,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+144,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+145,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+146,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+147,WBC,Westpac Banking Corporation, , , , ,  // Primary Industry Bank
+255,WBC,Westpac Banking Corporation, , , , ,  // BNP Paribas Securities Services
+262,WBC,Westpac Banking Corporation, , , , , // Bankers Trust Australia 
+263,WBC,Westpac Banking Corporation, , , , ,  // Bankers Trust Australia
+264,WBC,Westpac Banking Corporation, , , , ,  // Bankers Trust Australia
+265,WBC,Westpac Banking Corporation, , , , ,  // Bankers Trust Australia
+266,WBC,Westpac Banking Corporation, , , , ,  // Bankers Trust Australia
+267,WBC,Westpac Banking Corporation, , , , ,  // Bankers Trust Australia
+292,WBC,Westpac Banking Corporation, , , , ,  // Bank of Tokyo
+293,WBC,Westpac Banking Corporation, , , , ,  // Bank of Tokyo
+362,WBC,Westpac Banking Corporation, , , , ,  // IBJ Australia Bank
+363,WBC,Westpac Banking Corporation, , , , ,  // IBJ Australia Bank
+634,WBC,Westpac Banking Corporation, , , , ,  // Uniting Church
+637,ANZ,Australia & New Zealand Banking Group Limited, , , , , // Greater Building Society
+650,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Newcastle Permanent Building Society
+724,WBC,Westpac Banking Corporation, , , , ,  // Railway Credit Union
+918,WBC,Westpac Banking Corporation, , , , ,  // Dai-Ichi Kangyo Bank
+//920,WBC,Westpac Banking Corporation, , , , ,  // Morgan Guaranty Trust Company of New York	Commented: 26-Aug Dinesh
+922,WBC,Westpac Banking Corporation, , , , ,  // United Overseas Bank
+923,WBC,Westpac Banking Corporation, , , , ,  // ING Mercantile Mutual
+926,WBC,Westpac Banking Corporation, , , , ,  // The Asahi Bank
+931,WBC,Westpac Banking Corporation, , , , ,  // International Commercial Bank Of China
+936,WBC,Westpac Banking Corporation, , , , ,  // ING Bank NV
+943,ANZ,Australia & New Zealand Banking Group Limited, , , , , // Taiwan Business Bank Sydney Branch
+944,WBC,Westpac Banking Corporation, , , , , // Members Equity Bank Ltd
+211,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+212,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+213,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+214,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+215,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+216,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+217,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+218,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+219,NAB,National Australia Bank,JPM,CMB,0,0, // JPMorgan Chase Bank
+452,NAB,National Australia Bank, ,OCB,0,0, // Overseas Chinese Bank
+453,NAB,National Australia Bank, ,OCB,0,0, // Overseas Chinese Bank
+915,NAB,National Australia Bank,JPM,JPM,1,0, // JP Morgan Chase Bank
+512,NAB,National Australia Bank,CUS,CRU,1,1,1	// Community First Credit Union
+514,NAB,National Australia Bank,CUS,CRU,1,1,1	// QT Mutual Bank Limited
+432,WBC,Westpac Banking Corporation, , , , ,  // Standard Chartered
+939,WBC,Westpac Banking Corporation, , , , ,  // AMP Bank
+742,WBC,Westpac Banking Corporation, , , , , // For value
+743,WBC,Westpac Banking Corporation, , , , , // For value
+744,WBC,Westpac Banking Corporation, , , , , // For value
+745,WBC,Westpac Banking Corporation, , , , , // For value
+746,WBC,Westpac Banking Corporation, , , , , // For value
+747,WBC,Westpac Banking Corporation, , , , , // For value
+610,NAB,National Australia Bank, ,ADL,1,1,1 // Adelaide Bank
+633,NAB,National Australia Bank, ,ADL,1,1,1 // Bendigo Bank Limited
+645,WBC,Westpac Banking Corporation, , , , ,   //Wide Bay Australia Limited
+654,WBC,Westpac Banking Corporation, , , , ,  //ECU Australia Limited
+700,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+701,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+702,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+703,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+704,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+705,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+706,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+707,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+708,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+709,WBC,Westpac Banking Corporation, , , , ,  //Indue Australia Limited
+722,WBC,Westpac Banking Corporation, , , , ,  //Southern Cross Credit Union Limited
+482,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+483,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+484,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+485,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+486,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+487,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Metway
+662,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+663,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+664,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+665,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+666,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+667,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Suncorp Buidling Society Limited
+728,ANZ,Australia & New Zealand Banking Group Limited, , , , ,  // Summerland Credit Union Limited
+472,WBC,Westpac Banking Corporation, , , , , // For Value
+473,WBC,Westpac Banking Corporation, , , , , // For Value
+474,WBC,Westpac Banking Corporation, , , , , // For Value
+475,WBC,Westpac Banking Corporation, , , , , // For Value
+476,WBC,Westpac Banking Corporation, , , , , // For Value
+477,WBC,Westpac Banking Corporation, , , , , // For Value
+552,WBC,Westpac Banking Corporation, , , , , // For Value
+553,WBC,Westpac Banking Corporation, , , , , // For Value
+554,WBC,Westpac Banking Corporation, , , , , // For Value
+555,WBC,Westpac Banking Corporation, , , , , // For Value
+556,WBC,Westpac Banking Corporation, , , , , // For Value
+042,WBC,Westpac Banking Corporation, , , , , // For Value
+043,WBC,Westpac Banking Corporation, , , , , // For Value
+044,WBC,Westpac Banking Corporation, , , , , // For Value
+045,WBC,Westpac Banking Corporation, , , , , // For Value
+046,WBC,Westpac Banking Corporation, , , , , // For Value
+047,WBC,Westpac Banking Corporation, , , , , // For Value
+
+//**************NAB Internal****************************
+080,NAB,National Australia Bank, ,NAB,1,0,		//NAB Internal
+051,NAB,National Australia Bank, ,NAB,1,0,		//NAB Internal
+081,NAB,National Australia Bank, ,NAB,1,0,		//NAB Internal
+751,NAB,National Australia Bank, ,NAB,1,0,		//NAB Internal
+781,NAB,National Australia Bank, ,NAB,1,0,		//NAB Internal
+//*******************************************************
+
+052,NAB,National Australia Bank, ,NAB,1,0,
+053,NAB,National Australia Bank, ,NAB,1,0,
+054,NAB,National Australia Bank, ,NAB,1,0,
+055,NAB,National Australia Bank, ,NAB,1,0,
+056,NAB,National Australia Bank, ,NAB,1,0,
+057,NAB,National Australia Bank, ,NAB,1,0,
+082,NAB,National Australia Bank, ,NAB,1,0,
+083,NAB,National Australia Bank, ,NAB,1,0,
+084,NAB,National Australia Bank, ,NAB,1,0,
+085,NAB,National Australia Bank, ,NAB,1,0,
+086,NAB,National Australia Bank, ,NAB,1,0,
+087,NAB,National Australia Bank, ,NAB,1,0,
+782,NAB,National Australia Bank, ,NAB,1,0,
+783,NAB,National Australia Bank, ,NAB,1,0,
+784,NAB,National Australia Bank, ,NAB,1,0,
+785,NAB,National Australia Bank, ,NAB,1,0,
+786,NAB,National Australia Bank, ,NAB,1,0,
+787,NAB,National Australia Bank, ,NAB,1,0,
+122,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+123,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+124,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+125,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+126,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+127,NAB,National Australia Bank,BQL,BQL,1,1,1 // Bank of Queensland
+180,NAB,Macquarie Bank Limited,MQG,MBL,1,0,0
+181,NAB,Macquarie Bank Limited,MQG,MBL,1,0,0
+182,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+183,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+184,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+185,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+186,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+187,NAB,National Australia Bank,MQG,MBL,1,0,0 // Macquarie Bank 
+188,NAB,Macquarie Bank Limited,MQG,MBL,1,0,0
+189,NAB,Macquarie Bank Limited,MQG,MBL,1,0,0
+240,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+241,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+242,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+243,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+244,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+245,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+246,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+247,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+248,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+249,NAB,National Australia Bank,CIT,CIT,1,0,1 // CitiBank
+
+340,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+341,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+342,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+343,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+344,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+345,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+346,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+347,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+348,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+349,NAB,National Australia Bank, ,HBA,1,1,1 // Hongkong Bank Aust
+
+
+917,NAB,National Australia Bank,ARB,ARA,1,1,1 // ARAB BANK
+752,NAB,National Australia Bank, ,NAB,1,0, // For Value
+753,NAB,National Australia Bank, ,NAB,1,0, // For Value
+754,NAB,National Australia Bank, ,NAB,1,0, // For Value
+755,NAB,National Australia Bank, ,NAB,1,0, // For Value
+756,NAB,National Australia Bank, ,NAB,1,0, // For Value
+757,NAB,National Australia Bank, ,NAB,1,0, // For Value
+622,NAB,National Australia Bank, ,NAB,1,0, // Aust Resource Development Bank - For Value
+623,NAB,National Australia Bank, ,NAB,1,0, // Aust Resource Development Bank - For Value
+624,NAB,National Australia Bank, ,NAB,1,0, // Aust Resource Development Bank - For Value
+625,NAB,National Australia Bank, ,NAB,1,0,// Aust Resource Development Bank - For Value
+626,NAB,National Australia Bank, ,NAB,1,0,// Aust Resource Development Bank - For Value
+627,NAB,National Australia Bank, ,NAB,1,0,// Aust Resource Development Bank - For Value
+
+200,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+201,NAB,National Australia Bank, ,BNZ,1,0,// Bank Of NewZealand - For Value
+202,NAB,National Australia Bank, ,BNZ,1,0,// Bank Of NewZealand - For Value
+203,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+204,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+205,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+206,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+207,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+208,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+209,NAB,National Australia Bank, ,BNZ,1,0, // Bank Of NewZealand - For Value
+
+092,RBA,Reserve Bank of Australia, , , , , 
+093,RBA,Reserve Bank of Australia, , , , , 
+094,RBA,Reserve Bank of Australia, , , , , 
+095,RBA,Reserve Bank of Australia, , , , , 
+096,RBA,Reserve Bank of Australia, , , , , 
+097,RBA,Reserve Bank of Australia, , , , , 
+
+646,ANZ,Australia & New Zealand Banking Group Limited, , , , , // Maitland Mutual Building Society Limited
+639,NAB,National Australia Bank, ,HBS,1,1,1 // Home Building Society
+313,NAB,National Australia Bank,CUS,CUS,1,1,1 // MECU
+642,NAB,National Australia Bank,CUS,CUS,1,1,1 // Australian Defence Credit Union
+653,NAB,National Australia Bank, ,PBS,1,1,1// Pioneer Permanent Building Society
+801,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+802,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+803,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+804,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+805,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+806,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+807,NAB,National Australia Bank,CUS,CUS,1,1,1 // Cuscal
+812,NAB,National Australia Bank,CUS,CUS,1,1,1 // Teachers Credit Union
+813,NAB,National Australia Bank,CUS,CUS,1,1,1 // Capricornia Credit Union
+814,NAB,National Australia Bank,CUS,CUS,1,1,1 // Credit Union of Australia
+815,NAB,National Australia Bank,CUS,CUS,1,1,1 // Police Department Employees Credit Union
+819,NAB,National Australia Bank, ,ICB,1,1, // Industrial and Commercial Bank of China
+817,NAB,National Australia Bank,CUS,CUS,1,1,1 // Warwick Credit Union Ltd.
+942,NAB,National Australia Bank, ,BHB,1,1,1 // Beirut Hellenic Bank Ltd
+952,NAB,National Australia Bank, ,RBS,0,0, // The Royal Bank of Scotland
+985,NAB,National Australia Bank, ,HBS,1,1,1 // HSBC
+
+991,NAB,National Australia Bank, , , , ,  // Locked box
+992,NAB,National Australia Bank, , , , ,  // Locked box
+994,NAB,National Australia Bank, , , , ,  // Locked box
+083,NAB,National Australia Bank, , , , ,  // Locked box
+
+
+//NAB Credit Cards
+377C,NAB,NAB CC, , , , ,					//American Express CC
+401C,NAB,NAB CC, , , , ,			 		//Visa Classic Card
+430C,NAB,NAB CC, , , , ,			 		//NAB CC
+433C,NAB,NAB CC, , , , ,			 		//NAB CC
+455C,NAB,NAB CC, , , , ,			 		//NAB CC
+471C,NAB,NAB CC, , , , ,			 		//NAB CC
+490C,NAB,NAB GCC, , , , ,					//Visa Gold CC
+531C,NAB,NAB CC, , , , ,			 		//NAB CC
+552C,NAB,NAB CC, , , , ,			 		//NAB CC
+555C,NAB,NAB CC, , , , ,			 		//NAB CC
+556C,NAB,NAB CC, , , , ,			 		//NAB CC
+558C,NAB,NAB CC, , , , ,			 		//NAB CC
+561C,NAB,NAB CC, , , , ,			 		//NAB CC

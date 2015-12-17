@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ScannedVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ScannedVoucher" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="ScannedBatch" type="tns:ScannedBatch"/>
+	<xs:complexType name="ScannedBatch">
+		<xs:sequence>
+			<xs:element name="client" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dips Client,  'NabChq' for clean cheque sprint</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Batch processing date.
+Date Format: YYYY-MM-DD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique Batch identifier – 8 character </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sub classification of Job/work type
+
+	- OTC- Over the counter
+	- ECD- Express Cheque Deposit
+	- EBD – Express Business Deposit
+	- SmartATM’s
+	- Merchant Envelopes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subBatchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sub classification of Batch</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Name/ID of the scanning operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanning device Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingState" type="vtns:StateEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Collecting bsb is the bank/branch where the vouchers are collected and put into the bag for delivery.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>WorkType specification http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/_layouts/15/xlviewer.aspx?id=/sites/ProjectCollection/bpsprojects/lombard/Lombard%20Documents/DIPS%20Scanning/DIPS%20Job%20Selection.xlsx
+
+Values:
+BQL_POD,
+NABCHQ_APOST,
+NABCHQ_INWARDFV,
+NABCHQ_INWARDNFV,
+NABCHQ_LBOX,
+NABCHQ_LISTINGS,
+NABCHQ_POD,
+NABCHQ_SURPLUS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="tns:ScannedVoucher" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Voucher object. Batch can contain one or more vouchers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Source of batch, scanned, FileServ etc.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Capture bsb is the FXA/DMS site where the scan happens</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchAccountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The account number on the batch header:
+
+Institution lodgement – Over the Counter (Unencoded) - 0000000012
+Express Business Deposit (will include cash) - 0000000014
+Express Cheque Deposits (cheque only) - 0000000016
+Locked Box - 0000000017
+Institution lodgement at TPC (Unencoded) - 0000000019
+Institution lodgement at TPC (Proof of Deposit) - 0000000022
+Set sub-trancode field where the input trancode is equal to 94, 95 or 96. - 0000000027
+Institution lodgement at TPC (encoded) - 0000000029
+BUNDLE TYPE 6 (Inclearings) - 0000000040
+BUNDLE TYPE 7 (Outclearings – customer encoded) Not used for Fiserv processing - 0000000041
+Australia Post – GIRO Post - 0000000080
+Australia Post – Business Post - 0000000081
+RESERVED – COGHLANS (Ian Jones) - 0000000088</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ScannedVoucher" type="tns:ScannedVoucher"/>
+	<xs:complexType name="ScannedVoucher">
+		<xs:sequence>
+			<xs:element name="rawOCR" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>All the values of MICR using OCR on voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rawMICR" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Raw MICR</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="micrFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag to indicate if the codeline was a micr read</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="micrUnprocessableFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag to indicate if micr was unprocessable</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="traceID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique ID generated by DIPS at the time of scan. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Processing date of the voucher.
+Date format: YYYY-MM-DD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="vtns:DocumentTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document Type indicates if voucher is DBT(cheque) CRT (deposit slip) or HDR (Header) and determined by the transaction code by DIPS at the time of scanning.
+DocumentType is Enum and can contain value
+CR
+DB
+HR</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction Code on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB on the codeline of the voucher. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount in cents on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account number on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inactiveFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

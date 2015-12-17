@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <import resource="classpath:/spring/mapping/cvol-vipro-attributes.xml"/>
+    <import resource="classpath:/spring/mapping/dctm-fxa_voucher-attributes.xml"/>
+
+    <!-- Attribute mapping -->
+    <bean id="cvolViproDctmFxaVoucherMapping" class="com.fujixerox.aus.asset.impl.mapping.AttributeMapping">
+        <constructor-arg name="defaultType" ref="cvolViproObjectType"/>
+        <constructor-arg name="mapping">
+            <map key-type="com.fujixerox.aus.asset.impl.mapping.Attribute"
+                 value-type="com.fujixerox.aus.asset.impl.mapping.Attribute">
+                <!-- existing attributes -->
+                <entry key-ref="cvolViproClassification" value-ref="dctmFxaVoucherClassification"/>
+                <entry key-ref="cvolViproPostingDate" value-ref="dctmFxaVoucherProcessingDate"/>
+                <entry key-ref="cvolViproDrn" value-ref="dctmFxaVoucherDRN"/>
+                <entry key-ref="cvolViproDIN" value-ref="dctmFxaVoucherDRN"/>
+                <entry key-ref="cvolViproBankBranch" value-ref="dctmFxaVoucherBSB"/>
+                <entry key-ref="cvolViproAccountNumber" value-ref="dctmFxaVoucherAccountNumber"/>
+                <entry key-ref="cvolViproSerial" value-ref="dctmFxaVoucherAuxDom"/>
+                <entry key-ref="cvolViproAmount" value-ref="dctmFxaVoucherAmount"/>
+                <entry key-ref="cvolViproTranCode" value-ref="dctmFxaVoucherTranCode"/>
+                <entry key-ref="cvolViproEAD" value-ref="dctmFxaVoucherExtraAuxDom"/>
+                <entry key-ref="cvolViproCollectingBSB" value-ref="dctmFxaVoucherCollectingBSB"/>
+                <entry key-ref="cvolViproStateNumber" value-ref="dctmFxaVoucherProcessingState"/>
+                <entry key-ref="cvolViproObjectHandle" value-ref="dctmFxaVoucherObjectId"/>
+
+                <entry key-ref="cvolViproEntryNumber" value-ref="dctmFxaVoucherEntryNumber"/>
+                <entry key-ref="cvolViproBatchNumber" value-ref="dctmFxaVoucherBatchNumber"/>
+                <entry key-ref="cvolViproBalSeqForDeposit" value-ref="dctmFxaVoucherBalSeqForDeposit"/>
+                <entry key-ref="cvolViproSite" value-ref="dctmFxaVoucherSite"/>
+                
+                <entry key-ref="cvolViproDepositAccount" value-ref="dctmFxaVoucherDepositAccount"/>
+                <entry key-ref="cvolViproDepositBSB" value-ref="dctmFxaVoucherDepositBSB"/>
+                <entry key-ref="cvolViproBoxNumber" value-ref="dctmFxaVoucherBoxNumber"/>
+                <entry key-ref="cvolViproTrayNumber" value-ref="dctmFxaVoucherTrayNumber"/>
+                <entry key-ref="cvolViproBalancedSequence" value-ref="dctmFxaVoucherBalancedSequence"/>
+                <entry key-ref="cvolViproUpdateFlag" value-ref="dctmFxaVoucherUpdateFlag"/>
+                <entry key-ref="cvolViproAdjReasonCode" value-ref="dctmFxaVoucherAdjReasonCode"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>

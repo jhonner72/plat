@@ -1,0 +1,53 @@
+<form stylesheet="table_decorations.css, bpm_legend.css" script="table_icons_rangemap.js">
+  <label>EOD Final</label>
+  <description>Dashboard that shows status of the End Of Day Final business process</description>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="timePicker" searchWhenChanged="true">
+      <label>Select a time:</label>
+      <default>
+        <earliest>-1d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmInstanceEODFinal | dedup ProcessInstanceId sortby +EndTime | eval Status = if(EndTime == "null", "high", "low") | table StartTime ProcessInstanceId BusinessKey Status | rename BusinessKey as "Business Key", StartTime as "Time" | join ProcessInstanceId type=outer [search index="camunda" source=BpmActivityEODFinal State=2 | eval Status = "severe" | table ProcessInstanceId Status] | rename Status as "range" | sort -Time</query>
+    <earliest>$timePicker.earliest$</earliest>
+    <latest>$timePicker.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <single>
+        <title>End of Day Final last successful run</title>
+        <search base="baseQuery">
+          <query>| where range="low" | head 1 | eval range=if(Time>strftime(relative_time(now(),"-1d@d"),"%Y-%m-%dT%H:%M:%S.%3N"),"low","severe")</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="beforeLabel">Last ran at:</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+      <table id="table1">
+        <search base="baseQuery">
+          <query></query>
+          <earliest>$timePicker.earliest$</earliest>
+          <latest>$timePicker.latest$</latest>
+        </search>
+        <drilldown target="My New Window">
+          <link>bpm_eod_final_instance?form.businessKey=$row.Business Key$</link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</form>

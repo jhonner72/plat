@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CreateAdjustmentLetters" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/CreateAdjustmentLetters" xmlns:rm="http://lombard.aus.fujixerox.com/reporting/metadata" xmlns:m="http://lombard.aus.fujixerox.com/common/Metadata" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/reporting/metadata" schemaLocation="ReportingMetadata.xsd"/>
+	<xs:element name="CreateBatchAdjustmentLettersRequest" type="tns:CreateBatchAdjustmentLettersRequest"/>
+	<xs:complexType name="CreateBatchAdjustmentLettersRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="outputMetadata" type="rm:AdjustmentLettersDetails" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateBatchAdjustmentLettersResponse" type="tns:CreateBatchAdjustmentLettersResponse"/>
+	<xs:complexType name="CreateBatchAdjustmentLettersResponse">
+		<xs:sequence>
+			<xs:element name="adjustmentLetters" type="tns:CreateAdjustmentLettersResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="zipFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The zip file that is sent to NAB</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateAdjustmentLettersResponse" type="tns:CreateAdjustmentLettersResponse"/>
+	<xs:complexType name="CreateAdjustmentLettersResponse">
+		<xs:sequence>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="filename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The individual pdf filename for storing into Documentum.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="scannedBatchNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

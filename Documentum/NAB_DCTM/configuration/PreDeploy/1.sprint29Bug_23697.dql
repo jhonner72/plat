@@ -1,0 +1,2 @@
+ALTER TYPE fxa_voucher DROP fxa_adjustment_amt PUBLISH
+GO

@@ -1,0 +1,139 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"adjustment",
+    "predicate":"clear",
+    "status":0
+  },
+  "activityCount": 2,
+  "activities": [
+    {
+      "activityName": "lombard.service.adjustment.search",
+      "queueName":"lombard.service.repository.getvouchersinformation",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "imageRequired": "NONE",
+        "voucherInformation" : {
+              "voucher" : {
+                "processingDate": "#DATE#"
+              },
+              "voucherProcess" : {
+                "adjustmentsOnHold": true
+              }
+         }
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationResponse",
+        "voucherInformation": [
+           { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111222",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111223",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },            
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111224",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+           }        
+        ]
+      }
+    },
+    {
+      "activityName": "lombard.service.adjustment.update",
+      "queueName":"lombard.service.repository.updatevouchersinformation",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersinformation.UpdateVouchersInformationRequest",
+        "voucherTransferStatusFrom": "AdjustmentOnHold",
+        "voucherTransferStatusTo": "New",
+        "voucherInformation": [
+          {  
+             "voucher" : {
+                "documentReferenceNumber": "000111222",
+                "processingDate": "2014-12-31"
+              },
+              "voucherProcess" : {
+                "adjustmentsOnHold": false
+              }
+          },
+          {  
+             "voucher" : {
+                "documentReferenceNumber": "000111223",
+                "processingDate": "2014-12-31"
+              },
+              "voucherProcess" : {
+                "adjustmentsOnHold": false
+              }
+          },
+          {   
+             "voucher" : {
+                "documentReferenceNumber": "000111224",
+                "processingDate": "2014-12-31"
+              },
+              "voucherProcess" : {
+                "adjustmentsOnHold": false
+              }
+          } 
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersinformation.UpdateVouchersInformationResponse"
+      }
+    }
+  ]
+}

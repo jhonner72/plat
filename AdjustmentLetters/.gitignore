@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Src/Lombard.AdjustmentLetters/bin/Debug
+/Src/Lombard.AdjustmentLetters/obj/Debug
+/Src/Lombard.AdjustmentLetters.Data/bin/Debug
+/Src/Lombard.AdjustmentLetters.Data/obj/Debug
+/Src/Lombard.AdjustmentLetters.IntegrationTests/bin/Debug
+/Src/Lombard.AdjustmentLetters.IntegrationTests/obj/Debug
+/Src/Lombard.AdjustmentLetters.UnitTests/obj/Debug
+*.suo
+*.Cache

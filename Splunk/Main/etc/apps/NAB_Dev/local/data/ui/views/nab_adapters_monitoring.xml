@@ -1,0 +1,308 @@
+<form stylesheet="tabs.css" script="tabs.js">
+  <label>NAB Adapters Monitoring</label>
+  <description>Monitor &amp; Analyse NAB Logs</description>
+  <fieldset submitButton="false">
+    <input type="time" searchWhenChanged="true" token="field1">
+      <label></label>
+      <default>
+        <earliest>-2d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="exchange_base_search">
+    <query>index=adapters "Published to exchange" | eval GUID=if(isnull(GUID),mvindex(split(_raw, "correlationId:"),1),GUID) 
+      | eval queue=if(isnull(queue),mvindex(split(mvindex(split(_raw, "Published to exchange: '\""),1),"\"', routing key"),0),queue)
+      | append [search index=dips source="*DipsAdapter*.log" "Start consuming from queue" ]
+      | eval adapter=mvindex(split(mvindex(split(source, "\\"),3),"-"),0)        
+      | eval date=strftime(_time,"%Y:%m:%d")        
+      | table _time GUID source _raw route_key queue adapter date</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <search id="dips_base_search">
+    <query>search $control_rabbit_dips_token$ index=dips source="*DipsAdapter*.log" "Start consuming from queue" OR "has shutdown" | eval status=if(searchmatch("has shutdown"),"Failed Connect", "Success Connect") | eval reason=if(status=="Failed Connect",mvindex(split(_raw,"Reason: "),1),"")| sort -_time  | table _time queue status reason</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <search id="vif_exchange_base_search">
+    <query>search $control_rabbit_vif_token$ index=adapters source=*LombardVifService* "Published to exchange"  | table _time GUID source _raw queue route_key</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <search id="ie_exchange_base_search">
+    <query>search $control_rabbit_ie_token$ index=adapters source=*OutboundImageExchange* "Published to exchange" | table _time GUID source _raw queue route_key</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Support Analyze NAB Adapters logs</title>
+      <html>
+        <ul class="nav nav-tabs" id="tabs">
+		  <li class="active">
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="all_rabbit">Consumed and Requested RabbitMQ Queue</a>
+          </li>
+          <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="rabbit_vif" data-token="control_rabbit_vif_token">Connectivity between VIF Engine &amp; RabbitMQ</a>
+          </li>
+		  <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="rabbit_ie" data-token="control_rabbit_ie_token">Connectivity between Image Exchange Server &amp; RabbitMQ</a>
+          </li>
+         
+          <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="rabbit_dips,rabbit_dips_error,dips_errors" data-token="control_rabbit_dips_token">Connectivity between DIPS Adapter &amp; RabbitMQ</a>
+          </li>
+         
+		  
+        </ul>
+      </html>
+    </panel>
+  </row>
+  <row id="all_rabbit">
+    <panel>
+      <table>
+        <title>Consumed and Requested RabbitMQ Queue</title>
+        <search base="exchange_base_search">
+          <query>| stats count as "consumed/published" by date, adapter, queue</query>
+        </search>
+        <option name="charting.legend.placement">bottom</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Total Messages</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="rabbit_vif">
+    <panel>
+      <table>
+        <title>Connectivity between VIF Engine and RabbitMQ Monitoring</title>
+        <search base="vif_exchange_base_search">
+          <query>| table GUID source _raw</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Total Messages</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">heatmap</option>
+        <option name="drilldown">cell</option>
+        <option name="count">5</option>
+      </table>
+      <table>
+        <title>Connectivity between VIF Server &amp; RabbitMQ has failed</title>
+        <search base="vif_exchange_base_search">
+          <query>| search "[Error]" | table _time GUID source _raw</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">heatmap</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="drilldown">cell</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+  <row id="rabbit_ie">
+    <panel>
+      <table>
+        <title>Connectivity between Image Exchange Server and RabbitMQ Monitoring</title>
+        <search base="ie_exchange_base_search">
+          <query>| table GUID source _raw</query>
+        </search>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Total Messages</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">highlow</option>
+        <option name="drilldown">cell</option>
+        <option name="count">5</option>
+      </table>
+      <table>
+        <title>Connectivity between Image Exchange Server &amp; RabbitMQ has failed</title>
+        <search base="ie_exchange_base_search">
+          <query>| search "[Error]" | table GUID source _raw</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">heatmap</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="drilldown">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+  <row id="rabbit_dips">
+    <panel>
+      <table>
+        <title>Connectivity between DIPS Adapter &amp; RabbitMQ has Failed</title>
+        <search base="dips_base_search">
+          <query>|search status="Failed Connect"</query>
+        </search>
+        <option name="refresh.auto.interval">30</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="drilldown">none</option>
+        <option name="count">5</option>
+      </table>
+      <event>
+        <title>Dips Adapter Errors</title>
+        <search>
+          <query>search $control_rabbit_dips_token$ index=dips source="*DipsAdapter*.log" "[Error]"   | sort -_time</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">0</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="count">2</option>
+        <option name="refresh.auto.interval">30</option>
+        <fields>["host","source","sourcetype"]</fields>
+      </event>
+      <table id="tbl_rabbit_dips">
+        <title>All Connectivity between DIPS Adapter &amp; RabbitMQ</title>
+        <search base="dips_base_search">
+          <query>| table _time queue status</query>
+        </search>
+        <option name="refresh.auto.interval">30</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="drilldown">none</option>
+        <option name="count">20</option>
+      </table>
+    </panel>
+  </row>
+</form>

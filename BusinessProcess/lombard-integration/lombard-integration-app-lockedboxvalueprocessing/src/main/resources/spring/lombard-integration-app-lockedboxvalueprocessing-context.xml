@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring" 
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:p="http://www.springframework.org/schema/p"       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <import resource="lombard-integration-app-lockedboxvalueprocessing-transform-context.xml"/>
+    <import resource="lombard-integration-app-lockedboxvalueprocessing-route-context.xml" />
+
+    <bean id="lockedBoxValueProcessing" class="com.fujixerox.aus.lombard.outclearings.endofday.EndOfDayProcessingJobAdapter"
+          p:jobStore-ref="jobStore"
+          p:metadataStore-ref="metadataStore"
+            />
+
+    <!-- Camel -->
+    <camel:camelContext id="camelContextLockedBoxValueProcessing">
+        <camel:routeBuilder ref="getVouchersRoute" />
+        <camel:routeBuilder ref="generateBatchBulkCreditRoute" />
+        <camel:routeBuilder ref="associateGeneratedVoucherRoute" />
+        <camel:routeBuilder ref="copyVouchersRoute" />
+         <camel:routeBuilder ref="copyVouchersResponseRoute" />
+    </camel:camelContext>
+
+    <bean id="camelLockedBoxValue" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextLockedBoxValueProcessing"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define Name = "FXA DIPS BatchPackaging" ?>
+  <?define Manufacturer = "Fuji Xerox" ?>
+  <?define Version = "2.4.36786.0" ?>
+  <?define UpgradeCode = "{5dcf0b41-e151-48d6-bcd8-c41ddad77588}" ?>
+  <?define ApplicationFamily = "Lombard" ?>
+</Include>

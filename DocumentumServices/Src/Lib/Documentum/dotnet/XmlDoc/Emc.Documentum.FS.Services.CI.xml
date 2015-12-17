@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Services.CI</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.IAnalyticsService">
+            <summary>
+            Executes the analytics against document(s) and returns categories       that matched and other properties.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.IAnalyticsService.Analyze(Emc.Documentum.FS.DataModel.Core.ObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <summary>
+            Executes the analytics against document(s) and returns categories       that matched and other properties.
+            <br/>The Analytics service can return some of the following properties passed in OperationOptions:<p/>
+            <ul>
+             <li>categories that matched,</li>
+             <li>properties.</li>
+            </ul>
+            Currently the Analytics Service returns only the Categories that matched with the documents passed.
+            </summary>
+            <param name="sourceObjects">sourceObjects the source document(s).</param>
+            <param name="options"><code>OperationOptions</code> the properties on which you want analytics information and properties.</param>
+            <returns>A List of <code>AnalyticsResult</code> containing the objects analytics information and properties.</returns>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.AnalyticsServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePort.analyze(Emc.Documentum.FS.Services.CI.analyzeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.Emc#Documentum#FS#Services#CI#AnalyticsServicePort#analyze(Emc.Documentum.FS.Services.CI.analyzeRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.analyze(Emc.Documentum.FS.DataModel.Core.ObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.AnalyticsServicePortClient.Analyze(Emc.Documentum.FS.DataModel.Core.ObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.analyzeRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.CI.analyzeRequest.sourceObjects">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.CI.analyzeRequest.options">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.analyzeRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.analyzeRequest.#ctor(Emc.Documentum.FS.DataModel.Core.ObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.analyzeResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.CI.analyzeResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.analyzeResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.analyzeResponse.#ctor(Emc.Documentum.FS.DataModel.CI.AnalyticsResult[])">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.AnalyticsServicePortChannel">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.CI.CIServiceException">
+            <summary>
+            CIServiceException is used for storing raised exception details and transferring them through SOAP<p/>
+            Private implementation.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.CIServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.CIServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.CIServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.CIServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.CI.CIServiceException.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.Services.CI.CIServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="E:Emc.Documentum.FS.Services.CI.CIServiceException.PropertyChanged">
+            <exclude/>
+        </member>
+    </members>
+</doc>

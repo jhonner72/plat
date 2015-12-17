@@ -1,0 +1,141 @@
+<form>
+  <label>Inwards Image Exchange</label>
+  <description>Dashboard for reconciling incoming IE files from COIN against those that are picked up, unpacked and stored in Documentum</description>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="SharedTimePicker" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-2d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="IncomingIEReconBase">
+    <query>index="camunda" source="BpmImageExchange" NIEI | transaction businessKey| dedup businessKey |  eval GUID=businessKey | eval Status=if(endTime=null,"Processing","Done") | table _time GUID Status | append [search index="jscape_mft" GUID="NIEI*" | dedup GUID | eval Status="Pending" | table _time GUID Status] | dedup GUID</query>
+    <earliest>$SharedTimePicker.earliest$</earliest>
+    <latest>$SharedTimePicker.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Inbound Image Exchange Receipt and Storing of Batches</title>
+      <chart>
+        <title>Batches received and processing status</title>
+        <search base="IncomingIEReconBase">
+          <query>| timechart count by Status</query>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.fieldColors">{"Pending":0xFF0000,"Processing":0xFFCC00,"Done":0x73A550}</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Number of FIles</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Inbound IE Pending Processing</title>
+      <single>
+        <title>Number of received batches pending processing</title>
+        <search base="IncomingIEReconBase">
+          <query>| where Status = "Pending" | stats count AS receivedFilesPendingProcessing | rangemap field=receivedFilesPendingProcessing low=0-0 default=severe</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">batches received but not commenced processing</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <table>
+        <title>Pending Inbound IE Batches</title>
+        <search base="IncomingIEReconBase">
+          <query>| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table Time GUID Status Filename | where Status = "Pending"</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Inbound IE Commenced Processing</title>
+      <single>
+        <title>Number of batches commenced processing</title>
+        <search base="IncomingIEReconBase">
+          <query>| where Status="Processing" | stats count AS "Files successfully commenced processing"| rangemap field="Files successfully commenced processing" severe=0-0 default=low</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+        <option name="linkView">search</option>
+        <option name="afterLabel">batches commenced processing</option>
+      </single>
+      <table>
+        <title>Inbound IE Batches Commenced Processing</title>
+        <search base="IncomingIEReconBase">
+          <query>| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table Time GUID Status Filename | where Status="Processing"</query>
+        </search>
+        <drilldown target="My New Window">
+          <link>bpm_inwards_ie_instance?form.businessKey=$row.GUID$</link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Inbound IE Stored in Documentum</title>
+      <single>
+        <title>Number of batches stored in Documentum</title>
+        <search base="IncomingIEReconBase">
+          <query>| where Status="Done" | stats count AS "Files completed processing"| rangemap field="Files completed processing" severe=0-0 default=low</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+        <option name="linkView">search</option>
+        <option name="afterLabel">batches stored in Documentum</option>
+      </single>
+      <table>
+        <title>Inbound IE Batches stored in Documentum</title>
+        <search base="IncomingIEReconBase">
+          <query>| convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table Time GUID Status Filename | where Status="Done"</query>
+        </search>
+        <drilldown target="My New Window">
+          <link>bpm_inwards_ie_instance?form.businessKey=$row.GUID$</link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+</form>

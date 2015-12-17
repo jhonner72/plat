@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:ide="http://documentum.emc.com/artifact/12012007/typeextension" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.foldersubtype/Dishonours?language_code=&amp;name=Dishonours&amp;type=dm_cabinet" categoryId="com.emc.ide.artifact.foldersubtype">
+  <dataModel xsi:type="sysobject:FolderSubtype" objectName="Dishonours" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_cabinet?name=dm_cabinet#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <typeExtension>
+      <attributes xsi:type="ide:BooleanAttribute" name="is_private">
+        <booleanValue>false</booleanValue>
+      </attributes>
+    </typeExtension>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

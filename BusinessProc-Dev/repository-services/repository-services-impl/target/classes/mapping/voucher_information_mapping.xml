@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<entry key="fxa_extra_aux_dom" value="voucher.extraAuxDom"/>
+	<entry key="fxa_aux_dom" value="voucher.auxDom"/>
+	<entry key="fxa_bsb" value="voucher.bsbNumber"/>	
+	<entry key="fxa_account_number" value="voucher.accountNumber"/>
+	<entry key="fxa_amount" value="voucher.amount"/>
+	<entry key="fxa_drn" value="voucher.documentReferenceNumber"/>
+	<entry key="fxa_trancode" value="voucher.transactionCode"/>
+	<entry key="fxa_processing_date" value="voucher.processingDate" key_type="time" value_type="date"/>	
+	<entry key="fxa_classification" value="voucher.documentType" key_type="string" value_type="DocumentTypeEnum"/>
+	<entry key="fxa_batch_number" value="voucherBatch.scannedBatchNumber"/>
+	<entry key="fxa_migration_batch_no" value="voucherBatch.scannedBatchNumber"/>
+	<entry key="fxa_unit_id" value="voucherBatch.unitID"/>
+	<entry key="fxa_capture_bsb" value="voucherBatch.captureBsb"/>	
+	<entry key="fxa_batch_account_number" value="voucherBatch.batchAccountNumber"/>
+	<entry key="fxa_collecting_bsb" value="voucherBatch.collectingBank"/>
+	<entry key="fxa_processing_state" value="voucherBatch.processingState" key_type="string" value_type="StateEnum"/>
+	<entry key="fxa_work_type_code" value="voucherBatch.workType" key_type="string" value_type="WorkTypeEnum"/>
+	<!-- <entry key="" value="voucherBatch.client"/>
+	<entry key="" value="voucherBatch.source"/>
+	<entry key="" value="voucherBatch.batchType"/>
+	<entry key="" value="voucherBatch.subBatchType"/>  -->
+	<entry key="fxa_unprocessable_item_flag" value="voucherProcess.unprocessable" key_type="boolean"/>
+	<entry key="fxa_tran_link_no" value="voucherProcess.transactionLinkNumber"/>
+	<entry key="fxa_presentation_mode" value="voucherProcess.presentationMode"/>
+	<entry key="fxa_micr_flag" value="voucherProcess.micrFlag" key_type="boolean"/>
+	<entry key="fxa_raw_micr" value="voucherProcess.rawMICR"/>
+	<entry key="fxa_repost_drn" value="voucherProcess.repostFromDRN"/>
+	<entry key="fxa_voucher_delayed_id" value="voucherProcess.voucherDelayedIndicator"/>
+	<entry key="fxa_pre_adjustment_amt" value="voucherProcess.preAdjustmentAmount"/>
+	<entry key="fxa_repost_processing_date" value="voucherProcess.repostFromProcessingDate" key_type="time" value_type="date"/>
+	<entry key="fxa_for_value_type" value="voucherProcess.forValueType" key_type="string" value_type="ForValueTypeEnum"/>
+	<entry key="fxa_manual_repair" value="voucherProcess.manualRepair" key_type="boolean" value_type="int"/>
+	<entry key="fxa_suspect_fraud_flag" value="voucherProcess.suspectFraud" key_type="boolean"/>
+	<entry key="fxa_inactive_flag" value="voucherProcess.inactiveFlag" key_type="boolean"/>
+	<entry key="fxa_adjusted_by_id" value="voucherProcess.adjustedBy"/>
+	<entry key="fxa_adjustment_flag" value="voucherProcess.adjustedFlag" key_type="boolean"/>
+	<entry key="fxa_adjustment_reason_code" value="voucherProcess.adjustmentReasonCode" key_type="string" value_type="int"/>
+	<entry key="fxa_adjustment_on_hold_flag" value="voucherProcess.adjustmentsOnHold" key_type="boolean"/>
+	<entry key="fxa_adj_letter_req_flag" value="voucherProcess.adjustmentLetterRequired" key_type="boolean"/>
+	<entry key="fxa_adjustment_description" value="voucherProcess.adjustmentDescription"/>
+	<entry key="fxa_surplus_item_flag" value="voucherProcess.surplusItemFlag" key_type="boolean"/>	
+	<entry key="fxa_listing_page_number" value="voucherProcess.listingPageNumber"/>
+	<entry key="fxa_high_value_flag" value="voucherProcess.highValueFlag" key_type="boolean"/>
+	<entry key="fxa_ptqa_amt_flag" value="voucherProcess.postTransmissionQaAmountFlag" key_type="boolean"/>
+	<entry key="fxa_ptqa_code_line_flag" value="voucherProcess.postTransmissionQaCodelineFlag" key_type="boolean"/>
+	<entry key="fxa_generated_voucher_flag" value="voucherProcess.isGeneratedVoucher" key_type="boolean"/>
+	<entry key="fxa_tpc_failed_flag" value="voucherProcess.thirdPartyCheckFailed" key_type="boolean"/>
+	<entry key="fxa_tpc_suspense_pool_flag" value="voucherProcess.thirdPartyPoolFlag" key_type="boolean"/>
+	<entry key="fxa_uecd_return_flag" value="voucherProcess.unencodedECDReturnFlag" key_type="boolean"/>
+	<entry key="fxa_mixed_dep_return_flag" value="voucherProcess.thirdPartyMixedDepositReturnFlag" key_type="boolean"/>
+	<!-- <entry key="" value="voucherProcess.rawOCR"/>-->
+</map>
+

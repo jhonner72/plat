@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="getVouchersForImageExchangeRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse"
+          p:serviceName="lombard.service.outclearings.getvouchersforimageexchange"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="get"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="createImageExchangeFileRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.createimageexchangefile.CreateImageExchangeFileResponse"
+          p:serviceName="lombard.service.outclearings.createimageexchangefile"
+          p:consumeType="Lombard.ImageExchange.Nab.OutboundService.Messages.XsdImports.CreateImageExchangeFileRequest:Lombard.ImageExchange.Nab.OutboundService"
+          p:subject="imageexchangefile"
+          p:predicate="create"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="copyImageExchangeFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.copyfile"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="file"
+          p:predicate="copy"
+            />
+
+    <bean id="updateImageExchangeVouchersStatusRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+          p:serviceName="lombard.service.outclearings.updateimageexchangevouchersstatus"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="update"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

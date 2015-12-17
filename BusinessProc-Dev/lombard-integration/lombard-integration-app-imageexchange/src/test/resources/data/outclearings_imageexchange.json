@@ -1,0 +1,73 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"imageexchange",
+    "predicate":"outclearings",
+    "status":0,
+    "activity":[
+      {
+        "subject": "outclearings",
+        "predicate": "imageexchange",
+        "request" : {
+          "@type": "com.fujixerox.aus.lombard.outclearings.imageexchange.ImageExchangeRequest",
+          "maxQuerySize": 1,
+          "targetEndPoint": "FIS"
+        }
+      }
+    ]
+  },
+  "activityCount": 10,
+  "activities": [
+    {
+      "activityName": "lombard.service.outclearings.getvouchersforimageexchange",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "minReturnSize": "1",
+        "maxReturnSize": "1",
+        "imageType": "JPEG",
+        "voucherStatusFrom": "New",
+        "voucherStatusTo": "InProgress",
+        "voucherTransfer": "IMAGE_EXCHANGE_OUTBOUND",
+        "targetEndPoint": "FIS"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse",
+        "voucherCount": 1,
+        "targetEndPoint": "MQG"
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.createimageexchangefile",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createimageexchangefile.CreateImageExchangeFileRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "targetEndPoint": "MQG",
+        "fourCharactersEndPoint": "MACQ",
+        "sequenceNumber": 1,
+        "fileType": "AgencyXML",
+        "businessDate": "#DATE#"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createimageexchangefile.CreateImageExchangeFileResponse",
+        "imageExchangeFilename": "IMGEXCH_file.xml"
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.updateimageexchangevouchersstatus",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "filename": "IMGEXCH_file.xml",
+        "transitionDate": "#DATETIME#",
+        "voucherStatus": "Completed",
+        "voucherTransition": "IMAGE_EXCHANGE_OUTBOUND"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+      }
+    }
+  ]
+}

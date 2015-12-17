@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Job" xmlns:tns="http://lombard.aus.fujixerox.com/common/Job" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Activity" type="tns:Activity"/>
+	<xs:complexType name="Activity">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="activityIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A GUID that identifies the invocation of a service. Past in the header request and the header response. Uses the name X-Correlation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subject" type="xs:anyURI" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="predicate" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The action to implement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="requestDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="request" type="xs:anyType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="responseDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="response" type="xs:anyType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="failed" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>TRUE when the invocation of the service was never completed. No relationship to any status in the response.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Job" type="tns:Job"/>
+	<xs:complexType name="Job">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A GUID created by the initiating process</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="initiatingJobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The job that initiated this job.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The identifier of the process implementing the job.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subject" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A urn that identifies the context of the job. This is the noun.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="predicate" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The action the job is going to take. 
+Q. Is the set of predicates a closed set???</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="activity" type="tns:Activity" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The input to the job.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parameters" type="tns:Parameter" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Parameters are used for allowing the ability to pass information in when creating a job. For example, this can be used to pass in Customer information when starting a Locked Box process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="tns:JobStatus" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="JobStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="submitted"/>
+			<xs:enumeration value="started"/>
+			<xs:enumeration value="completed"/>
+			<xs:enumeration value="failed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Parameter" type="tns:Parameter"/>
+	<xs:complexType name="Parameter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the parameter</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The value of the parameter</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

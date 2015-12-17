@@ -1,0 +1,27 @@
+//Contains FI,BSB,AccountNumber
+//List of Banks and their respective Suspense BSB and Account Numbers
+NAB,083029,823300223,NAB
+NAB,082039,999999912,NAB (AUD Drafts)
+MBL,182222,052951001,Macquarie Bank Ltd
+CMB,212817,000999117,JP Morgan Chase Bank N.A
+ARA,917101,818965036,Arab Bank Ltd
+CTI,242200,999999915,Citigroup Ltd
+BBL,633000,109729871,Bendigo & Adelaide Bank Ltd (633 BBL)
+ADL,633000,153357066,Bendigo & Adelaide Bank Ltd (610 ADL)
+HBA,342089,910640001,HSBC Bank Australia Ltd
+HSB,342089,910640001,HongKong & Shanghai
+LBA,942202,827998,Bank of Sydney
+IBK,819002,110000502,Industrial & Commercial Bank of China
+OCB,452001,810605036,Overseas-Chinese Banking Corp
+RBS,952868,000045500,Royal Bank of Scotland	
+BQL,124001,10457814,Bank Of Queensland
+CRU,082172,017685165,Cuscal Ltd
+MCU,082172,017685165,Mecu
+QTM,082172,017685165,QT Mutual Bank	
+CFC,082172,017685165,Community First CU Ltd
+ADC,082172,017685165,Australian Defence CU
+TCU,082172,017685165,Teachers Credit Union
+CAP,082172,017685165,Capricornia Credit Union
+CUA,082172,017685165,Credit Union Australia Limited
+PCU,082172,017685165,Police Department CU
+WCU,082172,017685165,Warwick Credit Union

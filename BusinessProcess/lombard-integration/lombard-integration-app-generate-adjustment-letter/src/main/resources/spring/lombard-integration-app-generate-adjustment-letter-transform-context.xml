@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+        >
+    
+    <bean id="transform.lombard.service.adjustment.letter.required.search.request"    
+          class="com.fujixerox.aus.integration.transform.endofday.SearchAdjustmentLetterRequiredTransform"
+          p:metadataStore-ref="metadataStore"
+    />
+    
+    <bean id="transform.lombard.service.adjustment.letter.required.search.response" 
+    	class="com.fujixerox.aus.integration.transform.endofday.SearchAdjustmentLetterRequiredResponseTransform" 
+    />
+        
+    <bean id="transform.lombard.service.adjustment.letter.create.request" 
+          class="com.fujixerox.aus.integration.transform.endofday.CreateAdjustmentLetterTransform"
+          p:metadataStore-ref="metadataStore"
+    />
+    
+    <bean id="transform.lombard.service.adjustment.letter.send.request" 
+          class="com.fujixerox.aus.integration.transform.endofday.SendAdjustmentLetterTransform"/>
+    
+    <bean id="transform.lombard.service.adjustment.letter.store.request" 
+          class="com.fujixerox.aus.integration.transform.endofday.StoreAdjustmentLetterTransform"
+          p:metadataStore-ref="metadataStore"
+    />            
+            
+</beans>

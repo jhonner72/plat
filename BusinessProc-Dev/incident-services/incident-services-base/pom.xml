@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.fujixerox.aus.incident-services</groupId>
+    <artifactId>incident-services-base</artifactId>
+    <packaging>pom</packaging>
+    <name>FXA Incident Services - Base</name>
+    <version>0.0.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.fujixerox.aus.support</groupId>
+        <artifactId>fxa-build-code</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath />
+    </parent>
+
+    <properties>
+        <com.fujixerox.aus.lombard-integration.version>0.0.0-SNAPSHOT</com.fujixerox.aus.lombard-integration.version>
+        <com.emc.dfc.version>7.1</com.emc.dfc.version>
+        <org.apache.camel.version>2.14.1</org.apache.camel.version>
+        <org.springframework.version>4.0.7.RELEASE</org.springframework.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-model</artifactId>
+            <version>${com.fujixerox.aus.lombard-integration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${org.slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <scope>test</scope>
+        </dependency>        
+      </dependencies>
+  
+</project>

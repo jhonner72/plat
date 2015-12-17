@@ -1,0 +1,189 @@
+[MaskTable]
+keyType = String
+productName = A2iA CheckReader
+productVersion = 6.0
+productRelease = 3
+
+[MaskTable.defaultDefinition]
+imageName = ..\*.tif
+
+[MaskTable.defaultDefinition.doc]
+documentType = Check
+modelPersistence = None
+AccumulateTransaction = No
+
+[MaskTable.defaultDefinition.doc.image]
+resolution_Dpi = 240
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.check]
+country = US
+currency = USD
+amountRecognition = No
+paymentDocumentType = DepositTicket
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.check.fields.payeeNameZone]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[1]]
+Id = amount1
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[1].box]
+origin = BotRight
+x_tl = 51.646667
+x_br = 2.963333
+y_tl = 27.199165
+y_br = 12.170834
+unit = Millimetres
+pageIndex = 0
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[1].fieldInfo]
+country = AU
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[1].fieldTypeInfo.CaseAmount]
+currencySignLocator = Yes
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[1].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[2]]
+Id = amount2
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[2].box]
+origin = BotRight
+x_tl = 43.391666
+x_br = 8.678333
+y_tl = 45.825832
+y_br = 34.819164
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[2].fieldInfo]
+country = AU
+boxingType = PreBoxed
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[2].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[3]]
+Id = amount3
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[3].box]
+origin = BotRight
+x_tl = 46.143333
+x_br = 5.080000
+y_tl = 24.870831
+y_br = 15.134167
+unit = Millimetres
+pageIndex = 0
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[3].fieldInfo]
+country = AU
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[3].fieldTypeInfo.CaseAmount]
+currencySignLocator = Yes
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[3].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[4]]
+Id = amount4
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[4].box]
+origin = BotRight
+x_tl = 51.223328
+x_br = 4.445000
+y_tl = 35.136665
+y_br = 25.400000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[4].fieldInfo]
+country = AU
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[4].fieldTypeInfo.CaseAmount]
+currencySignLocator = Yes
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[4].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[5]]
+Id = amount5
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[5].box]
+origin = BotRight
+x_tl = 53.340000
+x_br = 4.868333
+y_tl = 23.071667
+y_br = 12.276667
+unit = Millimetres
+pageIndex = 0
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[5].fieldInfo]
+country = AU
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[5].fieldTypeInfo.CaseAmount]
+currencySignLocator = Yes
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[5].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[6]]
+Id = amount6
+fieldType = Amount
+optimisation = MaximizeAccuracy
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[6].box]
+origin = BotRight
+x_tl = 66.463333
+x_br = 6.350000
+y_tl = 24.024166
+y_br = 11.324166
+unit = Millimetres
+pageIndex = 0
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[6].fieldInfo]
+country = AU
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[6].fieldTypeInfo.CaseAmount]
+currencySignLocator = Yes
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.custom.fields[6].fieldTypeInfo.CaseAmount.centPos]
+x_tl = 0.000000
+x_br = 0.000000
+y_tl = 0.000000
+y_br = 0.000000
+unit = Millimetres
+pageIndex = 0
+

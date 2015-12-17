@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/inclearings/InwardImageExchangeVoucherCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iie_tns="http://lombard.aus.fujixerox.com/inclearings/InwardImageExchangeVoucherCommon" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="InwardImageExchangeVoucher" type="iie_tns:InwardImageExchangeVoucher"/>
+	<xs:complexType name="InwardImageExchangeVoucher">
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Drawer account number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="batchNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="bsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="captureDeviceId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="collectingBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="depositorBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="depositorNominatedAccountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Depositor nomiated account number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="vtns:DocumentTypeEnumStore" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document type indicate if voucher is debit or credit.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="forValueType" type="vtns:ForValueTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>For Value type field is used to indicate if a voucher is For Value in the Image Exchange file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="imageExchangeBatchFilename" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="imageExchangeTransmissionDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="manualRepair" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="recordTypeId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transmissionDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherIndicator" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

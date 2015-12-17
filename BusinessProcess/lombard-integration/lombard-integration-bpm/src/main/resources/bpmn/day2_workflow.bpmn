@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_BBC82A03_B017_4d6f_B09C_CD0807C5CC5D" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_C0F4FFC7_B700_406b_8434_C2C4049F0866" name="TriggerWorkflow" isExecutable="true">
+    <bpmn:startEvent id="EAID_E25D6343_5315_4343_B8CF_DE1F6AD8FD90" name="Start">
+      <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_E25D6343_5315_4343_B8CF_DE1F6AD8FD90" targetRef="EAID_33F4ECBF_6281_4632_B7AE_161EE5109834"/>
+    <bpmn:serviceTask id="EAID_33F4ECBF_6281_4632_B7AE_161EE5109834" camunda:expression="${camelDay2.sendTo('direct:lombard-service-outclearings-triggerworkflow-request')}" name="TriggerWorkflow" implementation="##unspecified">
+      <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_3" name="" sourceRef="EAID_33F4ECBF_6281_4632_B7AE_161EE5109834" targetRef="ReceiveTask_1"/>
+    <bpmn:receiveTask id="ReceiveTask_1" name="WaitForTraiggerWorkflow" messageRef="Message_1">
+      <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_4</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_4" name="" sourceRef="ReceiveTask_1" targetRef="EAID_E05518F1_C7E4_4129_9B20_C8FB6E06B24A"/>
+    <bpmn:endEvent id="EAID_E05518F1_C7E4_4129_9B20_C8FB6E06B24A" name="End">
+      <bpmn:incoming>SequenceFlow_4</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_1" name="lombard.service.outclearings.triggerworkflow.response"/>
+  <bpmndi:BPMNDiagram id="EAID_F60AAD0C_EC9A_446e_9DA3_9C2AD3B9D1A3" name="TriggerWorkflow">
+    <bpmndi:BPMNPlane id="EAID_PL000000_EC9A_446e_9DA3_9C2AD3B9D1A3" bpmnElement="EAID_C0F4FFC7_B700_406b_8434_C2C4049F0866">
+      <bpmndi:BPMNShape id="EAID_DO000000_EC9A_446e_9DA3_9C2AD3B9D1A3" bpmnElement="EAID_E25D6343_5315_4343_B8CF_DE1F6AD8FD90">
+        <dc:Bounds height="30.0" width="30.0" x="36.0" y="40.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_5315_4343_B8CF_DE1F6AD8FD90" labelStyle="EAID_LS000000_EC9A_446e_9DA3_9C2AD3B9D1A3">
+          <dc:Bounds height="22.0" width="34.0" x="34.0" y="72.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000001_EC9A_446e_9DA3_9C2AD3B9D1A3" bpmnElement="EAID_E05518F1_C7E4_4129_9B20_C8FB6E06B24A">
+        <dc:Bounds height="30.0" width="30.0" x="420.0" y="40.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_C7E4_4129_9B20_C8FB6E06B24A" labelStyle="EAID_LS000000_EC9A_446e_9DA3_9C2AD3B9D1A3">
+          <dc:Bounds height="22.0" width="29.0" x="421.0" y="72.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000002_EC9A_446e_9DA3_9C2AD3B9D1A3" bpmnElement="EAID_33F4ECBF_6281_4632_B7AE_161EE5109834">
+        <dc:Bounds height="60.0" width="157.0" x="156.0" y="25.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_6281_4632_B7AE_161EE5109834" labelStyle="EAID_LS000000_EC9A_446e_9DA3_9C2AD3B9D1A3"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="EAID_DO000000_EC9A_446e_9DA3_9C2AD3B9D1A3" targetElement="EAID_DO000002_EC9A_446e_9DA3_9C2AD3B9D1A3">
+        <di:waypoint xsi:type="dc:Point" x="66.0" y="55.0"/>
+        <di:waypoint xsi:type="dc:Point" x="156.0" y="55.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="87.0" y="55.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_17" bpmnElement="ReceiveTask_1">
+        <dc:Bounds height="60.0" width="157.0" x="156.0" y="126.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="EAID_DO000002_EC9A_446e_9DA3_9C2AD3B9D1A3" targetElement="_BPMNShape_ReceiveTask_17">
+        <di:waypoint xsi:type="dc:Point" x="234.0" y="85.0"/>
+        <di:waypoint xsi:type="dc:Point" x="234.0" y="126.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="231.0" y="112.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="_BPMNShape_ReceiveTask_17" targetElement="EAID_DO000001_EC9A_446e_9DA3_9C2AD3B9D1A3">
+        <di:waypoint xsi:type="dc:Point" x="312.0" y="156.0"/>
+        <di:waypoint xsi:type="dc:Point" x="370.0" y="156.0"/>
+        <di:waypoint xsi:type="dc:Point" x="370.0" y="55.0"/>
+        <di:waypoint xsi:type="dc:Point" x="420.0" y="55.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="340.0" y="156.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_EC9A_446e_9DA3_9C2AD3B9D1A3">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

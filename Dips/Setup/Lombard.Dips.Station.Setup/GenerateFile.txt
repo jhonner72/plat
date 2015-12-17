@@ -1,0 +1,1 @@
+﻿"C:\Program Files (x86)\WiX Toolset v3.9\bin\heat.exe" dir "C:\Temp\Install2\Dips" -out "C:\FXA\Lombard\Dev\Dips\Setup\Lombard.Dips.Station.Setup\File.wxs" -gg -sfrag -var var.DipsSource -cg ProductComponents -ke -dr INSTALLFOLDER -sreg -suid -srd

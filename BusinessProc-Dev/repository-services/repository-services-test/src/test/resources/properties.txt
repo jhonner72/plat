@@ -1,0 +1,6 @@
+locker.path=\\temp
+#DEV locker.path=//Svmd-9573fss//vshrd-nabmftaia//BitLocker//Job
+broker.user=guest
+broker.password=guest
+broker.host=localhost
+broker.port=5672

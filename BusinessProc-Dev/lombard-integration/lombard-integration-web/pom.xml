@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>lombard-integration-web</artifactId>
+    <packaging>war</packaging>
+    <name>FXA Lombard Integration - Web</name>
+
+    <parent>
+        <groupId>com.fujixerox.aus.lombard-integration</groupId>
+        <artifactId>lombard-integration-base</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath>../lombard-integration-base/pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-imageexchange</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-valueinstructionfile</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-voucher</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-inwardimageexchange</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-forvaluevouchers</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-reporting</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-listing</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-triggeringworkflow</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-surplusitem</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-progresspending</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-clear-adjustment</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-generate-adjustment-letter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.lombard-integration</groupId>
+            <artifactId>lombard-integration-app-australiapost</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <!-- Replace with sqlserver -->
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.2.132</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

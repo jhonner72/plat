@@ -1,0 +1,142 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM Inwards IE Instance</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="text" searchWhenChanged="true" token="businessKey">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityInwardsIE BusinessKey=$businessKey$ | eval value = if (State=2, "severe", if(EndTime == "null", "high", "low")) | table value Name</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Start Inwards Image Exchange</title>
+        <search base="baseQuery">
+          <query>| Search Name="Inward Image Exchange Start"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Check Duplicate File</title>
+        <search base="baseQuery">
+          <query>| search Name="CheckDuplicateFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>File Received Before Test</title>
+        <search base="baseQuery">
+          <query>| search Name="ReceivedBefore"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Raised Duplicate incident (only if received before)</title>
+        <search base="baseQuery">
+          <query>| search Name="RaiseDuplicateIncident"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Unpackage Image Exchange Batch</title>
+        <search base="baseQuery">
+          <query>| search Name="UnpackImageExchangeBatch"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Unpackage Image Exchange Batch</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitUnpackImageExchangeBatch"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Store Batch Voucher</title>
+        <search base="baseQuery">
+          <query>| search Name="StoreBatchDocumentum"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Store Batch Voucher</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitStoreBatchDocumentum"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>End Inward Image Exchange</title>
+        <search base="baseQuery">
+          <query>| search Name="Inward Image Exchange End"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

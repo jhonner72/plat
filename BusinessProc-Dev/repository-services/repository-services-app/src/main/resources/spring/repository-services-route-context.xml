@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+     
+     <!-- parent route definition -->
+    <bean id="repositoryRoute" abstract="true" class="com.fujixerox.aus.repository.route.AbstractRepositoryRoute"
+         p:port-ref="brokerPort"
+         p:hostname-ref="brokerHostname"
+         p:options="${broker.options}"
+    />
+
+    <!-- Camel Routes -->
+    <bean id="storeVoucherRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.storevouchers"
+          p:desc="Store Vouchers"
+          p:requestClass="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest"
+          p:method="save"
+     />     
+     <bean id="queryVoucherRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.getvouchers"
+          p:desc="Get Vouchers"
+          p:requestClass="com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersRequest"
+          p:method="query"
+     />
+     <bean id="updateVoucherForVIFRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.outclearings.updatevalueinstructionfilevouchersstatus"
+          p:desc="Update Voucher Status for VIF"
+          p:requestClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest"
+          p:method="update"
+     />
+     <bean id="updateVoucherForVIFAckRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.outclearings.updatevalueinstructionfilevouchersackstatus"
+          p:desc="Update Voucher Status for VIF Ack"
+          p:requestClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest"
+          p:method="update"
+     />
+     <bean id="updateVoucherForIERoute" parent="repositoryRoute"
+          p:queueName="lombard.service.outclearings.updateimageexchangevouchersstatus"
+          p:desc="Update Voucher Status for IE"
+          p:requestClass="com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest"
+          p:method="update"
+     />
+     <bean id="repostVoucherRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.repostvouchers"
+          p:desc="Repost Vouchers"
+          p:requestClass="com.fujixerox.aus.lombard.repository.repostvouchers.RepostVouchersRequest"
+          p:method="repost"
+     />
+	 <bean id="storeListingRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.outclearings.storelisting"
+          p:desc="Store Listings"
+          p:requestClass="com.fujixerox.aus.lombard.outclearings.storelisting.StoreListingRequest"
+          p:method="saveListings"
+     />
+     <bean id="triggerWorkflowRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.outclearings.triggerworkflow"
+          p:desc="Trigger Workflow"
+          p:requestClass="com.fujixerox.aus.lombard.outclearings.triggerworkflow.TriggerWorkflowRequest"
+          p:method="triggerWorkflow"
+     />
+     <bean id="storeReportRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.reporting.storerepositoryreports"
+          p:desc="Store Reports"
+          p:requestClass="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsRequest"
+          p:method="saveReports"
+     />
+     <bean id="queryVoucherInfoRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.getvouchersinformation"
+          p:desc="Get Voucher Information"
+          p:requestClass="com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationRequest"
+          p:method="queryVoucherInfo"
+     />
+     <bean id="queryVoucherInfoForAdjustmentLetterRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.getvouchersinformation.foradjletter"
+          p:desc="Get Voucher Information For Adjustment Letter"
+          p:requestClass="com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationRequest"
+          p:method="queryVoucherInfo"
+     />
+     <bean id="updateVoucherInfoRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.updatevouchersinformation"
+          p:desc="Update Voucher Information"
+          p:requestClass="com.fujixerox.aus.lombard.repository.updatevouchersinformation.UpdateVouchersInformationRequest"
+          p:method="updateVoucherInfo"
+     />
+     <bean id="storeAdjustmentLetterRoute" parent="repositoryRoute"
+          p:queueName="lombard.service.repository.storeadjustmentletter"
+          p:desc="Store Adjustment Letters"
+          p:requestClass="com.fujixerox.aus.lombard.outclearings.storeadjustmentletters.StoreBatchAdjustmentLettersRequest"
+          p:method="saveAdjustmentLetter"
+     />
+            
+</beans>

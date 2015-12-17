@@ -1,0 +1,120 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>D2 PDF Viewer</title>
+<style>
+  html,body{ 
+    overflow: hidden;
+    font-family: helvetica, arial, sans-serif; 
+    font-size: 12px;
+    width: 100%; 
+    height: 100%;
+  } 
+
+</style>
+<script type="text/javascript">
+
+  var debug = getURLParameter('debug');	
+  var docbase = getURLParameter('docbase');
+  var locale = getURLParameter('locale');
+  var username = getURLParameter('username');
+  var password = getURLParameter('password');
+  var r_object_id = getURLParameter('r_object_id');
+  var format = getURLParameter('format');
+  var downloadFormat = 'pdf';
+  if (format=="c2pdf") {
+    downloadFormat = '_DEFAULT_';
+  }
+  var documentIdMatch = r_object_id.match(/^09/);
+
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+  }
+
+  function resizeToMax(id){
+    myImage = new Image() 
+    var img = document.getElementById(id);
+    myImage.src = img.src; 
+    if (myImage.width > myImage.height){
+      img.style.width = "100%";
+    } else {
+      img.style.height = "100%";
+    }
+  }
+
+  function loadViewer() {
+    var aHtml = new Array();
+    var h = 0;
+    var d2DownloadLink;
+    var hostName = window.location.hostname;
+    var port = window.location.port;
+
+    if (debug=="true") {
+      aHtml[h++] = 'hostName=' + hostName + '<br/>';
+      aHtml[h++] = 'port=' + port + '<br/>';
+      aHtml[h++] = 'docbase=' + docbase + '<br/>';
+      aHtml[h++] = 'locale=' + locale + '<br/>';
+      aHtml[h++] = 'username=' + username + '<br/>';
+      aHtml[h++] = 'password=' + password + '<br/>';
+      aHtml[h++] = 'format=' + format + '<br/>';
+      aHtml[h++] = 'downloadFormat=' + downloadFormat + '<br/>';
+      aHtml[h++] = 'r_object_id=' + r_object_id + '<br/>';
+      aHtml[h++] = 'documentIdMatch=' + documentIdMatch + '<br/>';
+      aHtml[h++] = '<br/>';
+    }
+
+    if (docbase==null) {
+      aHtml[h++] = 'Please make sure docbase=$DOCBASE is included in widget config URL.<br/>';
+    } else if (username==null) {
+      aHtml[h++] = 'Please make sure username=$LOGIN is included in widget config URL.<br/>';
+    } else if (password==null) {
+      aHtml[h++] = 'Please make sure password=$TICKET is included in widget config URL.<br/>';
+    } else if (locale==null) {
+      aHtml[h++] = 'Please make sure locale=en is included in widget config URL.<br/>';
+    } else if (r_object_id==null) {
+      aHtml[h++] = 'Waiting for you to select a document.<br/><br/>';
+    } else if (documentIdMatch==null) {
+      aHtml[h++] = 'NOTICE:  The selected object is not a document.  No action for this widget.<br/><br/>';
+    } else {
+      d2DownloadLink = 'http://' + hostName + ':' + port + '/D2/servlet/Download?_docbase=' + docbase + '&_locale=' + locale + '&_username=' + username + '&_password=' + password + '&id=' + r_object_id + '&format=' + downloadFormat + '&event_name=d2_view';
+//alert(d2DownloadLink);
+      if (debug=="true") aHtml[h++] = 'd2DownloadLink=' + d2DownloadLink + '<br/>'; 
+
+      //Get Content-Type 
+      var start = new Date().getTime();
+      var xhr = new XMLHttpRequest();
+	  //alert('test');
+	  //xhr.open("GET", "//testAjit.pdf", false);
+      xhr.open('HEAD', d2DownloadLink, false);
+      xhr.send(null);
+	  var linkContentType = xhr.getResponseHeader("Content-Type");
+      var end = new Date().getTime();
+      var time = end - start;
+      if (debug=="true") {
+        aHtml[h++] = 'link Content-Type=' + linkContentType + '<br/>'; 
+		aHtml[h++] = 'Execution time to get link Content-Type=' + time + ' secs<br/><br/>';
+      }
+		
+      
+	  if (linkContentType=="application/pdf") { 
+        aHtml[h++] = '<iframe src="' + d2DownloadLink + '" height="97%" width="97%">';
+      } else if (linkContentType=="image/jpeg" | linkContentType=="image/gif" | linkContentType=="image/png") { 
+        aHtml[h++] = '<img id="downloadImage" src="' + d2DownloadLink + '" onload="resizeToMax(this.id)" onresize="resizeToMax(this.id)">';
+      } else {
+		<%
+			String imgUrl = "/images/Hewlett.jpg";
+		%>
+		aHtml[h++] = '<iframe src="' + <%= imgUrl %> + '" height="97%" width="97%">';
+        //aHtml[h++] = 'NOTICE:  The document is content-type of ' + linkContentType + '.<br/><br/>No PDF rendition found for this document.'; 
+      }
+    }
+
+    var sHtml = aHtml.join("");
+    document.getElementById("rootDiv").innerHTML = sHtml;
+  }
+</script>
+</head>
+<body onload="loadViewer();">
+<div id="rootDiv" height="100%" width="100%"></div>
+</body>
+</html>

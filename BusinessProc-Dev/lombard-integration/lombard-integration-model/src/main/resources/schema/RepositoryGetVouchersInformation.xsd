@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/GetVouchersInformation" xmlns:tns="http://lombard.aus.fujixerox.com/repository/GetVouchersInformation" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rc="http://lombard.aus.fujixerox.com/repository/Common" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/repository/Common" schemaLocation="RepositoryCommon.xsd"/>
+	<xs:element name="GetVouchersInformationRequest" type="tns:GetVouchersInformationRequest"/>
+	<xs:complexType name="GetVouchersInformationRequest">
+		<xs:annotation>
+			<xs:documentation>This is a generic GetVouchersInformation service. Criteria to extract the vouchers should be mapped in respective functionality transformation mapping. 
+e.g GetAdjustmentsOnHold in End Of Day process.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="imageRequired" type="rc:ImageType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>True if image is also required with response. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GetVouchersInformationResponse" type="tns:GetVouchersInformationResponse"/>
+	<xs:complexType name="GetVouchersInformationResponse">
+		<xs:sequence>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Return all the vouchers matching the criteria.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,8 @@
+// National Bank (Thomas Cook Travellers Cheque)
+// Created by: Dinesh Kansal
+// Date Created: 2014/04/24
+// Date Last Changed: 0000/00/00
+// Columns = BSB , MODulus (MOD10/NOMOD/INVAL), Comment 
+// ______________________________________________________________________________________
+082931,NOMOD, //Traveller Cheque
+083931,MOD9, //Traveller Cheque

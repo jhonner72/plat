@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" urn="urn:com.emc.ide.artifact.group/fxa_expert_bal_grp?name=fxa_expert_bal_grp" categoryId="com.emc.ide.artifact.group" modifiedByUser="false">
+  <dataModel xsi:type="group:Group" groupName="fxa_expert_bal_grp" groupAddress="expbal@test.com" description="Expert Balancing Group" groupDisplayName="Expert Balancing Group">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+    <groupAdminRef xsi:type="group:SimpleGroupAdmin" admin="admin group"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,21 @@
+//Batch Package files have code for various Work Type batches. This data contains mapping for different work types
+//Sort Option: Alpha
+//Format: WorkType, WorkTypeCode for Package File
+//Modification History
+//2015-05-28	Dinesh		Created
+//2015-06-30	Shraddha	Added Listings
+//2015-07-14	Dinesh		Added Surplus
+//2015-08-17	Shraddha	Added Aus Post
+
+NabChqScanPod,NSBD			//Scanned batches (DMS)​
+NabChqListings,NSBI			//Scanned batches (Listings)​
+NabChqSurplus,NSBS						//Scanned batches (Surplus Item)
+NabChqLBox,NSBL
+NabChqAPost,NSBP			//Scanned batches (Aus Post)
+
+//ToDo when new Work Types are defined...
+//​NSBP						//Scanned batches (Aus Post)
+//NSBL						//Scanned batches (Locked Box)​
+//NSBA						//Scanned batches (Agency Banks)
+//NSBS						//Scanned batches (Surplus Item)
+//NSBQ						//Scanned Batches (BQL In QLD) 

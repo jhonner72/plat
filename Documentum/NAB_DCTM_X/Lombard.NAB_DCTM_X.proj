@@ -1,0 +1,41 @@
+<Project DefaultTargets="Build;AfterBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NuGet Condition="Exists('$(CustomAfterMicrosoftCommonTargets)')">$([System.IO.Path]::GetDirectoryName($(CustomAfterMicrosoftCommonTargets)))\tools\nuget.exe</NuGet>
+    <PublishPackage Condition="Exists('$(CustomAfterMicrosoftCommonTargets)')">true</PublishPackage>
+
+    <MajorVersion Condition="'$(MajorVersion)' == ''">1</MajorVersion>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">0</MinorVersion>
+    <ChangesetId Condition="$(ChangesetId) == ''">0</ChangesetId>
+    <ComponentVersion>$(MajorVersion).$(MinorVersion).$(ChangesetId)</ComponentVersion>
+    <OutputDirectory>$(MSBuildProjectDirectory)\.deploy</OutputDirectory>
+  </PropertyGroup>
+
+  <Target Name="Build">
+    <CreateItem Include="$(MSBuildProjectDirectory)\..\">
+      <Output ItemName="MSBuildProjectParentDirectory" TaskParameter="Include"/>
+    </CreateItem>
+    <CreateProperty Value="%(MSBuildProjectParentDirectory.Fullpath)">
+      <Output PropertyName="MSBuildProjectParentDirectory" TaskParameter="Value"/>
+    </CreateProperty>
+    
+    <PropertyGroup>
+      <JavaExe>"%JAVA_HOME%\bin\java.exe"</JavaExe>
+      <Composer>C:\ComposerHeadless\startup.jar</Composer>
+      <BuildWorkspace>$(MSBuildProjectParentDirectory)bin</BuildWorkspace>
+      <BuildFile>$(BuildWorkspace)\NAB_DCTM_X\build.xml</BuildFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <OrigFiles Include="$(MSBuildProjectDirectory)\**\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(OrigFiles)" DestinationFolder="$(BuildWorkspace)\NAB_DCTM_X\%(RecursiveDir)" />
+
+    <Exec Command='$(JavaExe) -cp $(Composer) org.eclipse.core.launcher.Main -data $(BuildWorkspace) -application org.eclipse.ant.core.antRunner -buildfile $(BuildFile)' Condition="Exists('$(BuildFile)')"/>
+  </Target>
+
+  <Target Name="AfterBuild" Condition="'$(PublishPackage)' == 'true'" DependsOnTargets="Build">
+    <MakeDir Directories = "$(OutputDirectory)" Condition = "!Exists('$(OutputDirectory)')" />
+      <Exec Command='"$(NuGet)" pack "$(MSBuildThisFileDirectory)$(MSBuildThisFileName).nuspec" -version $(ComponentVersion) -out "$(OutputDirectory)"' Condition="Exists('$(MSBuildThisFileDirectory)$(MSBuildThisFileName).nuspec')"/>
+  </Target>
+</Project>

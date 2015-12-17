@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/RecogniseCourtesyAmount" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/RecogniseCourtesyAmount" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="RecogniseBatchCourtesyAmountRequest" type="tns:RecogniseBatchCourtesyAmountRequest"/>
+	<xs:complexType name="RecogniseBatchCourtesyAmountRequest">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:RecogniseCourtesyAmountRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier represents the unique Id in the system and same as the name of the batch.zip = JobIdentifier.zip
+batch.xml = JobIdentifier.xml
+Please refer the naming convention page on Wiki Page
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecogniseBatchCourtesyAmountResponse" type="tns:RecogniseBatchCourtesyAmountResponse"/>
+	<xs:complexType name="RecogniseBatchCourtesyAmountResponse">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:RecogniseCourtesyAmountResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier represents the unique Id in the system and same as the name of the batch.zip = JobIdentifier.zip
+batch.xml = JobIdentifier.xml
+Please refer the naming convention page on Wiki Page
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecogniseCourtesyAmountRequest" type="tns:RecogniseCourtesyAmountRequest"/>
+	<xs:complexType name="RecogniseCourtesyAmountRequest">
+		<xs:annotation>
+			<xs:documentation>Front Image Identifier for the document</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Processing Date of voucher. Date format: DDMMCCYY</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecogniseCourtesyAmountResponse" type="tns:RecogniseCourtesyAmountResponse"/>
+	<xs:complexType name="RecogniseCourtesyAmountResponse">
+		<xs:sequence>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="imageRotation" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Image Rotation of 0 - 180 upside down.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="capturedAmount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Captured amount using Courtesy Amount Recognition functionality </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountConfidenceLevel" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Confidence level of captured amount using Courtesy Amount Recognition functionality
+Value from 0 to 999
+0     - Low confidence
+999 - High confidence</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountRegionOfInterest" type="v:RegionOfInterest" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Region of Interest for amount field on the voucher
+ROI: 4 point coordinates. 
+            Top      : int
+            Left      : int
+            Height  : int
+            Width   : int
+            </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

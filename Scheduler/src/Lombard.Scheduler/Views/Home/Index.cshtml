@@ -1,0 +1,30 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Console Output</h2>
+<p>
+    The area below is a dump of the console output that is being refreshed each second. Background jobs
+    write a message to the console, so you can see it was performed.
+</p>
+<pre id="buffer" data-url="@(Url.Action("Buffer", "Home"))">@Model</pre>
+<script>
+    var objDiv = document.getElementById("buffer");
+    objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+
+<a class="btn btn-default" href="@Url.Content("~/hangfire")">Visit Dashboard</a>
+
+
+<script>
+    $(function () {
+        var bufferWidget = $('#buffer');
+
+        setInterval(function () {
+            $.get(bufferWidget.data('url'), function (data) {
+                bufferWidget.html(data);
+                bufferWidget.scrollTop(bufferWidget[0].scrollHeight);
+            });
+        }, 1000);
+    });
+</script>

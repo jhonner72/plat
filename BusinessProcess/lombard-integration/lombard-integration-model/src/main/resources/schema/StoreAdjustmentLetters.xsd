@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/StoreAdjustmentLetters" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/StoreAdjustmentLetters">
+	<xs:element name="StoreBatchAdjustmentLettersRequest" type="tns:StoreBatchAdjustmentLettersRequest"/>
+	<xs:complexType name="StoreBatchAdjustmentLettersRequest">
+		<xs:sequence>
+			<xs:element name="adjustmentLetters" type="tns:StoreAdjustmentLettersRequest" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="zipFilename" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreAdjustmentLettersRequest" type="tns:StoreAdjustmentLettersRequest"/>
+	<xs:complexType name="StoreAdjustmentLettersRequest">
+		<xs:sequence>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="filename" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="scannedBatchNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="transactionLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchAdjustmentLettersResponse" type="tns:StoreBatchAdjustmentLettersResponse"/>
+	<xs:complexType name="StoreBatchAdjustmentLettersResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

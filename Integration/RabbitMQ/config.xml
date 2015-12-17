@@ -1,0 +1,851 @@
+<RabbitMQ>
+	<!-- NET01 NIEO -->
+	<binding Name="createimageexchangefile" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createimageexchangefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createimageexchangefile.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="createimageexchangefile" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createimageexchangefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createimageexchangefile.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- NET02 NVIF -->
+	<binding Name="createvalueinstructionfile" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createvalueinstructionfile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createvalueinstructionfile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="createvalueinstructionfile" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createvalueinstructionfile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createvalueinstructionfile.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- NET03 NVIF -->
+	<binding Name="processvalueinstructionfileack" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.processvalueinstructionfileack.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.processvalueinstructionfileack.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="processvalueinstructionfileack" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.processvalueinstructionfileack.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.processvalueinstructionfileack.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- NET04 NRPT -->
+	<binding Name="executereport" RoutingKey ="NRPT" DestinationType ="queue">
+		<Queue Name="lombard.service.reporting.executereport.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.executereport.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="executereport" RoutingKey ="NRPT" DestinationType ="queue">
+		<Queue Name="lombard.service.reporting.executereport.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.executereport.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- NET05 NGAL -->
+	<binding Name="generateAdjustmentLetterCreate" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createadjustmentletter.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createadjustmentletter.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="generateAdjustmentLetterCreate" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.createadjustmentletter.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.createadjustmentletter.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- NET07/08 -->
+	<binding Name="Job" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.job.queue" Durable="true" />
+		<Exchange Name ="lombard.service.job" Type="direct" Durable="true"/>
+	</binding>
+	<!-- NET08 NFVX Response Only -->
+	<binding Name="copyimages" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.copyimages.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.inclearings.copyimages.response" Type="direct" Durable="true" />
+	</binding>
+	<!-- NET08 NECL Response Only -->
+	<binding Name="copyimages" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.copyvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.inclearings.copyimages.response" Type="direct" Durable="true" />
+	</binding>
+	<!-- NET08 NLBC Response Only -->
+	<binding Name="copyimages" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.copyvoucherslbc.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.inclearings.copyimages.response" Type="direct" Durable="true" />
+	</binding>
+	<!-- NET09 NSBD -->
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.recognisecourtesyamount.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.recognisecourtesyamount.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.response" Type="direct" Durable="true" />
+	</binding>
+	<!-- NET09 NSBP -->
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.recognisecourtesyamount.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.recognisecourtesyamount.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- NET09 NSBL -->
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.recognisecourtesyamount.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.recognisecourtesyamount.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- NET09 NSBS --> 
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.recognisecourtesyamount.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="recognisecourtesyamount" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.recognisecourtesyamount.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.recognisecourtesyamount.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- NET10 NSBD -->
+	<binding Name="validatecodeline" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatecodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="validatecodeline" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatecodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- NET10 NSBP -->
+	<binding Name="validatecodeline" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatecodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="validatecodeline" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.validatecodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- NET10 NSBL -->
+	<binding Name="validatecodeline" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatecodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="validatecodeline" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.validatecodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- NET10 NSBS -->
+	<binding Name="validatecodeline" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatecodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="validatecodeline" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.validatecodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatecodeline.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- NET11 NSBD -->
+	<binding Name="correctcodeline" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correctcodeline" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- NET11 NSBP -->
+	<binding Name="correctcodeline" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correctcodeline" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.correctcodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- NET11 NSBL -->
+	<binding Name="correctcodeline" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correctcodeline" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.correctcodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- NET11 NSBS -->
+	<binding Name="correctcodeline" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correctcodeline" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.correctcodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- NET11 NFVX -->
+	<binding Name="correctcodeline" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correctcodeline.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correctcodeline" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.forvaluecorrectcodeline.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correctcodeline.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- NET12 NSBD -->
+	<binding Name="validatetransaction" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatetransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="validatetransaction" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatetransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- NET12 NSBL -->
+	<binding Name="validatetransaction" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatetransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="validatetransaction" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.validatetransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- NET12 NSBS -->
+	<binding Name="validatetransaction" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.validatetransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="validatetransaction" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.validatetransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.validatetransaction.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- NET13 NSBD -->
+	<binding Name="correcttransaction" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correcttransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correcttransaction" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correcttransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.response" Type="direct" Durable="true"/>
+	</binding>
+    
+	<!-- NET13 NSBL -->
+	<binding Name="correcttransaction" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correcttransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correcttransaction" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.correcttransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.response" Type="direct" Durable="true"/>
+	</binding>
+    
+	<!-- NET13 NSBS -->
+	<binding Name="correcttransaction" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.correcttransaction.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="correcttransaction" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.correcttransaction.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.correcttransaction.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- NET14 NSBD -->
+	<binding Name="thirdPartyChecking" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.checkthirdparty.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.checkthirdparty.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="thirdPartyChecking" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.checkthirdparty.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.checkthirdparty.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- NET15 NCST -->
+	<binding Name="generatecorrespondingvouchers" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="generatecorrespondingvouchers" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatevouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatevouchers.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- NET16 NECL -->
+	<binding Name="matchvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.matchvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.matchvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="matchvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.matchvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.matchvouchers.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- NET17 NECL -->
+	<binding Name="generatebulkcredit" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatebulkcredit.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatebulkcredit.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="generatebulkcredit" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatebulkcredit.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatebulkcredit.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- NET17 NLBC -->
+	<binding Name="generatebulkcredit" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatebulkcredit.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatebulkcredit.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="generatebulkcredit" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.generatebulkcreditforlockedbox.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.generatebulkcredit.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- REPO01 Default -->
+	<binding Name="repositorystorevouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO01 NSBD -->
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.storebatchvoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- REPO01 NSBP -->
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.storebatchvoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO01 NSBL -->
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.storebatchvoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO01 NSBS -->
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.storebatchvoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO01 NIEI -->
+	<binding Name="repositorystorevouchers" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorystorevouchers" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.storeinwardimageexchangedocumentum.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storevouchers.response" Type="direct" Durable="true" />
+	</binding>	
+	
+	<!-- REPO02 Default -->
+	<binding Name="repositorygetvouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO02 NFVX -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.getinwardforvaluevouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO02 NVIF -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.getvouchersforvalueinstructionfile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO02 NPPV -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NPPV" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NPPV" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.updatependingvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO02 NIEO -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.getvouchersforimageexchange.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- REPO02 NECL -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.geteclvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO02 NLBC -->
+	<binding Name="repositorygetvouchers" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorygetvouchers" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.getvouchersforlockedbox.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchers.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO03 Default -->
+	<binding Name="repositoryupdatevouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryupdatevouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO03 NVIF -->
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NVIF" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.updatevalueinstructionfilevouchersstatus.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO03 NVIF2 -->
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NVIF2" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NVIF2" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.updatevalueinstructionfilevouchersackstatus.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO03 NIEO -->
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryupdatevouchers" RoutingKey ="NIEO" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.updateimageexchangevouchersstatus.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchers.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- REPO04 Default -->
+	<binding Name="repositoryrepostvouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.repostvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.repostvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryrepostvouchers" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.repostvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.repostvouchers.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO04 NFVX -->
+	<binding Name="repositoryrepostvouchers" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.repostvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.repostvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryrepostvouchers" RoutingKey ="NFVX" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.repostforvaluevouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.repostvouchers.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO05 NSBI -->
+	<binding Name="repositoryStoreListings" RoutingKey ="NSBI" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.storelisting.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.storelisting.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="repositoryStoreListings" RoutingKey ="NSBI" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.storelisting.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.storelisting.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO06 DAY2 -->
+	<binding Name="triggerworkflow" RoutingKey ="DAY2" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.triggerworkflow.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.triggerworkflow.request" Type="direct" Durable="true" />
+	</binding>
+	<binding Name="triggerworkflow" RoutingKey ="DAY2" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.triggerworkflow.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.triggerworkflow.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO07 NRPT -->
+	<binding Name="storereport" RoutingKey ="NRPT" DestinationType ="queue">
+		<Queue Name="lombard.service.reporting.storerepositoryreports.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.storerepositoryreports.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="storereport" RoutingKey ="NRPT" DestinationType ="queue">
+		<Queue Name="lombard.service.reporting.storerepositoryreports.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.storerepositoryreports.response" Type="direct" Durable="true" />
+	</binding>
+  
+	<!-- REPO07 NRIE -->
+	<binding Name="storereport" RoutingKey ="NRIE" DestinationType ="queue">
+		<Queue Name="lombard.service.reporting.storerepositoryreports.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.storerepositoryreports.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="storereport" RoutingKey ="NRIE" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.storereceivedfiles.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.reporting.storerepositoryreports.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- REPO08 Default -->
+	<binding Name="repositorySearch" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorySearch" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO08 NCST -->
+	<binding Name="repositorySearch" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorySearch" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.getreleaseditems.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO08 NPAH -->
+	<binding Name="repositorySearch" RoutingKey ="NPAH" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorySearch" RoutingKey ="NPAH" DestinationType ="queue">
+		<Queue Name="lombard.service.adjustment.search.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO08 NGAL -->
+	<binding Name="repositorySearch" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorySearch" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.foradjletter.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO08 NSBD -->
+	<binding Name="repositorySearch" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getvouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositorySearch" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.getpoolvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getvouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO09 Default -->
+	<binding Name="repositoryUpdateVoucherInfo" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryUpdateVoucherInfo" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchersinformation.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO09 NPAH -->
+	<binding Name="repositoryUpdateVoucherInfo" RoutingKey ="NPAH" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.updatevouchersinformation.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchersinformation.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryUpdateVoucherInfo" RoutingKey ="NPAH" DestinationType ="queue">
+		<Queue Name="lombard.service.adjustment.update.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.updatevouchersinformation.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO10 Default -->
+	<binding Name="repositoryStoreAdjustmentLetter" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storeadjustmentletter.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storeadjustmentletter.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryStoreAdjustmentLetter" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storeadjustmentletter.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storeadjustmentletter.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO10 NGAL -->
+	<binding Name="repositoryStoreAdjustmentLetter" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.storeadjustmentletter.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storeadjustmentletter.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="repositoryStoreAdjustmentLetter" RoutingKey ="NGAL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.storeadjustmentletter.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.storeadjustmentletter.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO11 NCST -->
+	<binding Name="associategeneratedvouchers" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="associategeneratedvouchers" RoutingKey ="NCST" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvouchers.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.response" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- REPO11 NECL -->
+	<binding Name="associategeneratedvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="associategeneratedvouchers" RoutingKey ="NECL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvouchersecl.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO11 NLBC -->
+	<binding Name="associategeneratedvouchers" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvouchers.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="associategeneratedvouchers" RoutingKey ="NLBC" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.associategeneratedvoucherslbc.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.associategeneratedvouchers.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO12 Default -->
+	<binding Name="getreceivefiles" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getreceivedfiles.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getreceivedfiles.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="getreceivefiles" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getreceivedfiles.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getreceivedfiles.response" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- REPO12 NRIE -->
+	<binding Name="getreceivefiles" RoutingKey ="NRIE" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.getreceivedfiles.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getreceivedfiles.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="getreceivefiles" RoutingKey ="NRIE" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.getreceivedfiles.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.getreceivedfiles.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO13 NSBD -->
+	<binding Name="checkduplicatefile" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="checkduplicatefile" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO13 NSBS -->
+	<binding Name="checkduplicatefile" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="checkduplicatefile" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.checkduplicatefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO13 NSBP -->
+	<binding Name="checkduplicatefile" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="checkduplicatefile" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.checkduplicatefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO13 NSBL -->
+	<binding Name="checkduplicatefile" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="checkduplicatefile" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.checkduplicatefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- REPO13 NIEI -->
+	<binding Name="checkduplicatefile" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.repository.checkduplicatefile.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="checkduplicatefile" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.inwardimageexchange.checkduplicatefile.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.repository.checkduplicatefile.response" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- LOM01 NSBD -->
+	<binding Name="unpackagevoucher" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagevoucher.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="unpackagevoucher" RoutingKey ="NSBD" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagevoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- LOM01 NSBP -->
+	<binding Name="unpackagevoucher" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagevoucher.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="unpackagevoucher" RoutingKey ="NSBP" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.australiapost.unpackagevoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- LOM01 NSBL -->
+	<binding Name="unpackagevoucher" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagevoucher.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="unpackagevoucher" RoutingKey ="NSBL" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.lockedbox.unpackagevoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagevoucher.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- LOM02 NSBS -->
+	<binding Name="surplusunpackagevoucher" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.unpackagevoucher.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.surplus.unpackagevoucher.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="surplusunpackagevoucher" RoutingKey ="NSBS" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.surplus.unpackagevoucher.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.surplus.unpackagevoucher.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- LOM03 NSBI -->
+	<binding Name="unpackagelisting" RoutingKey ="NSBI" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagelisting.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagelisting.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="unpackagelisting" RoutingKey ="NSBI" DestinationType ="queue">
+		<Queue Name="lombard.service.outclearings.unpackagelisting.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.outclearings.unpackagelisting.response" Type="direct" Durable="true" />
+	</binding>
+	
+	<!-- LOM04 NIEI -->
+	<binding Name="unpackimageexchangebatch" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.unpackimageexchangebatch.request.queue" Durable="true" />
+		<Exchange Name ="lombard.service.inclearings.unpackimageexchangebatch.request" Type="direct" Durable="true"/>
+	</binding>
+	<binding Name="unpackimageexchangebatch" RoutingKey ="NIEI" DestinationType ="queue">
+		<Queue Name="lombard.service.inclearings.unpackimageexchangebatch.response.queue" Durable="true" />
+		<Exchange Name ="lombard.service.inclearings.unpackimageexchangebatch.response" Type="direct" Durable="true" />
+	</binding>
+
+	<!-- LOM05 -->
+	<binding Name="supportincident" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.support.incident.queue" Durable="true" />
+		<Exchange Name ="lombard.service.support.incident" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- LOM06 -->
+	<binding Name="supporterror" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="lombard.service.support.error.queue" Durable="true" />
+		<Exchange Name ="lombard.service.support.error" Type="direct" Durable="true"/>
+	</binding>
+
+	<!-- DLX01 SYSTEM -->
+	<binding Name="DlxSystem" RoutingKey="system" DestinationType="queue">
+		<Queue Name="lombard.dlx.system.queue" Durable="true" />
+		<Exchange Name ="lombard.dlx" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- DLX01 SERVICE -->
+	<binding Name="DlxService" RoutingKey="service" DestinationType="queue">
+		<Queue Name="lombard.dlx.service.queue" Durable="true" />
+		<Exchange Name ="lombard.dlx" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- DLX01 INTEGRATION -->
+	<binding Name="DlxIntegration" RoutingKey="integration" DestinationType="queue">
+		<Queue Name="lombard.dlx.integration.queue" Durable="true" />
+		<Exchange Name ="lombard.dlx" Type="direct" Durable="true"/>
+	</binding>
+  
+	<!-- DLX01 EXTERNAL -->
+	<binding Name="DlxExternal" RoutingKey="external" DestinationType="queue">
+		<Queue Name="lombard.dlx.external.queue" Durable="true" />
+		<Exchange Name ="lombard.dlx" Type="direct" Durable="true"/>
+	</binding>
+	
+	<!-- DLX02 RETRY SYSTEM -->
+	<binding Name="DlxRetry" RoutingKey="system" DestinationType="queue">
+		<Queue Name="lombard.dlx.retry.queue" Durable="true" />
+		<Exchange Name ="lombard.dlx.retry" Type="direct" Durable="true"/>
+	</binding>  
+
+	<!-- DR01 -->
+	<binding Name="JobDR" RoutingKey ="" DestinationType ="queue">
+		<Queue Name="dr.lombard.service.job.queue" Durable="true" />
+		<Exchange Name="dr.lombard.service.job" Type="direct" Durable="true"/>
+	</binding>
+	
+	<Policies>
+		<Command Argument="set_policy --apply-to" />
+		<!-- Use for Octopus -->
+		<Policy Enable="#{Policy.HA.Enable}" Name="HA" ApplyTo="all" Pattern="lombard\." Mode="ha-mode" ModeTo="all"/> 
+	</Policies>
+
+	<Plugins>
+		<Enable Argument="enable" />
+		<Plugin Name="rabbitmq_management" Enable="True"/>
+		<Plugin Name="rabbitmq_shovel" Enable="True"/>
+		<Plugin Name="rabbitmq_shovel_management" Enable="True"/>
+	</Plugins>
+</RabbitMQ>

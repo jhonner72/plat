@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <import resource="classpath:/spring/mapping/attribute-handlers.xml"/>
+
+    <!-- type name -->
+    <bean id="dctmFxaVoucherObjectType" class="java.lang.String">
+        <constructor-arg value="dm_dbo.fxa_voucher_im_view"/>
+    </bean>
+
+    <!-- Attributes -->
+    <bean id="dctmFxaVoucherClassification" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_classification"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="baseStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherProcessingDate" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_processing_date"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="dateHanlder"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherDRN" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_drn"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="baseStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherBSB" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_bsb"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="wildcardStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherAccountNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_account_number"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="rangeStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherAuxDom" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_aux_dom"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="wildcardStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherAmount" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_amount"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="bigIntegerHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherTranCode" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_trancode"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="integerHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherExtraAuxDom" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_extra_aux_dom"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="wildcardStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherCollectingBSB" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_collecting_bsb"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="wildcardStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherProcessingState" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="fxa_processing_state"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="baseStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherObjectId" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="r_object_id"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="baseStringHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherFakeEntryNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="r_object_id"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="entryNumberHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherFakeBatchNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="r_object_id"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="batchNumberHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherFakeSite" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="r_object_id"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="siteHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherFakeBalSeqForDeposit" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="r_object_id"/>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="balSeqForDepositHandler"/>
+    </bean>
+
+    <bean id="dctmFxaVoucherDummy" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName">
+            <null/>
+        </constructor-arg>
+        <constructor-arg name="objectType" ref="dctmFxaVoucherObjectType"/>
+        <constructor-arg name="handler" ref="zeroDummyHandler"/>
+    </bean>
+
+</beans>

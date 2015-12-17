@@ -1,0 +1,343 @@
+{
+	"voucher": [{
+		"voucher": {
+			"accountNumber": "123123123",
+			"amount": "234.56",
+			"auxDom": "Test0",
+			"bsbNumber": "063844",
+			"documentReferenceNumber": "00000000",
+			"documentType": "Dr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-09-01",
+			"transactionCode": "12"
+		},
+		"voucherProcess": {
+			"adjustedBy": "adj1",
+			"adjustedFlag": true,
+			"adjustmentLetterRequired": true,
+			"adjustmentReasonCode": 1,
+			"adjustmentsOnHold": true,
+			"highValueFlag": true,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": true,
+			"listingPageNumber": "10",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "123456",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "D"
+		},
+		"transferEndpoints": [{
+			"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "VIF_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "New",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_NON_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "Completed",
+			"filename": "test.xml",
+			"transmissionDate": "2015-08-05"
+		}]
+	},
+	{
+		"voucher": {
+			"accountNumber": "32323232",
+			"amount": "345.67",
+			"auxDom": "Test1",
+			"bsbNumber": "054434",
+			"documentReferenceNumber": "11111111",
+			"documentType": "Cr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-09-01",
+			"transactionCode": "12"
+		},
+		"voucherProcess": {
+			"adjustedBy": "adj2",
+			"adjustedFlag": true,
+			"adjustmentLetterRequired": true,
+			"adjustmentReasonCode": 2,
+			"adjustmentsOnHold": true,
+			"highValueFlag": true,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": true,
+			"listingPageNumber": "11",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "123456",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "N"
+		},
+		"transferEndpoints": [{
+			"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "VIF_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "New",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_NON_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "Completed",
+			"filename": "test.xml",
+			"transmissionDate": "2015-08-05"
+		}]
+	},
+	{
+		"voucher": {
+			"accountNumber": "43434343",
+			"amount": "24.56",
+			"auxDom": "Test2",
+			"bsbNumber": "063769",
+			"documentReferenceNumber": "22222222",
+			"documentType": "Dr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-09-01",
+			"transactionCode": "12"
+		},
+		"voucherProcess": {
+			"adjustedBy": "adj3",
+			"adjustedFlag": true,
+			"adjustmentLetterRequired": true,
+			"adjustmentReasonCode": 3,
+			"adjustmentsOnHold": true,
+			"highValueFlag": true,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": true,
+			"listingPageNumber": "12",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "123456",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "D"
+		},
+		"transferEndpoints": [{
+			"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "VIF_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "New",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_NON_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "Completed",
+			"filename": "test.xml",
+			"transmissionDate": "2015-08-05"
+		}]
+	},
+	{
+		"voucher": {
+			"accountNumber": "54545454",
+			"amount": "6345.67",
+			"auxDom": "Test3",
+			"bsbNumber": "043234",
+			"documentReferenceNumber": "33333333",
+			"documentType": "Cr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-09-01",
+			"transactionCode": "12"
+		},
+		"voucherProcess": {
+			"adjustedBy": "adj4",
+			"adjustedFlag": true,
+			"adjustmentLetterRequired": true,
+			"adjustmentReasonCode": 2,
+			"adjustmentsOnHold": true,
+			"highValueFlag": true,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": true,
+			"listingPageNumber": "13",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "123456",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "D"
+		},
+		"transferEndpoints": [{
+			"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "VIF_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "New",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_NON_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "Completed",
+			"filename": "test.xml",
+			"transmissionDate": "2015-08-05"
+		}]
+	},
+	{
+		"voucher": {
+			"accountNumber": "65656565",
+			"amount": "234.66",
+			"auxDom": "Test4",
+			"bsbNumber": "065423",
+			"documentReferenceNumber": "44444444",
+			"documentType": "Dr",
+			"extraAuxDom": "test",
+			"processingDate": "2015-09-01",
+			"transactionCode": "12"
+		},
+		"voucherProcess": {
+			"adjustedBy": "adj5",
+			"adjustedFlag": true,
+			"adjustmentLetterRequired": true,
+			"adjustmentReasonCode": 4,
+			"adjustmentsOnHold": true,
+			"highValueFlag": true,
+			"inactiveFlag": false,
+			"isGeneratedVoucher": true,
+			"listingPageNumber": "14",
+			"manualRepair": 0,
+			"micrFlag": true,
+			"postTransmissionQaAmountFlag": false,
+			"postTransmissionQaCodelineFlag": false,
+			"preAdjustmentAmount": null,
+			"presentationMode": "1",
+			"rawMICR": "test",
+			"repostFromDRN": null,
+			"surplusItemFlag": false,
+			"suspectFraud": false,
+			"thirdPartyCheckFailed": false,
+			"thirdPartyMixedDepositReturnFlag": false,
+			"thirdPartyPoolFlag": false,
+			"transactionLinkNumber": "123456",
+			"unencodedECDReturnFlag": false,
+			"unprocessable": false,
+			"voucherDelayedIndicator": "D"
+		},
+		"transferEndpoints": [{
+			"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "VIF_OUTBOUND",
+			"endpoint": "XYZ",
+			"voucherStatus": "Pending",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "New",
+			"filename": null
+		},
+		{
+			"documentExchange": "INWARD_NON_FOR_VALUE",
+			"endpoint": "XYZ",
+			"voucherStatus": "Completed",
+			"filename": "test.xml",
+			"transmissionDate": "2015-08-05"
+		}]
+	}],
+	"jobIdentifier": "INPUT_JOB_FOR_IE_AND_VIF_01092015_123456",
+	"voucherBatch": {
+		"processingState": "VIC",
+		"scannedBatchNumber": "121212"
+	},
+	"receipt": {
+		"fileIdentifier": "86a5cce1-18a2-45dc-8f4b-30c839db85bb.txt",
+		"receivedDateTime": "2015-08-05T21:28:16.988+10",
+		"transmissionDateTime": "2015-08-05T21:28:16.988+10"
+	},
+	"origin": "VOUCHER_INBOUND"
+}

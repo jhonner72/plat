@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.DataModel.Collaboration</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.DataModel.Collaboration.Comment">
+            <summary>
+            The Comment class is a representation of a repository Comment object.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Collaboration.Comment.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Collaboration.Comment.#ctor(System.String,Emc.Documentum.FS.DataModel.Core.RichText)">
+            <summary>
+            Constructor that sets title and body of the comment
+            </summary>
+            <param name="title">a string representing the title for the comment</param>
+            <param name="body">a richtext object representing the body of the comment</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.Identity">
+            <summary>
+            The unique identity of the comment.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.Body">
+            <summary>
+            The body of the comment as a richtext object
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.ReplyTo">
+            <summary>
+            The unique identity of the comment current comment is a reply to.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.UnreadState">
+            <summary>
+            The state of the comment whether it is read or unread
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.UnreadStateSpecified">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.Title">
+            <summary>
+            The title of the comment
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.CreatorName">
+            <summary>
+            The name of the user who created the comment
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.CreationDate">
+            <summary>
+            The date when the comment was created
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Collaboration.Comment.creationDateSpecified">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Collaboration.Unread">
+            <summary>
+            Comment state
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Collaboration.Unread.Read">
+            <summary>
+            Read
+            </summary>
+        </member>
+        <member name="F:Emc.Documentum.FS.DataModel.Collaboration.Unread.Unread">
+            <summary>
+            Unread
+            </summary>
+        </member>
+    </members>
+</doc>

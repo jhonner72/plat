@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/inclearings/MatchFiles" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/inclearings/MatchFiles">
+	<xs:element name="MatchFilesRequest" type="tns:MatchFilesRequest"/>
+	<xs:complexType name="MatchFilesRequest">
+		<xs:sequence>
+			<xs:element name="receivedFilename" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MatchFilesResponse" type="tns:MatchFilesResponse"/>
+	<xs:complexType name="MatchFilesResponse">
+		<xs:sequence>
+			<xs:element name="unmatchedFilesFromDat" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This contains all the filenames that exists in the .dat file but not in the File Receipt table.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unmatchedFilesReceived" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This contains all the filenames that exists in the File Receipt table but not in the .dat file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

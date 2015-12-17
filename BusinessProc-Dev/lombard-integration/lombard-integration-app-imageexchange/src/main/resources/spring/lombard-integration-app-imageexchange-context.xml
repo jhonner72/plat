@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <import resource="lombard-integration-app-imageexchange-transform-context.xml"/>
+    <import resource="lombard-integration-app-imageexchange-route-context.xml" />
+
+    <bean id="imageExchange" class="com.fujixerox.aus.lombard.outclearings.imageexchange.ImageExchangeJobAdapter"
+          p:jobStore-ref="jobStore"
+          p:metadataStore-ref="metadataStore"
+          />
+
+    <!-- Camel -->
+
+    <camel:camelContext id="camelContextImageExchange">
+        <camel:routeBuilder ref="getVouchersForImageExchangeRoute" />
+        <camel:routeBuilder ref="createImageExchangeFileRoute" />
+        <camel:routeBuilder ref="copyImageExchangeFileRoute" />
+        <camel:routeBuilder ref="updateImageExchangeVouchersStatusRoute" />
+    </camel:camelContext>
+
+    <bean id="camelImageExchange" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextImageExchange"/>
+    </bean>
+
+</beans>

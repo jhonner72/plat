@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Post Transmission QA</title>
+	<link type="text/css" rel="stylesheet" href="ptqa.css">
+	<script language='javascript' src="http://dctmmelb:8080/D2/container/external-api/OpenAjaxManagedHub-all.js"></script>
+	<script language='javascript' src="http://dctmmelb:8080/D2/container/external-api/D2-OAH.js"></script>
+
+
+<script type="text/javascript">
+	var d2OpenAjaxHub = new D2OpenAjaxHub();
+
+	///////////////////////////////
+	//
+	//	OPEN AJAX HUB CONNECTION
+	//
+	//////////////////////////////
+
+	/* Callback that is invoked upon successful connection to the Managed Hub
+	 */
+	function connectCompleted(hubClient, success, error) {
+		if (success) {
+
+			logit("Hub client connected");
+
+			// subscribe to events 
+			subscribeEvents();
+
+
+		} else
+			logit("Hub client NOT connected - please check console");
+	}
+
+	/* Callback that is invoked on widget activation -- Framework automatically subscribes to D2_EVENT_IFRAME_ACTIVE
+	 */
+	function onActiveWidget(bActiveFlag) {
+		logit("onWidgetActive: activate iframe widget, state=" + (bActiveFlag ? "active" : "inactive"));
+	}
+
+	/* Callback that is invoked on widget initialization -- Framework automatically subscribes to D2_EVENT_IFRAME_INIT
+	 */
+	function onInitWidget(message) {
+		logit("onWidgetInit: init iframe widget" );
+	}
+
+	/* Application initializes in response to document load event
+	 */
+	function loadEventHandler() {
+		logit("Widget/Open Ajax Iframe loaded");
+
+		//connecting hubclient 
+		d2OpenAjaxHub.connectHub(connectCompleted, onInitWidget, onActiveWidget);
+
+	}
+
+	///////////////////////////////
+	//
+	//	OPEN AJAX POST EVENT
+	//
+	//////////////////////////////
+
+	/**
+	This function updates the D2 doclist from an external widget.
+	This widget posts an event D2_ACTION_EXECUTE that allows easily calling a web service. 
+	The service used here (Search) is the one called when a query form is executed. 
+	This service receives property names and property values which will be used in the
+	    query form to replace the $values.
+	It updates the user's last search object by attaching the sent property values to it.
+			
+	When posting the D2_ACTION_EXECUTE event, it is possible to define what action or event
+	    will be triggered when the web service will be finished. 
+	In our case, this will trigger a D2_ACTION_SEARCH_DOCUMENT that will display the user's
+	    last search results in the doclist.
+	*/
+	function updateDoclist() {
+		
+		//Query form configuration name is defined below
+		var queryFormConfigName = "QF HR a_status";
+		
+		//To update the doclist a new OpenAjax message will be build to be posted in the Hub using the D2-OAH API
+		var messageToSend = new OpenAjaxMessage();
+		
+		// Specify a non-null ID (to pass request validation)
+		messageToSend.put("oam_id", "");
+
+		//In the message, we need to define what properties will be sent. Here a_status and r_object_type
+		messageToSend.put("list", "a_status¬r_object_type");
+		
+		//We set the a_status value
+		messageToSend.put("a_status", a_status.value); 
+		//We set the r_object_type value
+		messageToSend.put("r_object_type", r_object_type.value);
+		
+		//set the query form config name which will be used to update the doclist
+		messageToSend.put("config", queryFormConfigName);
+		
+		//Then we define what service and what method in the service will be called.
+		//We call the Search service and the runQueryFormSearch method.
+		//Calling this service will update the user's last search object
+		messageToSend.put("eService", "Search");
+		messageToSend.put("eMethod", "runQueryFormSearch");
+		
+		// When the service call completes, we can define an action to be executed. Here, an event will be posted.
+		messageToSend.put("rType", "EVENT");
+
+		// As the last search has been updated by the web service call, we will post
+		//    the D2_ACTION_SEARCH_DOCUMENT event to display the search results
+		messageToSend.put("rAction", "D2_ACTION_SEARCH_DOCUMENT::oam_id==node_last_search");
+
+		//The message is now ready, it can be posted in the Hub
+		d2OpenAjaxHub.sendMessage("D2_ACTION_EXECUTE", messageToSend);
+
+	}
+
+
+	///////////////////////////////
+	//
+	//	OPEN AJAX SUBSCRIBE EVENT
+	//
+	//////////////////////////////
+
+	/** Subscribe to events -- Subscribe to D2_EVENT_SELECT_OBJECT to get the selected object type and update out form (if checkbox is checked)
+	 *   
+	 */
+	function subscribeEvents() {
+		logit("subscribe to events...");
+		d2OpenAjaxHub.subscribeToChannel ("D2_EVENT_SELECT_OBJECT", selectObjectCallback, true);
+	}
+
+	/** Event Handler for "D2_EVENT_SELECT_OBJECT" -- Called when the event arrives.
+	 */
+	function selectObjectCallback(name, msg) {
+		logit("selectObjectCallback() called");
+		logit(" name: " + name);
+		logit(" msg.getId(): " + msg.getId());
+		logit(" msg.get(\"type\"): " + msg.get("type"));
+
+		// update object type in our form (if checked).
+		if (trackSelectedType.checked) {
+			r_object_type.value = msg.get("type");
+		}
+
+	}
+
+	/** console log wrapper */
+	function logit(s) {
+		console.log("[UpdateDocList Widget] " + s);
+	}
+
+
+</script>	
+</head>
+<body  onload="loadEventHandler();">
+	<div id="main">
+	
+		<form id="getnextvoucher" action="getnextptqavoucher" method="post">
+		<input type="hidden" name="chronicleId" id="chronicleId">	
+		<div id="amount" class="amtcl_d">
+			<table class="amtcl_t">
+			<caption>Voucher Amount Details</caption>
+			<!--   <tr><td colspan="3" class="exp_bal">Expert Balancing<td></tr>  -->
+				<tr>
+					<td class="title">Operator ID</td>
+					<td class="title">Amount</td>
+					<td class="title">Adjustment Flag</td>
+					<td class="res_title" id="amt_res_header">QA Result</td>
+				</tr>
+				<tr>
+					<td class="value" id="dips_op_id">[operator id]</td>
+					<td class="value" id="dips_amt_id">[Amount]</td>
+					<td class="value" id="adj_flag">[Adjustment Flag]</td>
+					<td>
+						<input type="radio" name="amt_res_radio" class="amt_res_radio" value="1" id="amt_pass">Pass
+						<input type="radio" name="amt_res_radio" class="amt_res_radio" value="0" id="amt_fail">Fail	
+						<input type="hidden" name="amountResult" id="amountResult" value="-1">					
+					</td>			
+				</tr>
+				</table>
+		</div>  <!-- end of amount -->
+		<hr>
+		<div id="codeline" class="amtcl_d">
+			<table class="amtcl_t">
+			<caption>Voucher Codeline Details</caption>
+			<tr>
+				<td class="title">Operator ID</td>
+				<td class="title">Extra Aux Dom</td>
+				<td class="title">Aux Dom</td>
+				<td class="title">BSB</td>	
+				<td class="title">Account</td>
+				<td class="title">TC</td>		
+				<td class="res_title" id="cdl_res_header">QA Result</td>						
+			</tr>
+			<tr>
+				<td class="value" id="cdc_op_id">[Operator ID]</td>
+				<td class="value" id="cdc_ead">[EAD]</td>
+				<td class="value" id="cdc_ad">[AD]</td>
+				<td class="value" id="cdc_bsb">[BSB]</td>	
+				<td class="value" id="cdc_acc">[Account]</td>
+				<td class="value" id="cdc_tc">[TC]</td>	
+				<td>
+					<input type="radio" name="cdl_res_radio" class="cdl_res_radio" value="1" id="cdl_pass">Pass
+					<input type="radio" name="cdl_res_radio" class="cdl_res_radio" value="0" id="cdl_fail">Fail	
+					<input type="hidden" name="codelineResult" id="codelineResult" value="-1">			
+				</td>							
+			</tr>
+			</table>
+		</div>	<!-- end of codeline -->
+		<hr>
+		<div id="result" class="resad_d">
+				<input type="submit" value="Submit" id="submit_btn" class="result_btn">
+		</div>	<!-- end of result -->	
+		</form>	
+	</div> <!-- end of main -->
+	<script src="includes/js/jquery-1.10.2.min.js"></script>
+	<script src="includes/js/ptqa.js"></script>
+</body>
+</html>

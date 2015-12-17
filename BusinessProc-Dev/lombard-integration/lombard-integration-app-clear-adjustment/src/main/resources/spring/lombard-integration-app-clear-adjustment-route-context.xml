@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Routes -->
+
+    <bean id="searchAdjustmentRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationResponse"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.adjustment.search"
+          p:consumeType=""
+          p:subject="adjustmentonhold"
+          p:predicate="search"
+          p:transformResponse="false"
+          p:queueName="lombard.service.repository.getvouchersinformation"
+          p:consume="true"
+          p:produce="true"
+     />
+
+    <bean id="updateAdjustmentRoute" parent="serviceRoute"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.adjustment.update"
+          p:responseClass="com.fujixerox.aus.lombard.repository.updatevouchersinformation.UpdateVouchersInformationResponse"
+          p:consumeType=""
+          p:subject="adjustmentobholdstatus"
+          p:predicate="update"
+          p:queueName="lombard.service.repository.updatevouchersinformation"          
+          p:consume="true"
+          p:produce="true"
+    />
+            
+</beans>

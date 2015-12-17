@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<project>
+	<emc.importProject dmproject="NAB_DCTM" />
+	<emc.build dmproject="NAB_DCTM" />
+	<emc.dar dmproject="NAB_DCTM" manifest="bin/dar/default.dardef.artifact" dar="bin/NAB_DCTM.dar" />
+</project>

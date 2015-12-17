@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.DipsCentral</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Dips Central deployment package</description>
+    </metadata>
+  <files>
+    <file src="dips402_NABCHQ\**" target="dips402_NABCHQ"/>
+    <file src="*.ps1" />
+    <file src="Settings.xml" />
+  </files>
+</package>

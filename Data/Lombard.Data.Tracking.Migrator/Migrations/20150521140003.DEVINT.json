@@ -1,0 +1,10 @@
+{
+  "maxQuerySize": 1,
+  "targetEndpoints":
+  [
+	"FIS",
+	"ANZ",
+	"RBA"
+  ]
+}
+

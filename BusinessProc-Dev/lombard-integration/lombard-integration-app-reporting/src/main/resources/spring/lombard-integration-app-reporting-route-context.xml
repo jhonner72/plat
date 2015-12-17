@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="executeReportRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.reporting.ExecuteBatchReportResponse"
+          p:serviceName="lombard.service.reporting.executereport"
+          p:consumeType="Lombard.Reporting.AdapterService.Messages.XsdImports.ExecuteBatchReportRequest:Lombard.Reporting.AdapterService"
+          p:subject="report"
+          p:predicate="execute"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="copyReportFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.reporting.copyfile"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="report"
+          p:predicate="copy"
+            />
+            
+    <bean id="storeReportRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsResponse"
+          p:serviceName="lombard.service.reporting.storerepositoryreports"
+          p:queueName="lombard.service.reporting.storerepositoryreports"
+          p:consumeType="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsRequest"
+          p:subject="report"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+    
+
+    <!--<bean id="deliverEmailRoute" class="com.fujixerox.aus.outclearings.DeliverReportRoute"-->
+          <!--p:port-ref="brokerPort"-->
+          <!--p:hostname-ref="brokerHostname"-->
+          <!--p:options="${broker.options}"-->
+          <!--p:serviceName="lombard.service.reporting.deliver"-->
+          <!--p:subject="report"-->
+          <!--p:predicate="deliver"-->
+          <!--p:consumeType="com.fujixerox.aus.lombard.reporting.emailreport.Email"-->
+          <!--p:queueName="lombard.service.reporting.deliver.request"-->
+            <!--/>-->
+
+    <!--<bean id="deliverB2BRoute" parent="copyFileRoute"-->
+          <!--p:serviceName="lombard.service.reporting.deliverb2b"-->
+          <!--p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"-->
+          <!--p:subject="b2b"-->
+          <!--p:predicate="deliver"-->
+            <!--/>-->
+
+</beans>

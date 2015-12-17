@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/inclearings/ImageExchangeFile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/inclearings/ImageExchangeFile">
+	<xs:element name="tran">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tranheader">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="rfield">
+								<xs:complexType>
+									<xs:sequence/>
+									<xs:attribute name="name" use="required" type="xs:string"/>
+									<xs:attribute name="value" use="required" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="item">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="rfield">
+								<xs:complexType>
+									<xs:sequence/>
+									<xs:attribute name="name" use="required" type="xs:string"/>
+									<xs:attribute name="value" use="required" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="image">
+								<xs:complexType>
+									<xs:sequence minOccurs="0" maxOccurs="1">
+										<xs:element name="frontimage">
+											<xs:simpleType>
+												<xs:restriction base="xs:base64Binary">
+													<xs:minLength value="4"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="rearimage">
+											<xs:simpleType>
+												<xs:restriction base="xs:base64Binary">
+													<xs:minLength value="4"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="trantrailer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="rfield">
+								<xs:complexType>
+									<xs:sequence/>
+									<xs:attribute name="name" use="required" type="xs:string"/>
+									<xs:attribute name="value" use="required" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

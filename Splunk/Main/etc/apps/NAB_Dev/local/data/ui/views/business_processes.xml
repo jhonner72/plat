@@ -1,0 +1,367 @@
+<form>
+  <label>Business Processes</label>
+  <description>Summary of the business processes managed by Camunda BPM</description>
+  <fieldset submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-2d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index=camunda source=BpmActivity* EndTime=null | dedup BusinessKey | table source Name BusinessKey</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Processing Workflows</title>
+      <html>
+                 <style>.btn-primary { margin: 5px 10px 5px 0; }</style>
+               <a href="voucher_processing" class="btn btn-primary">Voucher Processing</a>
+               <a href="inwards_ie" class="btn btn-primary">Inwards Image Exchange</a>
+               <a href="surplus_items_processing" class="btn btn-primary">Surplus Items Processing</a>
+               <a href="for_value_processing" class="btn btn-primary">For Value Processing</a>
+               <a href="listing_process" class="btn btn-primary">Listing Process</a>
+             </html>
+    </panel>
+    <panel>
+      <title>File Generation Workflows</title>
+      <html>
+                 <style>.btn-primary { margin: 5px 10px 5px 0; }</style>              
+               <a href="eod_initial" class="btn btn-primary">End of Day Initial</a>
+               <a href="eod_final" class="btn btn-primary">End of Day Final</a>
+               <a href="vif_generation" class="btn btn-primary">Value Instruction File (VIF) Generation</a>
+               <a href="ie_file_generation" class="btn btn-primary">Image Exchange File Generation</a>
+               <a href="report_generation" class="btn btn-primary">Report Generation</a>             
+               
+             </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Voucher Processing Activity</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityVoucherProcessing | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Voucher Processing Start", 1, Name=="CheckDuplicateFile", 2, Name=="UnpackageVoucher", 3, Name=="WaitUnpackageVoucher", 4, Name=="RecogniseCourtesyAmount", 5, Name=="WaitRecogniseCourtesyAmount", 6, Name=="ValidateCodeline", 7, Name=="WaitValidateCodeline", 8, Name=="ValidateCodeline", 9, Name=="CorrectCodeline", 10, Name=="WaitCorrectCodeline", 11, Name=="ValidateTransaction", 12, Name=="WaitValidateTransaction", 13, Name=="CorrectTransaction", 14, Name=="WaitCorrectTransaction", 15, Name=="StoreBatchVoucher", 16, Name=="WaitStoreBatchVoucher", 17, Name=="Voucher Processing End", 18) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No batches in processing", "") | fields - count]</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>End of Day Initial</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityEODInitial | stats count by Name | eval high=if(count &gt;1, count ,0) | eval normal=if(count &lt;=1, count , 0) | eval taskOrder=case(Name=="StartEvent1", 1, Name=="Clear Adjustments", 2, Name=="Close surplus and suspense pool", 3, Name=="VIF Production", 4, Name=="Anymore VIF vouchers?", 5, Name=="EndEvent", 6)| sort taskOrder | table Name, high, normal | appendpipe [stats count | eval Name=if(count == 0, "End of Day Initial has not run in search interval", "") | fields - count]</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Inwards Image Exchange</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityInwardsIE | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Inward Image Exchange Start", 1, Name=="CheckDuplicateFile", 2, Name=="UnpackImageExchangeBatch", 3, Name=="WaitUnpackImageExchangeBatch", 4, Name=="StoreBatchDocumentum", 5, Name=="WaitStoreBatchDocumentum", 6, Name=="Inward Image Exchange End", 7) | sort taskOrder | table Name, high, normal | appendpipe [stats count | eval Name=if(count == 0, "No batches in processing" , "") | fields - count]</query>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>End of Day Final</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityEODFinal | stats count by Name | eval high=if(count &gt;1, count ,0) | eval normal=if(count &lt;=1, count , 0) | eval taskOrder=case(Name=="Start Event", 1, Name=="Set EOD Reference", 2, Name=="VIF Production", 3, Name=="Anymore VIF vouchers?", 4, Name=="Image Exchange Outbound", 5, Name=="Generate Agent Files", 6, Name=="GenAdjLetP",7, Name=="Generate EOD Reports",8, Name=="Generate EOM Reports", 9, Name=="Day2 Workflow", 10, Name=="Update Reference Data", 11, Name=="Progress Pending Vouchers", 12, Name=="Asset Management", 13, Name=="End Event", 14)| sort taskOrder | table Name, high, normal | appendpipe [stats count | eval Name=if(count == 0, "End of Day Final has not run in search interval", "") | fields - count]</query>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Surplus Items Processing</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivitySurplusItems | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Surplus Items Processing Start", 1, Name=="CheckDuplicateFile", 2, Name=="UnpackageVoucher", 3, Name=="WaitUnpackageVoucher", 4, Name=="RecogniseCourtesyAmount", 5, Name=="WaitRecogniseCourtesyAmount", 6, Name=="ValidateCodeline", 7, Name=="WaitValidateCodeline", 8, Name=="ValidateCodeline", 9, Name=="CorrectCodeline", 10, Name=="WaitCorrectCodeline", 11, Name=="ValidateTransaction", 12, Name=="WaitValidateTransaction", 13, Name=="CorrectTransaction", 14, Name=="WaitCorrectTransaction", 15, Name=="StoreBatchVoucher", 16, Name=="WaitStoreBatchVoucher", 17, Name=="Surplus Items Processing End", 18) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No batches in processing", "") | fields - count]</query>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>VIF Generation</title>
+      <single>
+        <title>Number of files in progress</title>
+        <search>
+          <query>index="camunda" source="BpmInstanceVif" | transaction BusinessKey | eval Status=if(mvindex(EndTime,0,0)=="null","Processing","Completed") | table _time BusinessKey Status |  where Status = "Processing" | stats count</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">files in progress</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="underLabel">*Discrepancy between this total and the chart below are files waiting for Vif Ack to be received*</option>
+      </single>
+      <chart>
+        <title>Vif Files being Generated</title>
+        <search>
+          <query>index=camunda source=BpmActivityVif | transaction BusinessKey,Name | where mvindex(EndTime,0,0)=="null" |stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Value Instruction File Start Process", 1, Name=="GetVouchersForValueInstructionFile", 2, Name=="WaitGetVouchers", 3, Name=="CreateValueInstructionFile", 4, Name=="WaitCreateVIF", 5, Name=="SendValueInstructionFile", 6, Name=="UpdateVauleInstructionFileVouchersStatus", 7, Name=="WaitUpdateVouchers", 8, Name=="RetrieveAcknowledgmentFileTimer", 9, Name=="RetrieveValueInstructionFileAck", 10, Name=="FileRetrieved", 11, Name=="ProcessValueInstructionFileAck", 12, Name=="WaitProcessValueInstructionFileAck", 13, Name=="UpdateValueInstructionFileVouchersAckStatus", 14, Name=="WaitUpdateValueInstructionFileVouchersAckStatus", 15, Name=="Value Instruction File End Process", 16) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No VIF Files being generated", "") | fields - count]</query>
+          <earliest>-2d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>For Value Processing</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityForValueProcessing | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="For Value Vouchers Start", 1, Name=="GetForValueVouchers", 2, Name=="WaitGetForValueVouchers", 3, Name=="IsCorrectCodelineRequired", 4, Name=="CopyImagesToDips", 5, Name=="WaitCopyImagesToDips", 6, Name=="Copy status", 7, Name=="CorrectCodeline", 8, Name=="WaitCorrectCodeline", 9, Name=="RepostForValueVouchers", 10, Name=="WaitRepostForValueVouchers", 11, Name=="For Value Vouchers End", 12) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No batches in processing", "") | fields - count]</query>
+          <earliest>-2w</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Image Exchange Generation</title>
+        <search>
+          <query>index=camunda source=BpmActivityImageExchange |where EndTime=="null" | transaction BusinessKey,Name   |stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Start Process ", 1, Name=="GetVouchersForImageExchange", 2, Name=="WaitGetVouchers", 3, Name=="Voucher Count greater than 0", 4, Name=="CreateImageExchangeFile", 5, Name=="WaitCreateFile", 6, Name=="SendImageExchangeFile", 7, Name=="UpdateVouchersImageExchangeStatus", 8, Name=="WaitUpdateStatus", 9, Name=="End Process", 10) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No IE Files being generated", "") | fields - count]</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Listing Processing</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityListingProcess | stats count by Name |eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Listing Processing Start", 1, Name=="Unpackage Listing metadata", 2, Name=="WaitUnpackageListing", 3, Name=="StoreListing", 4, Name=="WaitStoreListing", 5, Name=="Listing Processing End", 6) | sort taskOrder | table Name, high, normal| appendpipe [stats count | eval Name=if(count == 0, "No batches in processing", "") | fields - count]</query>
+        </search>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Report Generation Activity</title>
+        <search base="baseQuery">
+          <query>| search source=BpmActivityReporting | stats count by Name | eval high=if(count &gt;5, count ,0)| eval normal=if(count &lt;=5, count , 0) | eval taskOrder=case(Name=="Execute Report", 1, Name=="Wait Execute Report", 2, Name=="Store Reports in Documentum", 3, Name=="WaitStoreReports in Documentum", 4, Name=="Deliver Email", 5, Name=="Deliver B2B", 6)  | sort taskOrder | table Name, high, normal| appendpipe [stats count |eval Name=if(count == 0, "No reports generated in search interval", "") | fields - count]</query>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">undefined</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+</form>

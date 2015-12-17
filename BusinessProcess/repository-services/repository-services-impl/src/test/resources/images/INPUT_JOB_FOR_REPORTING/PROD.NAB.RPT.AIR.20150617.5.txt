@@ -1,0 +1,152 @@
+======================================
+To instantiate an IE bpm process
+======================================
+
+1) Login to rabbitmq
+2) Go to Exchanges tab
+3) Click on lombard.service.job
+4) In the Publish message area, enter the following:
+
+Properties:
+content-type=application/json
+
+Payload:
+{
+"jobIdentifier":"#JOB_IDENTIFIER#",
+"initiatingJobIdentifier":null,
+"processIdentifier":null,
+"subject":"voucher",
+"predicate":"outclearings",
+"status":0,
+"activity":[
+    {
+                "jobIdentifier":null,
+                "activityIdentifier":null,
+                "subject":null,
+                "predicate":null,
+                "requestDateTime":"2015-05-12T13:13:09.107+11:00",
+                "request":{
+                    "@type":"com.fujixerox.aus.lombard.common.receipt.ReceivedFile",
+                    "fileIdentifier":"OUTCLEARINGSPKG_17032015-3AEA-4069-A2DD-SSSS12345678.zip",
+                    "receivedDateTime":"2015-05-12T13:13:09.107+11:00"
+                },
+                "responseDateTime":null,
+                "response":null,
+                "failed":false
+    }
+  ]
+}
+
+5) Click Publish message
+6) Click close in the popup message
+
+======================================
+To instantiate an Agency Banks bpm process
+======================================
+
+1) Login to rabbitmq
+2) Go to Exchanges tab
+3) Click on lombard.service.job
+4) In the Publish message area, enter the following:
+
+Properties:
+content-type=application/json
+
+Payload:
+{
+"jobIdentifier":"#JOB_IDENTIFIER#",
+"initiatingJobIdentifier":null,
+"processIdentifier":null,
+"subject":"agencybanks",
+"predicate":"outclearings",
+"status":0
+}
+  
+5) Click Publish message
+6) Click close in the popup message
+
+======================================
+To mock the putting of vouchers in Documentum
+======================================
+
+1) Create the folder with folder name using the job ID
+2) Prepare the vouchers – FRONT/REAR with correct filenames using the processing date and drn
+3) Login to rabbitmq
+4) Go to Exchanges tab
+5) Click on lombard.service.outclearings.storebatchvoucher.request.queue
+6) In the Publish message area, enter the following:
+
+Header:
+rabbitmq.CORRELATIONID=<the business key of the process in Camunda Cockpit>
+
+Properties:
+correlation-id=<same as the rabbitmq.CORRELATIONID>
+content-type=application/json
+
+{
+"processingState": "VIC",
+"batchNumber":"00001",
+"unitID": "unit01",
+"collectingBank": "010202",
+"jobIdentifier":"<same as the rabbitmq.CORRELATIONID>",
+"captureBsb":"020303",
+"voucher":[
+    {
+                "voucher":
+                {
+                    "documentReferenceNumber":"000111222",
+                    "documentType":"Cr",
+                    "processingDate":"2015-05-13",
+                    "accountNumber":"12345678",
+                    "auxDom":"333",
+                    "extraAuxDom":"666",
+                    "bsbNumber":"000999",
+                    "transactionCode":"22",
+                    "amount":"2010"
+                },
+                "manualRepair":1,
+                "targetEndPoint":"ARB",
+                "suspectFraudFlag": true,
+                "unprocessable": true
+    },
+    {
+                "voucher":
+                {
+                    "documentReferenceNumber":"000111223",
+                    "documentType":"Dr",
+                    "processingDate":"2015-05-13",
+                    "accountNumber":"12345678",
+                    "auxDom":"333",
+                    "extraAuxDom":"666",
+                    "bsbNumber":"000999",
+                    "transactionCode":"22",
+                    "amount":"2010"
+                },
+                "manualRepair":1,
+                "targetEndPoint":"JPM",
+                "suspectFraudFlag": true,
+                "unprocessable": true
+    },
+    {
+                "voucher":
+                {
+                    "documentReferenceNumber":"000111224",
+                    "documentType":"Cr",
+                    "processingDate":"2015-05-13",
+                    "accountNumber":"12345678",
+                    "auxDom":"333",
+                    "extraAuxDom":"666",
+                    "bsbNumber":"000999",
+                    "transactionCode":"22",
+                    "amount":"2010"
+                },
+                "manualRepair":1,
+                "targetEndPoint":"BQL",
+                "suspectFraudFlag": true,
+                "unprocessable": true
+    }
+  ]
+}
+7) Click Publish message
+8) Click close in the popup message
+

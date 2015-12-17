@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <import resource="lombard-integration-app-route-context.xml" />
+
+    <!-- Common beans containing references to all processes -->
+    <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPaths">
+            <array>
+                <value>com.fujixerox.aus.lombard.common.job</value>
+                <value>com.fujixerox.aus.lombard.common.receipt</value>
+                <value>com.fujixerox.aus.lombard.common.copyfile</value>
+                <value>com.fujixerox.aus.lombard.common.incident</value>
+
+                <value>com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount</value>
+                <value>com.fujixerox.aus.lombard.outclearings.correctcodeline</value>
+                <value>com.fujixerox.aus.lombard.outclearings.validatecodeline</value>
+                <value>com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher</value>
+                <value>com.fujixerox.aus.lombard.outclearings.correcttransaction</value>
+                <value>com.fujixerox.aus.lombard.outclearings.checkthirdparty</value>
+                <value>com.fujixerox.aus.lombard.outclearings.validatetransaction</value>
+
+                <value>com.fujixerox.aus.lombard.outclearings.imageexchange</value>
+                <value>com.fujixerox.aus.lombard.outclearings.createimageexchangefile</value>
+
+                <value>com.fujixerox.aus.lombard.outclearings.valueinstructionfilecommon</value>
+                <value>com.fujixerox.aus.lombard.outclearings.getvouchersforvalueinstructionfile</value>
+                <value>com.fujixerox.aus.lombard.outclearings.createvalueinstructionfile</value>
+                <value>com.fujixerox.aus.lombard.outclearings.processvalueinstructionfileacknowledgment</value>
+                <value>com.fujixerox.aus.lombard.outclearings.createadjustmentletters</value>
+				<value>com.fujixerox.aus.lombard.outclearings.storeadjustmentletters</value>
+
+                <value>com.fujixerox.aus.lombard.inclearings.unpackimageexchangebatch</value>
+
+                <value>com.fujixerox.aus.lombard.repository.getvouchers</value>
+                <value>com.fujixerox.aus.lombard.repository.updatevouchersstatus</value>
+                <value>com.fujixerox.aus.lombard.repository.storebatchvoucher</value>
+                <value>com.fujixerox.aus.lombard.repository.repostvouchers</value>
+                <value>com.fujixerox.aus.lombard.repository.getvouchersinformation</value>
+                <value>com.fujixerox.aus.lombard.repository.updatevouchersinformation</value>
+				
+                <value>com.fujixerox.aus.lombard.reporting</value>
+                <value>com.fujixerox.aus.lombard.reporting.metadata</value>
+                <value>com.fujixerox.aus.lombard.reporting.storerepositoryreports</value>
+               
+                <value>com.fujixerox.aus.lombard.outclearings.unpackagelisting</value>
+                <value>com.fujixerox.aus.lombard.outclearings.storelisting</value>
+                <value>com.fujixerox.aus.lombard.outclearings.triggerworkflow</value>
+                
+                <value>com.ilient.api</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="repositoryTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="repositoryDataSource"
+            />
+
+    <bean id="repositoryStore" class="com.fujixerox.aus.integration.store.JdbcRepositoryStore"
+            p:template-ref="repositoryTemplate"/>
+
+    <bean id="jobToProcessMapper" class="com.fujixerox.aus.integration.job.SimpleJobToProcessMapper">
+        <property name="map">
+            <map>
+                <entry key="outclearings:imageexchange" value="EAID_860026AF_1EB0_4c90_9C56_B0F82AC54ECE" />
+                <entry key="outclearings:agencybanks" value="EAID_60F251F2_DFCE_44f5_B578_A22CF3982900" />
+                <entry key="send:image" value="EAID_CA99D859_42FD_4048_B795_D88B3EDE6254" />
+                <entry key="outclearings:valueinstructionfile" value="EAID_F38CFEDF_958F_40cc_BB83_B34D7336C257" />
+                <entry key="send:value" value="EAID_F38CFEDF_958F_ZZZZ_BB83_B34D7336C257" />
+                <entry key="collect:valuefromnab" value="EAID_C469F557_7479_4732_A91B_DE4CA8C6FA12" />
+                <entry key="receive:image" value="EAID_5ADCF598_C32A_49e8_9487_F525E3CB6C06" />
+                <entry key="repost:value" value="EAID_48F9E695_9818_44a9_8074_5C01CCADAD1B" />
+                <entry key="trigger:day2workflow" value="EAID_C0F4FFC7_B700_406b_8434_C2C4049F0866" />
+                <entry key="generation:report" value="EAID_7388FA74_40C0_406a_820A_FB3B53591A99" />
+                <entry key="management:asset" value="EAID_EB43A3C1_69BC_409d_B289_3EB69E9B5B46" />
+                <entry key="shutdown:factoryinitial" value="EAID_854DF9BB_1D46_4b17_A998_5FB8DC060A3C" />
+                <entry key="shutdown:factoryfinal" value="EAID_0D0BA84E_77CD_49c9_9C27_C196C9BFBB55" />
+                <entry key="collect:listing" value="EAID_8A8F77C4_DA5C_45c8_9069_0A18E41264FE" />
+                <entry key="collect:valuefromsurplusitem" value="EAID_DP000000_A176_40a4_B82A_8917B9A0AD3A" />
+                <entry key="update:pendingvouchers" value="EAID_9A788295_AB54_4101_A12C_45B43C26F990" />
+                <entry key="clear:adjustment" value="EAID_0399963C_7C0C_4291_A57A_82B7D67DD027" />
+                <entry key="generate:adjustmentletter" value="EAID_DP000000_B334_445e_AD98_D03FC21A1700" />
+                <entry key="collect:valuefromauspost" value="EAID_DP000000_A683_4de1_B5D7_CA12D289C066" />
+            </map>
+        </property>
+    </bean>
+    <!-- End -->
+
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="jobDataSource" />
+    </bean>
+
+    <bean id="jobTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="jobDataSource"
+         />
+
+    <bean id="jobStore" class="com.fujixerox.aus.integration.store.JdbcJobStore"
+        p:marshaller-ref="marshaller"
+        p:template-ref="jobTemplate"
+            />
+
+    <bean id="trackingTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="trackingDataSource"
+            />
+
+    <bean id="metadataStore" class="com.fujixerox.aus.integration.store.JdbcMetadataStore"
+          p:template-ref="trackingTemplate"
+            />
+
+    <bean id="sequenceNumberGenerator" class="com.fujixerox.aus.integration.store.JdbcSequenceNumberGenerator"
+          p:template-ref="trackingTemplate"
+            />
+
+    <!---->
+
+    <bean id="rabbitConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+        <property name="host" ref="brokerHostname"/>
+        <property name="port" ref="brokerPort"/>
+        <property name="username" ref="brokerUsername"/>
+        <property name="password" ref="brokerPassword"/>
+    </bean>
+
+    <bean id="objectMapper" factory-method="createWithAnnotations" class="com.fujixerox.aus.lombard.JaxbMapperFactory" />
+    <bean id="objectmapper.withoutAnnotations" class="com.fujixerox.aus.lombard.JaxbMapperFactory" factory-method="createWithoutAnnotations" />
+
+    <bean id="json-gson" class="org.apache.camel.component.jackson.JacksonDataFormat">
+        <constructor-arg index="0" ref="objectMapper"/>
+        <constructor-arg index="1"><null/></constructor-arg>
+    </bean>
+
+    <bean id="endOfDayProcessing" class="com.fujixerox.aus.lombard.outclearings.endofday.EndOfDayProcessingJobAdapter"
+          p:metadataStore-ref="metadataStore"
+          p:jobStore-ref="jobStore"
+          p:sequenceNumberGenerator-ref="sequenceNumberGenerator"
+            />
+
+    <bean id="assetManagement" class="com.fujixerox.aus.lombard.outclearings.assetManagement.AssetManagementJobAdapter"
+          p:metadataStore-ref="metadataStore"
+          p:jobStore-ref="jobStore"
+          p:runtimeService-ref="runtimeService"
+          p:historyService-ref="historyService"
+          p:lockerPath-ref="lockerPath"
+            />
+
+    <!-- Camel -->
+    <camel:camelContext id="camelContextCommon">
+        <camel:routeBuilder ref="jobRoute" />
+        <camel:routeBuilder ref="retryRoute" />
+    </camel:camelContext>
+
+    <bean id="repositoryService" factory-bean="processEngine"
+          factory-method="getRepositoryService" />
+    <bean id="runtimeService" factory-bean="processEngine"
+          factory-method="getRuntimeService" />
+    <bean id="taskService" factory-bean="processEngine"
+          factory-method="getTaskService" />
+    <bean id="historyService" factory-bean="processEngine"
+          factory-method="getHistoryService" />
+    <bean id="managementService" factory-bean="processEngine"
+          factory-method="getManagementService" />
+
+    <bean id="camelCommon" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextCommon"/>
+    </bean>
+
+</beans>

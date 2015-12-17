@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="australiaPostUnpackageVoucherRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherResponse"
+          p:serviceName="lombard.service.outclearings.australiapost.unpackagevoucher"
+          p:queueName="lombard.service.outclearings.unpackagevoucher"
+          p:consumeType="com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherRequest"
+          p:subject="voucher"
+          p:predicate="unpackage"
+          p:consume="true"
+          p:produce="true"
+            />
+            
+
+    <bean id="australiaPostRecogniseCourtesyAmountRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountResponse"
+          p:serviceName="lombard.service.outclearings.australiapost.recognisecourtesyamount"
+          p:queueName="lombard.service.outclearings.recognisecourtesyamount"
+          p:consumeType="Lombard.Adapters.A2iaAdapter.Messages.XsdImports.RecogniseBatchCourtesyAmountRequest:Lombard.Adapters.A2iaAdapter"
+          p:subject="courtesyamount"
+          p:predicate="recognise"
+          p:consume="${sharedConsumer}"
+          p:produce="true"
+            />
+
+    <bean id="australiaPostValidateCodelineRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineResponse"
+          p:serviceName="lombard.service.outclearings.australiapost.validatecodeline"
+          p:queueName="lombard.service.outclearings.validatecodeline"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.ValidateBatchCodelineRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="codeline"
+          p:predicate="validate"
+          p:transformResponse="true"
+          p:consume="${sharedConsumer}"
+          p:produce="true"
+            />
+
+    <bean id="australiaPostCorrectCodelineRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineResponse"
+          p:serviceName="lombard.service.outclearings.australiapost.correctcodeline"
+          p:queueName="lombard.service.outclearings.correctcodeline"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.CorrectBatchCodelineRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="codeline"
+          p:predicate="correct"
+          p:consume="${sharedConsumer}"
+          p:produce="true"
+            />
+
+    <bean id="australiaPostStoreBatchVoucherRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+          p:serviceName="lombard.service.outclearings.australiapost.storebatchvoucher"
+          p:queueName="lombard.service.outclearings.storebatchvoucher"
+          p:consumeType="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest"
+          p:subject="vouchers"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="raiseAustraliaPostProcessDuplicateIncidentRoute" class="com.fujixerox.aus.integration.service.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.outclearings.australiapostitemprocess.checkduplicatefile.incident"
+          p:subject="vouchers"
+          p:predicate="duplicate"
+            />
+
+</beans>

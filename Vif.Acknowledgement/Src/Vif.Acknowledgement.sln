@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vif.Acknowledgement.Service", "Vif.Acknowledgement.Service\Vif.Acknowledgement.Service.csproj", "{421771EB-1FCC-4637-8AEA-9E56825620B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vif.Acknowledgement.UnitTests", "Vif.Acknowledgement.UnitTests\Vif.Acknowledgement.UnitTests.csproj", "{08685E8F-1CA7-40FC-B60E-8346621259F4}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccProjectUniqueName0 = Vif.Acknowledgement.Service\\Vif.Acknowledgement.Service.csproj
+		SccProjectName0 = Vif.Acknowledgement.Service
+		SccLocalPath0 = Vif.Acknowledgement.Service
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = Vif.Acknowledgement.UnitTests\\Vif.Acknowledgement.UnitTests.csproj
+		SccProjectName2 = Vif.Acknowledgement.UnitTests
+		SccLocalPath2 = Vif.Acknowledgement.UnitTests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{421771EB-1FCC-4637-8AEA-9E56825620B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421771EB-1FCC-4637-8AEA-9E56825620B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421771EB-1FCC-4637-8AEA-9E56825620B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421771EB-1FCC-4637-8AEA-9E56825620B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08685E8F-1CA7-40FC-B60E-8346621259F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08685E8F-1CA7-40FC-B60E-8346621259F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08685E8F-1CA7-40FC-B60E-8346621259F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08685E8F-1CA7-40FC-B60E-8346621259F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

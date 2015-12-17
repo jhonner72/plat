@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/AssociateVouchers" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/AssociateVouchers" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher" xmlns:sb="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" schemaLocation="RepositoryStoreVouchers.xsd"/>
+	<xs:element name="AssociateVouchersRequest" type="tns:AssociateVouchersRequest"/>
+	<xs:complexType name="AssociateVouchersRequest">
+		<xs:sequence>
+			<xs:element name="insertVouchers" type="tns:VoucherDetail" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Insert the generate voucher record.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="updateVouchers" type="tns:VoucherDetail" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Update vouchers with Customer or Transaction Link number.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VoucherDetail" type="tns:VoucherDetail"/>
+	<xs:complexType name="VoucherDetail">
+		<xs:sequence>
+			<xs:element name="transferEndpoints" type="sb:TransferEndpoint" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>For new credit voucher:
+  Create the VIF_OUTBOUND transfer record for all new Credit records with the endpoint of "workType:batchType:captureBsb"
+
+For the existing debit vouchers:
+  Move the status from OnHold to New</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="vtns:VoucherInformation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssociateVouchersResponse" type="tns:AssociateVouchersResponse"/>
+	<xs:complexType name="AssociateVouchersResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

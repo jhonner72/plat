@@ -1,0 +1,404 @@
+{
+    "job":
+    {
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "initiatingJobIdentifier":null,
+        "processIdentifier":null,
+        "subject":"valuefromsurplusitem",
+        "predicate":"collect",
+        "activity":[
+            {
+                "jobIdentifier":null,
+                "activityIdentifier":null,
+                "subject":null,
+                "predicate":null,
+                "requestDateTime":"2015-03-24T13:13:09.107+11:00",
+                "request":{
+                    "@type":"com.fujixerox.aus.lombard.common.receipt.ReceivedFile",
+                    "fileIdentifier":"OUTCLEARINGSPKG_20150623_111222333444.zip",
+                    "receivedDateTime":"2015-03-24T13:13:09.107+11:00"
+                },
+                "responseDateTime":null,
+                "response":null,
+                "failed":false
+            }
+        ],
+        "status":0
+    },
+    "activityCount": 20,
+    "activities": [
+                    {
+                        "implemented" : true,
+                        "activityName": "lombard.service.outclearings.surplus.unpackagevoucher",
+                        "queueName": "lombard.service.outclearings.surplus.unpackagevoucher",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherRequest",
+                            "jobIdentifier": "#JOB_IDENTIFIER#",
+                            "receivedFile":{
+                                "fileIdentifier":"OUTCLEARINGSPKG_20150623_111222333444.zip",
+                                "receivedDateTime":"2015-03-24T13:13:09.107+11:00"
+                            }
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherResponse",
+                            "batch": {
+                                "batchNumber": "00001",
+                                "processingDate": "2015-03-12",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "processingState": "VIC",
+                                "captureBsb": "020303",
+                                "workType": "NABCHQ_INWARDFV",
+                                "voucher": [
+                                    {
+                                        "documentReferenceNumber": "000111222",
+                                        "processingDate": "2015-03-12",
+                                        "documentType":"CRT",
+                                        "transactionCode":"22",
+                                        "bsbNumber":"000999",
+                                        "auxDom":"333",
+                                        "extraAuxDom":"666",
+                                        "accountNumber":"12345678",
+                                        "amount":"2001"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "activityName": "lombard.service.outclearings.surplus.recognisecourtesyamount",
+                        "queueName": "lombard.service.outclearings.recognisecourtesyamount",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountRequest",
+                            "jobIdentifier": "#JOB_IDENTIFIER#",
+                            "voucher": [
+                                {
+                                    "documentReferenceNumber": "000111222",
+                                    "processingDate": "2015-03-12",
+                                    "transactionCode": "22"
+                                }
+                            ]
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountResponse",
+                            "voucher": [
+                                {
+                                    "documentReferenceNumber": "000111222",
+                                    "imageRotation": "0",
+                                    "capturedAmount": "2000",
+                                    "amountConfidenceLevel": "1",
+                                    "amountRegionOfInterest": {
+                                        "top" : 0, "left" : 0, "height" : 20, "width" : 100
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "activityName": "lombard.service.outclearings.surplus.validatecodeline",
+                        "queueName": "lombard.service.outclearings.validatecodeline",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineRequest",
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303",
+                                "workType": "NABCHQ_INWARDFV"
+                            },
+                            "voucher": [
+                                {
+                                    "documentReferenceNumber": "000111222",
+                                    "transactionCode":"22",
+                                    "bsbNumber":"000999",
+                                    "auxDom":"333",
+                                    "extraAuxDom":"666",
+                                    "accountNumber":"12345678",
+                                    "capturedAmount": "2000",
+                                    "amountConfidenceLevel": "1",
+                                    "documentType":"CRT",
+                                    "processingDate": "2015-03-12"
+                                }
+                            ]
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineResponse",
+                            "voucher": [
+                                {
+                                    "extraAuxDomStatus": "true",
+                                    "bsbNumberStatus": "true",
+                                    "accountNumberStatus": "true",
+                                    "transactionCodeStatus":"true",
+                                    "amountStatus":"false",
+                                    "documentReferenceNumber": "000111222",
+                                    "auxDomStatus": "true"
+                                }
+                            ],
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"
+                            }
+                        }
+                    },
+                    {
+                        "activityName": "lombard.service.outclearings.surplus.correctcodeline",
+                        "queueName": "lombard.service.outclearings.correctcodeline",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineRequest",
+                            "jobIdentifier": "#JOB_IDENTIFIER#",
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"
+                            },
+                            "voucher": [
+                                {
+                                    "auxDom":"333",
+                                    "amountStatus":"false",
+                                    "auxDomStatus": "true",
+                                    "transactionCodeStatus":"true",
+                                    "accountNumberStatus": "true",
+                                    "bsbNumberStatus": "true",
+
+                                    "extraAuxDom":"666",
+                                    "bsbNumber":"000999",
+                                    "accountNumber":"12345678",
+                                    "transactionCode":"22",
+                                    "documentReferenceNumber": "000111222",
+                                    "amount": "2001",
+                                    "capturedAmount": "2000",
+                                    "amountConfidenceLevel": "1",
+                                    "extraAuxDomStatus": "true",
+
+                                    "documentType":"CRT",
+                                    "processingDate": "2015-03-12"
+                                }
+                            ]
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineResponse",
+                            "voucher": [
+                                {
+                                    "amount": "1999",
+                                    "unprocessable": false,
+                                    "documentReferenceNumber": "000111222",
+                                    "transactionCode":"22",
+                                    "auxDom":"333",
+                                    "extraAuxDom":"666",
+                                    "bsbNumber":"000999",
+                                    "accountNumber":"12345678",
+                                    "manualRepair":"1",
+                                    "targetEndPoint":"WPC",
+                                    "operatorID":"1",
+                                    "documentType":"CRT",
+                                    "transactionLink":"1",
+                                    "processingDate": "2015-03-12"
+                                }
+                            ],
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"                }
+                        }
+                    },
+                    {
+                        "activityName": "lombard.service.outclearings.surplus.validatetransaction",
+                        "queueName": "lombard.service.outclearings.validatetransaction",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.validatetransaction.ValidateBatchTransactionRequest",
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"
+                            },
+                            "voucher": [
+                                {
+                                    "unprocessable": false,
+                                    "voucher": {
+                                        "documentType": "CRT",
+                                        "processingDate": "2015-03-12",
+                                        "documentReferenceNumber": "000111222",
+                                        "transactionCode": "22",
+                                        "bsbNumber": "000999",
+                                        "auxDom": "333",
+                                        "extraAuxDom": "666",
+                                        "accountNumber": "12345678",
+                                        "amount": "1999"
+                                    }
+                                }
+                            ]
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.validatetransaction.ValidateBatchTransactionResponse",
+                            "voucher": [
+                                {
+                                    "documentReferenceNumber": "000111222",
+                                    "reasonCode": "HighValue",
+                                    "transactionLinkNumber": "1",
+                                    "codelineFieldsStatus": {
+                                        "transactionCodeStatus": true
+                                    },
+                                    "unprocessable": false,
+                                    "surplusItemFlag": false,
+                                    "isGeneratedVoucher": false,
+                                    "voucher": {
+                                        "documentType": "CRT",
+                                        "processingDate": "2015-03-12",
+                                        "documentReferenceNumber": "000111222",
+                                        "transactionCode": "22",
+                                        "bsbNumber": "000999",
+                                        "auxDom": "333",
+                                        "extraAuxDom": "666",
+                                        "accountNumber": "12345678",
+                                        "amount": "2000"
+                                    }
+                                }
+                            ],
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"
+                            }
+                        }
+                    },
+                    {
+                        "activityName": "lombard.service.outclearings.surplus.correcttransaction",
+                        "queueName": "lombard.service.outclearings.correcttransaction",
+                        "request": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.correcttransaction.CorrectBatchTransactionRequest",
+                            "voucherBatch" : {
+                                "processingState": "VIC",
+                                "scannedBatchNumber": "00001",
+                                "unitID": "unit01",
+                                "collectingBank": "010202",
+                                "captureBsb": "020303"
+                            },
+                            "voucher": [
+                                {
+                                    "voucher": {
+                                        "documentType": "CRT",
+                                        "processingDate": "2015-03-12",
+                                        "auxDom": "333",
+                                        "extraAuxDom": "666",
+                                        "bsbNumber": "000999",
+                                        "accountNumber": "12345678",
+                                        "transactionCode": "22",
+                                        "documentReferenceNumber": "000111222",
+                                        "amount": "2000"
+                                    },
+                                    "codelineFieldsStatus": {
+                                        "amountStatus": "false",
+                                        "auxDomStatus": "false",
+                                        "transactionCodeStatus": "true",
+                                        "accountNumberStatus": "false",
+                                        "bsbNumberStatus": "false",
+                                        "extraAuxDomStatus": "false"
+                                    },
+                                    "reasonCode":"HighValue",
+                                    "transactionLinkNumber":"1",
+                                    "unprocessable": false,
+                                    "targetEndPoint":"WPC",
+                                    "isGeneratedVoucher": false
+                                }
+                            ]
+                        },
+                        "response": {
+                            "@type": "com.fujixerox.aus.lombard.outclearings.correcttransaction.CorrectBatchTransactionResponse",
+                            "voucher": [
+                                {
+                                    "voucher": {
+                                        "documentType": "Sp",
+                                        "amount": "2010",
+                                        "processingDate":"2015-03-12",
+                                        "documentReferenceNumber": "000111222",
+                                        "transactionCode":"22",
+                                        "auxDom":"333",
+                                        "extraAuxDom":"666",
+                                        "bsbNumber":"000999",
+                                        "accountNumber":"12345678"
+                                    },
+                                    "operatorId":"1",
+                                    "manualRepair":1,
+                                    "transactionLinkNumber":"1",
+                                    "unprocessable": false,
+                                    "suspectFraudFlag": true,
+                                    "surplusItemFlag": true,
+                                    "isGeneratedVoucher": false,
+                                    "targetEndPoint":"WPC",
+                                    "thirdPartyCheckRequired": true,
+                                    "thirdPartyMixedDepositReturnFlag": false}
+                            ],
+                        "voucherBatch" : {
+                            "processingState": "VIC",
+                            "scannedBatchNumber": "00001",
+                            "unitID": "unit01",
+                            "collectingBank": "010202",
+                            "captureBsb": "020303"
+                        }
+            }
+        },
+        {
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.surplus.storebatchvoucher",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#",
+                "receipt": {
+                    "fileIdentifier":"OUTCLEARINGSPKG_20150623_111222333444.zip",
+                    "receivedDateTime":"2015-03-24T13:13:09.107+11:00",
+                    "transmissionDateTime":"2015-03-24T13:13:09.107+11:00"
+
+                },
+                "origin": "VOUCHER_INBOUND",
+                "voucherBatch" : {
+                    "processingState": "VIC",
+                    "scannedBatchNumber": "00001",
+                    "unitID": "unit01",
+                    "collectingBank": "010202",
+                    "captureBsb": "020303"
+                },
+                "voucher":[
+                    {
+                        "transferEndpoints": [],
+                        "voucher":
+                        {
+                            "documentReferenceNumber":"000111222",
+                            "documentType":"Sp",
+                            "processingDate":"2015-03-12",
+                            "accountNumber":"12345678",
+                            "auxDom":"333",
+                            "extraAuxDom":"666",
+                            "bsbNumber":"000999",
+                            "transactionCode":"22",
+                            "amount":"2010"
+                        },
+                        "voucherProcess" : {
+                            "manualRepair": 1,
+                            "suspectFraud": true,
+                            "transactionLinkNumber": "1",
+                            "unprocessable": false,
+                            "surplusItemFlag": true,
+                            "isGeneratedVoucher": false,
+                            "presentationMode": "E"
+                        }
+                    }
+                ]
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+            }
+        }
+    ]
+}

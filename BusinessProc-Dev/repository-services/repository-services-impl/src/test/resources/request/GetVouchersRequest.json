@@ -1,0 +1,8 @@
+{
+	"imageType": "NONE",
+	"jobIdentifier": "OUTPUT_JOB_FOR_VIF_MAXSIZE_17",
+	"maxReturnSize": 17,
+	"minReturnSize": 0,
+	"targetEndPoint": "XYZ",
+	"voucherTransfer": "VIF_OUTBOUND"
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fujixerox.aus.asset-services</groupId>
+    <artifactId>asset-services</artifactId>
+    <packaging>pom</packaging>
+    <version>2.4.0-SNAPSHOT</version>
+    <name>FXA Asset Services</name>
+
+    <modules>
+        <module>asset-services-base</module>
+        <module>asset-services-api</module>
+        <module>asset-services-test</module>
+        <module>asset-services-model</module>
+        <module>asset-services-mapping</module>
+        <module>asset-services-imaging</module>
+        <module>asset-services-impl</module>
+        <module>asset-services-route</module>
+        <module>asset-services-app</module>
+        <module>asset-services-web</module>
+        <module>asset-services-ingestion</module>
+    </modules>
+
+</project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.Documentum</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Lombard Documentum D2</description>
+    </metadata>
+    <files>
+      <file src="..\bin\NAB_DCTM\bin\NAB_DCTM.dar"/>
+      <file src="PreDeploy.ps1"/>
+      <file src="Deploy.ps1"/>
+      <file src="PostDeploy.ps1"/>
+      <file src="install.xml"/>
+      <file src="configuration\PreDeploy\*" target="configuration\PreDeploy" />
+      <file src="configuration\PostDeploy\*" target="configuration\PostDeploy" />
+    </files>
+</package>

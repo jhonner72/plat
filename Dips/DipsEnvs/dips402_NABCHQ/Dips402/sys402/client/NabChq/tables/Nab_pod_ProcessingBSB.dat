@@ -1,0 +1,15 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-05-xx		Dinesh		Created
+//2015-07-31        Dinesh      Updated BSB's as per new list from NAB
+//_______________________________________________________________________
+// Column 1 = Processing State
+// Column 2 = BSB
+//
+NSW,082082
+VIC,083340
+TAS,083340
+QLD,084014
+SA,085015
+NT,085015
+WA,086016

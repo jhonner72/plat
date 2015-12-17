@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="docbrokerHost" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/docbroker/host"/>
+        <property name="expectedType" value="java.lang.String"/>
+    </bean>
+
+    <bean id="docbrokerPort" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/docbroker/port"/>
+        <property name="expectedType" value="java.lang.String"/>
+    </bean>
+
+    <!-- DFC Preferences -->
+    <bean id="preferencesLoader" class="com.fujixerox.aus.asset.api.dfc.preferences.PreferencesLoader"
+          init-method="load">
+        <constructor-arg name="persistentProperties">
+            <map key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="dfc.docbroker.host">
+                    <bean class="org.springframework.util.StringUtils" factory-method="commaDelimitedListToStringArray">
+                        <constructor-arg type="java.lang.String" ref="docbrokerHost"/>
+                    </bean>
+                </entry>
+                <entry key="dfc.docbroker.port">
+                    <bean class="org.springframework.util.StringUtils" factory-method="commaDelimitedListToStringArray">
+                        <constructor-arg type="java.lang.String" ref="docbrokerPort"/>
+                    </bean>
+                </entry>
+                <entry key="dfc.verify_registration">
+                    <value type="java.lang.Boolean">false</value>
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/fxa_dishonour_report?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Types/fxa_dishonour_report.type" categoryId="com.emc.ide.artifact.dclass">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="fxa_dishonour_report">
+      <primaryElement>
+        <attributes attr_name="fxa_status" attr_length="40" ID="6cDcg+u2AjCahJCCQ16sRo">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_searchable="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit">
+            <cond_value_assist/>
+            <default_value expressionText="Not Processed">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Dishonour Report Status" nls_key="en">
+              <value_mappings map_data_string="Not Processed" map_display_string="Not Processed"/>
+              <value_mappings map_data_string="Processing" map_display_string="Processing"/>
+              <value_mappings map_data_string="Processed" map_display_string="Processed"/>
+              <value_mappings map_data_string="Processed - Partial Success" map_display_string="Processed - Partial Success"/>
+              <value_mappings map_data_string="Fatal Error" map_display_string="Fatal Error"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" nls_key="en"/>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT" is_searchable="INHERIT"/>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/fxa_document?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Types/fxa_document.type#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

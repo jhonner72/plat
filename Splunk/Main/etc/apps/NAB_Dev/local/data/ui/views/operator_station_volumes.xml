@@ -1,0 +1,167 @@
+<form>
+  <label>Operator Station Volumes</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="time" token="SharedTimePicker">
+      <label></label>
+      <default>
+        <earliest>-2d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityVoucherProcessing OR source=BpmActivitySurplusItems OR source=BpmForValueProcessing  | transaction BusinessKey, Name | WHERE mvindex(EndTime,0,0)=="null" | Stats count by Name</query>
+    <earliest>$SharedTimePicker.earliest$</earliest>
+    <latest>$SharedTimePicker.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Batches Pending Processing</title>
+      <single>
+        <title>Batches scanned (next: Duplicate Checking)</title>
+        <search base="baseQuery">
+          <query>| Search Name="Voucher Processing Start" OR Name="Surplus Items Processing Start" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+      <single>
+        <title>'For Value' batches queued or currently being copied to DIPS (next: Codeline Correction)</title>
+        <search base="baseQuery">
+          <query>| Search Name="CopyImagesToDips" OR Name="WaitCopyImagesToDips" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Duplicate Checking</title>
+      <single>
+        <title>Batches queued, or currently in, Duplicate Checking</title>
+        <search base="baseQuery">
+          <query>| search Name="Check Duplicate File" OR Name="FileReceivedBefore" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>      
+    </panel>
+    <panel>
+      <title>Preparing Batches for Processing</title>
+      <single>
+        <title>Batches queued, or currently being unpacked by the system</title>
+        <search base="baseQuery">
+          <query>| search Name="UnpackageVoucher" OR Name="WaitUnpackageVoucher" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Courtesy Amount Recognition</title>
+      <single>
+        <title>Batches queued, or currently in, CAR</title>
+        <search base="baseQuery">
+          <query>| search Name="RecogniseCourtesyAmount" OR Name="WaitRecogniseCourtesyAmount" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Codeline Validation</title>
+      <single>
+        <title>Batches queued, or currently in, Codeline Validation</title>
+        <search base="baseQuery">
+          <query>| search Name="ValidateCodeline" OR Name="WaitValidateCodeline" OR Name="ValidateCodelineTest" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Codeline Correction</title>
+      <single>
+        <title>Batches queued, or currently in, Correct Codeline</title>
+        <search base="baseQuery">
+          <query>| search Name="CorrectCodeline" OR Name="WaitCorrectCodeline" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Auto Balancing</title>
+      <single>
+        <title>Batches queued, or currently in, Auto Balancing</title>
+        <search base="baseQuery">
+          <query>| search Name="ValidateTransaction" OR Name="WaitValidateTransaction" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Expert Balancing</title>
+      <single>
+        <title>Batches queued, or currently in, Expert Balancing</title>
+        <search base="baseQuery">
+          <query>| search Name="CorrectTransaction" OR Name="WaitCorrectTransaction" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Saving Batches in Documentum</title>
+      <single>
+        <title>Batches queued, or currently being stored in Documentum</title>
+        <search base="baseQuery">
+          <query>| search Name="StoreBatchVoucher" OR Name="WaitStoreBatchVoucher" | stats sum(count)</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Batches Completed Processing</title>
+      <single>
+        <title>End Batch Processing</title>
+        <search>
+          <query>index="camunda" source=BpmActivityVoucherProcessing OR source=BpmActivitySurplusItems OR source=BpmForValueProcessing  | transaction BusinessKey, Name | WHERE mvindex(EndTime,0,0)!="null" | Stats count by Name| search Name="Voucher Processing End" OR Name="Surplus Items Processing End" OR Name="For Value Vouchers End"| stats sum(count) | rangemap field=sum(count) severe=0-0 default=low</query>
+          <earliest>$SharedTimePicker.earliest$</earliest>
+          <latest>$SharedTimePicker.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">range</option>
+        <option name="field">sum(count)</option>
+      </single>
+    </panel>
+  </row>
+</form>

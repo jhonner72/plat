@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CheckThirdParty" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/CheckThirdParty" xmlns:vc="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="CheckThirdPartyBatchRequest" type="tns:CheckThirdPartyBatchRequest"/>
+	<xs:complexType name="CheckThirdPartyBatchRequest">
+		<xs:annotation>
+			<xs:documentation>Batch-level processing request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:CheckThirdPartyRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of vouchers requiring third party checking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="vc:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch details and context.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CheckThirdPartyRequest" type="tns:CheckThirdPartyRequest"/>
+	<xs:complexType name="CheckThirdPartyRequest">
+		<xs:annotation>
+			<xs:documentation>Voucher-level checking request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dips_override" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>TODO: Potentially deprecated value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dipsSequenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The dipsSequenceNumber differentiates and orders the items with the same dipTraceNumber.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dipsTraceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The dipsTraceNumber is one of the fields that determines a unique record. 
+
+The combination of the dipsTraceNumber and the dipsSequenceNumber determines the unique record and also how the records should be ordered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>TODO: Not sure why, but it could go here??</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdPartyCheckRequired" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag indicating third party checking required for this voucher.
+
+Note: TPC should have all transactions which have a voucher that requires 3rd party checking. This means that some vouchers in a transaction will got to TPC, but only one of them may be flagged as 3rd party checking required.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="vc:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher required in third party checking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherProcess" type="vc:VoucherProcess" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher process information for a voucher that is required in checking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CheckThirdPartyResponse" type="tns:CheckThirdPartyResponse"/>
+	<xs:complexType name="CheckThirdPartyResponse">
+		<xs:annotation>
+			<xs:documentation>Voucher-level checking response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="vc:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher details after third party checking.
+
+Note: this information is not expected to be modified and should be a duplicate of the request voucher information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherProcess" type="vc:VoucherProcess" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Updated voucher process information (includes third-party checking outcomes).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CheckThirdPartyBatchResponse" type="tns:CheckThirdPartyBatchResponse"/>
+	<xs:complexType name="CheckThirdPartyBatchResponse">
+		<xs:annotation>
+			<xs:documentation>Batch-level request processing response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:CheckThirdPartyResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of voucher-level responses from third party checking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="vc:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch context details. 
+
+Note: this information is not modified and should be a duplicate of the request batch information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

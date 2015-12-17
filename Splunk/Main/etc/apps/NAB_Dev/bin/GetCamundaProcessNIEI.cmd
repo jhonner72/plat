@@ -1,0 +1,2 @@
+@ECHO OFF
+Powershell -Command ". '%~dp0\GetCamundaProcessNIEI\GetCamundaProcessData.ps1' -camundaProcessDefinitionKey 'EAID_5ADCF598_C32A_49e8_9487_F525E3CB6C06' -previousRunJsonPath 'GetCamundaProcessNIEI.json'"

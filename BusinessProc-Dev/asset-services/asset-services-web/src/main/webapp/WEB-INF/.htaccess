@@ -1,0 +1,5 @@
+RewriteCond %{REQUEST_URI} ^/(?!$).*
+RewriteCond %{REQUEST_URI} ^/(?!index\.jsp$).*
+RewriteCond %{REQUEST_URI} ^/(?!images/.*$).*
+RewriteCond %{REQUEST_URI} ^/(?!rest/xml$).*
+RewriteRule  ^.*$ /rest/xml [PT,L]

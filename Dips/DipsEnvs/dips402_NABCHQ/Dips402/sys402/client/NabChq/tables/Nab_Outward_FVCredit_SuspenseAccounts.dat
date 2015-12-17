@@ -1,0 +1,13 @@
+//Indexing Sort Option: ALPHA
+//Description: Suspense Accounts
+//Modification History:
+//2015-07-01		Thong		Created
+//2015-07-16        Dinesh      Modified (Added Suspense Account for BQL)
+// Format:
+//BSB, SuspenseAccount, Bank Name
+//
+
+083029,823300223,All FIs
+124001,10457814,All FIs			//BQL Suspense Account 2015-07-16
+083029,245485472,CBA            //CBA Suspense Acc 2015-08-19
+124002,10457814,CBA             //CBA Suspense Acc for BQL 2015-09-03

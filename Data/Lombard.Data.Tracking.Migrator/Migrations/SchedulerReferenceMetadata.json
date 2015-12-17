@@ -1,0 +1,189 @@
+﻿{
+	"scheduler" : [{
+			"processName" : "StartOfDay",
+			"startTime" : "08:00:00",
+			"recurringInterval" : 0
+		}, {
+			"processName" : "ValueInformationFile",
+			"startTime" : "09:00:00",
+			"recurringInterval" : 10
+		}, {
+			"processName" : "InwardForValue",
+			"startTime" : "09:00:00",
+			"recurringInterval" : 5
+		}, {
+			"processName" : "ImageExchange",
+			"startTime" : "09:00:00",
+			"recurringInterval" : 30
+		}, {
+			"processName" : "InitialEndOfDay",
+			"startTime" : "23:15:00",
+			"endOfWeekDelay" : 60,
+			"recurringInterval" : 0
+		}, {
+			"processName" : "FinalEndOfDay",
+			"startTime" : "25:38:00",
+			"endOfWeekDelay" : 60,
+			"recurringInterval" : 0
+		}, {
+			"processName" : "LBOX_LCG1",
+			"startTime" : "13:24:00",
+			"recurringInterval" : 0,
+			"batchType" : "LCG1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LCG2",
+			"startTime" : "13:26:00",
+			"recurringInterval" : 0,
+			"batchType" : "LCG2",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LML1",
+			"startTime" : "13:28:00",
+			"recurringInterval" : 0,
+			"batchType" : "LML1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LRD1",
+			"startTime" : "14:30:00",
+			"recurringInterval" : 0,
+			"batchType" : "LRD1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV1",
+			"startTime" : "14:32:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LBC1",
+			"startTime" : "14:34:00",
+			"recurringInterval" : 0,
+			"batchType" : "LBC1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LCY1",
+			"startTime" : "14:40:00",
+			"recurringInterval" : 0,
+			"batchType" : "LCY1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LEG1",
+			"startTime" : "14:42:00",
+			"recurringInterval" : 0,
+			"batchType" : "LEG1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LRD2",
+			"startTime" : "14:44:00",
+			"recurringInterval" : 0,
+			"batchType" : "LRD2",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LGS1",
+			"startTime" : "14:46:00",
+			"recurringInterval" : 0,
+			"batchType" : "LGS1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LMC1",
+			"startTime" : "14:48:00",
+			"recurringInterval" : 0,
+			"batchType" : "LMC1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LPC1",
+			"startTime" : "14:50:00",
+			"recurringInterval" : 0,
+			"batchType" : "LPC1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV2",
+			"startTime" : "14:52:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV2",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV3",
+			"startTime" : "14:54:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV3",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV4",
+			"startTime" : "14:56:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV4",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LHS1",
+			"startTime" : "14:58:00",
+			"recurringInterval" : 0,
+			"batchType" : "LHS1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV5",
+			"startTime" : "15:00:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV5",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LNC1",
+			"startTime" : "15:02:00",
+			"recurringInterval" : 0,
+			"batchType" : "LNC1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LEA1",
+			"startTime" : "15:04:00",
+			"recurringInterval" : 0,
+			"batchType" : "LEA1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LRC1",
+			"startTime" : "15:06:00",
+			"recurringInterval" : 0,
+			"batchType" : "LRC1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LOW1",
+			"startTime" : "15:08:00",
+			"recurringInterval" : 0,
+			"batchType" : "LOW1",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LML2",
+			"startTime" : "13:30:00",
+			"recurringInterval" : 0,
+			"batchType" : "LML2",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LRD3",
+			"startTime" : "14:36:00",
+			"recurringInterval" : 0,
+			"batchType" : "LRD3",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LRD4",
+			"startTime" : "14:38:00",
+			"recurringInterval" : 0,
+			"batchType" : "LRD4",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "LBOX_LSV6",
+			"startTime" : "15:10:00",
+			"recurringInterval" : 0,
+			"batchType" : "LSV6",
+			"workType" : "NABCHQ_LBOX"
+		}, {
+			"processName" : "AusPostECL",
+			"startTime" : "17:00:00",
+			"recurringInterval" : 0,
+			"workType" : "NABCHQ_APOST"
+		}, {
+			"processName" : "AgencyBank",
+			"startTime" : "06:30:00",
+			"recurringInterval" : 10
+		}
+	]
+}

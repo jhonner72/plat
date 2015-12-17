@@ -1,0 +1,8 @@
+﻿<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Lombard.Common</id>
+    <version>$version$</version>
+    <authors>FXA</authors>
+    <description>Resources shared by the FXA Cheque Digitisation project (codename Lombard)</description>
+  </metadata>
+</package> 

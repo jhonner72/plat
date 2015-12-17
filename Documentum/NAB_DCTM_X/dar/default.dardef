@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:acl="http://documentum.emc.com/artifact/12012007/acl" xmlns:bpm="http://documentum.emc.com/artifact/12012007/bpm" xmlns:dardef="http://documentum.emc.com/infrastructure/12012007/dardef" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" xmlns:group="http://documentum.emc.com/artifact/12012007/group" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" xmlns:job="http://documentum.emc.com/artifact/12012007/job" xmlns:method="http://documentum.emc.com/artifact/12012007/method" xmlns:moduledef="http://documentum.emc.com/artifact/12012007/moduledef" urn="urn:com.emc.ide.artifact.dardef/default?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/dar/default.dardef" categoryId="com.emc.ide.artifact.dardef">
+  <dataModel xsi:type="dardef:DarDef" objectName="NAB_DCTM_X" contentType="jar" sourceDir="bin" name="NAB_DCTM_X">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_dar?artifactURI=platform:/resource/DFS2/inst/dclass/dmc_dar.type#//@dataModel"/>
+    <version/>
+    <artifacts xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/nabwfmthdsjar?language_code=&amp;location=%2FSystem%2FApplications%2FNAB_DCTM_X&amp;name=nabwfmthdsjar&amp;type=dmc_jar#//@dataModel"/>
+    <artifacts xsi:type="dclass:DClass" href="urn:com.emc.ide.artifact.dclass/fxa_voucher?name=fxa_voucher#//@dataModel"/>
+    <artifacts xsi:type="dclass:DClass" href="urn:com.emc.ide.artifact.dclass/fxa_document?name=fxa_document#//@dataModel"/>
+    <artifacts xsi:type="acl:Acl" href="urn:com.emc.ide.artifact.acl/fxa_workflow_relate_acl?name=fxa_workflow_relate_acl#//@dataModel"/>
+    <artifacts xsi:type="acl:Acl" href="urn:com.emc.ide.artifact.acl/fxa_adj_letters_folder_acl?name=fxa_adj_letters_folder_acl#//@dataModel"/>
+    <artifacts xsi:type="acl:Acl" href="urn:com.emc.ide.artifact.acl/fxa_adj_letters_cabinet_acl?name=fxa_adj_letters_cabinet_acl#//@dataModel"/>
+    <artifacts xsi:type="acl:Acl" href="urn:com.emc.ide.artifact.acl/fxa_adj_letters_acl?name=fxa_adj_letters_acl#//@dataModel"/>
+    <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/WF_TPC_Module?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Modules/wf_tpc_module.module#//@dataModel"/>
+    <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/WF_SP_Module?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Modules/wf_sp_module.module#//@dataModel"/>
+    <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/WF_DR_Module?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Modules/wf_dr_module.module#//@dataModel"/>
+    <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/UserSynch?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Modules/usersynch.module#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/WorkflowThirdPartyPoolMethod?name=WorkflowThirdPartyPoolMethod#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/WorkflowSuspensePoolMethod?name=WorkflowSuspensePoolMethod#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/WorkflowPostTrasQAMethod?name=WorkflowPostTrasQAMethod#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/WorkflowDocRetrievalMethod?name=WorkflowDocRetrievalMethod#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/UserSynchMethod?name=UserSynchMethod#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/CreateFolders?name=CreateFolders#//@dataModel"/>
+    <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/UserSynchJob?location=%2FSystem%2FApplications%2FNAB_DCTM_X&amp;name=UserSynchJob#//@dataModel"/>
+    <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/CreateAdjLettersFolderJob?location=%2FNABDCPECM_SVC_E&amp;name=CreateAdjLettersFolderJob#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_ThirdParty_Suspense_Pool%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_thirdparty_suspense_pool%5B0%5D.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_ThirdParty_Suspense_Pool?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_thirdparty_suspense_pool.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Surplus_Suspense_pool%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_surplus_suspense_pool%5B0%5D.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Surplus_Suspense_pool?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_surplus_suspense_pool.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Post_Transmission_QA%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_post_transmission_qa%5B0%5D.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Post_Transmission_QA?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_post_transmission_qa.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Doc_Retrieval%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_doc_retrieval%5B0%5D.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Doc_Retrieval?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_doc_retrieval.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:UserParameter" href="urn:com.emc.ide.userparameter/NABDCPECM_SVC_E?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nabdcpecm_svc_e.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:UserParameter" href="urn:com.emc.ide.userparameter/NABDC_SQL_D?name=NABDC_SQL_D#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/nab_wf_thirdparty_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_wf_thirdparty_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/nab_wf_surplus_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_wf_surplus_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/nab_read_adjustment_letters_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_read_adjustment_letters_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/nab_all_group?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/nab_all_group.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_write_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_write_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:ACLParameter" href="urn:com.emc.ide.aclparameter/fxa_workflow_relate_acl?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_workflow_relate_acl.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_version_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_version_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_read_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_read_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_qa_post_tran_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_qa_post_tran_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_doc_retrieval_grp?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_doc_retrieval_grp.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_all_group?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_all_group.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:GroupParameter" href="urn:com.emc.ide.groupparameter/fxa_admin?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/fxa_admin.parameter#//@dataModel"/>
+    <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_wf_thirdparty_grp?name=nab_wf_thirdparty_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_wf_surplus_grp?name=nab_wf_surplus_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_read_adjustment_letters_grp?name=nab_read_adjustment_letters_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_doc_retrieval_grp?name=nab_doc_retrieval_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_all_group?name=nab_all_group#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_write_grp?name=fxa_write_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_version_grp?name=fxa_version_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_read_grp?name=fxa_read_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_qa_post_tran_grp?name=fxa_qa_post_tran_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_expert_bal_grp?name=fxa_expert_bal_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_doc_retrieval_grp?name=fxa_doc_retrieval_grp#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_all_group?name=fxa_all_group#//@dataModel"/>
+    <artifacts xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_admin?name=fxa_admin#//@dataModel"/>
+    <artifacts xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_ThirdParty_Suspense_Pool?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_ThirdParty_Suspense_pool&amp;name=WF_ThirdParty_Suspense_Pool#//@dataModel"/>
+    <artifacts xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Surplus_Suspense_pool?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Surplus_Suspense_pool&amp;name=WF_Surplus_Suspense_pool#//@dataModel"/>
+    <artifacts xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Post_Transmission_QA?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Post_Transmission_QA&amp;name=WF_Post_Transmission_QA#//@dataModel"/>
+    <artifacts xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Doc_Retrieval?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Doc_Retrieval&amp;name=WF_Doc_Retrieval#//@dataModel"/>
+    <artifacts xsi:type="dclass:DClass" href="urn:com.emc.ide.artifact.dclass/dmc_dar?artifactURI=platform:/resource/DFS2/inst/dclass/dmc_dar.type#//@dataModel"/>
+    <artifacts xsi:type="dardef:DarDef" href="urn:com.emc.ide.artifact.dardef/default?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/dar/default.dardef#//@dataModel"/>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_admin?name=fxa_admin#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_version_grp?name=fxa_version_grp#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_ThirdParty_Suspense_Pool?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_ThirdParty_Suspense_pool&amp;name=WF_ThirdParty_Suspense_Pool#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_ThirdParty_Suspense_Pool%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_thirdparty_suspense_pool%5B0%5D.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_write_grp?name=fxa_write_grp#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Doc_Retrieval?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Doc_Retrieval&amp;name=WF_Doc_Retrieval#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Doc_Retrieval%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_doc_retrieval%5B0%5D.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="dclass:DClass" href="urn:com.emc.ide.artifact.dclass/fxa_document?name=fxa_document#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_all_group?name=nab_all_group#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Post_Transmission_QA?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Post_Transmission_QA&amp;name=WF_Post_Transmission_QA#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Post_Transmission_QA%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_post_transmission_qa%5B0%5D.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/WF_Surplus_Suspense_pool?location=%2FSystem%2FApplications%2FNAB_DCTM%2FWF_Surplus_Suspense_pool&amp;name=WF_Surplus_Suspense_pool#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/WF_Surplus_Suspense_pool%5B0%5D?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/wf_surplus_suspense_pool%5B0%5D.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/nab_read_adjustment_letters_grp?name=nab_read_adjustment_letters_grp#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="dclass:DClass" href="urn:com.emc.ide.artifact.dclass/fxa_voucher?name=fxa_voucher#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_read_grp?name=fxa_read_grp#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="group:Group" href="urn:com.emc.ide.artifact.group/fxa_all_group?name=fxa_all_group#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <darInstallOptionsSet>
+      <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
+      <upgradeOption xsi:type="dardef:UpgradeOption"/>
+    </darInstallOptionsSet>
+  </dataModel>
+</Artifact:Artifact>

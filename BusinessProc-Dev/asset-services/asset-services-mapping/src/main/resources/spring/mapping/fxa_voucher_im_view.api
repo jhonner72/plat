@@ -1,0 +1,13 @@
+execquery,c,F,REGISTER TABLE dm_dbo.fxa_voucher_im_view (r_object_id STRING(16))
+
+retrieve,c,dm_registered where table_name='fxa_voucher_im_view'
+grant,c,l,dm_owner,AccessPermit,,7
+grant,c,l,dm_world,AccessPermit,,1
+grant,c,l,fxa_historical_read_group,,2
+set,c,l,owner_table_permit
+15
+set,c,l,group_table_permit
+1
+set,c,l,world_table_permit
+1
+save,c,l

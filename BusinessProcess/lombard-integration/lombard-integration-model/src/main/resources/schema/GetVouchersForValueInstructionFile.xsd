@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/GetVouchersForValueInstructionFile" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/GetVouchersForValueInstructionFile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="GetBatchVouchersForValueInstructionFileRequest" type="tns:GetBatchVouchersForValueInstructionFileRequest"/>
+	<xs:complexType name="GetBatchVouchersForValueInstructionFileRequest">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="GetBatchVouchersForValueInstructionFileResponse" type="tns:GetBatchVouchersForValueInstructionFileResponse"/>
+	<xs:complexType name="GetBatchVouchersForValueInstructionFileResponse">
+		<xs:sequence>
+			<xs:element name="valueInstructionFileVoucher" type="tns:GetVouchersForValueInstructionFileResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The batch that contains all the vouchers for Value Instruction File.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GetVouchersForValueInstructionFileResponse" type="tns:GetVouchersForValueInstructionFileResponse"/>
+	<xs:complexType name="GetVouchersForValueInstructionFileResponse">
+		<xs:sequence>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="collectingBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB of the collecting Branch. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="manualRepair" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valid values are 1 or 0. Show "1" if one or more fields have been manually entered or altered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingState" type="vtns:StateEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scannedBatchNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="unitID" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucher" type="vtns:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher entity information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherDelayedIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>D - Indicator that image is delayed
+N - Indicator that image has been sent on a delayed basis
+or Blank</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

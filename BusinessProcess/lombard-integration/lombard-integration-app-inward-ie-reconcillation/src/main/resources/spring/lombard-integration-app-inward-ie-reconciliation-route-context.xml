@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+
+    <bean id="getReceivedFilesRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getreceivedfiles.GetReceivedFilesResponse"
+          p:serviceName="lombard.service.inclearings.getreceivedfiles"
+          p:exchangeName="lombard.service.repository.getreceivedfiles"
+          p:routingKey="NRIE"
+          p:queueName="lombard.service.inclearings.getreceivedfiles"
+          p:consumeType="com.fujixerox.aus.lombard.repository.getreceivedfiles.GetReceivedFilesRequest"
+          p:subject="receivedfiles"
+          p:predicate="get"
+          p:consume="true"
+          p:produce="true"
+            />
+
+
+    <bean id="storeReceivedFileRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsResponse"
+          p:serviceName="lombard.service.inclearings.storereceivedfiles"
+          p:exchangeName="lombard.service.reporting.storerepositoryreports"
+          p:routingKey="NRIE"
+          p:queueName="lombard.service.inclearings.storereceivedfiles"
+          p:consumeType=""
+          p:subject="receivedfiles"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+
+    <bean id="raisesNoMatchReceivedFilesIncidentRoute" class="com.fujixerox.aus.integration.service.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options-ref="brokerOptions"
+          p:serviceName="lombard.service.inclearings.receivedfiles.nomatch.incident"
+          p:subject="receivedfiles"
+          p:predicate="unmatched"
+            />
+
+</beans>

@@ -1,0 +1,165 @@
+{
+            "job": {
+              "jobIdentifier": "#JOB_IDENTIFIER#",
+              "initiatingJobIdentifier": null,
+              "processIdentifier": null,
+              "subject": "valuefromlockedbox",
+              "predicate": "send",
+              "status": 0,
+              "parameters": [
+                {
+                  "name": "batchType",
+                  "value": "LCW2"
+                },
+                {
+                  "name": "workType",
+                  "value": "NABCHQ_LBOX"
+                }
+              ]
+            },
+            "activityCount": 10,
+            "activities": [
+              {
+                "activityName": "lombard.service.outclearings.getvouchersforlockedbox",
+                "exchangeName": "lombard.service.repository.getvouchers",
+                "routingKey": "NLBC",
+                "queueName": "lombard.service.outclearings.getvouchersforlockedbox",
+                "request": {
+                  "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersRequest",
+                  "jobIdentifier": "#JOB_IDENTIFIER#",
+                  "minReturnSize": "0",
+                  "maxReturnSize": "-1",
+                  "imageType": "NONE",
+                  "queryLinkType": "TRANSACTION_LINK_NUMBER",
+                  "voucherStatusFrom": "OnHold",
+                  "voucherStatusTo": "OnHold",
+                  "voucherTransfer": "VIF_OUTBOUND",
+                  "targetEndPoint": "null:1234:123"
+                },
+                "response": {
+                  "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse",
+                  "voucherCount": 1,
+                  "targetEndPoint": "MQG"
+                }
+              },
+              {
+                "activityName": "lombard.service.outclearings.copyvoucherslbc",
+                "exchangeName":"lombard.service.inclearings.copyimages",
+                "routingKey":"NLBC",
+                "queueName":"lombard.service.outclearings.copyvoucherslbc",
+                "response": "#JOB_IDENTIFIER#"
+              },
+              {
+                "activityName": "lombard.service.outclearings.generatebulkcreditforlockedbox",
+                "exchangeName": "lombard.service.outclearings.generatebulkcredit",
+                "routingKey": "NLBC",
+                "queueName": "lombard.service.outclearings.generatebulkcreditforlockedbox",
+                "request": {
+                  "@type": "com.fujixerox.aus.lombard.outclearings.generatebulkcredit.GenerateBatchBulkCreditRequest",
+                  "jobIdentifier": "string",
+                  "maxDebitVouchers": "3",
+                  "vouchers": [
+                    {
+                      "captureBsb": "string",
+                      "documentReferenceNumber": "string",
+                      "processingDate": "9"
+          },
+          {
+            "captureBsb": "string",
+            "documentReferenceNumber": "string",
+            "processingDate": "2008-09-29"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.generatebulkcredit.GenerateBatchBulkCreditResponse"
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.associategeneratedvoucherslbc",
+      "exchangeName": "lombard.service.outclearings.associategeneratedvouchers",
+      "routingKey": "NLBC",
+      "queueName": "lombard.service.outclearings.associategeneratedvoucherslbc",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.associatevouchers.AssociateVouchersRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "insertVouchers": [
+          {
+            "voucher" : {
+              "voucher" : {
+                "documentReferenceNumber": "000111224",
+                "processingDate": "2015-01-01"
+              },
+              "voucherProcess" : {
+                "presentationMode": "E",
+                "apPresentmentType": "M",
+                "documentRetrievalDate": "2015-01-01"
+              },
+              "voucherBatch" : {
+                "captureBsb": "083309"
+              }
+            },
+            "transferEndpoints": [
+              {
+                "documentExchange": "VIF_OUTBOUND",
+                "voucherStatus": "New"
+              }
+            ]
+          }
+        ],
+        "updateVouchers": [
+          {
+            "voucher" : {
+              "voucher" : {
+                "documentReferenceNumber": "000111222",
+                "processingDate": "2015-01-01"
+              },
+              "voucherProcess" : {
+                "apPresentmentType": "M",
+                "documentRetrievalDate": "2015-01-01"
+              },
+              "voucherBatch" : {
+                "captureBsb": "083309"
+              }
+            },
+            "transferEndpoints": [
+              {
+                "documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+                "voucherStatus": "New"
+              },
+              {
+                "documentExchange": "VIF_OUTBOUND",
+                "voucherStatus": "New"
+              }
+            ]
+          },
+          {
+            "voucher" : {
+              "voucher" : {
+                "documentReferenceNumber": "000111223",
+                "processingDate": "2015-01-01"
+              },
+              "voucherProcess" : {
+                "apPresentmentType": "E"
+              },
+              "voucherBatch" : {
+                "captureBsb": "083309"
+              }
+            },
+            "transferEndpoints": [
+              {
+                "documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+                "voucherStatus": "Withdrawn"
+              },
+              {
+                "documentExchange": "VIF_OUTBOUND",
+                "voucherStatus": "Withdrawn"
+              }
+            ]
+          }
+        ]
+      }
+    }
+
+  ]
+}

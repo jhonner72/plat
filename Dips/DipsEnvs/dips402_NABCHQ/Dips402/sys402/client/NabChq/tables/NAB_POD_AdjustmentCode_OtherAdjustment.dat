@@ -1,0 +1,21 @@
+//Indexing Sort Option: ALPHA
+//Description: Adjustment Codes for All Other Adjustment Types 
+//Applies to Adjustment Codes TOOTH, AAML1, AAML2, TOMBL, TOCT1, TOCT2 in NAB_POD_AdjustmentRules Table
+//Does not apply to TONAB as that has to cater for cash slips
+//Do not use reason code 85 as it is used by system to generate multicredit adjustment
+//Modification History:
+//2015-06-04        Dinesh      Created
+//_______________________________________________________________________
+//Display String,AdjustmentCode, Adjustment Description
+61 - Error in Additions,61,Error in Additions
+62 - Total Brought Forward Incorrectly,62,Total Brought Forward Incorrectly
+63 - Chq/Merch Env incorrectly listed,63,Chq/Merch Env incorrectly listed
+64 - Chq/Merch Env rcvd not listed,64,Chq/Merch Env rcvd not listed
+66 - No Deposit Listing Received,66,No Deposit Listing Received
+68 - Foreign Item/unable to process,68,Foreign Item/unable to process
+69 - Customer Other,69,Customer Other
+70 - Teller - No cash slip,70,Teller - No cash slip
+71 - Teller - Cash slip incorrect,71,Teller - Cash slip incorrect
+78 - Chq/Merch Env listed not received,78,Chq/Merch Env listed not received
+80 - Amount not stated,80,Amount not stated 
+81 - Amount not stated - Dep,81,Amount not stated - Dep

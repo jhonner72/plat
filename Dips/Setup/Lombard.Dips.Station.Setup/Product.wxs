@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="*" Name="$(var.Name)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="Lombard.Dips.Station.Setup" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <Component Id="ChangePermission" Directory="INSTALLFOLDER" Guid="{1bbe22c5-097f-4485-8f27-8c6d436f1736}">
+        <CreateFolder>
+          <util:PermissionEx User="Everyone" ChangePermission="yes" GenericRead="yes" GenericWrite="yes" />
+        </CreateFolder>
+      </Component>
+      <Component Id="EnvironmentVariable" Directory="INSTALLFOLDER" Guid="{547c0cfb-7ba6-4de7-a9ad-7f6134841a3a}">
+        <CreateFolder/>
+        <Environment Id="PATH" Name="PATH" Value="\\[SCANSVR]\dips402_NABCHQ_SCANNING\Dips402\exec\ausaux;\\[SCANSVR]\dips402_NABCHQ_SCANNING\Dips402\exec\ausdll32" Permanent="no" Part="last" Action="set" System="yes" />
+      </Component>
+      <Component Id="ShortcutComponent" Directory="DesktopFolder" Guid="{18b3dab0-81c3-4e94-a432-f931fe17de25}">
+        <CreateFolder/>
+        <util:InternetShortcut Id="TransportMgrShortcut" Name="Transport Manager" Target="\\[SCANSVR]\dips402_NABCHQ_SCANNING\Dips402\exec\xpt_mngr\xpt_mngr.exe" />
+        <RegistryValue Root="HKCU" Key="Software\$(var.Manufacturer)\$(var.Name)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </Feature>
+
+    <Property Id="TARGETDIR" Value="C:\" />
+    <Property Id="UNITID" Value="83" Secure="yes" />
+    <Property Id="NABUNITID" Value="083" Secure="yes" />
+    <Property Id="STATECOMBO" Value="VIC" Secure="yes" />
+    <Property Id="SCANSVR" Secure="yes" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="CustomUI_InstallDir" />
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="DesktopFolder"  SourceName="Desktop" />
+      <Directory Id="INSTALLFOLDER" Name="Dips" />
+    </Directory>
+  </Fragment>
+</Wix>

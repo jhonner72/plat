@@ -1,0 +1,64 @@
+{
+    "agencyBanks": [
+        {
+            "targetEndpoint": "MQG",
+            "fourCharactersEndpointName": "MACQ",
+            "bsbs": [
+                "18"
+            ],
+            "fileType": "AGENCY_XML",
+            "includeCredit": false
+        },
+        {
+            "targetEndpoint": "BQL",
+            "fourCharactersEndpointName": "BOQL",
+            "bsbs": [
+                "12",
+                "653",
+                "639"
+            ],
+            "fileType": "AGENCY_XML",
+            "includeCredit": true
+        },
+        {
+            "targetEndpoint": "JPM",
+            "fourCharactersEndpointName": "JPMB",
+            "bsbs": [
+                "21",
+                "915"
+            ],
+            "fileType": "AGENCY_XML",
+            "includeCredit": false
+        },
+        {
+            "targetEndpoint": "CIT",
+            "fourCharactersEndpointName": "CITI",
+            "bsbs": [
+                "24"
+            ],
+            "fileType": "AGENCY_XML",
+            "includeCredit": true
+        },
+        {
+            "targetEndpoint": "ARB",
+            "fourCharactersEndpointName": "ARAB",
+            "bsbs": [
+                "917"
+            ],
+            "fileType": "AGENCY_XML",
+            "includeCredit": true
+        },
+        {
+            "targetEndpoint": "CUS",
+            "bsbs": [
+                "51",
+                "80",
+                "31",
+                "64",
+                "81"
+            ],
+            "fileType": "CUSCAL",
+            "includeCredit": true
+        }
+    ]
+}

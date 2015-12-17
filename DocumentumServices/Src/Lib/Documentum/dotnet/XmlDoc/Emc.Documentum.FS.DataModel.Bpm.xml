@@ -1,0 +1,2050 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.DataModel.Bpm</name>
+    </assembly>
+    <members>
+        <member name="T:Example.Ws_ht.Api.TAttachment">
+            C# class for tAttachment complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tAttachment">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element ref="{http://www.example.org/WS-HT/api}attachmentInfo"/>
+                    &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}anyType"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TAttachment.#ctor">
+            <summary>
+            Constructs a new TAttachment.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TAttachment.#ctor(Example.Ws_ht.Api.TAttachmentInfo,System.Object)">
+            <summary>
+            Constructs a new TAttachment with attachmentInfo and value.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachment.AttachmentInfo">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachment.Value">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TAttachmentInfo">
+            C# class for tAttachmentInfo complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tAttachmentInfo">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="accessType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="contentType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="attachedAt" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="attachedBy" type="{http://www.example.org/WS-HT}tUser"/>
+                    &lt;element name="metaData" type="{http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/}tAttachmentMetaData"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TAttachmentInfo.#ctor">
+            <summary>
+            Constructs a new TAttachmentInfo.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.Name">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.AccessType">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.ContentType">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.AttachedAt">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.AttachedBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TAttachmentInfo.MetaData">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TComment">
+            C# class for tComment complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tComment">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="addedAt" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="addedBy" type="{http://www.example.org/WS-HT}tUser"/>
+                    &lt;element name="text" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="metaData" type="{http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/}tCommentMetaData"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TComment.#ctor">
+            <summary>
+            Constructs a new TTask.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TComment.#ctor(System.DateTime,System.String,System.String,Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCommentMetaData)">
+            <summary>
+            Constructs a new TTask with parameters.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TComment.AddedAt">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TComment.AddedBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TComment.Text">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TComment.MetaData">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TStatus">
+            C# class for tStatus.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;simpleType name="tStatus">
+              &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+                &lt;enumeration value="CREATED"/>
+                &lt;enumeration value="READY"/>
+                &lt;enumeration value="RESERVED"/>
+                &lt;enumeration value="IN_PROGRESS"/>
+                &lt;enumeration value="SUSPENDED"/>
+                &lt;enumeration value="COMPLETED"/>
+                &lt;enumeration value="FAILED"/>
+                &lt;enumeration value="ERROR"/>
+                &lt;enumeration value="EXITED"/>
+                &lt;enumeration value="OBSOLETE"/>
+              &lt;/restriction>
+            &lt;/simpleType>
+            </pre>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.CREATED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.READY">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.RESERVED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.IN_PROGRESS">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.SUSPENDED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.COMPLETED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.FAILED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.ERROR">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.EXITED">
+            <remarks/>
+        </member>
+        <member name="F:Example.Ws_ht.Api.TStatus.OBSOLETE">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TTask">
+            C# class for tTask complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tTask">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="taskType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}QName"/>
+                    &lt;element name="status" type="{http://www.example.org/WS-HT/api}tStatus"/>
+                    &lt;element name="priority" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" minOccurs="0"/>
+                    &lt;element name="taskInitiator" type="{http://www.example.org/WS-HT}tUser" minOccurs="0"/>
+                    &lt;element name="taskStakeholders" type="{http://www.example.org/WS-HT}tOrganizationalEntity" minOccurs="0"/>
+                    &lt;element name="potentialOwners" type="{http://www.example.org/WS-HT}tOrganizationalEntity" minOccurs="0"/>
+                    &lt;element name="businessAdministrators" type="{http://www.example.org/WS-HT}tOrganizationalEntity" minOccurs="0"/>
+                    &lt;element name="actualOwner" type="{http://www.example.org/WS-HT}tUser" minOccurs="0"/>
+                    &lt;element name="notificationRecipients" type="{http://www.example.org/WS-HT}tOrganizationalEntity" minOccurs="0"/>
+                    &lt;element name="createdOn" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="createdBy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+                    &lt;element name="activationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+                    &lt;element name="expirationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+                    &lt;element name="isSkipable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasPotentialOwners" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="startByExists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="completeByExists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="presentationName" type="{http://www.example.org/WS-HT/api}tPresentationName" minOccurs="0"/>
+                    &lt;element name="presentationSubject" type="{http://www.example.org/WS-HT/api}tPresentationSubject" minOccurs="0"/>
+                    &lt;element name="renderingMethodExists" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasOutput" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasFault" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasAttachments" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasComments" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="escalated" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="primarySearchBy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+                    &lt;element name="metaData" type="{http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/}tTaskMetaData" minOccurs="0"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTask.#ctor">
+            <summary>
+            Constructs a new TTask.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.Id">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.TaskType">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.Name">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.Status">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.Priority">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.TaskInitiator">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.TaskStakeholders">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.PotentialOwners">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.BusinessAdministrators">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.ActualOwner">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.NotificationRecipients">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.CreatedOn">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.CreatedBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.ActivationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.ExpirationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.IsSkipable">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.HasPotentialOwners">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.StartByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.CompleteByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.PresentationName">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.PresentationSubject">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.RenderingMethodExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.HasOutput">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.HasFault">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.HasAttachments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.HasComments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.Escalated">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.PrimarySearchBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTask.MetaData">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TTaskAbstract">
+            C# class for tTaskAbstract complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tTaskAbstract">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="taskType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}QName"/>
+                    &lt;element name="status" type="{http://www.example.org/WS-HT/api}tStatus"/>
+                    &lt;element name="priority" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" minOccurs="0"/>
+                    &lt;element name="createdOn" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="activationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+                    &lt;element name="expirationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+                    &lt;element name="isSkipable" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasPotentialOwners" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="startByExists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="completeByExists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="presentationName" type="{http://www.example.org/WS-HT/api}tPresentationName" minOccurs="0"/>
+                    &lt;element name="presentationSubject" type="{http://www.example.org/WS-HT/api}tPresentationSubject" minOccurs="0"/>
+                    &lt;element name="renderingMethodExists" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasOutput" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasFault" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasAttachments" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="hasComments" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="escalated" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+                    &lt;element name="metaData" type="{http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/}tTaskMetaData" minOccurs="0"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTaskAbstract.#ctor">
+            <summary>
+            Constructs a new TTaskAbstract.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.Id">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.TaskType">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.Name">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.Status">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.Priority">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.CreatedOn">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.ActivationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.ExpirationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.IsSkipable">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.HasPotentialOwners">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.StartByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.CompleteByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.PresentationName">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.PresentationSubject">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.RenderingMethodExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.HasOutput">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.HasFault">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.HasAttachments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.HasComments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.Escalated">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskAbstract.MetaData">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TTaskQueryResultRow">
+            C# class for tTaskQueryResultRow complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tTaskQueryResultRow">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;choice maxOccurs="unbounded" minOccurs="0">
+                    &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="taskType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}QName"/>
+                    &lt;element name="status" type="{http://www.example.org/WS-HT/api}tStatus"/>
+                    &lt;element name="priority" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger"/>
+                    &lt;element name="taskInitiator" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                    &lt;element name="taskStakeholders" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                    &lt;element name="potentialOwners" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                    &lt;element name="businessAdministrators" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                    &lt;element name="actualOwner" type="{http://www.example.org/WS-HT}tUser"/>
+                    &lt;element name="notificationRecipients" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                    &lt;element name="createdOn" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="createdBy" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="activationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="expirationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+                    &lt;element name="isSkipable" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasPotentialOwners" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="startByExists" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="completeByExists" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="presentationName" type="{http://www.example.org/WS-HT/api}tPresentationName"/>
+                    &lt;element name="presentationSubject" type="{http://www.example.org/WS-HT/api}tPresentationSubject"/>
+                    &lt;element name="presentationDescription" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="renderingMethodExists" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasOutput" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasFault" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasAttachments" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="hasComments" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="escalated" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="primarySearchBy" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="metaData" type="{http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/}tTaskMetaData" minOccurs="0"/>
+                  &lt;/choice>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTaskQueryResultRow.#ctor">
+            <summary>
+            Constructs a new TTaskQueryResultRow.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.Id">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.TaskType">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.Name">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.Status">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.Priority">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.TaskInitiator">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.TaskStakeholders">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.PotentialOwners">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.BusinessAdministrators">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.ActualOwner">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.NotificationRecipients">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.CreatedOn">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.CreatedBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.ActivationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.ExpirationTime">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.IsSkipable">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.HasPotentialOwners">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.StartByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.CompleteByExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.PresentationName">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.PresentationSubject">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.PresentationDescription">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.RenderingMethodExists">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.HasOutput">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.HasFault">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.HasAttachments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.HasComments">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.Escalated">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.PrimarySearchBy">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultRow.MetaData">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.TTaskQueryResultSet">
+            C# class for tTaskQueryResultSet complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tTaskQueryResultSet">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="row" type="{http://www.example.org/WS-HT/api}tTaskQueryResultRow" maxOccurs="unbounded" minOccurs="0"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTaskQueryResultSet.#ctor">
+            <summary>
+            Constructs a new TTaskQueryResultSet.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTaskQueryResultSet.#ctor(Example.Ws_ht.Api.TTaskQueryResultRow)">
+            <summary>
+            Constructs a new TTaskQueryResultSet and add a row to it.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.TTaskQueryResultSet.AddRow(Example.Ws_ht.Api.TTaskQueryResultRow)">
+            <summary>
+            Adds query row to the set.
+            </summary>
+            <param name="row">task row to be added to set</param>
+        </member>
+        <member name="P:Example.Ws_ht.Api.TTaskQueryResultSet.Row">
+            <remark/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Xsd.IllegalState">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="status" type="{http://www.example.org/WS-HT/api}tStatus"/>
+                    &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Xsd.IllegalState.#ctor">
+            <summary>
+            Constructs a new IllegalState.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Xsd.IllegalState.#ctor(System.String,System.String)">
+            <summary>
+            Constructs a new IllegalState with status and message.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.Xsd.IllegalState.Status">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.Xsd.IllegalState.Message">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.Api.Xsd.TTime">
+            <remarks/>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Xsd.TTime.#ctor">
+            <summary>
+            Constructs a new TTime.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.Api.Xsd.TTime.#ctor(System.String,System.DateTime)">
+            <summary>
+            Constructs a new TTime with timePeriod and pointOfTime.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.Api.Xsd.TTime.TimePeriod">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.Api.Xsd.TTime.PointOfTime">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TAttachmentMetaData">
+            C# class for the tAttachmentMetaData complex type.
+            The following schema fragment specifies the expected content contained within this class. 
+            
+            <pre>
+            &lt;complexType name="tAttachmentMetaData">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="objectId" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TAttachmentMetaData.#ctor">
+            <summary>
+            Constructs a new TAttachmentMetaData object. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TAttachmentMetaData.#ctor(System.String)">
+            <summary>
+            Constructs a new TAttachmentMetaData object and sets the object id.
+            </summary>
+            <param name="objectId">a string representing the object id</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TAttachmentMetaData.ObjectId">
+            <summary>
+            Object id.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCommentMetaData">
+            "C# class for the tCommentMetaData complex type.
+            The following schema fragment specifies the expected content contained within this class.
+             
+            <pre>
+            &lt;complexType name="tCommentMetaData">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="noteFlag" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCommentMetaData.#ctor">
+            <summary>
+            Constructs a new TCommentMetaData object. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCommentMetaData.#ctor(System.String)">
+            <summary>
+            Constructs a new TCommentMetaData object and sets the note flag.
+            </summary>
+            <param name="noteFlag">a string representing the note flag</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCommentMetaData.NoteFlag">
+            <summary>
+            note flag.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData">
+            C# class for the tCompleteTaskData complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tCompleteTaskData">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="signoff" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="nextActivities" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="dynamicPerformers" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;sequence>
+                                        &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                                        &lt;element name="selectedPerformers" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                                      &lt;/sequence>
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="rerunAutoTask" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="rerun" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.Signoff">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.NextActivities">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.DynamicPerformers">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.RerunAutoTask">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TSignoff">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TSignoff.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TSignoff.Password">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TSignoff.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.Activity">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.NextActivity">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.NextActivity.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.NextActivity.Name">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TNextActivities.NextActivity.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                              &lt;element name="selectedPerformers" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.Activity">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.DynamicPerformersActivity">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+                    &lt;element name="selectedPerformers" type="{http://www.example.org/WS-HT}tOrganizationalEntity"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.DynamicPerformersActivity.RaisePropertyChanged(System.String)">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.DynamicPerformersActivity.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.DynamicPerformersActivity.SelectedPerformers">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TDynamicPerformers.DynamicPerformersActivity.PropertyChanged">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TRerunAutoTask">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="rerun" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TRerunAutoTask.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TRerunAutoTask.Rerun">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TRerunAutoTask.rerunSpecified">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TCompleteTaskData.TRerunAutoTask.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.TGroupList">
+            C# class for tUserlist complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tGroupList">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element ref="{http://www.example.org/WS-HT}user" maxOccurs="unbounded" minOccurs="0"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.TGroupList.#ctor">
+            <summary>
+            Constructs a new TGroupList.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TGroupList.#ctor(System.String)">
+            <summary>
+            Constructs a new TGroupList and add a group to it.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TGroupList.#ctor(System.String[])">
+            <summary>
+            Constructs a new TGroupList and add a group to it.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TGroupList.AddGroup(System.String)">
+            <summary>
+            Adds group to the set.
+            </summary>
+            <param name="group">group to be added to set</param>
+        </member>
+        <member name="P:Example.Ws_ht.TGroupList.Groups">
+            <remarks/>
+        </member>
+        <member name="T:Example.Ws_ht.TOrganizationalEntity">
+            C# class for tOrganizationalEntity complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tOrganizationalEntity">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;choice>
+                    &lt;element ref="{http://www.example.org/WS-HT}users"/>
+                    &lt;element ref="{http://www.example.org/WS-HT}groups"/>
+                  &lt;/choice>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.TOrganizationalEntity.#ctor">
+            <summary>
+            Constructs a new TOrganizationalEntity.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TOrganizationalEntity.#ctor(Example.Ws_ht.TUserList,Example.Ws_ht.TGroupList)">
+            <summary>
+            Constructs a new TOrganizationalEntity with users and groups.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TOrganizationalEntity.#ctor(Example.Ws_ht.TUserList)">
+            <summary>
+            Constructs a new TOrganizationalEntity with users.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TOrganizationalEntity.#ctor(Example.Ws_ht.TGroupList)">
+            <summary>
+            Constructs a new TOrganizationalEntity with groups.
+            </summary>
+        </member>
+        <member name="P:Example.Ws_ht.TOrganizationalEntity.Users">
+            <remarks/>
+        </member>
+        <member name="P:Example.Ws_ht.TOrganizationalEntity.Groups">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData">
+            C# class for the tTaskMetaData complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tTaskMetaData">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="isSignoffRequired" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="isFailedAutoTask" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+                    &lt;element name="selectNextActivities">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                            &lt;attribute name="isRequired" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                            &lt;attribute name="minSelect" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                            &lt;attribute name="maxSelect" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="selectDynamicPerformers">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="performerType" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                                      &lt;attribute name="selectFrom" type="{http://www.example.org/WS-HT}tGroup" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="packages" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="package" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="isMandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="processVariables" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="processVariable" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                    &lt;element name="processParameters" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;sequence>
+                              &lt;element name="processParameter" maxOccurs="unbounded" minOccurs="0">
+                                &lt;complexType>
+                                  &lt;complexContent>
+                                    &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                      &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                      &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                                    &lt;/restriction>
+                                  &lt;/complexContent>
+                                &lt;/complexType>
+                              &lt;/element>
+                            &lt;/sequence>
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.IsSignoffRequired">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.IsFailedAutoTask">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.SelectNextActivities">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.SelectDynamicPerformers">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.Packages">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.ProcessVariables">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.ProcessParameters">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="performerType" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                            &lt;attribute name="selectFrom" type="{http://www.example.org/WS-HT}tGroup" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.Activity">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                  &lt;attribute name="performerType" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                  &lt;attribute name="selectFrom" type="{http://www.example.org/WS-HT}tGroup" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity.PerformerType">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity.SelectFrom">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectDynamicPerformers.TDynamicPerformersActivity.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="package" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="isMandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.Package">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                  &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                  &lt;attribute name="isMandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.Type">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.IsMandatory">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.IsMandatorySpecified">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataPackages.TTPackage.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="activity" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                  &lt;attribute name="isRequired" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+                  &lt;attribute name="minSelect" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                  &lt;attribute name="maxSelect" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.Activity">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.IsRequired">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.IsRequiredSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.MinSelect">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.MaxSelect">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.TNextActivity">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                  &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.TNextActivity.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.TNextActivity.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.TNextActivity.Type">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataSelectNextActivities.TNextActivity.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="processVariable" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.ProcessVariable">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.TProcessVariable">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                  &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.TProcessVariable.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.TProcessVariable.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.TProcessVariable.Type">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessVariables.TProcessVariable.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="processParameter" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.ProcessParameter">
+            <remark/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.TProcessParameter">
+            C# class for anonymous complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType>
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element name="processParameter" maxOccurs="unbounded" minOccurs="0">
+                      &lt;complexType>
+                        &lt;complexContent>
+                          &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                            &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+                            &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
+                          &lt;/restriction>
+                        &lt;/complexContent>
+                      &lt;/complexType>
+                    &lt;/element>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.TProcessParameter.RaisePropertyChanged(System.String)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.TProcessParameter.Name">
+            <remarks/>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.TProcessParameter.Type">
+            <remarks/>
+        </member>
+        <member name="E:Emc.Documentum.FS.DataModel.Core.Bpm.TaskManagement.TTaskMetaData.TTaskMetaDataProcessParameters.TProcessParameter.PropertyChanged">
+            <exclude/>
+        </member>
+        <member name="T:Example.Ws_ht.TUserList">
+            C# class for tUserlist complex type.
+            
+            The following schema fragment specifies the expected content contained within this class.
+            
+            <pre>
+            &lt;complexType name="tUserlist">
+              &lt;complexContent>
+                &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                  &lt;sequence>
+                    &lt;element ref="{http://www.example.org/WS-HT}user" maxOccurs="unbounded" minOccurs="0"/>
+                  &lt;/sequence>
+                &lt;/restriction>
+              &lt;/complexContent>
+            &lt;/complexType>
+            </pre>
+        </member>
+        <member name="M:Example.Ws_ht.TUserList.#ctor">
+            <summary>
+            Constructs a new TUserList.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TUserList.#ctor(System.String)">
+            <summary>
+            Constructs a new TUserList and add a user to it.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TUserList.#ctor(System.String[])">
+            <summary>
+            Constructs a new TUserList and add a user to it.
+            </summary>
+        </member>
+        <member name="M:Example.Ws_ht.TUserList.AddUser(System.String)">
+            <summary>
+            Adds user to the set.
+            </summary>
+            <param name="user">user to be added to set</param>
+        </member>
+        <member name="P:Example.Ws_ht.TUserList.Users">
+            <remarks/>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo">
+            <summary>
+            Provides functionality to model alias performer assignment in
+            process template.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.AddUsedInActivityName(System.String)">
+            <summary>
+            Adds an activity in which the alias is used to the activities names list.
+            </summary>
+            <param name="actName">the string representing the activity name</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.UsedInActivityNames">
+            <summary>
+            List of names of activities in the current template where the alias
+            is used.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.AliasCategory">
+            <summary>
+            Alias category.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.AliasDescription">
+            <summary>
+            Alias description.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.AliasName">
+            <summary>
+            Alias name.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo.AliasValue">
+            <summary>
+            Alias value if there is any.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo">
+            <summary>
+            Provides functionality to model the process template for Start Workflow.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.GetAliasAssignmentByAliasName(System.String)">
+            <summary>
+            Returns a <CODE>ProcessAliasAssignmentInfo</CODE> object corresponding
+            to the alias name that gets passed in.
+            </summary>
+            <param name="aliasName">string representing the alias name of the alias assignment that you want to return.</param>
+            <returns>A <see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo"/> object that corresponds to the alias name.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.IsAliasAssignmentRequired">
+            <summary>
+            Tests if there are any alias assignments that need to be resolved at process instantiation time.
+            </summary>
+            <returns>
+            <CODE>true</CODE> if there are alias assignments that need to be resolved
+            and <CODE>false</CODE> otherwise
+            </returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.GetPerformerAssignmentByActivityName(System.String)">
+            <summary>
+            Returns a <CODE>ProcessPerformerAssignmentInfo</CODE> object corresponding
+            to the target activity name that gets passed in.
+            </summary>
+            <param name="actName">Target activity name of the performer assignment that you want to return.</param>
+            <returns>A <see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo"/> object that corresponds to the target activity name.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.IsPerformerAssignmentRequired">
+            <summary>
+            Tests if the performer of these tasks is to assign performers of other tasks in the process.
+            </summary>
+            <returns><CODE>true</CODE> if this performer has to assign performers of other tasks and <CODE>false</CODE> otherwise</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.GetWorkflowAttachmentCount">
+            <summary>
+            Count of the workflow attachments. 
+            </summary>
+            <returns>The number of workflow attachments added so far.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.GetWorkflowAttachmentType(System.Int32)">
+            <summary>
+            Returns the object type name of the workflow attachment
+            at the specified index.
+            </summary>
+            <param name="index">the index position of the desired workflow attachment type</param>
+            <returns>The object type name of the workflow attachment.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.GetWorkflowAttachmentId(System.Int32)">
+            <summary>
+            Returns the object id of the workflow attachment at the specified index.
+            </summary>
+            <param name="index">the index position of the desired id</param>
+            <returns>The object id of the workflow attachment.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.AddWorkflowAttachment(System.String,Emc.Documentum.FS.DataModel.Core.ObjectId)">
+            <summary>
+            Add the object id of the type as a new workflow attachment.
+            </summary>
+            <param name="componentType">type of the component.</param>
+            <param name="componentId">object id of the component.</param>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.RemoveWorkflowAttachment(Emc.Documentum.FS.DataModel.Core.ObjectId)">
+            <summary>
+            Removes a workflow attachment from the process.
+            </summary>
+            <param name="componentId">the object ID of the component that you are removing.</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.ProcessId">
+            <summary>
+            Process template id on which the process instance is based.
+            Process definitions are stored in the repository as dm_process objects.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.StartActivityIdentities">
+            <summary>
+            List of object IDs of the start activities in the process definition.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.StartActivityNames">
+            <summary>
+            Names of the start activities in the process definition.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.Packages">
+            <summary>
+            Packages of the process with the specified name.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.PerformerAssignments">
+            <summary>
+            A <CODE>ProcessPerformerAssignmentInfo</CODE> object corresponding
+            to the target activity name that gets passed in.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.AliasAssignments">
+            <summary>
+            list of <see cref="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessAliasAssignmentInfo"/> objects to be used
+            to assign alias values.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.WorkflowAttachmentIdentities">
+            <summary>
+            List of types and ids of the components for the workflow attachments.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.WorkflowAttachmentTypeNames">
+            <summary>
+            List of attachment names
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.ProcessInstanceName">
+            <summary>
+            Specifies the object name for the process instance.<P/>
+            Calling this function is optional. If workflow name is
+            not provided, a default name will be provided. This name
+            is the process template name appending the date
+            when the process instance is created.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.Supervisor">
+            <summary>
+            The supervisor for the process instance.<P/>
+            Calling this function is optional. If supervisor is
+            not provided, supervisor will be set to the creator
+            by default.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessInfo.Repository">
+            <summary>
+            Name of the repository this config object was created off of.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessNoteInfo">
+            <summary>
+            Implementation of note config.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessNoteInfo.#ctor">
+            <summary>
+            Constructs a new ProcessNoteInfo object. 
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessNoteInfo.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructs a new ProcessNoteInfo object and sets the note text and persistent flag.
+            </summary>
+            <param name="text">a string representing the note text</param>
+            <param name="persistent">
+            set to true <CODE>true</CODE> to have the note visible to all subsequent performers. Set to <CODE>false</CODE>
+            to have it visible only to the performer of the following activity.
+            </param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessNoteInfo.NoteText">
+            <summary>
+            Notes text.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessNoteInfo.IsPersistent">
+            <summary>
+            The note visibility.<para/>
+            Set to <CODE>true</CODE> to have the note visible
+            to all subsequent performers. Set to <CODE>false</CODE>
+            to have it visible only to the performer of the following activity.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo">
+            <summary>
+            Provides functionality to model package assignment in
+            process template.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.#ctor">
+            <summary>
+            Constructs a new ProcessPackageInfo.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.AddNote(System.String,System.Boolean)">
+            <summary>
+            Creates and appends a new note to the package. The index at which the new note in the package is returned.
+            </summary>
+            <param name="noteText">Note message that you are adding.</param>
+            <param name="persistent">
+            <CODE>true</CODE> if the note should be seen by all the subsequent workflow tasks.<br/>
+            <CODE>false</CODE> if the note should be seen by the very next tasks only.
+            </param>
+            <returns>Index the note is added to.</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.RemoveNote(System.Int32)">
+            <summary>
+            Remove the note at specified index.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.IsNoteNew(System.Int32)">
+            <summary>
+            Tests if note at given index is newly added by current performer.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetNoteCount">
+            <summary>
+            Gets the number of notes added to the task.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetNotePersistence(System.Int32)">
+            <summary>
+            Returns note visibility.
+            </summary>
+            <param name="index">Index to the note that you are interested in.</param>
+            <returns><CODE>true</CODE> to have then note visible to all subsequent performers; <CODE>false</CODE>
+            to have it visible only to the performer of the following activity</returns>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetNoteText(System.Int32)">
+            <summary>
+            Returns the note text at index.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetDocumentCount">
+            <summary>
+            Returns the number of documents in the package.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetDocumentId(System.Int32)">
+            <summary>
+            Returns the object id of the document at index.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.AddDocuments(System.Collections.Generic.List{Emc.Documentum.FS.DataModel.Core.ObjectId})">
+            <summary>
+            Adds the documents in the package.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.RemoveDocuments">
+            <summary>
+            Removes all documents in the package.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.IsFormTemplateDefined">
+            <summary>
+            Returns if a form template is defined to use for this attachment.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetFormTemplateId">
+            <summary>
+            Returns the form template id defined to use for this attachment.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.GetFormTemplateName">
+            <summary>
+            Returns the form template name defined to use for this attachment.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.SetFormTemplateInfo(Emc.Documentum.FS.DataModel.Core.ObjectId,System.String,System.Boolean)">
+            <summary>
+            Sets the package form information. Client is not expected to set these values.
+            </summary>
+            <param name="templateId">forms template object id</param>
+            <param name="templateName">forms template name</param>
+            <param name="formForProperties">if the form is used to display the properties</param>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.RequiredLabels">
+            <summary>
+            Version labels the attached documents are required to be of.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.Documents">
+            <summary>
+            Documents in the package.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.Notes">
+            <summary>
+            Notes in the package
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.FormTemplateId">
+            <summary>
+            Form template id defined to use for this attachment.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.PackageName">
+            <summary>
+            Name of the package.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.RequiredType">
+            <summary>
+            Object type of the expecting document(s) of the package.
+            The document inserted to the package can be of this type or any subtypes.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.FormTemplateName">
+            <summary>
+            The form template name defined to use for this attachment.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.IsFormForProperties">
+            <summary>
+            Specifies if to use the form for properties.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.IsOptional">
+            <summary>
+            Specifies if the package is optional.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPackageInfo.IsVisible">
+            <summary>
+            Specifies if the package is visible.
+            </summary>
+        </member>
+        <member name="T:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo">
+            <summary>
+            Provides functionality to model dynamic performer assignment in
+            process template.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.PERFORMER_CATEGORY_USER">
+            <summary>
+            The performer should be user.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.PERFORMER_CATEGORY_GROUP">
+            <summary>
+            The performer should be group.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.PERFORMER_CATEGORY_USER_OR_GROUP">
+            <summary>
+            The performer can be user or group.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.PERFORMER_CATEGORY_WORKQUEUE">
+            <summary>
+            The performer should be a work queue.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.Performers">
+            <summary>
+            Performers for the activity to be the users/groups in the <CODE>nameList</CODE>.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.SelectFromGroups">
+            <summary>
+            Performer name as defined in the activity of the task
+            that needs to assign performers for.<p/>
+            If the original value is an alias, the alias will be resolved and the
+            resolved value will be returned. <p/>
+            Use this method to find out the choose from group if the performer type
+            of the activity is "some users of a group".
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.IsMultiplePerformersAllowed">
+            <summary>
+            Tests if the type of performer specified for activity to choose performers for
+            allows multiple values to be used.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.Category">
+            <summary>
+            Specifies what kind of performer value should be chosen for
+            the target activity. Return value is one of the following:<br/>
+            <CODE>
+            PERFORMER_CATEGORY_USER<br/>
+            PERFORMER_CATEGORY_GROUP<br/>
+            PERFORMER_CATEGORY_USER_OR_GROUP<br/>
+            PERFORMER_CATEGORY_WORKQUEUE<br/>
+            </CODE>
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.PerformerType">
+            <summary>
+            Performer type of the target activity.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.TargetActivityIndex">
+            <summary>
+            Index of the target activity that needs to
+            assign performers for, in the containing repeating attribute of
+            the process object.
+            </summary>
+        </member>
+        <member name="P:Emc.Documentum.FS.DataModel.Core.Bpm.ProcessPerformerAssignmentInfo.TargetActivityName">
+            <summary>
+            Name of the target activity to choose performers for.
+            </summary>
+        </member>
+    </members>
+</doc>

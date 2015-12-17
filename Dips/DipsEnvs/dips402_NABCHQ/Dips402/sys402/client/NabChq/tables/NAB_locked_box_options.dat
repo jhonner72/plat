@@ -1,0 +1,31 @@
+// Column 1: Locked box customer code
+// Column 2: Singles needed
+// Column 3: Multis needed
+// Column 4: Cheque only needed
+// Column 5: List Pays needed
+// Column 6: Remittance only needed 
+
+8430,Royal District Nursing Service (RDNS) Limited,Y,Y,Y,N,Y
+3911,St. Vincent's Matar Health Sydney,Y,Y,Y,N,N
+20038,CGU Insurance Limited - Account Services,Y,Y,Y,N,N
+1617,City of Whitehorse - Animal Registration,Y,Y,Y,N,N
+1859,City of Whitehorse,Y,Y,Y,N,N
+5217,City of Yarra,Y,Y,Y,N,N
+0000,East Gippsland Shire Council,Y,Y,Y,N,N
+1625,RDNS Homecare Limited,Y,Y,Y,N,Y
+2819,Glenelg Shire Council,Y,Y,Y,N,N
+2521,MLC Limited,Y,Y,Y,N,Y
+0001,Officeworks Superstores Pty Ltd,Y,Y,Y,Y,Y
+0002,Pittwater Council,Y,Y,Y,N,N
+4472,St. Vincent's Hospital Sydney Limited,Y,Y,Y,N,N
+4597,St. Vincent's and Matar Health Sydney,Y,Y,Y,N,N
+4472,St. Vincent's Private Hospital Sydney Limited,Y,Y,Y,N,N
+0015,The Hills Shire Council,Y,Y,Y,Y,N
+4357,Trustee of St. Vincent's Hospital,Y,Y,Y,N,N
+0003,National Credit Card Payments,Y,Y,Y,Y,Y
+3004,EAN Australia Limited,Y,Y,Y,Y,Y
+0004,Royal Children's Hospital (RCH),Y,Y,Y,Y,Y
+0005,Computershare,Y,Y,Y,N,N
+0006,Bayside City Council,Y,Y,Y,N,N
+1860,Maroondah City Council,Y,Y,Y,N,N
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/reporting/StoreRepositoryReports" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/reporting/StoreRepositoryReports" xmlns:rm="http://lombard.aus.fujixerox.com/reporting/metadata">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/reporting/metadata" schemaLocation="ReportingMetadata.xsd"/>
+	<xs:element name="StoreRepositoryReportsRequest" type="tns:StoreRepositoryReportsRequest"/>
+	<xs:complexType name="StoreRepositoryReportsRequest">
+		<xs:sequence>
+			<xs:element name="formatType" type="rm:FormatType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="reportOutputFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The generated output report filename</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reportProcessingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date of when the report is run</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reportType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The report type or category the report belongs to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchRepositoryReportsRequest" type="tns:StoreBatchRepositoryReportsRequest"/>
+	<xs:complexType name="StoreBatchRepositoryReportsRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="reports" type="tns:StoreRepositoryReportsRequest" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchRepositoryReportsResponse" type="tns:StoreBatchRepositoryReportsResponse"/>
+	<xs:complexType name="StoreBatchRepositoryReportsResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

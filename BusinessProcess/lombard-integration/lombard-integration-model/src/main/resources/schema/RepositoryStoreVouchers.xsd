@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/StoreBatchVoucher" xmlns:r="http://lombard.aus.fujixerox.com/common/Receipt" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:element name="TransferEndpoint" type="tns:TransferEndpoint"/>
+	<xs:complexType name="TransferEndpoint">
+		<xs:sequence>
+			<xs:element name="documentExchange" type="r:DocumentExchangeEnum" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="endpoint" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="filename" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="transmissionDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="voucherStatus" type="v:VoucherStatus" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherResponse" type="tns:StoreBatchVoucherResponse"/>
+	<xs:complexType name="StoreBatchVoucherResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="StoreBatchVoucherRequest" type="tns:StoreBatchVoucherRequest"/>
+	<xs:complexType name="StoreBatchVoucherRequest">
+		<xs:annotation>
+			<xs:documentation>Request message to StoreVoucher service used to ingest upstream voucher batches into the repository.
+
+TODO: Confirm terminology with consideration to other users such as downstream and what 'batch' exactly means.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Initiating job identifier
+
+TODO: Confirm this with Andrew. Do we want true initiating, or are we expecting this instance identifier.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="origin" type="r:DocumentExchangeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The location from which the vouchers were received from.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="receipt" type="r:ReceivedFile" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucher" type="tns:StoreVoucherRequest" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of Vouchers that comprise the batch.
+
+NOTE: Includes 'invalid' flagged vouchers too.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Reference to voucher batch information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreVoucherResponse" type="tns:StoreVoucherResponse"/>
+	<xs:complexType name="StoreVoucherResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="StoreVoucherRequest" type="tns:StoreVoucherRequest"/>
+	<xs:complexType name="StoreVoucherRequest">
+		<xs:annotation>
+			<xs:documentation>Individual voucher repository storage request instruction.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="transferEndpoints" type="tns:TransferEndpoint" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of transfer endpoints.
+
+Transfer endpoints identify repository transfer events used by subsequent processes.
+
+Technical note: This is expected to drive the population of the voucher transfer table in Documentum.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="v:Voucher" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher object instance to store in the repository.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherAudit" type="tns:VoucherAudit" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Auditing information associated with the voucher instance that is being added to the repository.
+
+Technical note: This is expected to drive the population of the voucher audit table in Documentum.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherProcess" type="v:VoucherProcess" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>TODO: Requires description.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StoreVoucher" type="tns:StoreVoucher"/>
+	<xs:complexType name="StoreVoucher">
+		<xs:annotation>
+			<xs:documentation>When vouchers are stored by writing to file.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="transferEndpoints" type="tns:TransferEndpoint" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="voucherInformation" type="v:VoucherInformation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VoucherAudit" type="tns:VoucherAudit"/>
+	<xs:complexType name="VoucherAudit">
+		<xs:annotation>
+			<xs:documentation>Identifies an audited data attribute modification event.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attribute_name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Part of the Subject Area / Attribute Name combination that identifies which audited data attribute is described by this audit entry.
+
+It is expected that the attribute_name value would belong to one of the following Subject Area / Attribute Name combinations:
+
+	- dips:operator_name   
+	- car:captured_amt   
+	- car:timings   
+	- cdv:amount_status   
+	- cdv:timings   
+	- cdc:acc   
+	- cdc:ead   
+	- cdc:ad   
+	- cdc:bsb   
+	- cdc:tc   
+	- cdc:amt   
+	- cdc:timings   
+	- abal:timings   
+	- ebal:ead   
+	- ebal:ad   
+	- ebal:bsb   
+	- ebal:acc   
+	- ebal:tc   
+	- ebal:amt   
+	- ebal:timings   
+	- ebal:susp_fraud   
+	- ebal:tpc_check_required   
+	- ebal:tpc_mixed_deposit_return   
+	- ebal:surplus_item_flag   
+	- ebal:ptqa_amount   
+	- ebal:ptqa_codeline   
+	- tpc:timings   
+	- tpc:check_failed   </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operator" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The operator ID associated with the user/principal who made the audited data attribute change.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="post_value" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The post-change value of the data attribute described by this audit entry.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pre_value" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The pre-change (i.e. now superseded) value of the data attribute described by this audit entry.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subject_area" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Part of the Subject Area / Attribute Name combination that identifies which audited data attribute is described by this audit entry.
+
+It is expected that the subject_name value would belong to one of the following Subject Area / Attribute Name combinations:
+
+	- dips:operator_name   
+	- car:captured_amt   
+	- car:timings   
+	- cdv:amount_status   
+	- cdv:timings   
+	- cdc:acc   
+	- cdc:ead   
+	- cdc:ad   
+	- cdc:bsb   
+	- cdc:tc   
+	- cdc:amt   
+	- cdc:timings   
+	- abal:timings   
+	- ebal:ead   
+	- ebal:ad   
+	- ebal:bsb   
+	- ebal:acc   
+	- ebal:tc   
+	- ebal:amt   
+	- ebal:timings   
+	- ebal:susp_fraud   
+	- ebal:tpc_check_required   
+	- ebal:tpc_mixed_deposit_return   
+	- ebal:surplus_item_flag   
+	- ebal:ptqa_amount   
+	- ebal:ptqa_codeline   
+	- tpc:timings   
+	- tpc:check_failed   </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

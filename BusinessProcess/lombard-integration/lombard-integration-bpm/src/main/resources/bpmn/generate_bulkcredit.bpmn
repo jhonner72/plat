@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_30CE0E5B_D579_4da4_A1B8_33BE3173B11E" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_4C762DCE_4D2C_40e4_ABE6_1F201E047327" name="Generate Bulk Credit Sub-Process" isExecutable="true">
+    <bpmn:startEvent id="EAID_45969602_92F0_468f_A8A8_8C97E23368FF" name="Start">
+      <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_45969602_92F0_468f_A8A8_8C97E23368FF" targetRef="EAID_A56E0E71_C2D0_4396_90FA_8EC32D1E482B"/>
+    <bpmn:serviceTask id="EAID_A56E0E71_C2D0_4396_90FA_8EC32D1E482B" camunda:expression="${camelAusPostEcl.sendTo('direct:lombard-service-outclearings-generatebulkcredit-request')}" name="Generate Bulk Credit">
+      <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_2" name="" sourceRef="EAID_A56E0E71_C2D0_4396_90FA_8EC32D1E482B" targetRef="EAID_23B9866D_48D7_453e_AD11_02E1559D0C26"/>
+    <bpmn:receiveTask id="EAID_23B9866D_48D7_453e_AD11_02E1559D0C26" name="Wait Generate Bulk Credit" messageRef="Message_1">
+      <bpmn:incoming>SequenceFlow_2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_3" name="" sourceRef="EAID_23B9866D_48D7_453e_AD11_02E1559D0C26" targetRef="EAID_363AE767_1EDA_4c8c_92F2_2857D3C8F263"/>
+    <bpmn:endEvent id="EAID_363AE767_1EDA_4c8c_92F2_2857D3C8F263" name="End">
+      <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_1" name="lombard.service.outclearings.generatebulkcredit.response"/>
+  <bpmndi:BPMNDiagram id="EAID_F3D78F50_75B0_4eba_A1FE_0D208967AB95" name="GenerateBulk-BPM">
+    <bpmndi:BPMNPlane id="EAID_PL000000_75B0_4eba_A1FE_0D208967AB95" bpmnElement="EAID_4C762DCE_4D2C_40e4_ABE6_1F201E047327">
+      <bpmndi:BPMNShape id="EAID_DO000000_75B0_4eba_A1FE_0D208967AB95" bpmnElement="EAID_45969602_92F0_468f_A8A8_8C97E23368FF">
+        <dc:Bounds height="30.0" width="30.0" x="26.0" y="67.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_92F0_468f_A8A8_8C97E23368FF" labelStyle="EAID_LS000000_75B0_4eba_A1FE_0D208967AB95">
+          <dc:Bounds height="22.0" width="73.0" x="5.0" y="107.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000001_75B0_4eba_A1FE_0D208967AB95" bpmnElement="EAID_363AE767_1EDA_4c8c_92F2_2857D3C8F263">
+        <dc:Bounds height="30.0" width="30.0" x="264.0" y="67.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_1EDA_4c8c_92F2_2857D3C8F263" labelStyle="EAID_LS000000_75B0_4eba_A1FE_0D208967AB95">
+          <dc:Bounds height="22.0" width="29.0" x="265.0" y="96.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000002_75B0_4eba_A1FE_0D208967AB95" bpmnElement="EAID_A56E0E71_C2D0_4396_90FA_8EC32D1E482B">
+        <dc:Bounds height="60.0" width="110.0" x="108.0" y="52.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_C2D0_4396_90FA_8EC32D1E482B" labelStyle="EAID_LS000000_75B0_4eba_A1FE_0D208967AB95"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000003_75B0_4eba_A1FE_0D208967AB95" bpmnElement="EAID_23B9866D_48D7_453e_AD11_02E1559D0C26">
+        <dc:Bounds height="60.0" width="110.0" x="108.0" y="147.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_48D7_453e_AD11_02E1559D0C26" labelStyle="EAID_LS000000_75B0_4eba_A1FE_0D208967AB95"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="EAID_DO000000_75B0_4eba_A1FE_0D208967AB95" targetElement="EAID_DO000002_75B0_4eba_A1FE_0D208967AB95">
+        <di:waypoint xsi:type="dc:Point" x="56.0" y="82.0"/>
+        <di:waypoint xsi:type="dc:Point" x="108.0" y="82.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="79.0" y="82.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="EAID_DO000002_75B0_4eba_A1FE_0D208967AB95" targetElement="EAID_DO000003_75B0_4eba_A1FE_0D208967AB95">
+        <di:waypoint xsi:type="dc:Point" x="163.0" y="112.0"/>
+        <di:waypoint xsi:type="dc:Point" x="163.0" y="147.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="160.0" y="136.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="EAID_DO000003_75B0_4eba_A1FE_0D208967AB95" targetElement="EAID_DO000001_75B0_4eba_A1FE_0D208967AB95">
+        <di:waypoint xsi:type="dc:Point" x="218.0" y="177.0"/>
+        <di:waypoint xsi:type="dc:Point" x="241.0" y="177.0"/>
+        <di:waypoint xsi:type="dc:Point" x="241.0" y="82.0"/>
+        <di:waypoint xsi:type="dc:Point" x="264.0" y="82.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="238.0" y="177.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_75B0_4eba_A1FE_0D208967AB95">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <UI>
+      <Dialog Id="SetConfigDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="Next" />
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="Back" />
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+
+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="Update the configuration values and click Next" />
+        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\WixUI_Font_Title}Configurations" />
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+
+        <Control Id="SetConfigLabel" Type="Text" X="20" Y="60" Width="290" Height="18" NoPrefix="yes" Text="Please specify configuration values" />
+
+        <Control Id="UnitIdLabel" Type="Text" X="20" Y="82" Width="100" Height="15" NoPrefix="yes" Text="Unit ID" />
+        <Control Id="UnitIdControl" Type="Edit" X="120" Y="80" Width="120" Height="15" Property="UNITID" />
+
+        <Control Id="NabUnitIdLabel" Type="Text" X="20" Y="102" Width="100" Height="15" NoPrefix="yes" Text="NAB Unit ID" />
+        <Control Id="NabUnitIdControl" Type="Edit" X="120" Y="100" Width="120" Height="15" Property="NABUNITID" />
+        
+        <Control Id="StateComboLabel" Type="Text" X="20" Y="122" Width="100" Height="15" NoPrefix="yes" Text="Processing State" />
+        <Control Id="StateComboControl" Type="ComboBox" X="120" Y="120" Width="120" Height="15" Property="STATECOMBO">
+          <ComboBox Property="STATECOMBO">
+            <ListItem Value="NSW" />
+            <ListItem Value="VIC" />
+            <ListItem Value="TAS" />
+            <ListItem Value="QLD" />
+            <ListItem Value="SA" />
+            <ListItem Value="NT" />
+            <ListItem Value="WA" />
+          </ComboBox>
+        </Control>
+
+        <Control Id="ScanServerLabel" Type="Text" X="20" Y="142" Width="100" Height="15" NoPrefix="yes" Text="Scan Server" />
+        <Control Id="ScanServerControl" Type="Edit" X="120" Y="140" Width="120" Height="15" Property="SCANSVR" />
+      </Dialog>
+    </UI>
+	</Fragment>
+</Wix>

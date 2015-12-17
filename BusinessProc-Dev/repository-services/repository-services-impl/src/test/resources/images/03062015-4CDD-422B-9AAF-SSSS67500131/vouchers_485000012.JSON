@@ -1,0 +1,183 @@
+{
+"voucher":[
+	{
+		"voucher":{
+			"accountNumber":"0000000012",
+			"amount":"",
+			"auxDom":"02",
+			"bsbNumber":"082037",
+			"documentReferenceNumber":"175000111",
+			"documentType":"Bh",
+			"extraAuxDom":"",
+			"processingDate":"2015-10-04",
+			"transactionCode":"22 "
+		},
+		"voucherProcess":
+		{
+			"highValueFlag":false,
+			"inactiveFlag":false,
+			"manualRepair":0,
+			"suspectFraud":false,
+			"transactionLinkNumber":0,
+			"unprocessable":false
+		},
+		"transferEndpoints":
+		[
+			{
+				"documentExchange":"IMAGE_EXCHANGE_OUTBOUND",
+				"endpoint":"RBA2",
+				"voucherStatus": "Pending"
+			},
+			{
+				"documentExchange":"VIF_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+
+			},
+			{
+				"documentExchange":"VIF_ACK_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+
+			}
+		]
+		},
+		{
+		"voucher":{
+			"accountNumber":"494579250",
+			"amount":"32035",
+			"auxDom":"002893",
+			"bsbNumber":"082221",
+			"documentReferenceNumber":"175000112",
+			"documentType":"Dr",
+			"extraAuxDom":"",
+			"processingDate":"2015-10-04",
+			"transactionCode":"09"
+		},
+		"voucherProcess":{
+			"highValueFlag":false,
+			"inactiveFlag":false,
+			"manualRepair":0,
+			"suspectFraud":false,
+			"transactionLinkNumber":2222,
+			"unprocessable":false
+		},
+		"transferEndpoints":[
+			{
+				"documentExchange":"IMAGE_EXCHANGE_OUTBOUND",
+				"endpoint":"RBA2",
+				"voucherStatus": "Pending"
+			}
+			,
+			{
+				"documentExchange":"VIF_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			},
+			{
+				"documentExchange":"VIF_ACK_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			}
+		]
+		},
+		{
+		"voucher":{
+			"accountNumber":"860740746",
+			"amount":"32035",
+			"auxDom":"",
+			"bsbNumber":"082202",
+			"documentReferenceNumber":"175000113",
+			"documentType":"Cr",
+			"extraAuxDom":"",
+			"processingDate":"2015-10-04",
+			"transactionCode":"95"
+		},
+		"voucherProcess":{
+			"highValueFlag":false,
+			"inactiveFlag":false,
+			"manualRepair":0,
+			"suspectFraud":false,
+			"transactionLinkNumber":2222,
+			"unprocessable":false
+		},
+		"transferEndpoints":
+		[
+			{
+				"documentExchange":"IMAGE_EXCHANGE_OUTBOUND",
+				"endpoint":"RBA2",
+				"voucherStatus": "Pending"
+
+			},
+			{
+				"documentExchange":"VIF_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			},
+			{
+				"documentExchange":"VIF_ACK_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			}
+		]
+		},
+		{
+		"voucher":{
+			"accountNumber":"860740746",
+			"amount":"32035",
+			"auxDom":"",
+			"bsbNumber":"082202",
+			"documentReferenceNumber":"175000114",
+			"documentType":"Cr",
+			"extraAuxDom":"",
+			"processingDate":"2015-10-04",
+			"transactionCode":"95"
+		},
+		"voucherProcess":{
+			"highValueFlag":false,
+			"inactiveFlag":false,
+			"manualRepair":0,
+			"suspectFraud":false,
+			"transactionLinkNumber":2222,
+			"unprocessable":false
+		},
+		"transferEndpoints":
+		[
+			{
+				"documentExchange":"IMAGE_EXCHANGE_OUTBOUND",
+				"endpoint":"RBA2",
+				"voucherStatus": "Pending"
+			},
+			{
+				"documentExchange":"VIF_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			},
+			{
+				"documentExchange":"VIF_ACK_OUTBOUND",
+				"endpoint":"VIC:NABCHQ_POD2",
+				"voucherStatus": "Pending"
+			}
+		]
+		}
+	],
+	"jobIdentifier":"03062015-4CDD-422B-9AAF-SSSS67500131",
+	"voucherBatch":
+	{
+		"captureBsb":"082037",
+		"collectingBank":"082040",
+		"processingState":"NSW",
+		"scannedBatchNumber":"67500123",
+		"unitID":"078",
+		"workType":"NABCHQ_POD",
+		"batchAccountNumber":"0000000012"
+	},
+	"receipt":
+	{
+		"fileIdentifier":"OUTCLEARINGSPKG_03062015-4CDD-422B-9AAF-SSSS67500131xxx.xml",
+		"receivedDateTime":"2015-10-04T12:05:21.477+10",
+	    "transmissionDateTime":"2015-11-04T12:05:21.477+10"
+
+	},
+	"origin":"VOUCHER_INBOUND"
+}

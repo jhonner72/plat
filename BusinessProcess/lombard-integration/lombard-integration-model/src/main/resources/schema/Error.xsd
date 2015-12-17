@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Error" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://lombard.aus.fujixerox.com/common/Error">
+	<xs:element name="HeaderDetails" type="s1:HeaderDetails"/>
+	<xs:complexType name="HeaderDetails">
+		<xs:sequence>
+			<xs:element name="key" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Error" type="s1:Error"/>
+	<xs:complexType name="Error">
+		<xs:sequence>
+			<xs:element name="errorDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date and time the error was raised</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="summary" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>A short summary description of the error.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="detail" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Detailed description of the error. May contain the stack trace.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="errorType" type="s1:ErrorTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Category of the error belongs to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="original" type="s1:OriginalDetails" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="component" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The component that generates the error</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="serviceName" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The service name that generated the error</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="server" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The server where the error was raised</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ErrorTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ApplicationError"/>
+			<xs:enumeration value="BadDataError"/>
+			<xs:enumeration value="ConnectionError"/>
+			<xs:enumeration value="OtherError"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="OriginalDetails" type="s1:OriginalDetails"/>
+	<xs:complexType name="OriginalDetails">
+		<xs:sequence>
+			<xs:element name="jobId" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The original jobId where the error was raised</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="exchangeName" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>the original exchange name that the error came from</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="queueName" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>the original queue name that the error came from</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="payload" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The original message that caused the error</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="routingKey" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>the original routing key of the message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="headerProperties" type="s1:HeaderDetails" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="headers" type="s1:HeaderDetails" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Rabbit queue header details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deliveryMode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="correlationId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

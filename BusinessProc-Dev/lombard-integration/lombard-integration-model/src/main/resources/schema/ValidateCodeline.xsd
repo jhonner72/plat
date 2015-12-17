@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/ValidateCodeline" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/ValidateCodeline" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="ValidateBatchCodelineRequest" type="tns:ValidateBatchCodelineRequest"/>
+	<xs:complexType name="ValidateBatchCodelineRequest">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:ValidateCodelineRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateBatchCodelineResponse" type="tns:ValidateBatchCodelineResponse"/>
+	<xs:complexType name="ValidateBatchCodelineResponse">
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:ValidateCodelineResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Batch of voucher objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateCodelineRequest" type="tns:ValidateCodelineRequest"/>
+	<xs:complexType name="ValidateCodelineRequest">
+		<xs:sequence>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Bank State Branch (BSB) on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account Number on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction code on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="capturedAmount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Captured amount using Courtesy Amount Recognition functionality</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountConfidenceLevel" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Confidence level of captured amount using Courtesy Amount Recognition functionality
+value 0-999
+0     : Low confidence
+999 : High confidence</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="v:DocumentTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidateCodelineResponse" type="tns:ValidateCodelineResponse"/>
+	<xs:complexType name="ValidateCodelineResponse">
+		<xs:sequence>
+			<xs:element name="extraAuxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of Extra Auxiliary Domestic on the voucher as per codeline validation function
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of Bank State Branch(BSB) as per codeline validation function
+
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of account number as per codeline validation function
+
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCodeStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of transaction code as per codeline validation function
+
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of amount as per codeline validation function
+
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of Auxiliary Domestic as per codeline validation function
+
+True: if codeline is valid 
+False: if codeline is not valid </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The agent/bank that the outclearing files should go.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="v:DocumentTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

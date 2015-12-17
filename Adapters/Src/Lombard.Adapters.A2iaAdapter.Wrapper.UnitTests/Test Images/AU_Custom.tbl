@@ -1,0 +1,22 @@
+[MaskTable]
+keyType = None
+productName = A2iA CheckReader
+productVersion = 6.0
+productRelease = 3
+
+[MaskTable.defaultDefinition.doc]
+documentType = Check
+
+[MaskTable.defaultDefinition.doc.imagePreprocessing]
+reverseValues = AutoDetect
+orientationCorrection = AutoCorrect
+
+[MaskTable.defaultDefinition.doc.image]
+readResolutionFromImageHeader = Yes
+resolution_Dpi = 300
+
+[MaskTable.defaultDefinition.doc.documentTypeInfo.CaseCheck.check]
+country = AU
+currency = AUD
+Optimisation = MaximizeSpeed
+amountRecognition = Yes

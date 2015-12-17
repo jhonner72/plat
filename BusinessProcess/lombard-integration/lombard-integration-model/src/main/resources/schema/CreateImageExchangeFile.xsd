@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CreateImageExchangeFile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/CreateImageExchangeFile" xmlns:cie="http://lombard.aus.fujixerox.com/common/Metadata">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Metadata" schemaLocation="Metadata.xsd"/>
+	<xs:element name="CreateImageExchangeFileResponse" type="tns:CreateImageExchangeFileResponse"/>
+	<xs:complexType name="CreateImageExchangeFileResponse">
+		<xs:sequence>
+			<xs:element name="imageExchangeFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The Image Exchange filename that has been created.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateImageExchangeFileRequest" type="tns:CreateImageExchangeFileRequest"/>
+	<xs:complexType name="CreateImageExchangeFileRequest">
+		<xs:sequence>
+			<xs:element name="businessDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date when start of day processing commenced.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fileType" type="cie:ImageExchangeType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="fourCharactersEndPoint" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The 4 characters end point code that is used to form part of the Agency Bank filename. This value will be blank when creating Tier 1 IE and Cuscal file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The jobIdentifier is used to determine where to pick up the images previously extracted.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sequenceNumber" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An incrementing number per end point per day.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

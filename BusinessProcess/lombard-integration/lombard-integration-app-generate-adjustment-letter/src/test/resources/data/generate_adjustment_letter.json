@@ -1,0 +1,280 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":"#JOB_IDENTIFIER#",
+    "processIdentifier":null,
+    "subject":"adjustmentletter",
+    "predicate":"generate",
+    "status":0
+  },
+  "activityCount": 4,
+  "activities": [    
+    {
+      "activityName": "lombard.service.adjustment.letter.required.search",
+      "exchangeName": "lombard.service.repository.getvouchersinformation",
+      "routingKey": "NGAL",
+      "queueName": "lombard.service.repository.getvouchersinformation.foradjletter",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#/#JOB_IDENTIFIER#",
+        "imageRequired": "JPEG",
+        "imageResponseType": "FILE",
+        "metadataResponseType":"MESSAGE",
+        "searchCriteria": [
+          {
+            "name":"voucherProcess.adjustmentLetterRequired",
+            "value":"true"
+          },
+          {
+            "name":"voucher.processingDate",
+            "value":"#DATESTR#"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationResponse",
+        "voucherInformation": [
+           { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111222",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111223",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },            
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111224",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+           }        
+        ]
+      }
+    },
+    {
+      "activityName": "lombard.service.adjustment.letter.create",
+      "exchangeName": "lombard.service.outclearings.createadjustmentletter",
+      "routingKey": "NGAL",
+      "queueName": "lombard.service.outclearings.createadjustmentletter",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createadjustmentletters.CreateBatchAdjustmentLettersRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#/#JOB_IDENTIFIER#",
+        "outputMetadata": [
+		        {
+		            "customer": [
+		                {"accountNumber": "515096734", "bsb": "083001"}
+		            ],
+		            "outputFilenamePrefix": "coles"		            
+		        },
+		        {
+		            "customer": [
+		                {"accountNumber": "537447494", "bsb": "083355"},
+		                {"accountNumber": "037558307", "bsb": "083355"},
+		                {"accountNumber": "036056284", "bsb": "084092"},
+		                {"accountNumber": "048720189", "bsb": "083355"},
+		                {"accountNumber": "478225567", "bsb": "084092"},
+		                {"accountNumber": "036057615", "bsb": "083355"},
+		                {"accountNumber": "036057228", "bsb": "084092"},
+		                {"accountNumber": "666986080", "bsb": "082001"}
+		            ],
+		            "outputFilenamePrefix": "super"		            		            		            
+		        },
+		        {
+		            "customer": [
+		                {"bsb": "51"},
+		                {"bsb": "80"},
+		                {"bsb": "31"},
+		                {"bsb": "64"},
+		                {"bsb": "81"}
+		            ],
+		            "outputFilenamePrefix": "cuscal"		            		            		            
+		        }
+		    ]
+		  ,	
+        "processingDate": "#DATE#",
+        "voucherInformation": [
+           { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111222",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111223",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+            },            
+            { "voucher" : {
+                "accountNumber": "12345678",
+                "amount": "2001",
+                "auxDom": "333",
+                "bsbNumber": "000999",
+                "documentReferenceNumber": "000111224",
+                "documentType": "Cr",
+                "extraAuxDom": "999",
+                "processingDate": "2014-12-31",
+                "transactionCode": "22"
+              },
+              "voucherProcess" : {
+                "manualRepair": 1,
+                "unprocessable": false,
+                "transactionLinkNumber": 111
+              },
+              "voucherBatch" : {
+                "workType": "NABCHQ_INWARDFV",
+                "processingState": "VIC"
+              }
+           }        
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createadjustmentletters.CreateBatchAdjustmentLettersResponse",
+        "adjustmentLetters": [
+           { 
+           	   "documentReferenceNumber": "000111222",
+	           "filename": "test1.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "22222222"
+	       },
+	       { 
+           	   "documentReferenceNumber": "000111223",
+	           "filename": "test2.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "33333333"
+	       },
+	       { 
+           	   "documentReferenceNumber": "000111224",
+	           "filename": "test3.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "44444444"
+	       }      
+        ],
+        "zipFilename": "PROD.NAB.RPI.LTR.ADJC.20150902.2"
+      }
+    },
+    {
+      "activityName": "lombard.service.adjustment.letter.send"
+    },
+    {
+      "activityName": "lombard.service.adjustment.letter.store",
+      "exchangeName": "lombard.service.repository.storeadjustmentletter",
+      "routingKey": "NGAL",
+      "queueName": "lombard.service.outclearings.storeadjustmentletter",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.storeadjustmentletters.StoreBatchAdjustmentLettersRequest",
+        "adjustmentLetters": [
+           { 
+           	   "documentReferenceNumber": "000111222",
+	           "filename": "test1.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "22222222"
+	       },
+	       { 
+           	   "documentReferenceNumber": "000111223",
+	           "filename": "test2.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "33333333"
+	       },
+	       { 
+           	   "documentReferenceNumber": "000111224",
+	           "filename": "test3.pdf",
+	           "processingDate": "2014-12-31",
+	           "scannedBatchNumber": "11111111",
+	           "transactionLinkNumber": "44444444"
+	       }      
+        ],
+        "jobIdentifier": "#JOB_IDENTIFIER#/#JOB_IDENTIFIER#",
+        "processingDate": "#DATE#",
+        "zipFilename": "PROD.NAB.RPI.LTR.ADJC.20150902.2"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.storeadjustmentletters.StoreBatchAdjustmentLettersResponse"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+﻿@model Lombard.Scheduler.Models.EndOfDayModel
+@{
+    ViewBag.Title = "Index";
+}
+<h2>End of Day</h2>
+@Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.")
+
+@using (Html.BeginForm())
+{
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-md-1"></th>
+                <th>Event Type</th>
+                <th>Scheduled At</th>
+                <th class="col-md-2">Delayed Count</th>
+            </tr>
+ 
+            @for (int i = 0; i < Model.Tasks.Count; i++)
+            {
+                <tr>
+                    <td align="center">
+                        @Html.HiddenFor(x => x.Tasks[i].Id)
+                        @Html.HiddenFor(x => x.Tasks[i].Type)
+                        @Html.HiddenFor(x => x.Tasks[i].DisplayName)
+                        @Html.HiddenFor(x => x.Tasks[i].ScheduledTime)
+                        @Html.HiddenFor(x => x.Tasks[i].JobDelayCount)
+                        @Html.CheckBoxFor(x => x.Tasks[i].Checked)
+                    </td>
+
+                    <td>@Html.DisplayFor(x => x.Tasks[i].DisplayName)</td>
+                    <td>@Html.DisplayFor(x => x.Tasks[i].ScheduledTime)</td>
+                    <td>@Html.DisplayFor(x => x.Tasks[i].JobDelayCount)</td>                   
+                </tr>
+
+            }
+        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    Delayed By:
+                </div>
+                <div>
+                    @Html.TextBoxFor(x => x.DelayedBy, new { @readonly = true})
+                    @Html.ValidationMessageFor(x => x.DelayedBy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    NAB Authorised:
+                </div>
+                <div>
+                    @Html.EditorFor(x => x.AuthorisedBy)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" type="submit">Delay End of Day</button>
+
+        </div>
+    </div>
+}

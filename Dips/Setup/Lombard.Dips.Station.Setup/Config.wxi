@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define Name = "FXA DIPS Operating Stations" ?>
+  <?define Manufacturer = "Fuji Xerox" ?>
+  <?define Version = "2.4.36786.0" ?>
+  <?define UpgradeCode = "{a919c9c6-e06f-44e2-81d5-400aff424133}" ?>
+</Include>

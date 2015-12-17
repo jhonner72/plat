@@ -1,0 +1,74 @@
+create dm_user object set user_name='NABDctmIngUsr_SVC_P' 
+set user_login_name='NABDctmIngUsr_SVC_P' set user_login_domain='nabcs' 
+set user_os_name='NABDctmIngUsr_SVC_P' set user_os_domain='nabcs' 
+set description='Member of Image Importer Group' set user_address='bpo_np.support@aus.fujixerox.com' 
+set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4
+set default_folder='/Temp' set user_group_name='fxa_image_importer_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='NABDisIn_SVC_P' 
+set user_login_name='NABDisIn_SVC_P' set user_login_domain='nabcs' 
+set user_os_name='NABDisIn_SVC_P' set user_os_domain='nabcs' 
+set description='Member of FXA Write Group. Used for Dishonours' set user_address='bpo_np.support@aus.fujixerox.com' 
+set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4
+set default_folder='/Temp' set user_group_name='fxa_write_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+alter group fxa_admin add admingroup
+go
+alter group nab_all_group add nab_read_report_grp
+go
+alter group nab_all_group add nab_read_voucher_grp
+go
+alter group fxa_all_group add fxa_read_grp
+go
+alter group fxa_all_group add fxa_version_grp
+go
+alter group fxa_all_group add fxa_write_grp
+go
+alter group fxa_all_group add fxa_image_importer_grp
+go
+alter group fxa_image_importer_grp add NABDctmIngUsr_SVC_P
+go
+alter group fxa_read_grp add NABDctmIngUsr_SVC_P
+go
+alter group fxa_read_grp add fxa_version_grp
+go
+alter group fxa_read_grp add fxa_listing_grp
+go
+alter group fxa_version_grp add fxa_write_grp
+go
+update dm_cabinet object set acl_name='fxa_voucher_cabinet_acl' set acl_domain='dm_dbo' where object_name='Vouchers'
+go
+update fxa_folder object set acl_name='fxa_voucher_folder_acl' set acl_domain='dm_dbo' where FOLDER('/Vouchers',descend)
+go
+update dm_document object set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' where FOLDER('/Vouchers',descend)
+go
+update dm_cabinet object set acl_name='fxa_dishonour_cabinet_acl' set acl_domain='dm_dbo' where object_name='Dishonours'
+go
+update fxa_folder objects set acl_name='fxa_dishonour_internal_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours') and object_name in ('Dishonour Logs','Dishonour Reports')
+go
+update fxa_folder objects set acl_name='fxa_dishonour_internal_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Logs',descend)
+go
+update fxa_folder objects set acl_name='fxa_dishonour_internal_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Reports',descend)
+go
+update dm_document objects set acl_name='fxa_dishonour_internal_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Logs',descend)
+go
+update dm_document objects set acl_name='fxa_dishonour_internal_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Reports',descend)
+go
+update fxa_folder objects set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours') and object_name in ('Mailhouse Archive','Processing Reports')
+go
+update fxa_folder objects set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Mailhouse Archive',descend)
+go
+update dm_document objects set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Mailhouse Archive',descend)
+go
+update fxa_folder objects set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Processing Reports',descend)
+go
+update dm_document objects set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Processing Reports',descend)
+go
+update fxa_folder objects set acl_name='fxa_dishonour_letter_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours') and object_name in ('Dishonour Letters')
+go
+update fxa_folder objects set acl_name='fxa_dishonour_letter_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Letters',descend)
+go
+update dm_document objects set acl_name='fxa_dishonour_letter_acl' set acl_domain='dm_dbo' where FOLDER('/Dishonours/Dishonour Letters',descend)
+go
+update dm_cabinet object set acl_name='fxa_report_cabinet_acl' set acl_domain='dm_dbo' where object_name='Reports'
+go

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.Integration.BPM</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Lombard Integration BPM configuration settings for server.xml and context.xml</description>
+    </metadata>
+    <files>
+      <file src="context.xml" />
+      <file src="server.xml" />
+      <file src="serverSSL.xml" />
+      <file src="PreDeploy.ps1" />
+      <file src="Deploy.ps1" />
+      <file src="PostDeploy.ps1" />
+      <file src="bpm-platform.xml" />
+      <file src="dfc.properties" />
+    </files>
+</package> 

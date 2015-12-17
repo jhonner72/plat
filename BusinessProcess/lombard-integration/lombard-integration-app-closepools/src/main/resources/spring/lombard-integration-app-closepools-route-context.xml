@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <bean id="getReleasedItemsRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.getvouchersinformation.GetVouchersInformationResponse"
+          p:serviceName="lombard.service.outclearings.getreleaseditems"
+          p:exchangeName="lombard.service.repository.getvouchersinformation"
+          p:routingKey="NCST"
+          p:queueName="lombard.service.outclearings.getreleaseditems"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="get"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="generateVouchersRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.generatecorrespondingvoucher.GenerateCorrespondingVoucherResponse"
+          p:serviceName="lombard.service.outclearings.generatevouchers"
+          p:exchangeName="lombard.service.outclearings.generatevouchers"
+          p:routingKey="NCST"
+          p:queueName="lombard.service.outclearings.generatevouchers"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.GenerateCorrespondingVoucherRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="vouchers"
+          p:predicate="generate"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="associateGeneratedVouchersRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.associatevouchers.AssociateVouchersResponse"
+          p:serviceName="lombard.service.outclearings.associategeneratedvouchers"
+          p:exchangeName="lombard.service.outclearings.associategeneratedvouchers"
+          p:routingKey="NCST"
+          p:queueName="lombard.service.outclearings.associategeneratedvouchers"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="associate"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

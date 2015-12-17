@@ -1,0 +1,99 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM EOD Initial Instance</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="text" searchWhenChanged="true" token="businessKey">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityEODInitial BusinessKey=$businessKey$ | eval value = if (State=2, "severe", if(EndTime == "null", "high", "low")) | table value Name</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Start End of Day Initial</title>
+        <search base="baseQuery">
+          <query>| Search Name="StartEvent1"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Clear Adjustments</title>
+        <search base="baseQuery">
+          <query>| search Name="Clear Adjustments"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Close Surplus and Suspense Pool</title>
+        <search base="baseQuery">
+          <query>| search Name="Close surplus and suspense pool"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>VIF Production</title>
+        <search base="baseQuery">
+          <query>| search Name="VIF Production"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Produced all VIFs</title>
+        <search base="baseQuery">
+          <query>| search Name="Anymore VIF vouchers?"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>End of Day Initial Complete</title>
+        <search base="baseQuery">
+          <query>| search Name="EndEvent"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

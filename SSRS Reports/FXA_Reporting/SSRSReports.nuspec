@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Lombard.SSRSReports</id>
+        <version>$version$</version>
+        <authors>FXA</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>FXA SSRS Reports</description>
+    </metadata>
+    <files>
+      <file src="Deploy.ps1" />
+      <file src="FXA_Reporting\*.rdl" target="rdl" />
+      <file src="FXA_Reporting\*.rsd" target="rsd" />
+    </files>
+</package>  

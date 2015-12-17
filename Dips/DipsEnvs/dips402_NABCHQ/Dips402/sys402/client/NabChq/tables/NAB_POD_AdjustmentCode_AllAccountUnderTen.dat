@@ -1,0 +1,8 @@
+//Indexing Sort Option: ALPHA
+//Description: Adjustment Codes for All Accounts with Amounts Under Ten (Applies to Adjustment Code UTALL in NAB_POD_AdjustmentRules Table)
+//Modification History:
+//2015-06-04        Dinesh      Created
+//_______________________________________________________________________
+//Adjust Group,Display String,AdjustmentCode, Adjustment Description
+UTALL,51 - NAB Writeoff < $10,51,NAB Writeoff < $10
+UTBQL,75 - BQL Writeoff < $10,75,BQL Writeoff < $10

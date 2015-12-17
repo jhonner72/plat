@@ -1,0 +1,1 @@
+NabChqCommon is a spaceholder pseudo client folder for any functionality shared between scanning and factory Dips environments

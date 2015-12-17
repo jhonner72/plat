@@ -1,0 +1,5 @@
+// Format : Amount in Cents,FirstTwoDigitsOfSerialNumber
+2000,12
+5000,15
+10000,21
+20000,22

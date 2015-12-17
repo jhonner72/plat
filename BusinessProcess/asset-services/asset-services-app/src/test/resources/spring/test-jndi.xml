@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jndiLoader" class="com.fujixerox.aus.asset.app.component.ContextBuilder" init-method="buildContext">
+        <constructor-arg name="parameters">
+            <map key-type="java.lang.String" value-type="java.lang.Object">
+                <entry key="java:comp/env/docbroker/host">
+                    <value type="java.lang.String">172.21.116.154</value>
+                </entry>
+                <entry key="java:comp/env/docbroker/port">
+                    <value type="java.lang.String">1489</value>
+                </entry>
+                <entry key="java:comp/env/documentum/docbase">
+                    <value type="java.lang.String">NAB</value>
+                </entry>
+                <entry key="java:comp/env/documentum/username">
+                    <value type="java.lang.String">fxa_user</value>
+                </entry>
+                <entry key="java:comp/env/documentum/password">
+                    <value type="java.lang.String">fxa_user</value>
+                </entry>
+                <entry key="java:comp/env/imagemark/authenticationrequired">
+                    <value type="java.lang.Boolean">true</value>
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>

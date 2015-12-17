@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="metaDataRetriever"
+		class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.MetadataRetrieverImpl"
+		p:metadataStore-ref="metadataStore" />
+
+	<bean id="voucherInformationCollector"
+		class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.DirectoryVoucherCollector" />
+
+	<bean id="transferEndpointBuilder"
+		class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.TransferEndpointBuilderImpl"
+		p:metadataRetriever-ref="metaDataRetriever" />
+		
+	<bean id="associateVouchersTransformHelper"
+		class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.AssociateVouchersTransformHelperImpl" />
+
+	<bean id="transform.lombard.service.outclearings.getvouchersforlockedbox.request"
+    class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.GetVouchersForLockedBoxRequestTransform"
+    p:targetEndpointBuilder-ref="transferEndpointBuilder" />
+
+    <bean id="transform.lombard.service.outclearings.getvouchersforlockedbox.response"
+          class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.GetVouchersForLockedBoxResponseTransform" />
+
+    <bean id="transform.lombard.service.outclearings.copyvoucherslbc.request" class="com.fujixerox.aus.integration.transform.inclearings.CopyImagesTransform"
+          p:lockerPath-ref="lockerPath"
+          p:fileDropPath-ref="fileDropPath"
+            />
+    <bean id="transform.lombard.service.outclearings.copyvoucherslbc.response" class="com.fujixerox.aus.integration.transform.inclearings.CopyImagesResponseTransform" />
+
+    <bean id="transform.lombard.service.outclearings.generatebulkcreditforlockedbox.request"
+          class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.GenerateBulkCreditRequestTransform"
+          p:metadataRetriever-ref="metaDataRetriever"
+          p:voucherCollector-ref="voucherInformationCollector"
+          p:lockerPath-ref="lockerPath"
+            />
+
+	<bean id="transform.lombard.service.outclearings.associategeneratedvoucherslbc.request"
+		class="com.fujixerox.aus.integration.transform.outclearings.lockedbox.AssociateVouchersRequestTransform"
+		p:transformHelper-ref="associateVouchersTransformHelper" 
+		p:endpointBuilder-ref="transferEndpointBuilder" />
+
+</beans>

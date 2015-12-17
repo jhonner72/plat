@@ -1,0 +1,43 @@
+{
+  "voucherInformation": {
+    "voucher": {
+      "transactionCode": "12",
+      "documentReferenceNumber": "00000000",
+      "bsbNumber": "063813",
+      "accountNumber": "12345678",
+      "documentType": "Dr",
+      "auxDom": "TEST",
+      "processingDate": "2015-12-04",
+      "amount": "234.56",
+      "extraAuxDom": "test"
+    },
+    "voucherProcess": {
+      "unprocessable": false,
+      "transactionLinkNumber": 5555555,
+      "manualRepair": 0,
+      "inactiveFlag": false,
+      "highValueFlag": false,
+      "suspectFraud": false,
+      "adjustmentReasonCode": "60",
+      "adjustmentDescription": "No Deposit Listing Received",
+      "adjustmentsOnHold": "true",
+      "adjustedFlag": "false",
+      "adjustmentLetterRequired": "true"
+    }
+  },
+  "transferEndpoints": [
+    {
+      "documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+      "endpoint": "NAB"
+    },
+    {
+      "documentExchange": "VIF_OUTBOUND",
+      "endpoint": "NAB"
+    },
+    {
+      "documentExchange": "VIF_ACK_OUTBOUND",
+      "endpoint": "NAB"
+    }
+  ]
+}
+

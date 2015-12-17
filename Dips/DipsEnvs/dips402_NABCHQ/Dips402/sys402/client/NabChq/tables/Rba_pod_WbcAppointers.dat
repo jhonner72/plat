@@ -1,0 +1,24 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//201x-xx-xx					Created
+//2015-08-26        Dinesh      Commented Morgan Guaranty (BankNumber 920)
+// Columns = Bank number, Bank name, EP or FV (Electronic presentment or For Value) 
+// ______________________________________________________________________________________
+140000,149999,PIB, //Primary Industry Bank of Australia
+255000,255999,BPS, //BNP Paribas Securities Services
+260000,269999,BTA, // Bankers Trust Australia
+290000,299999,BOT, //Bank of Tokyo - Mitsubishi
+360000,369999,IBJ, //IBJ Australia Bank
+645000,645999,MPB, //Wide Bay Australia Limited
+654000,654999,ECU, //ECU Australia Limited
+700000,709999,CUS, //Indue Limited
+722000,722999,SNX, //Southern Cross Credit Union Limited
+724000,724999,RCU, //Railway Credit Union
+918000,918999,DKB, //Dai-Ichi Kangyo Bank
+//920000,920999,MGT, // Morgan Guaranty Trust Company of New York		//Commented 26-Aug
+922000,922999,UOB, //United Overseas Bank 
+923000,923999,ING, //ING Mercantile Mutual
+926000,926999,AHB, //The Asahi Bank
+931000,931999,ICB, //International Commerce Bank of China
+936000,936999,ING, //ING Mercantile Mutual
+944000,944999,MEB, //Members Equity Bank Ltd

@@ -1,0 +1,9 @@
+//Indexing Sort Option: NUMERIC
+//Description: GL Account Range Values
+//Modification History:
+//2015-05-05        Dinesh      Created
+//2015-06-17        Dinesh      Modified (Modified GL Accounts as per clarifications from NAB)
+//
+// Format : RangeLowerBound,RangeUpperBound,DebitClassification,CreditClassification
+//
+899900000,899999999,GLDB5,GLCR5

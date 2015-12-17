@@ -1,0 +1,100 @@
+{
+  "forValueDetails": [
+    {
+      "bsb": "013133",
+      "accountNumber": "291895392",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "013133",
+      "accountNumber": "291895691",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "013133",
+      "accountNumber": "291895966",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "013133",
+      "accountNumber": "291896272",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "013133",
+      "accountNumber": "291896424",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "032898",
+      "accountNumber": "055135",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "063978",
+      "accountNumber": "10069630",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "063978",
+      "accountNumber": "10069665",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "063978",
+      "accountNumber": "10076750",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "063978",
+      "accountNumber": "10076769",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "083029",
+      "accountNumber": "823300223",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "092002",
+      "accountNumber": "815545",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "093003",
+      "accountNumber": "814704",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "094004",
+      "accountNumber": "814458",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "095005",
+      "accountNumber": "814548",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "096006",
+      "accountNumber": "814494",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "124001",
+      "accountNumber": "10457814",
+      "documentType": "CR"
+    },
+    {
+      "bsb": "082039",
+      "accountNumber": "999999912",
+      "documentType": "DR"
+    },
+    {
+      "bsb": "083029",
+      "accountNumber": "823300223",
+      "documentType": "DR"
+    }
+  ]
+}
+

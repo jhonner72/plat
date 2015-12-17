@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CreateValueInstructionFile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/CreateValueInstructionFile" xmlns:md="http://lombard.aus.fujixerox.com/common/Metadata">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Metadata" schemaLocation="Metadata.xsd"/>
+	<xs:element name="CreateValueInstructionFileResponse" type="tns:CreateValueInstructionFileResponse"/>
+	<xs:complexType name="CreateValueInstructionFileResponse">
+		<xs:sequence>
+			<xs:element name="valueInstructionFileFilename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The Value Instruction File filename that is created.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateValueInstructionFileRequest" type="tns:CreateValueInstructionFileRequest"/>
+	<xs:complexType name="CreateValueInstructionFileRequest">
+		<xs:sequence>
+			<xs:element name="businessDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date for which processing is occurring.
+
+.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Required for the header field for VIF.
+
+Map the state to the following BSB:
+NSW  082037
+VIC    083029
+QLD   084024
+SA     085384
+WA    086038
+
+Derived from the captureBsb in the ValueInstructionFileTarget</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Required for the header field in VIF.
+
+If Bank Code=BQL and State=QLD
+  BQL QLD 124001
+Else
+  NSW  082037
+  VIC    083029
+  QLD   084024
+  SA     085384
+  WA    086038
+
+Derived from the ValueInstructionFileTarget captureBsb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entity" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The financial entity : NAB or BQL
+
+Derived from the FinancialEntities metadata.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The location of extracted vouchers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordTypeCode" type="md:RecordTypeCode" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identify the type of record:
+C = cash slips
+D = detail records
+M = detail merchant transactions (Now obsolete)
+P = credit card deposits
+S = summary total merchant transactions (Now obsolete)
+V = other bank value transactions (Now obsolete)
+
+The reference data for this field is as follows:
+    "recordTypeCodes": [
+        {
+            "code": "C",
+            "transactionCode": "111"
+        },
+        {
+            "code": "C",
+            "transactionCode": "222"
+        },
+        {
+            "code": "P",
+            "bsb": "377872"
+        },
+        {
+            "code": "P",
+            "bsb": "377873"
+        },
+        {
+            "code": "P",
+            "bsb": "377874"
+        },
+        {
+            "code": "P",
+            "bsb": "377876"
+        },
+        {
+            "code": "P",
+            "bsb": "377877"
+        },
+        {
+            "code": "P",
+            "bsb": "377878"
+        },
+        {
+            "code": "P",
+            "bsb": "401795"
+        },
+        {
+            "code": "P",
+            "bsb": "430327"
+        },
+        {
+            "code": "P",
+            "bsb": "430328"
+        },
+        {
+            "code": "P",
+            "bsb": "430329"
+        },
+        {
+            "code": "P",
+            "bsb": "430330"
+        },
+        {
+            "code": "P",
+            "bsb": "433687"
+        },
+        {
+            "code": "P",
+            "bsb": "455701"
+        },
+        {
+            "code": "P",
+            "bsb": "455702"
+        },
+        {
+            "code": "P",
+            "bsb": "455703"
+        },
+        {
+            "code": "P",
+            "bsb": "455704"
+        },
+        {
+            "code": "P",
+            "bsb": "471527"
+        },
+        {
+            "code": "P",
+            "bsb": "490292"
+        },
+        {
+            "code": "P",
+            "bsb": "490289"
+        },
+        {
+            "code": "P",
+            "bsb": "531355"
+        },
+        {
+            "code": "P",
+            "bsb": "531356"
+        },
+        {
+            "code": "P",
+            "bsb": "531357"
+        },
+        {
+            "code": "P",
+            "bsb": "531358"
+        },
+        {
+            "code": "P",
+            "bsb": "531359"
+        },
+        {
+            "code": "P",
+            "bsb": "552061"
+        },
+        {
+            "code": "P",
+            "bsb": "552270"
+        },
+        {
+            "code": "P",
+            "bsb": "555001"
+        },
+        {
+            "code": "P",
+            "bsb": "556733"
+        },
+        {
+            "code": "P",
+            "bsb": "558388"
+        }
+
+Default to "D" if none of the code matches the reference data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sequenceNumber" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An incrementing number that is used for all VIFs that are initiated in the one top level business process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="state" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned, transposed to the ordinal value.
+2=NSW, 3=VIC, 4=QLD, 5=SA, 6=WA.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

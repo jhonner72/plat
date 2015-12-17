@@ -1,0 +1,1678 @@
+{
+    "reportGroups": [
+        {
+            "eventType": "END_OF_DAY",
+            "reports": [
+                {
+                    "reportName": "NAB_VIF_Transmission_Report",
+                    "reportType": "NAB VIF Transmission Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB VIF Transmission Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "transmissiondate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "BQL_VIF_Transmission_Report",
+                    "reportType": "BQL VIF Transmission Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "BQL VIF Transmission Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "transmissiondate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_ECD_Exception_Single_Item_Report",
+                    "reportType": "Agency Bank ECD Return Single Item Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointName": "Email1",
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s ECD Exception Return Single Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_ECD_Exception_Return_All_Items_Report",
+                    "reportType": "Agency Bank ECD Return All Items Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointName": "Email1",
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s ECD Exception Return All Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_Unprocessable_Paper_Report",
+                    "reportType": "Agency Bank Unprocessable Paper Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointName": "Email1",
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s Unprocessable Paper Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_ECD_Exception_Report",
+                    "reportType": "NAB ECD Exception Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB ECD Exception Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_Inward_For_Value_DR_Report",
+                    "reportType": "Agency Bank Inward FV DR Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointName": "Email1",
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s Inward For Value DR Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Inward_For_Value_DR_Report",
+                    "reportType": "NAB Inward FV Debit Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Inward For Value DR Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Outward_For_Value_CR_Report",
+                    "reportType": "NAB Outward For Value Credit Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Outward For Value CR Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "BQL_Outward_For_Value_CR_Report",
+                    "reportType": "BQL Outward For Value Credit Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "BQL Outward For Value CR Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_High_Value_Report",
+                    "reportType": "NAB High Value Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB High Value Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Adjustments_Letter_Report",
+                    "reportType": "NAB Adjustments Letter Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Adjustments Letter Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Corporate_Adjustments_Letter_Report",
+                    "reportType": "Corporate Adjustments Letter Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s Adjustments Letter Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "CORPORATE_GROUP",
+                            "ssrsName": "corporategroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_Adjustments_Letter_Report",
+                    "reportType": "Agency Adjustments Letter Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s Adjustment Letter Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Adjustments_Report",
+                    "reportType": "NAB Adjustments Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Adjustments Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_IPOD_Errors_Report",
+                    "reportType": "NAB IPOD Errors Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB IPOD Errors Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "BQL_IPOD_Errors_Report",
+                    "reportType": "BQL IPOD Errors Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "BQL IPOD Errors Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_IPOD_Errors_Report",
+                    "reportType": "Agency Bank IPOD Errors Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s IPOD Errors Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_All_Items_Report",
+                    "reportType": "NAB All Items Report",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "PROD.FXA.NAB.RPT.AIR.%1$tY%1$tm%1$td.%3$s",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "STATE",
+                            "ssrsName": "processingstate"
+                        },
+                        {
+                            "metadataName": "STATE_ORDINAL",
+                            "ssrsName": "stateordinal"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "BQL_All_Items_Report",
+                    "reportType": "BQL All Items Report",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "PROD.FXA.BQL.RPT.AIR.%1$tY%1$tm%1$td.%3$s",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "STATE_ORDINAL",
+                            "ssrsName": "stateordinal"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Document_Retrieval_Report",
+                    "reportType": "NAB Document Retrieval Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Document Retrieval %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "BQL_Document_Retrieval_Report",
+                    "reportType": "BQL Document Retrieval Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "BQL Document Retrieval %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "Agency_Surplus_Items_Report",
+                    "reportType": "Agency Bank Surplus Items Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "%2$s Surplus Items Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK",
+                            "ssrsName": "agencybank"
+                        },
+                        {
+                            "metadataName": "AGENCY_BANK_GROUP",
+                            "ssrsName": "agencybankgroup"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_LockedBox_Daily_Report",
+                    "reportType": "NAB Locked Box DAILY Processing Details",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Locked Box Daily Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Incoming_Suspect_Fraud_Report",
+                    "reportType": "NAB Incoming Suspect Fraud Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Incoming Suspect Fraud %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Outbound_Image_Exchange_Report",
+                    "reportType": "NAB Outbound Image Exchange Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Outbound Image Exchange Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "transmissiondate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Inbound_Image_Exchange_Report",
+                    "reportType": "NAB Inbound Image Exchange Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Inbound Image Exchange Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "transmissiondate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Over_100K_Report",
+                    "reportType": "NAB Over $100k Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Over $100k Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Outgoing_Suspect_Fraud_Report",
+                    "reportType": "NAB Outgoing Suspect Fraud Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Outgoing Suspect Fraud %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Daily_Volumes_Report",
+                    "reportType": "NAB Daily Volumes Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Daily Volumes Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_QA_Report",
+                    "reportType": "NAB QA Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB QA Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Merchant_Substitutes_Report",
+                    "reportType": "NAB Daily Merchant Substitutes Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Merchant Substitute Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "FXA_QA_Report",
+                    "reportType": "FXA QA Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "FXA QA Report %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_EOD_COIN",
+                    "reportType": "NAB_EOD_COIN",
+                    "formatType": "DAT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "COIN"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "IMGEXCHEOD.%1$tY%1$tm%1$td.%3$tY%3$tm%3$td.%3$tH%3$tM%3$tS.NAB.%2$s",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        },
+                        {
+                            "metadataName": "FINANCIAL_INSTITUTION",
+                            "ssrsName": "financialinstitution"
+                        },
+                        {
+                            "metadataName": "SYSTEM_DATE",
+                            "ssrsName": "systemdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "FXA_OCR_vs_Human_Capture_Report",
+                    "reportType": "FXA OCR vs Human Capture Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "FXA OCR vs Human %1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "eventType": "END_OF_MONTH",
+            "reports": [
+                {
+                    "reportName": "NAB_LockedBox_Monthly_Report",
+                    "reportType": "NAB Locked Box MONTHLY Processing Details",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Locked Box Monthly Report %2$tY%2$tm%2$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "START_MONTH_DATE",
+                            "ssrsName": "startdate"
+                        },
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "enddate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Daily_Listings_Report",
+                    "reportType": "NAB Daily Listings Report",
+                    "formatType": "CSV",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Daily Listings %2$tY%2$tm%2$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "START_MONTH_DATE",
+                            "ssrsName": "startdate"
+                        },
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "enddate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Monthly_Volumes_Report",
+                    "reportType": "NAB MONTHLY Volumes Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Monthly Volumes Report %2$tY%2$tm%2$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "START_MONTH_DATE",
+                            "ssrsName": "startdate"
+                        },
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "enddate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_Billing_Report",
+                    "reportType": "NAB Billing Report",
+                    "formatType": "XLSX",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "EMAIL"
+                        }
+                    ],
+                    "outputFilenamePattern": "NAB Billing Report %2$tY%2$tm%2$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "START_MONTH_DATE",
+                            "ssrsName": "startdate"
+                        },
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "enddate"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "eventType": "END_OF_DAY_RECON",
+            "reports": [
+                {
+                    "reportName": "NAB_EOD_EDA",
+                    "reportType": "NAB EOD EDA",
+                    "formatType": "DAT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "PROD.FXA.NAB.EOD.%1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                },
+                {
+                    "reportName": "NAB_EOD_EDA2",
+                    "reportType": "NAB EOD EDA2",
+                    "formatType": "DAT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "TEST_PROD.FXA.NAB.EOD.%1$tY%1$tm%1$td",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "processdate"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "eventType": "NABCHQ_LBOX",
+            "reports": [
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR1",
+                    "reportType": "NAB Locked Box Extract VR1",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.INAB001.VR1.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LNC1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR2",
+                    "reportType": "NAB Locked Box Extract VR2",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IMLC001.VR2.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LML2"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR2",
+                    "reportType": "NAB Locked Box Extract VR2",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDNS01.VR2.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD3"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR2",
+                    "reportType": "NAB Locked Box Extract VR2",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDS001.VR2.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD4"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR3",
+                    "reportType": "NAB Locked Box Extract VR3",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IMLC001.VR3.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LML2"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR3",
+                    "reportType": "NAB Locked Box Extract VR3",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.INAB001.VR3.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LNC1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR3",
+                    "reportType": "NAB Locked Box Extract VR3",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDNS01.VR3.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD3"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR3",
+                    "reportType": "NAB Locked Box Extract VR3",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDS001.VR3.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD4"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IBCC001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LBC1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ICOY001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LCY1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IEGS001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LEG1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IGSC001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LGS1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IHSC001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LHS1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IMCC001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LMC1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IPIT001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LPC1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDNS01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD2"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IRDS001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LRD1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVH001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVHH01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV3"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVC001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV6"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVHS01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV2"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVHP01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV4"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_NAB",
+                    "reportType": "NAB Locked Box Extract VR4 NAB",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ISVHT01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LSV5"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_OWKS",
+                    "reportType": "NAB Locked Box Extract VR4 OWKS",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IVOPR01.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LOW1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR4_EANA",
+                    "reportType": "NAB Locked Box Extract VR4 EANA",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IEAN001.VR4.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LEA1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR8_CGU",
+                    "reportType": "NAB Locked Box Extract VR8 CGU",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ICG4001.VR8.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LCG1"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR8_CGU",
+                    "reportType": "NAB Locked Box Extract VR8 CGU",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.ICG1001.VR8.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LCG2"
+						}
+					]
+                },
+                {
+                    "reportName": "NAB_Locked_Box_Extract_VR8_MLC",
+                    "reportType": "NAB Locked Box Extract VR8 MLC",
+                    "formatType": "TXT",
+                    "deliveryEndpoints": [
+                        {
+                            "endpointType": "B_2_B"
+                        },
+                        {
+                            "endpointType": "DOCUMENTUM"
+                        }
+                    ],
+                    "outputFilenamePattern": "MO.IMLC001.VR8.FILE01",
+                    "parameterDefinitions": [
+                        {
+                            "metadataName": "BUSINESS_DAY",
+                            "ssrsName": "businessdate"
+                        },
+                        {
+                            "metadataName": "BATCH_TYPE",
+                            "ssrsName": "lockedbox"
+                        }
+                    ],
+                    "batchTypeCodes": [
+						{
+							"batchType": "LML1"
+						}
+					]
+                }
+            ]
+        }
+    ]
+}

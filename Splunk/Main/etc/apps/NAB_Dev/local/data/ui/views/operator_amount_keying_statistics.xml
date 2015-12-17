@@ -1,0 +1,91 @@
+<form>
+  <label>Operator Amount Keying Statistics</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-1d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="BaseQuery">
+    <query>index=* sourcetype=sts operator=* | transaction operator | convert dur2sec(time_Elapd) AS timeElapdSec | eventstats sum(timeElapdSec) AS totalTimeElapd by operator | eval Total_Time=tostring(totalTimeElapd, "duration") | eventstats sum(frm_Cnt) AS TotalItemsKeyed by operator | eventstats sum(frm_Cnt_B) AS TotalItemsKeyedB by operator | eval "Total Items Keyed" = TotalItemsKeyed + TotalItemsKeyedB  | eventstats sum(key_Cnt) AS TotalKeyStrokes by operator |eventstats sum(key_Cnt_B) AS TotalKeyStrokesB by operator | eval "Total Keystrokes"= TotalKeyStrokes + TotalKeyStrokesB  | eval Total_Time_minutes=substr(Total_Time,4,2) | eval Total_Time_hours=substr(Total_Time,1,2) | eval hours= Total_Time_hours + (Total_Time_minutes/60) | eval "Average Keystrokes per Hour"=round((TotalKeyStrokes/hours),1) | eval "Average Keystrokes per Minute"=round((TotalKeyStrokes/(hours*60)),1) | eval Operator=operator | eval "Total Time"=Total_Time | eval Station=module</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <input type="dropdown" submitButton="true" token="Operator" searchWhenChanged="true">
+        <search>
+          <query>index=dips sourcetype=sts | stats count by operator | fields - count</query>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+        </search>
+        <fieldForLabel>operator</fieldForLabel>
+        <fieldForValue>operator</fieldForValue>
+      </input>
+      <table>
+        <title>Operator Amount Keying Statistics</title>
+        <search>
+          <query>index=* sourcetype=sts operator=$Operator$ | eval "Start Time"=time_Open | eval "Finish Time"=time_Close | eval "Total Time"=time_Elapd | eval "Total Items Keyed"=frm_Cnt | eval Total_Time_minutes=substr(time_Elapd,4,2) | eval Total_Time_hours=substr(time_Elapd,1,2) | eval hours= Total_Time_hours + (Total_Time_minutes/60) | eval "Average Keystrokes per Hour"=round((key_Cnt/hours),1) | eval "Average Keystrokes per Minute"=round((key_Cnt/(hours*60)),1) | eval "Total Keystrokes"=key_Cnt | eval Station=module | table "Start Time" "Finish Time" "Total Time"  Station "Total Items Keyed" "Total Keystrokes" "Average Keystrokes per Hour" "Average Keystrokes per Minute"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Total Operator Amount Keying Statistics</title>
+        <search base="BaseQuery">
+          <query>| table Operator "Total Time" Station "Total Items Keyed" "Total Keystrokes" "Average Keystrokes per Hour" "Average Keystrokes per Minute"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Total Average Keystrokes per Hour by Operator</title>
+        <search base="BaseQuery">
+          <query>| table Operator "Average Keystrokes per Hour"</query>
+        </search>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+      </chart>
+    </panel>
+  </row>
+</form>

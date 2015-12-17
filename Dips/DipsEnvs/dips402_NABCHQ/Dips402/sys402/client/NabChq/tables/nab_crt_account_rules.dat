@@ -1,0 +1,48 @@
+//Indexing Sort Option: ALPHA
+//Modification History:
+//2015-xx-xx		Sanjay		Created
+//2015-08-19        Dinesh      Created a new rule for 24GFGSPE as it allows account numbers 9-10 digit long
+
+
+//Bank of Queensland
+//too complex
+
+//bsb, Account length range, Exclusions separated by | (max 5), exclusions by starting no, one of these values
+ 
+18,9-9
+20,8-8
+21,7-9
+34,9-9
+24,9-10,,
+80,9-9,999999915
+313,9-9
+452,7-9
+453,7-9
+512,9-9
+514,9-9
+633,9-9
+//633110,9-9,,,012110000
+610,9-9
+610100,9-9,,,911113768|911112917|911112918
+639,9-9
+642,9-9
+653,6-6
+812,9-9
+813,8-9
+814,9-9
+815,9-9
+817,8-9
+819,8-9
+915,9-9
+917,9-9
+942,9-9
+952,9-9
+985,9-9
+24GFGSP,9-9
+24GFGSPE,9-10
+24GFGNORM,9-10
+24GFG6NORM,5-9
+24GFGTERM,9-9
+24RETAIL,5-6,,,,9
+24RETAIL2CRT,7-7,,,,9
+24GCB,9-10

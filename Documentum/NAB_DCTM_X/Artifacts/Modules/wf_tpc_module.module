@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:moduledef="http://documentum.emc.com/artifact/12012007/moduledef" urn="urn:com.emc.ide.artifact.moduledef/WF_TPC_Module?artifactURI=file:/D:/Ajit/Composer/workspace/NAB_DCTM_X/Artifacts/Modules/wf_tpc_module.module" categoryId="com.emc.ide.artifact.moduledef">
+  <dataModel xsi:type="moduledef:ModuleDef" objectName="WF_TPC_Module" contact_info="Ajit" a_module_type="[Standard Module]">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_module?name=dmc_module#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/nabwfmthdsjar?language_code=&amp;location=%2FSystem%2FApplications%2FNAB_DCTM_X&amp;name=nabwfmthdsjar&amp;type=dmc_jar#//@dataModel"/>
+    <runtimeEnvironmentXML objectName="RuntimeEnvironment.xml">
+      <objectType href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+      <log/>
+    </runtimeEnvironmentXML>
+    <primaryElement primary_class="com.fxa.nab.dctm.method.WorkflowThirdPartySuspensePoolMethod">
+      <a_interfaces>com.documentum.fc.methodserver.IDfMethod</a_interfaces>
+    </primaryElement>
+    <miscellaneous objectName="Miscellaneous">
+      <objectType href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    </miscellaneous>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

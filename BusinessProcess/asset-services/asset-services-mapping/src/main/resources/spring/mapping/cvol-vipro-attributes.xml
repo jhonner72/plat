@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- type name -->
+
+    <bean id="cvolViproObjectType" class="java.lang.String">
+        <constructor-arg value="vipro"/>
+    </bean>
+
+
+    <!-- Attributes -->
+
+    <bean id="cvolViproClassification" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="Classification"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproPostingDate" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="PostingDate"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproDrn" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="Drn"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproBankBranch" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="BankBranch"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproAccountNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="AccountNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproSerial" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="Serial"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproAmount" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="Amount"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproTranCode" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="TranCode"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproEAD" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="EAD"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproCollectingBSB" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="CollectingBSB"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproEntryNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="EntryNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproBatchNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="BatchNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproSite" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="Site"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproBalSeqForDeposit" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="BalSeqForDeposit"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+
+    <bean id="cvolViproDepositAccount" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="DepositAccount"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproDepositBSB" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="DepositBSB"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproDIN" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="DIN"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproBoxNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="BoxNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproTrayNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="TrayNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproBalancedSequence" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="BalancedSequence"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproUpdateFlag" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="UpdateFlag"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproAdjReasonCode" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="AdjReasonCode"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproStateNumber" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="StateNumber"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+    <bean id="cvolViproObjectHandle" class="com.fujixerox.aus.asset.impl.mapping.Attribute">
+        <constructor-arg name="attributeName" value="objecthandle"/>
+        <constructor-arg name="objectType" ref="cvolViproObjectType"/>
+    </bean>
+
+
+</beans>

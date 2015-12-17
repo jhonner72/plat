@@ -1,0 +1,104 @@
+// Column 1: Batch Header BSB
+// Column 2: Customer Name
+// Column 3: Customer Code
+// Column 4: NAB Client Number
+// Column 5: Remittance validation Category
+// Column 6: Locked Box Type i.e. Singles/Multis ...
+// Column 7: Locked Box Type Code
+// Column 8: Credit Note Flag
+// Column 9: OCR settings for this particular customer
+// Column 10: Credit note flag required
+
+991304,991304 Bayside City Council (VIC),LBC1,004690,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991304,991304 Bayside City Council (VIC),LBC1,004690,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991304,991304 Bayside City Council (VIC),LBC1,004690,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+994700,994700 CGU (Acc 153399038) (NSW),LCG1,004700,CGU,Singles,SIN,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+994700,994700 CGU (Acc 153399038) (NSW),LCG1,004700,CGU,Multis,MLT,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+994700,994700 CGU (Acc 153399038) (NSW),LCG1,004700,CGU,Cheque Only,CHO,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+
+991305,991305 CGU (Acc 163110011) (NSW),LCG2,001305,CGUA,Singles,SIN,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+991305,991305 CGU (Acc 163110011) (NSW),LCG2,001305,CGUA,Multis,MLT,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+991305,991305 CGU (Acc 163110011) (NSW),LCG2,001305,CGUA,Cheque Only,CHO,0,Font:E13B^Width:300^Height:15^VerticalCenter:10^Right:5^Set:once,0
+
+991308,991308 City of Yarra (VIC),LCY1,005217,Standard,Singles,SIN,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991308,991308 City of Yarra (VIC),LCY1,005217,Standard,Multis,MLT,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991308,991308 City of Yarra (VIC),LCY1,005217,Standard,Cheque Only,CHO,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991313,991313 East Gippsland Shire Council (VIC),LEG1,001651,Standard,Singles,SIN,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991313,991313 East Gippsland Shire Council (VIC),LEG1,001651,Standard,Multis,MLT,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991313,991313 East Gippsland Shire Council (VIC),LEG1,001651,Standard,Cheque Only,CHO,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+991004,991004 European Article Numbering Australia (VIC),LEA1,003004,EANA,Singles,SIN,0,Font:OCRA^Width:200^Height:20^VerticalCenter:15^Right:5^Set:once,0
+991004,991004 European Article Numbering Australia (VIC),LEA1,003004,EANA,Multis,MLT,0,Font:OCRA^Width:200^Height:20^VerticalCenter:15^Right:5^Set:once,0
+
+991309,991309 Glenelg Shire Council (VIC),LGS1,002819,Standard,Singles,SIN,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991309,991309 Glenelg Shire Council (VIC),LGS1,002819,Standard,Multis,MLT,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991309,991309 Glenelg Shire Council (VIC),LGS1,002819,Standard,Cheque Only,CHO,0,Font:OCRB^Width:250^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991206,991206 Hills Shire Council (NSW),LHS1,000015,Standard,Singles,SIN,0,Font:OCRB Numeric^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991206,991206 Hills Shire Council (NSW),LHS1,000015,Standard,Multis,MLT,0,Font:OCRB Numeric^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991206,991206 Hills Shire Council (NSW),LHS1,000015,Standard,Cheque Only,CHO,0,Font:OCRB Numeric^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+991307,991307 Maroondah City Council (VIC),LMC1,001860,Standard,Singles,SIN,0,Font:OCRB^Width:300^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991307,991307 Maroondah City Council (VIC),LMC1,001860,Standard,Multis,MLT,0,Font:OCRB^Width:300^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991307,991307 Maroondah City Council (VIC),LMC1,001860,Standard,Cheque Only,CHO,0,Font:OCRB^Width:300^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991211,991211 MLC Limited (NSW),LML1,002521,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991211,991211 MLC Limited (NSW),LML1,002521,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991211,991211 MLC Limited (NSW),LML1,002521,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+992030,992030 Officeworks (VIC),LOW1,002030,OfficeWorks,Singles,SIN,1,Font:OCRB^Width:200^Height:10^VerticalCenter:12^Right:5^Set:once,1
+992030,992030 Officeworks (VIC),LOW1,002030,OfficeWorks,Multis,MLT,1,Font:OCRB^Width:200^Height:10^VerticalCenter:12^Right:5^Set:once,1
+
+991201,991201 Pittwater Council (NSW),LPC1,000303,Standard,Singles,SIN,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991201,991201 Pittwater Council (NSW),LPC1,000303,Standard,Multis,MLT,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991201,991201 Pittwater Council (NSW),LPC1,000303,Standard,Cheque Only,CHO,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+991314,991314 RDNS Homecare (VIC),LRD2,001625,RDNS,Singles,SIN,0,Font:OCRB^Width:188^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991314,991314 RDNS Homecare (VIC),LRD2,001625,RDNS,Multis,MLT,0,Font:OCRB^Width:188^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991314,991314 RDNS Homecare (VIC),LRD2,001625,RDNS,Cheque Only,CHO,0,Font:OCRB^Width:188^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+// Standard ????? - Nab Client Number ?????
+991022,991022 Royal Childrens Hospital Appeal (VIC/NSW),LRC1,,RCHA,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:0^Set:once,0
+
+991316,991316 Royal District Nursing Services Limited (VIC),LRD1,008430,RDNS,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991316,991316 Royal District Nursing Services Limited (VIC),LRD1,008430,RDNS,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991316,991316 Royal District Nursing Services Limited (VIC),LRD1,008430,RDNS,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991316,991316 Royal District Nursing Services Limited (VIC),LRD1,008430,RDNS,List Pays,LPS,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991205,991205 St Vincent's Mater Hospital (NSW),LSV1,003911,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991205,991205 St Vincent's Mater Hospital (NSW),LSV1,003911,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+991205,991205 St Vincent's Mater Hospital (NSW),LSV1,003911,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+991210,991210 St Vincent's and Mater Health Sydney Limited (NSW),LSV3,004597,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:0^Set:once,0
+991210,991210 St Vincent's and Mater Health Sydney Limited (NSW),LSV3,004597,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:0^Set:once,0
+991210,991210 St Vincent's and Mater Health Sydney Limited (NSW),LSV3,004597,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:10^Right:0^Set:once,0
+
+991212,991212 St Vincent's Curran Foundation (NSW),LSV6,004603,Standard,Singles,SIN,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:0^Set:once,0
+991212,991212 St Vincent's Curran Foundation (NSW),LSV6,004603,Standard,Multis,MLT,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:0^Set:once,0
+991212,991212 St Vincent's Curran Foundation (NSW),LSV6,004603,Standard,Cheque Only,CHO,0,Font:OCRB^Width:250^Height:10^VerticalCenter:10^Right:0^Set:once,0
+
+991208,991208 St Vincent's Hospital Sydney Limited (NSW),LSV2,004472,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991208,991208 St Vincent's Hospital Sydney Limited (NSW),LSV2,004472,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991208,991208 St Vincent's Hospital Sydney Limited (NSW),LSV2,004472,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991209,991209 St Vincent's Private Hospital Sydney Limited (NSW),LSV4,004657,Standard,Singles,SIN,0,Font:OCRB Numeric^Width:200^Height:10^VerticalCenter:12^Right:0^Set:once,0
+991209,991209 St Vincent's Private Hospital Sydney Limited (NSW),LSV4,004657,Standard,Multis,MLT,0,Font:OCRB Numeric^Width:200^Height:10^VerticalCenter:12^Right:0^Set:once,0
+991209,991209 St Vincent's Private Hospital Sydney Limited (NSW),LSV4,004657,Standard,Cheque Only,CHO,0,Font:OCRB Numeric^Width:200^Height:10^VerticalCenter:12^Right:0^Set:once,0
+
+991207,991207 Trustee of St Vincent's Hospital Sydney (NSW),LSV5,004357,Standard,Singles,SIN,0,Font:OCRB^Width:200^Height:10^VerticalCenter:12^Right:5^Set:once,0
+991207,991207 Trustee of St Vincent's Hospital Sydney (NSW),LSV5,004357,Standard,Multis,MLT,0,Font:OCRB^Width:200^Height:10^VerticalCenter:12^Right:5^Set:once,0
+991207,991207 Trustee of St Vincent's Hospital Sydney (NSW),LSV5,004357,Standard,Cheque Only,CHO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:12^Right:5^Set:once,0
+
+991202,991202 MLC Limited Cards (NSW),LML2,002521,Standard,Remittance Only (Credit Cards),RMO,0,Font:OCRB^Width:180^Height:10^VerticalCenter:10^Right:5^Set:once,0
+
+991002,991002 National Credit Card Payments (VIC),LNC1,000002,NCCP,Singles,SIN,0,Font:OCRB^Width:235^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991002,991002 National Credit Card Payments (VIC),LNC1,000002,NCCP,Multis,MLT,0,Font:OCRB^Width:235^Height:10^VerticalCenter:8^Right:5^Set:once,0
+991002,991002 National Credit Card Payments (VIC),LNC1,000002,NCCP,Cheque Only,CHO,0,Font:OCRB^Width:235^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991302,991302 RDNS Homecare - Cards (VIC),LRD3,001625,RDNS,Remittance Only (Credit Cards),RMO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+991317,991317 Royal District Nursing Services Limited - Cards (VIC),LRD4,006563,RDNS,Remittance Only (Credit Cards),RMO,0,Font:OCRB^Width:200^Height:10^VerticalCenter:8^Right:5^Set:once,0
+
+

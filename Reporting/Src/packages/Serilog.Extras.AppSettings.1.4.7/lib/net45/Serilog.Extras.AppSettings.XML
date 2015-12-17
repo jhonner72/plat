@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Extras.AppSettings</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.LoggerConfigurationAppSettingsExtensions">
+            <summary>
+            Adds the ReadAppSettings() extension to <see cref="T:Serilog.LoggerConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationAppSettingsExtensions.ReadAppSettings(Serilog.LoggerConfiguration)">
+            <summary>
+            Reads the &lt;appSettings&gt; element of App.config or Web.config, searching for for keys
+            that look like: <code>serilog:*</code>, which are used to configure
+            the logger. To add a sink, use a key like <code>serilog:write-to:File.path</code> for
+            each parameter to the sink's configuration method. To add an additional assembly
+            containing sinks, use <code>serilog:using</code>. To set the level use 
+            <code>serilog:minimum-level</code>.
+            </summary>
+            <param name="loggerConfiguration">The logger configuration to apply configuration to.</param>
+            <returns>An object allowing configuration to continue.</returns>
+        </member>
+    </members>
+</doc>

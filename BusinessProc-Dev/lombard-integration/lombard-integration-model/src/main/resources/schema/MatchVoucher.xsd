@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/MatchVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://lombard.aus.fujixerox.com/outclearings/MatchVoucher" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="MatchVoucherResponse" type="s1:MatchVoucherResponse"/>
+	<xs:complexType name="MatchVoucherResponse">
+		<xs:sequence>
+			<xs:element name="eclResponseFile" type="xs:string" minOccurs="5" maxOccurs="5"/>
+			<xs:element name="matchedVoucher" type="vtns:VoucherInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="unmatchedVoucher" type="vtns:VoucherInformation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MatchVoucherRequest" type="s1:MatchVoucherRequest"/>
+	<xs:complexType name="MatchVoucherRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

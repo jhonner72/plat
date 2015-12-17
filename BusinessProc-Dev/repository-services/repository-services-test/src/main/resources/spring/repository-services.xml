@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+ 	<context:property-placeholder location="classpath:properties.txt"/>
+ 
+	<bean id="rabbitConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+        <property name="host" ref="brokerHostname"/>
+        <property name="port" ref="brokerPort"/>
+        <property name="username" ref="brokerUsername"/>
+        <property name="password" ref="brokerPassword"/>
+    </bean>
+    
+   	
+   	<bean id="brokerUsername" class="java.lang.String">
+       <constructor-arg value="${broker.user}"/>
+    </bean>
+    <bean id="brokerPassword" class="java.lang.String">
+        <constructor-arg value="${broker.password}"/>
+    </bean>
+    <bean id="brokerHostname" class="java.lang.String">
+        <constructor-arg value="${broker.host}"/>
+    </bean>
+    <bean id="brokerPort" class="java.lang.String">
+        <constructor-arg value="${broker.port}"/>
+    </bean>
+     <bean id="lockerPath" class="java.lang.String">
+        <constructor-arg value="${locker.path}"/> 
+    </bean>
+    
+    <bean id="objectMapper" factory-method="createWithAnnotations" class="com.fujixerox.aus.lombard.JaxbMapperFactory" />
+    
+    <bean id="storeBatchTestJobHandler" class="com.fujixerox.aus.job.StoreBatchTestJobHandler">
+    	<property name="connectionFactory" ref="rabbitConnectionFactory"/>
+    	<property name="lockerPath" ref="lockerPath"/>
+    </bean>
+    
+</beans>

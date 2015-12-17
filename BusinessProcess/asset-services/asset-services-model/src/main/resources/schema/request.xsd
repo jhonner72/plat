@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:element name="loginmanager" type="LoginManager"/>
+    <xsd:element name="inquiry" type="Inquiry"/>
+
+    <xsd:complexType name="LoginManager">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="login" type="Login" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="logout" type="Logout" minOccurs="1" maxOccurs="1"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="sessionname" type="xsd:string"/>
+        <xsd:attribute name="applname" type="xsd:string"/>
+        <xsd:attribute name="sectoken" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Login">
+        <xsd:attribute name="user" type="xsd:string" use="required"/>
+        <xsd:attribute name="domain" type="xsd:string" use="required"/>
+        <xsd:attribute name="pwd_encoding" type="xsd:string" use="required"/>
+        <xsd:attribute name="password" type="xsd:string" use="required"/>
+        <xsd:attribute name="autologoff" type="AutoLogOff" use="optional" default="0"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Logout"/>
+
+    <xsd:simpleType name="AutoLogOff">
+        <xsd:restriction base="xsd:int">
+            <xsd:enumeration value="0"/>
+            <xsd:enumeration value="1"/>
+            <xsd:enumeration value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="Inquiry">
+        <xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="object" type="ObjectType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="resultfield" type="ResultField" minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="sortfield" type="SortField" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="ProcessContent" type="ProcessContent" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="indexquery" type="IndexQuery" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="sectoken" type="xsd:string" use="required"/>
+        <xsd:attribute name="applname" type="xsd:string" use="required"/>
+        <xsd:attribute name="sessionname" type="xsd:string" use="required"/>
+        <xsd:attribute name="batchname" type="xsd:string" use="optional"/>
+        <xsd:attribute name="priority" type="Priority" use="optional" default="5"/>
+        <xsd:attribute name="images" type="YNBool" use="optional" default="N"/>
+        <xsd:attribute name="mediastatus" type="YNBool" use="optional" default="N"/>
+        <xsd:attribute name="count" type="YNBool" use="optional" default="N"/>
+        <xsd:attribute name="match_case" type="YNBool" use="optional" default="Y"/>
+        <xsd:attribute name="maxrows" type="xsd:int" use="optional"/>
+        <xsd:attribute name="magimagefailure" type="MagImageFailure" use="optional" default="N"/>
+        <xsd:attribute name="resulthost" type="xsd:string" use="optional"/>
+        <xsd:attribute name="resultfile" type="xsd:string" use="optional"/>
+        <xsd:attribute name="resultuser" type="xsd:string" use="optional"/>
+        <xsd:attribute name="resultpassword" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ObjectType">
+        <xsd:attribute name="name" use="required"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="YNBool">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Y"/>
+            <xsd:enumeration value="N"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Priority">
+        <xsd:restriction base="xsd:int">
+            <xsd:enumeration value="1"/>
+            <xsd:enumeration value="2"/>
+            <xsd:enumeration value="3"/>
+            <xsd:enumeration value="4"/>
+            <xsd:enumeration value="5"/>
+            <xsd:enumeration value="6"/>
+            <xsd:enumeration value="7"/>
+            <xsd:enumeration value="8"/>
+            <xsd:enumeration value="9"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MagImageFailure">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="E"/>
+            <xsd:enumeration value="D"/>
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="N"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="SortField">
+        <xsd:attribute name="name"/>
+        <xsd:attribute name="order" type="SortDirection"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="SortDirection">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ASC"/>
+            <xsd:enumeration value="DSC"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="IndexQuery">
+        <xsd:sequence>
+            <xsd:element name="qfield" type="QField" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="ProcessContent" type="ProcessContent" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="queryname" type="xsd:string" use="required"/>
+        <xsd:attribute name="match_case" type="YNBool" use="optional" default="Y"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProcessContent">
+        <xsd:choice>
+            <xsd:element name="GetImagePage" type="GetImagePage" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="GetTiffPage" type="GetImagePage" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="TranscodeContent" type="TranscodeContent" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="GetImagePage">
+        <xsd:sequence>
+            <xsd:element name="TranscodeContent" type="TranscodeContent" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="Pages" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="TranscodeContent">
+        <xsd:attribute name="RequestedContentDescriptor" type="RequestedContentDescriptor"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="RequestedContentDescriptor">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="PNG"/>
+            <xsd:enumeration value="JPEG"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="QField">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="low" type="xsd:string" use="optional"/>
+        <xsd:attribute name="high" type="xsd:string" use="optional"/>
+        <xsd:attribute name="match_case" type="YNBool" use="optional" default="Y"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="UField">
+        <xsd:attribute name="name" type="xsd:string" use="optional"/>
+        <xsd:attribute name="value" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResultField">
+        <xsd:attribute name="name" use="required"/>
+    </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,255 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"valueinstructionfile",
+    "predicate":"outclearings",
+    "status":0,
+    "activity":[
+      {
+        "subject": "outclearings",
+        "predicate": "valueinstructionfile",
+        "request" : {
+          "@type": "com.fujixerox.aus.lombard.outclearings.valueinstructionfilecommon.ValueInstructionFileRequest",
+          "maxQuerySize": 1,
+          "endpoint": "VIC",
+          "sequenceNumber": 8001,
+          "target" :
+            {
+              "state" : "VIC",
+              "captureBsb" : "083340",
+              "collectingBsb" : "083029",
+              "financialInstitution" : "NAB"
+            }
+        }
+      }
+    ]
+  },
+  "activityCount": 17,  
+  "activities": [
+    {
+      "activityName": "lombard.service.outclearings.getvouchersforvalueinstructionfile",
+      "exchangeName": "lombard.service.repository.getvouchers",
+      "routingKey": "NVIF",
+      "queueName": "lombard.service.outclearings.getvouchersforvalueinstructionfile",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersRequest",
+        "jobIdentifier" : "#JOB_IDENTIFIER#",
+        "minReturnSize" : "0",
+        "maxReturnSize" : "1",
+        "imageType" : "NONE",
+        "targetEndPoint" : "VIC",
+        "voucherStatusFrom" : "New",
+        "voucherTransfer" : "VIF_OUTBOUND",
+        "voucherStatusTo" : "InProgress",
+        "queryLinkType" : "TRANSACTION_LINK_NUMBER"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse",
+        "voucherCount" : "1",
+        "targetEndPoint" : "VIC",
+        "vouchersRemaining" : false
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.createvalueinstructionfile",
+      "exchangeName": "lombard.service.outclearings.createvalueinstructionfile",
+      "routingKey": "NVIF",
+      "queueName": "lombard.service.outclearings.createvalueinstructionfile",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createvalueinstructionfile.CreateValueInstructionFileRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "sequenceNumber" : "8001",
+        "state" : 3,
+        "businessDate" : "#DATE#",
+        "captureBsb" : "083340",
+        "entity" : "NAB",
+        "collectingBsb" : "083029",
+        "queryLinkType": "TRANSACTION_LINK_NUMBER",
+        "recordTypeCode" : [
+          {
+            "code" : "C",
+            "transactionCode" : "111"
+          },
+          {
+            "code" : "C",
+            "transactionCode" : "222"
+          },
+          {
+            "code" : "P",
+            "bsb" : "377872"
+          },
+          {
+            "code" : "P",
+            "bsb" : "377873"
+          },
+          {
+            "code": "P",
+            "bsb": "377874"
+          },
+          {
+            "code": "P",
+            "bsb": "377876"
+          },
+          {
+            "code": "P",
+            "bsb": "377877"
+          },
+          {
+            "code": "P",
+            "bsb": "377878"
+          },
+          {
+            "code": "P",
+            "bsb": "401795"
+          },
+          {
+            "code": "P",
+            "bsb": "430327"
+          },
+          {
+            "code": "P",
+            "bsb": "430328"
+          },
+          {
+            "code": "P",
+            "bsb": "430329"
+          },
+          {
+            "code": "P",
+            "bsb": "430330"
+          },
+          {
+            "code": "P",
+            "bsb": "433687"
+          },
+          {
+            "code": "P",
+            "bsb": "455701"
+          },
+          {
+            "code": "P",
+            "bsb": "455702"
+          },
+          {
+            "code": "P",
+            "bsb": "455703"
+          },
+          {
+            "code": "P",
+            "bsb": "455704"
+          },
+          {
+            "code": "P",
+            "bsb": "471527"
+          },
+          {
+            "code": "P",
+            "bsb": "490292"
+          },
+          {
+            "code": "P",
+            "bsb": "490289"
+          },
+          {
+            "code": "P",
+            "bsb": "531355"
+          },
+          {
+            "code": "P",
+            "bsb": "531356"
+          },
+          {
+            "code": "P",
+            "bsb": "531357"
+          },
+          {
+            "code": "P",
+            "bsb": "531358"
+          },
+          {
+            "code": "P",
+            "bsb": "531359"
+          },
+          {
+            "code": "P",
+            "bsb": "552061"
+          },
+          {
+            "code": "P",
+            "bsb": "552270"
+          },
+          {
+            "code": "P",
+            "bsb": "555001"
+          },
+          {
+            "code": "P",
+            "bsb": "556733"
+          },
+          {
+            "code": "P",
+            "bsb": "558388"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.createvalueinstructionfile.CreateValueInstructionFileResponse",
+        "valueInstructionFileFilename": "VIF_file"
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.updatevalueinstructionfilevouchersstatus",
+      "exchangeName": "lombard.service.repository.updatevouchers",
+      "routingKey": "NVIF",
+      "queueName": "lombard.service.outclearings.updatevalueinstructionfilevouchersstatus",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest",
+        "jobIdentifier" : "#JOB_IDENTIFIER#",
+        "voucherTransition" : "VIF_OUTBOUND",
+        "voucherStatus" : "Sent",
+        "transitionDate" : "#DATETIME#",
+        "filename" : "VIF_file"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+      }
+    },
+    {
+      "activityName": "trigger.timer"
+    },
+    {
+      "activityName": "lombard.service.outclearings.processvalueinstructionfileack",
+      "exchangeName": "lombard.service.outclearings.processvalueinstructionfileack",
+      "routingKey": "NVIF",
+      "queueName": "lombard.service.outclearings.processvalueinstructionfileack",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.processvalueinstructionfileacknowledgment.ProcessValueInstructionFileAcknowledgmentRequest",
+        "jobIdentifier" : "#JOB_IDENTIFIER#"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.outclearings.processvalueinstructionfileacknowledgment.ProcessValueInstructionFileAcknowledgmentResponse",
+        "ackStatus" : true,
+        "errorCode" : ""
+      }
+    },
+    {
+      "activityName": "lombard.service.outclearings.updatevalueinstructionfilevouchersackstatus",
+      "exchangeName": "lombard.service.repository.updatevouchers",
+      "routingKey": "NVIF2",
+      "queueName": "lombard.service.outclearings.updatevalueinstructionfilevouchersackstatus",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusRequest",
+        "jobIdentifier" : "#JOB_IDENTIFIER#",
+        "voucherTransition" : "VIF_ACK_OUTBOUND",
+        "voucherStatus" : "Completed",
+        "transitionDate" : "#DATETIME#",
+        "filename" : "VIF_file.ACK"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.updatevouchersstatus.UpdateVouchersStatusResponse"
+      }
+    }
+  ]
+}

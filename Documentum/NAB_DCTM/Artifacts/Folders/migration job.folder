@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.foldersubtype/Migration+Job?language_code=&amp;location=%2FConfig&amp;name=Migration+Job&amp;type=fxa_folder" categoryId="com.emc.ide.artifact.foldersubtype" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="sysobject:FolderSubtype" objectName="Migration Job" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" rootObject="false">
+    <objectType href="urn:com.emc.ide.artifact.dclass/fxa_folder?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Types/fxa_folder.type#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,162 @@
+{
+  "jobIdentifier": "UnitTest-StoreAssociatedBulkCredit.json",
+  "insertVouchers": [
+    {
+      "voucher": {
+          "voucher": {
+            "documentReferenceNumber": "BulkCredit01",
+            "processingDate": "2015-06-10",
+            "documentType": "Cr"
+          },
+          "voucherBatch": {
+              "batchAccountNumber": "12345678",
+              "batchType": "",
+              "captureBsb": "123456",
+              "processingState": "NSW",
+              "scannedBatchNumber": "121212",
+              "subBatchType": "XXX",
+              "workType": "NABCHQ_LBOX"
+          },
+          "voucherProcess": {
+            "adjustedBy": "",
+            "adjustedFlag": false,
+            "adjustmentLetterRequired": false,
+            "adjustmentReasonCode": 0,
+            "alternateAccountNumber": "",
+            "alternateAuxDom": "",
+            "alternateBsbNumber": "",
+            "alternateExAuxDom": "",
+            "alternateTransactionCode": "",
+            "apPresentmentType": "E",
+            "creditNoteFlag": false,
+            "customerLinkNumber": "123456",
+            "highValueFlag": false,
+            "inactiveFlag": false,
+            "isGeneratedBulkCredit": true,
+            "isRetrievedVoucher": false,
+            "listingPageNumber": "10",
+            "manualRepair": 0,
+            "micrFlag": true,
+            "postTransmissionQaAmountFlag": false,
+            "postTransmissionQaCodelineFlag": false,
+            "preAdjustmentAmount": null,
+            "presentationMode": "1",
+            "rawMICR": "test",
+            "repostFromDRN": null,
+            "surplusItemFlag": false,
+            "suspectFraud": false,
+            "thirdPartyCheckFailed": false,
+            "thirdPartyMixedDepositReturnFlag": false,
+            "thirdPartyPoolFlag": false,
+            "transactionLinkNumber": "123456",
+            "unencodedECDReturnFlag": false,
+            "unprocessable": false,
+            "transactionLinkNumber": "123456"
+          }
+      },
+      "transferEndpoints": null
+    }
+  ],
+  "updateVouchers": [
+    {
+      "voucher": {
+        "voucher": {
+          "documentReferenceNumber": "11111111",
+          "processingDate": "2015-06-10",
+          "documentType": "Dr"
+        },
+        "voucherBatch": {
+          "batchAccountNumber": "12345678",
+          "batchType": "",
+          "captureBsb": "123456",
+          "processingState": "NSW",
+          "scannedBatchNumber": "121212",
+          "subBatchType": "XXX",
+          "workType": "NABCHQ_LBOX"
+        },
+        "voucherProcess": {
+          "adjustedFlag": false,
+          "adjustmentLetterRequired": false,
+          "adjustmentReasonCode": 0,
+          "alternateAccountNumber": "",
+          "alternateAuxDom": "",
+          "alternateBsbNumber": "",
+          "alternateExAuxDom": "",
+          "alternateTransactionCode": "",
+          "apPresentmentType": "E",
+          "creditNoteFlag": false,
+          "customerLinkNumber": "123456",
+          "highValueFlag": false,
+          "inactiveFlag": false,
+          "isGeneratedBulkCredit": false,
+          "isRetrievedVoucher": false,
+          "manualRepair": 0,
+          "micrFlag": false,
+          "postTransmissionQaAmountFlag": false,
+          "postTransmissionQaCodelineFlag": false,
+          "preAdjustmentAmount": null,
+          "repostFromDRN": null,
+          "surplusItemFlag": false,
+          "suspectFraud": false,
+          "thirdPartyCheckFailed": false,
+          "thirdPartyMixedDepositReturnFlag": false,
+          "thirdPartyPoolFlag": false,
+          "transactionLinkNumber": "123456",
+          "unencodedECDReturnFlag": false,
+          "unprocessable": false
+        }
+      },
+      "transferEndpoints": null
+    },
+    {
+      "voucher": {
+        "voucher": {
+          "documentReferenceNumber": "22222222",
+          "processingDate": "2015-06-10",
+          "documentType": "Dr"
+        },
+        "voucherBatch": {
+          "batchAccountNumber": "12345678",
+          "batchType": "",
+          "captureBsb": "123456",
+          "processingState": "NSW",
+          "scannedBatchNumber": "121212",
+          "subBatchType": "XXX",
+          "workType": "NABCHQ_LBOX"
+        },
+        "voucherProcess": {
+          "adjustedFlag": false,
+          "adjustmentLetterRequired": false,
+          "adjustmentReasonCode": 0,
+          "alternateAccountNumber": "",
+          "alternateAuxDom": "",
+          "alternateBsbNumber": "",
+          "alternateExAuxDom": "",
+          "alternateTransactionCode": "",
+          "apPresentmentType": "E",
+          "creditNoteFlag": false,
+          "customerLinkNumber": "123456",
+          "highValueFlag": false,
+          "inactiveFlag": false,
+          "isGeneratedBulkCredit": false,
+          "isRetrievedVoucher": false,
+          "manualRepair": 0,
+          "micrFlag": false,
+          "postTransmissionQaAmountFlag": false,
+          "postTransmissionQaCodelineFlag": false,
+          "preAdjustmentAmount": null,
+          "repostFromDRN": null,
+          "surplusItemFlag": false,
+          "suspectFraud": false,
+          "thirdPartyCheckFailed": false,
+          "thirdPartyMixedDepositReturnFlag": false,
+          "thirdPartyPoolFlag": false,
+          "transactionLinkNumber": "123456",
+          "unencodedECDReturnFlag": false,
+          "unprocessable": false
+        }
+      },
+      "transferEndpoints": null
+    }
+  ]
+}

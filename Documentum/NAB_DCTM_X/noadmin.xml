@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
+	<parameter key="NABDCPECM_SVC_E" value="#{DctmUsername}"/>
+	<parameter key="NABDC_SQL_D" value="#{DatabaseUser}"/>
+</installparam:InputFile>

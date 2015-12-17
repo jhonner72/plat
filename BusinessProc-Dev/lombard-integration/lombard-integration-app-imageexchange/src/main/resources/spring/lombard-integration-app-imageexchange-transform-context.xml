@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+        >
+
+    <bean id="transform.lombard.service.outclearings.getvouchersforimageexchange.request" class="com.fujixerox.aus.integration.transform.outclearings.GetVouchersForImageExchangeTransform" />
+    <bean id="transform.lombard.service.outclearings.getvouchersforimageexchange.response" class="com.fujixerox.aus.integration.transform.outclearings.GetVouchersForImageExchangeResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.createimageexchangefile.request" class="com.fujixerox.aus.integration.transform.outclearings.CreateBatchImageExchangeFileTransform"
+          p:sequenceNumberGenerator-ref="sequenceNumberGenerator"
+          p:metadataStore-ref="metadataStore"
+            />
+    <bean id="transform.lombard.service.copyfile.request" class="com.fujixerox.aus.integration.transform.outclearings.CopyFileTransform"
+          p:lockerPath-ref="lockerPath"
+          p:fileDropPath-ref="fileDropPath"
+            />
+    <bean id="transform.lombard.service.outclearings.updateimageexchangevouchersstatus.request" class="com.fujixerox.aus.integration.transform.outclearings.UpdateBatchImageExchangeVouchersStatusTransform" />
+</beans>

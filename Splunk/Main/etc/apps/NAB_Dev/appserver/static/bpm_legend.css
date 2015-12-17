@@ -1,0 +1,26 @@
+div.legend span.icon {
+	font-family: "Splunk Icons";
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	font-size: 16px;
+	padding-right:5px;
+}
+div.legend > span {
+	padding-right: 15px;
+}
+
+div.legend span.icon.high {
+	content: "\ECD4";
+	color: #ff7e00;
+}
+
+div.legend span.icon.severe {
+	content: "\2297";
+	color: #ff1f24;
+}
+
+div.legend span.icon.low {
+	content: "\ECD3";
+	color: #00b932;
+}

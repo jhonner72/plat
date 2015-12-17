@@ -1,0 +1,10 @@
+{
+  "job": {
+    "jobIdentifier": "#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier": null,
+    "processIdentifier": null,
+    "subject": "day2workflow",
+    "predicate": "trigger",
+    "status": 0
+  }
+}

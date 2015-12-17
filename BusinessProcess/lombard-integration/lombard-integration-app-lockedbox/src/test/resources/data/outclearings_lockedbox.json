@@ -1,0 +1,1104 @@
+{
+    "job":
+    {
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "initiatingJobIdentifier":null,
+        "processIdentifier":null,
+        "subject":"valuefromlockedbox",
+        "predicate":"collect",
+        "activity":[
+            {
+                "jobIdentifier":null,
+                "activityIdentifier":null,
+                "subject":null,
+                "predicate":null,
+                "requestDateTime":"2015-03-24T13:13:09.107+11:00",
+                "request":{
+                    "@type":"com.fujixerox.aus.lombard.common.receipt.ReceivedFile",
+                    "fileIdentifier":"OUTCLEARINGSPKG_20150623_111222333444.zip",
+                    "receivedDateTime":"2015-03-24T13:13:09.107+11:00"
+                },
+                "responseDateTime":null,
+                "response":null,
+                "failed":false
+            }
+        ],
+        "status":0
+    },
+    "activityCount": 20,
+    "activities": [
+		{
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.lockedbox.checkduplicatefile",
+            "exchangeName": "lombard.service.repository.checkduplicatefile",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.repository.lockedbox.checkduplicatefile",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileRequest",
+                "filename": "OUTCLEARINGSPKG_20150623_111222333444.zip"
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileResponse",
+                "isDuplicatedFile": "false"
+            }
+        },
+        {
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.lockedbox.unpackagevoucher",
+            "exchangeName": "lombard.service.outclearings.unpackagevoucher",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.unpackagevoucher",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#",
+                "receivedFile":{
+                    "fileIdentifier":"OUTCLEARINGSPKG_20150623_111222333444.zip",
+                    "receivedDateTime":"2015-03-24T13:13:09.107+11:00"
+                }
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherResponse",
+                "batch": {
+					"batchAccountNumber": "0000000017",
+					"batchNumber": "62700073",
+					"captureBsb": "082082",
+					"client": "NabChq",
+					"collectingBank": "991211",
+					"operator": "a",
+					"processingDate": "2015-10-24",
+					"processingState": "NSW",
+					"source": "DIPS",
+					"unitID": "027",
+					"batchType": "LML1",
+					"subBatchType": "SIN",
+					"workType": "NABCHQ_LBOX",
+					"voucher": [
+						{
+							"accountNumber": "0000000017",
+							"amount": "",
+							"auxDom": "2212",
+							"bsbNumber": "991211",
+							"creditNoteFlag": "false",
+							"documentReferenceNumber": "127000019",
+							"documentType": "HDR",
+							"extraAuxDom": "",
+							"inactiveFlag": false,
+							"micrFlag": true,
+							"micrUnprocessableFlag": false,
+							"processingDate": "2015-10-24",
+							"rawMICR": "-2212-991.211+0000000017-22",
+							"rawOCR": "!!!!!!!!!.!!!!C|OOOC|000!!!22",
+							"traceID": "627000234",
+							"transactionCode": "22"
+						},
+						{
+							"accountNumber": "000000000011",
+							"amount": "",
+							"auxDom": "00058274090400",
+							"bsbNumber": "002521",
+							"creditNoteFlag": "false",
+							"documentReferenceNumber": "127000020",
+							"documentType": "CRT",
+							"extraAuxDom": "1234567890123452",
+							"inactiveFlag": false,
+							"micrFlag": true,
+							"micrUnprocessableFlag": false,
+							"processingDate": "2015-10-24",
+							"rawMICR": "222!!2!02!22!2!22!!!5!!0552200!55955!200!!0",
+							"rawOCR": "+1234567890123452++00058274090400++002521++000000000011++3",
+							"traceID": "627000235",
+							"transactionCode": "333"
+						},
+						{
+							"accountNumber": "640161",
+							"amount": "",
+							"auxDom": "304856",
+							"bsbNumber": "036125",
+							"creditNoteFlag": "false",
+							"documentReferenceNumber": "127000021",
+							"documentType": "DBT",
+							"extraAuxDom": "",
+							"inactiveFlag": false,
+							"micrFlag": true,
+							"micrUnprocessableFlag": false,
+							"processingDate": "2015-10-24",
+							"rawMICR": "-304856-036.125+64.0161-",
+							"rawOCR": "||!!0!!!!!0!!!!!!!!!0!!!!",
+							"traceID": "627000236",
+							"transactionCode": ""
+						}
+					]					
+				}
+            }
+        },
+        {
+            "activityName": "lombard.service.outclearings.lockedbox.recognisecourtesyamount",
+            "exchangeName": "lombard.service.outclearings.recognisecourtesyamount",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.recognisecourtesyamount",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#",
+                "voucher": [
+                    {
+                        "documentReferenceNumber": "127000020",
+						"processingDate": "2015-10-24",
+						"transactionCode": "333"
+                    },
+					{
+						"documentReferenceNumber": "127000021",
+						"processingDate": "2015-10-24",
+						"transactionCode": ""
+					}
+                ]
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountResponse",
+                "voucher": [
+                    {
+                        "documentReferenceNumber": "127000020",
+                        "imageRotation": "0",
+                        "capturedAmount": "411909014",
+                        "amountConfidenceLevel": "0",
+                        "amountRegionOfInterest": {
+                            "top" : 0, "left" : 0, "height" : 20, "width" : 100
+                        }
+                    },
+					{
+                        "documentReferenceNumber": "127000021",
+                        "imageRotation": "0",
+                        "capturedAmount": "2908",
+                        "amountConfidenceLevel": "905",
+                        "amountRegionOfInterest": {
+                            "top" : 0, "left" : 0, "height" : 20, "width" : 100
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "activityName": "lombard.service.outclearings.lockedbox.validatecodeline",
+            "exchangeName": "lombard.service.outclearings.validatecodeline",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.validatecodeline",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineRequest",
+                "voucherBatch": {
+					"collectingBank": "991211",
+					"client": "NabChq",
+					"source": "DIPS",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"workType": "NABCHQ_LBOX",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+				},
+                "voucher": [
+					{
+						"accountNumber": "000000000011",
+						"amountConfidenceLevel": "0",
+						"auxDom": "00058274090400",
+						"bsbNumber": "002521",
+						"capturedAmount": "411909014",
+						"documentReferenceNumber": "127000020",
+						"documentType": "CRT",
+						"extraAuxDom": "1234567890123452",
+						"processingDate": "2015-10-24",
+						"transactionCode": "333"
+					},
+					{
+						"accountNumber": "640161",
+						"amountConfidenceLevel": "905",
+						"auxDom": "304856",
+						"bsbNumber": "036125",
+						"capturedAmount": "2908",
+						"documentReferenceNumber": "127000021",
+						"documentType": "DBT",
+						"extraAuxDom": "",
+						"processingDate": "2015-10-24",
+						"transactionCode": ""
+					}
+				]
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineResponse",
+                "voucher": [
+                    {
+                        "extraAuxDomStatus": "true",
+                        "bsbNumberStatus": "true",
+                        "accountNumberStatus": "true",
+                        "transactionCodeStatus":"true",
+                        "amountStatus":"false",
+                        "documentReferenceNumber": "127000020",
+                        "auxDomStatus": "true",
+						"documentType":"CRT",
+						"processingDate": "2015-10-24",
+						"targetEndPoint":""
+                    },
+					{
+                        "extraAuxDomStatus": "true",
+                        "bsbNumberStatus": "true",
+                        "accountNumberStatus": "true",
+                        "transactionCodeStatus":"true",
+                        "amountStatus":"true",
+                        "documentReferenceNumber": "127000021",
+                        "auxDomStatus": "true",
+						"documentType":"DBT",
+						"processingDate": "2015-10-24",
+						"targetEndPoint":"FIS"
+                    }
+                ],
+                "voucherBatch" : {
+                    "collectingBank": "991211",
+					"client": null,
+					"source": null,
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"workType": "NABCHQ_LBOX",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                }
+            }
+        },
+        {
+            "activityName": "lombard.service.outclearings.lockedbox.correctcodeline",
+            "exchangeName": "lombard.service.outclearings.correctcodeline",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.correctcodeline",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#",
+                "voucherBatch" : {
+                    "collectingBank": "991211",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                },
+                "voucher": [
+                    {
+                        "accountNumber": "000000000011",
+						"accountNumberStatus": true,
+						"amount": "",
+						"amountConfidenceLevel": "0",
+						"amountStatus": false,
+						"auxDom": "00058274090400",
+						"auxDomStatus": true,
+						"bsbNumber": "002521",
+						"bsbNumberStatus": true,
+						"capturedAmount": "411909014",
+						"creditNoteFlag": "false",
+						"documentReferenceNumber": "127000020",
+						"documentType": "CRT",
+						"extraAuxDom": "1234567890123452",
+						"extraAuxDomStatus": true,
+						"processingDate": "2015-10-24",
+						"repostFromDRN": null,
+						"repostFromProcessingDate": null,
+						"transactionCode": "333",
+						"transactionCodeStatus": true
+                    }
+                ]
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineResponse",
+                "voucher": [
+                    {
+                        "accountNumber": "000000000011",
+						"amount": "2909",
+						"auxDom": "00058274090400",
+						"bsbNumber": "002521",
+						"collectingBank": "991211",
+						"creditNoteFlag": "false",
+						"dips_override": "",
+						"documentReferenceNumber": "127000020",
+						"documentType": "CRT",
+						"extraAuxDom": "1234567890123452",
+						"forValueIndicator": "",
+						"manualRepair": 1,
+						"operatorID": "a",
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"presentationMode": "",
+						"processingDate": "2015-10-24",
+						"repostFromDRN": "",
+						"repostFromProcessingDate": "1950-01-01",
+						"targetEndPoint": "",
+						"transactionCode": "333",
+						"transactionLink": "",
+						"unprocessable": false
+                    }
+                ],
+                "voucherBatch" : {
+                    "collectingBank": "991211",
+					"client": null, 
+					"source": null,
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                }
+            }
+        },
+        {
+            "activityName": "lombard.service.outclearings.lockedbox.validatetransaction",
+            "exchangeName": "lombard.service.outclearings.validatetransaction",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.validatetransaction",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.validatetransaction.ValidateBatchTransactionRequest",
+                "voucherBatch": {
+                    "collectingBank": "991211",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                },
+                "voucher": [
+                    {
+						"dips_override": "",
+						"forValueIndicator": "",
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"rawMICR": "222!!2!02!22!2!22!!!5!!0552200!55955!200!!0",
+						"rawOCR": "+1234567890123452++00058274090400++002521++000000000011++3",
+						"unprocessable": false,
+						"voucher": {
+							"transactionCode": "333",
+							"documentReferenceNumber": "127000020",
+							"bsbNumber": "002521",
+							"accountNumber": "000000000011",
+							"documentType": "CRT",
+							"auxDom": "00058274090400",
+							"processingDate": "2015-10-24",
+							"amount": "2909",
+							"extraAuxDom": "1234567890123452"
+						}
+					},
+					{
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"rawMICR": "-304856-036.125+64.0161-",
+						"rawOCR": "||!!0!!!!!0!!!!!!!!!0!!!!",
+						"unprocessable": false,
+						"voucher": {
+							"transactionCode": "",
+							"documentReferenceNumber": "127000021",
+							"bsbNumber": "036125",
+							"accountNumber": "640161",
+							"documentType": "DBT",
+							"auxDom": "304856",
+							"processingDate": "2015-10-24",
+							"amount": "2908",
+							"extraAuxDom": ""
+						}
+					}
+                ]
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.validatetransaction.ValidateBatchTransactionResponse",
+                "voucher": [
+                    {
+                        "codelineFieldsStatus": {
+                            "accountNumberStatus": true,
+                            "amountStatus": false,
+                            "auxDomStatus": true,
+                            "bsbNumberStatus": true,
+                            "extraAuxDomStatus": true,
+                            "transactionCodeStatus": true
+                        },
+                        "dips_override": "",
+                        "documentReferenceNumber": "127000020",
+                        "forValueIndicator": "",
+                        "postTransmissionQaAmountFlag": false,
+                        "postTransmissionQaCodelineFlag": false,
+                        "reasonCode": "None",
+                        "surplusItemFlag": false,
+                        "suspectFraudFlag": false,
+                        "thirdPartyCheckRequired": false,
+                        "thirdPartyMixedDepositReturnFlag": false,
+                        "transactionLinkNumber": "1",
+                        "unencodedECDReturnFlag": false,
+                        "unprocessable": false,
+                        "voucher": {
+							"transactionCode": "333",
+							"documentReferenceNumber": "127000020",
+							"bsbNumber": "002521",
+							"accountNumber": "000000000011",
+							"documentType": "CRT",
+							"auxDom": "00058274090400",
+							"processingDate": "2015-10-24",
+							"amount": "2909",
+							"extraAuxDom": "1234567890123452"
+                        }
+                    },
+					{
+                        "codelineFieldsStatus": {
+                            "accountNumberStatus": true,
+                            "amountStatus": true,
+                            "auxDomStatus": true,
+                            "bsbNumberStatus": true,
+                            "extraAuxDomStatus": true,
+                            "transactionCodeStatus": true
+                        },
+                        "dips_override": "",
+                        "documentReferenceNumber": "127000021",
+                        "forValueIndicator": "",
+                        "postTransmissionQaAmountFlag": false,
+                        "postTransmissionQaCodelineFlag": false,
+                        "reasonCode": "None",
+                        "surplusItemFlag": false,
+                        "suspectFraudFlag": false,
+                        "thirdPartyCheckRequired": false,
+                        "thirdPartyMixedDepositReturnFlag": false,
+                        "transactionLinkNumber": "1",
+                        "unencodedECDReturnFlag": false,
+                        "unprocessable": false,
+                        "voucher": {
+							"transactionCode": "",
+							"documentReferenceNumber": "127000021",
+							"bsbNumber": "036125",
+							"accountNumber": "640161",
+							"documentType": "DBT",
+							"auxDom": "304856",
+							"processingDate": "2015-10-24",
+							"amount": "2908",
+							"extraAuxDom": ""
+                        }
+                    }
+                ],
+                "voucherBatch": {
+                    "collectingBank": "991211",
+					"client": null,
+                    "source": null,
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                }
+            }
+        },
+        {
+            "activityName": "lombard.service.outclearings.lockedbox.correcttransaction",
+            "exchangeName": "lombard.service.outclearings.correcttransaction",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.correcttransaction",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.correcttransaction.CorrectBatchTransactionRequest",
+                "voucher": [{
+					"codelineFieldsStatus": {
+						"transactionCodeStatus": true,
+						"bsbNumberStatus": true,
+						"accountNumberStatus": true,
+						"auxDomStatus": true,
+						"amountStatus": false,
+						"extraAuxDomStatus": true
+					},
+					"creditNoteFlag": "false",
+					"dips_override": "",
+					"forValueIndicator": "",
+					"manualRepair": 1,
+					"postTransmissionQaAmountFlag": false,
+					"postTransmissionQaCodelineFlag": false,
+					"rawMICR": "222!!2!02!22!2!22!!!5!!0552200!55955!200!!0",
+					"rawOCR": "+1234567890123452++00058274090400++002521++000000000011++3",
+					"reasonCode": "None",
+					"surplusItemFlag": false,
+					"suspectFraudFlag": false,
+					"targetEndPoint": "",
+					"thirdPartyCheckRequired": false,
+					"thirdPartyMixedDepositReturnFlag": false,
+					"transactionLinkNumber": "1",
+					"unencodedECDReturnFlag": false,
+					"unprocessable": false,
+					"voucher": {
+						"transactionCode": "333",
+						"documentReferenceNumber": "127000020",
+						"bsbNumber": "002521",
+						"accountNumber": "000000000011",
+						"documentType": "CRT",
+						"auxDom": "00058274090400",
+						"processingDate": "2015-10-24",
+						"amount": "2909",
+						"extraAuxDom": "1234567890123452"
+					}
+				},
+				{
+					"codelineFieldsStatus": {
+						"transactionCodeStatus": true,
+						"bsbNumberStatus": true,
+						"accountNumberStatus": true,
+						"auxDomStatus": true,
+						"amountStatus": true,
+						"extraAuxDomStatus": true
+					},
+					"creditNoteFlag": "false",
+					"dips_override": "",
+					"forValueIndicator": "",
+					"manualRepair": 0,
+					"postTransmissionQaAmountFlag": false,
+					"postTransmissionQaCodelineFlag": false,
+					"rawMICR": "-304856-036.125+64.0161-",
+					"rawOCR": "||!!0!!!!!0!!!!!!!!!0!!!!",
+					"reasonCode": "None",
+					"surplusItemFlag": false,
+					"suspectFraudFlag": false,
+					"targetEndPoint": "FIS",
+					"thirdPartyCheckRequired": false,
+					"thirdPartyMixedDepositReturnFlag": false,
+					"transactionLinkNumber": "1",
+					"unencodedECDReturnFlag": false,
+					"unprocessable": false,
+					"voucher": {
+						"transactionCode": "",
+						"documentReferenceNumber": "127000021",
+						"bsbNumber": "036125",
+						"accountNumber": "640161",
+						"documentType": "DBT",
+						"auxDom": "304856",
+						"processingDate": "2015-10-24",
+						"amount": "2908",
+						"extraAuxDom": ""
+					}
+				}],
+				"voucherBatch": {
+					"collectingBank": "991211",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+				}
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.correcttransaction.CorrectBatchTransactionResponse",
+                "voucher": [
+                    {
+                        "adjustedBy": "",
+                        "adjustedFlag": false,
+                        "adjustmentDescription": "",
+                        "adjustmentLetterRequired": false,
+                        "adjustmentReasonCode": 0,
+						"alternateAccountNumber": "",
+						"alternateAuxDom": "",
+						"alternateBsbNumber": "",
+						"alternateExAuxDom": "",
+						"alternateTransactionCode": "",
+						"creditNoteFlag": "false",
+                        "dips_override": "",
+						"dipsSequenceNumber": "0000",
+						"dipsTraceNumber": "127000020",
+                        "forValueIndicator": "",
+                        "highValueFlag": false,
+						"isRetrievedVoucher": false,
+                        "listingPageNumber": "",
+                        "manualRepair": 1,
+                        "operatorId": "a",
+                        "postTransmissionQaAmountFlag": false,
+                        "postTransmissionQaCodelineFlag": false,
+						"preAdjustmentAmount": "0",
+                        "presentationMode": "",
+                        "surplusItemFlag": false,
+                        "suspectFraudFlag": false,
+                        "targetEndPoint": "",
+                        "thirdPartyCheckRequired": false,
+                        "thirdPartyMixedDepositReturnFlag": false,
+                        "transactionLinkNumber": "1",
+                        "unencodedECDReturnFlag": false,
+                        "unprocessable": false,
+                        "voucher": {
+                            "transactionCode": "333",
+							"documentReferenceNumber": "127000020",
+							"bsbNumber": "002521",
+							"accountNumber": "000000000011",
+							"documentType": "CRT",
+							"auxDom": "00058274090400",
+							"processingDate": "2015-10-24",
+							"amount": "2908",
+							"extraAuxDom": "1234567890123452"
+                        },
+                        "voucherDelayedIndicator": ""
+                    },
+                    {
+                        "adjustedBy": "",
+                        "adjustedFlag": false,
+                        "adjustmentDescription": "",
+                        "adjustmentLetterRequired": false,
+                        "adjustmentReasonCode": 0,
+						"alternateAccountNumber": "",
+						"alternateAuxDom": "",
+						"alternateBsbNumber": "",
+						"alternateExAuxDom": "",
+						"alternateTransactionCode": "",
+						"creditNoteFlag": "false",
+                        "dips_override": "",
+						"dipsSequenceNumber": "0000",
+						"dipsTraceNumber": "127000021",
+                        "forValueIndicator": "",
+                        "highValueFlag": false,
+						"isRetrievedVoucher": false,
+                        "listingPageNumber": "",
+                        "manualRepair": 0,
+                        "operatorId": "a",
+                        "postTransmissionQaAmountFlag": false,
+                        "postTransmissionQaCodelineFlag": false,
+						"preAdjustmentAmount": "0",
+                        "presentationMode": "",
+                        "surplusItemFlag": false,
+                        "suspectFraudFlag": false,
+                        "targetEndPoint": "FIS",
+                        "thirdPartyCheckRequired": false,
+                        "thirdPartyMixedDepositReturnFlag": false,
+                        "transactionLinkNumber": "1",
+                        "unencodedECDReturnFlag": false,
+                        "unprocessable": false,
+                        "voucher": {
+                            "transactionCode": "",
+							"documentReferenceNumber": "127000021",
+							"bsbNumber": "036125",
+							"accountNumber": "640161",
+							"documentType": "DBT",
+							"auxDom": "304856",
+							"processingDate": "2015-10-24",
+							"amount": "2908",
+							"extraAuxDom": ""
+                        },
+                        "voucherDelayedIndicator": ""
+                    }
+                ],
+                "voucherBatch": {
+                    "collectingBank": "991211",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"workType": "NABCHQ_LBOX",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+                }
+            }
+        },
+        {
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.lockedbox.storebatchvoucher",
+            "exchangeName": "lombard.service.repository.storevouchers",
+            "routingKey": "NSBL",
+            "queueName": "lombard.service.outclearings.lockedbox.storebatchvoucher",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest",
+                "jobIdentifier": "17032015-3AEA-4069-A2DD-SSSS12345678",
+                "origin": "VOUCHER_INBOUND",
+                "receipt": {
+                    "fileIdentifier": "OUTCLEARINGSPKG_20150623_111222333444.zip",
+                    "receivedDateTime": "2015-03-24T13:13:09.107+11:00",
+                    "transmissionDateTime": "2015-03-24T13:13:09.107+11:00"
+                },
+                "voucher": [{
+					"transferEndpoints": [],
+					"voucher": {
+						"transactionCode": "22",
+						"documentReferenceNumber": "127000019",
+						"bsbNumber": "991211",
+						"accountNumber": "0000000017",
+						"documentType": "Bh",
+						"auxDom": "2212",
+						"processingDate": "2015-10-24",
+						"amount": "",
+						"extraAuxDom": ""
+					},
+					"voucherAudit": [{
+						"attribute_name": "operator_name",
+						"operator": "a",
+						"subject_area": "dips"
+					}],
+					"voucherProcess": {
+						"micrFlag": true,
+						"unprocessable": false,
+						"forValueType": null,
+						"manualRepair": 0,
+						"inactiveFlag": false,
+						"highValueFlag": false,
+						"rawMICR": "-2212-991.211+0000000017-22",
+						"rawOCR": "!!!!!!!!!.!!!!C|OOOC|000!!!22",
+						"suspectFraud": false,
+						"adjustmentReasonCode": 0,
+						"adjustedFlag": false,
+						"adjustmentLetterRequired": false,
+						"repostFromDRN": null,
+						"repostFromProcessingDate": null,
+						"surplusItemFlag": false,
+						"thirdPartyCheckFailed": false,
+						"thirdPartyMixedDepositReturnFlag": false,
+						"preAdjustmentAmount": null,
+						"unencodedECDReturnFlag": false,
+						"thirdPartyPoolFlag": false,
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"customerLinkNumber": null,
+						"isGeneratedBulkCredit": false,
+						"apPresentmentType": null,
+						"documentRetrievalFlag": false,
+						"isReservedForBalancing": false,
+						"releaseFlag": null,
+						"isRetrievedVoucher": false,
+						"documentRetrievalDate": null,
+						"creditNoteFlag": "false"
+					}
+				},
+				{
+					"transferEndpoints": [{
+						"documentExchange": "VIF_OUTBOUND",
+						"endpoint": "NABCHQ_LBOX:LML1:082082",
+						"filename": null,
+						"voucherStatus": "OnHold"
+					},
+					{
+						"documentExchange": "VIF_ACK_OUTBOUND",
+						"endpoint": "NABCHQ_LBOX:LML1:082082",
+						"filename": null,
+						"voucherStatus": "OnHold"
+					}],
+					"voucher": {
+						"transactionCode": "333",
+						"documentReferenceNumber": "127000020",
+						"bsbNumber": "002521",
+						"accountNumber": "000000000011",
+						"documentType": "Cr",
+						"auxDom": "00058274090400",
+						"processingDate": "2015-10-24",
+						"amount": "2908",
+						"extraAuxDom": "1234567890123452"
+					},
+					"voucherAudit": [{
+						"attribute_name": "operator_name",
+						"operator": "a",
+						"subject_area": "dips"
+					},
+					{
+						"attribute_name": "captured_amt",
+						"operator": null,
+						"post_value": "411909014",
+						"pre_value": "",
+						"subject_area": "car"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:18:32",
+						"pre_value": "24102015 12:18:29",
+						"subject_area": "car"
+					},
+					{
+						"attribute_name": "amount_status",
+						"operator": null,
+						"post_value": "false",
+						"subject_area": "cdv"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:18:41",
+						"pre_value": "24102015 12:18:32",
+						"subject_area": "cdv"
+					},
+					{
+						"attribute_name": "amt",
+						"operator": "a",
+						"post_value": "2909",
+						"pre_value": "411909014",
+						"subject_area": "cdc"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:20:21",
+						"pre_value": "24102015 12:18:41",
+						"subject_area": "cdc"
+					},
+					{
+						"attribute_name": "unprocessable_item_flag",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "cdc"
+					},
+					{
+						"attribute_name": "ptqa_codeline",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "cdc"
+					},
+					{
+						"attribute_name": "for_value_indicator",
+						"operator": "a",
+						"post_value": "",
+						"subject_area": "cdc"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:20:31",
+						"pre_value": "24102015 12:20:21",
+						"subject_area": "abal"
+					},
+					{
+						"attribute_name": "tpc_check_required",
+						"operator": null,
+						"post_value": "false",
+						"subject_area": "abal"
+					},
+					{
+						"attribute_name": "amt",
+						"operator": "a",
+						"post_value": "2908",
+						"pre_value": "2909",
+						"subject_area": "ebal"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:21:01",
+						"pre_value": "24102015 12:20:31",
+						"subject_area": "ebal"
+					},
+					{
+						"attribute_name": "ptqa_amount",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "ebal"
+					},
+					{
+						"attribute_name": "adjustment_flag",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "ebal"
+					}],
+					"voucherProcess": {
+						"voucherDelayedIndicator": "",
+						"micrFlag": true,
+						"unprocessable": false,
+						"transactionLinkNumber": "1",
+						"forValueType": null,
+						"presentationMode": "E",
+						"manualRepair": 1,
+						"inactiveFlag": false,
+						"highValueFlag": false,
+						"rawMICR": "222!!2!02!22!2!22!!!5!!0552200!55955!200!!0",
+						"rawOCR": "+1234567890123452++00058274090400++002521++000000000011++3",
+						"suspectFraud": false,
+						"listingPageNumber": "",
+						"adjustmentReasonCode": 0,
+						"adjustmentDescription": "",
+						"adjustedBy": "",
+						"adjustedFlag": false,
+						"adjustmentLetterRequired": false,
+						"repostFromDRN": null,
+						"repostFromProcessingDate": null,
+						"surplusItemFlag": false,
+						"thirdPartyCheckFailed": false,
+						"thirdPartyMixedDepositReturnFlag": false,
+						"preAdjustmentAmount": "0",
+						"unencodedECDReturnFlag": false,
+						"thirdPartyPoolFlag": false,
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"customerLinkNumber": null,
+						"isGeneratedBulkCredit": false,
+						"apPresentmentType": null,
+						"documentRetrievalFlag": false,
+						"isReservedForBalancing": false,
+						"releaseFlag": null,
+						"isRetrievedVoucher": false,
+                        "insertedCreditType": "NONE",
+						"documentRetrievalDate": null,
+						"creditNoteFlag": "false",
+						"alternateAccountNumber": "",
+						"alternateAuxDom": "",
+						"alternateBsbNumber": "",
+						"alternateExAuxDom": "",
+						"alternateTransactionCode": ""
+					}
+				},
+				{
+					"transferEndpoints": [{
+						"documentExchange": "IMAGE_EXCHANGE_OUTBOUND",
+						"endpoint": "FIS",
+						"filename": null,
+						"voucherStatus": "OnHold"
+					},
+					{
+						"documentExchange": "VIF_OUTBOUND",
+						"endpoint": "NABCHQ_LBOX:LML1:082082",
+						"filename": null,
+						"voucherStatus": "OnHold"
+					},
+					{
+						"documentExchange": "VIF_ACK_OUTBOUND",
+						"endpoint": "NABCHQ_LBOX:LML1:082082",
+						"filename": null,
+						"voucherStatus": "OnHold"
+					}],
+					"voucher": {
+						"transactionCode": "",
+						"documentReferenceNumber": "127000021",
+						"bsbNumber": "036125",
+						"accountNumber": "640161",
+						"documentType": "Dr",
+						"auxDom": "304856",
+						"processingDate": "2015-10-24",
+						"amount": "2908",
+						"extraAuxDom": ""
+					},
+					"voucherAudit": [{
+						"attribute_name": "operator_name",
+						"operator": "a",
+						"subject_area": "dips"
+					},
+					{
+						"attribute_name": "captured_amt",
+						"operator": null,
+						"post_value": "2908",
+						"pre_value": "",
+						"subject_area": "car"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:18:32",
+						"pre_value": "24102015 12:18:29",
+						"subject_area": "car"
+					},
+					{
+						"attribute_name": "amount_status",
+						"operator": null,
+						"post_value": "true",
+						"subject_area": "cdv"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:18:41",
+						"pre_value": "24102015 12:18:32",
+						"subject_area": "cdv"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:20:31",
+						"pre_value": "24102015 12:20:21",
+						"subject_area": "abal"
+					},
+					{
+						"attribute_name": "tpc_check_required",
+						"operator": null,
+						"post_value": "false",
+						"subject_area": "abal"
+					},
+					{
+						"attribute_name": "timings",
+						"operator": null,
+						"post_value": "24102015 12:21:01",
+						"pre_value": "24102015 12:20:31",
+						"subject_area": "ebal"
+					},
+					{
+						"attribute_name": "ptqa_amount",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "ebal"
+					},
+					{
+						"attribute_name": "adjustment_flag",
+						"operator": "a",
+						"post_value": "false",
+						"subject_area": "ebal"
+					}],
+					"voucherProcess": {
+						"voucherDelayedIndicator": "",
+						"micrFlag": true,
+						"unprocessable": false,
+						"transactionLinkNumber": "1",
+						"forValueType": null,
+						"presentationMode": "E",
+						"manualRepair": 0,
+						"inactiveFlag": false,
+						"highValueFlag": false,
+						"rawMICR": "-304856-036.125+64.0161-",
+						"rawOCR": "||!!0!!!!!0!!!!!!!!!0!!!!",
+						"suspectFraud": false,
+						"listingPageNumber": "",
+						"adjustmentReasonCode": 0,
+						"adjustmentDescription": "",
+						"adjustedBy": "",
+						"adjustedFlag": false,
+						"adjustmentLetterRequired": false,
+						"repostFromDRN": null,
+						"repostFromProcessingDate": null,
+						"surplusItemFlag": false,
+						"thirdPartyCheckFailed": false,
+						"thirdPartyMixedDepositReturnFlag": false,
+						"preAdjustmentAmount": "0",
+						"unencodedECDReturnFlag": false,
+						"thirdPartyPoolFlag": false,
+						"postTransmissionQaAmountFlag": false,
+						"postTransmissionQaCodelineFlag": false,
+						"customerLinkNumber": null,
+						"isGeneratedBulkCredit": false,
+						"apPresentmentType": null,
+						"documentRetrievalFlag": false,
+						"isReservedForBalancing": false,
+						"releaseFlag": null,
+						"isRetrievedVoucher": false,
+                        "insertedCreditType": "NONE",
+						"documentRetrievalDate": null,
+						"creditNoteFlag": "false",
+						"alternateAccountNumber": "",
+						"alternateAuxDom": "",
+						"alternateBsbNumber": "",
+						"alternateExAuxDom": "",
+						"alternateTransactionCode": ""
+					}
+				}],
+				"voucherBatch": {
+					"collectingBank": "991211",
+					"processingState": "NSW",
+					"batchAccountNumber": "0000000017",
+					"workType": "NABCHQ_LBOX",
+					"captureBsb": "082082",
+					"unitID": "027",
+					"scannedBatchNumber": "62700073",
+					"batchType": "LML1",
+					"subBatchType": "SIN"
+				}
+			},
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+            }
+        }
+    ]
+}

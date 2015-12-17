@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <bean id="transform.lombard.service.outclearings.australiapost.unpackagevoucher.request" class="com.fujixerox.aus.integration.transform.outclearings.UnpackageBatchVoucherTransform" />
+    <bean id="transform.lombard.service.outclearings.australiapost.recognisecourtesyamount.request" class="com.fujixerox.aus.integration.transform.outclearings.RecogniseBatchCourtesyAmountTransform" />
+    <bean id="transform.lombard.service.outclearings.australiapost.validatecodeline.request" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchCodelineTransform" />
+    <bean id="transform.lombard.service.outclearings.australiapost.validatecodeline.response" class="com.fujixerox.aus.integration.transform.outclearings.ValidateBatchCodelineResponseTransform" />
+    <bean id="transform.lombard.service.outclearings.australiapost.correctcodeline.request" class="com.fujixerox.aus.integration.transform.outclearings.CorrectBatchCodelineTransform" />
+    <bean id="transform.lombard.service.outclearings.australiapost.storebatchvoucher.request" class="com.fujixerox.aus.integration.transform.outclearings.StoreBatchVoucherTransform"
+          p:metadataStore-ref="metadataStore"
+            />
+    <bean id="transform.lombard.service.outclearings.australiapostitemprocess.checkduplicatefile.incident" class="com.fujixerox.aus.integration.transform.integration.DuplicateFileIncidentTransform" />
+</beans>

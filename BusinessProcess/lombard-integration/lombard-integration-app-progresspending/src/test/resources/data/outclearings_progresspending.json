@@ -1,0 +1,29 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"pendingvouchers",
+    "predicate":"update",
+    "status":0
+  },
+  "activityCount": 1,
+  "activities": [
+    {
+      "activityName": "lombard.service.outclearings.updatependingvouchers",
+      "exchangeName": "lombard.service.repository.getvouchers",
+      "routingKey": "NPPV",
+      "queueName": "lombard.service.outclearings.updatependingvouchers",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "voucherStatusFrom": "Pending",
+        "voucherStatusTo": "New"
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.repository.getvouchers.GetVouchersResponse",
+        "voucherCount": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Extras.Topshelf</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.Extras.Topshelf.SerilogConfigurationExtensions">
+            <summary>
+             Extensions for configuring Logging for Serilog
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Topshelf.SerilogConfigurationExtensions.UseSerilog(Topshelf.HostConfigurators.HostConfigurator)">
+            <summary>
+              Specify that you want to use the Serilog logging engine.
+            </summary>
+            <param name="configurator"></param>
+        </member>
+        <member name="M:Serilog.Extras.Topshelf.SerilogConfigurationExtensions.UseSerilog(Topshelf.HostConfigurators.HostConfigurator,Serilog.ILogger)">
+            <summary>
+              Specify that you want to use the Serilog logging engine.
+            </summary>
+            <param name="configurator"></param>
+            <param name="logger">Serilog logger to use.</param>
+        </member>
+        <member name="T:Serilog.Extras.Topshelf.SerilogHostLoggerConfigurator">
+            <summary>
+            Configures the Topshelf host to write log messages to Serilog.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Topshelf.SerilogHostLoggerConfigurator.#ctor(Serilog.ILogger)">
+            <summary>
+            Construct the host configurator.
+            </summary>
+            <param name="logger">Optional logger instance for the
+            configurator to use. If this is omitted, the default <see cref="T:Serilog.Log"/>
+            logger will be used.</param>
+        </member>
+        <member name="M:Serilog.Extras.Topshelf.SerilogHostLoggerConfigurator.CreateLogWriterFactory">
+            <summary>
+            Create the factory that the host will use to write
+            messages.
+            </summary>
+            <returns>The factory.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="unpackImageExchangeBatchRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.inclearings.unpackimageexchangebatch.UnpackImageExchangeBatchResponse"
+          p:serviceName="lombard.service.inclearings.unpackimageexchangebatch"
+          p:consumeType=""
+          p:subject="imageexchangebatch"
+          p:predicate="unpack"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="storeBatchInwardImageExchangeVoucherRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+          p:serviceName="lombard.service.inclearings.storeinwardimageexchangedocumentum"
+          p:consumeType=""
+          p:subject="vouchers"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="raiseInwardImageExchangeDuplicateIncidentRoute" class="com.fujixerox.aus.integration.service.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+          p:serviceName="lombard.service.inclearings.inwardimageexchange.checkduplicatefile.incident"
+          p:subject="inwardimageexchange"
+          p:predicate="duplicate"
+            />
+
+</beans>

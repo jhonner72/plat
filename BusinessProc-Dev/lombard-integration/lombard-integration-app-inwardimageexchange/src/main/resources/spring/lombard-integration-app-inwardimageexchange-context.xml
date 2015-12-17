@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <import resource="lombard-integration-app-inwardimageexchange-transform-context.xml"/>
+    <import resource="lombard-integration-app-inwardimageexchange-route-context.xml" />
+
+    <bean id="inwardImageExchange" class="com.fujixerox.aus.lombard.outclearings.voucherprocessing.VoucherProcessingJobAdapter"
+          p:jobStore-ref="jobStore"
+          p:repositoryStore-ref="repositoryStore"
+          p:runtimeService-ref="runtimeService"
+          p:documentExchange="IMAGE_EXCHANGE_INBOUND"
+            />
+
+    <bean id="trackingTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="trackingDataSource"
+            />
+
+    <bean id="forValueSeedStore" class="com.fujixerox.aus.integration.store.JdbcForValueSeedQuery"
+          p:template-ref="trackingTemplate"
+            />
+
+    <!-- Camel -->
+
+    <camel:camelContext id="camelContextInwardImageExchange">
+        <camel:routeBuilder ref="unpackImageExchangeBatchRoute" />
+        <camel:routeBuilder ref="storeBatchInwardImageExchangeVoucherRoute" />
+        <camel:routeBuilder ref="raiseInwardImageExchangeDuplicateIncidentRoute" />
+    </camel:camelContext>
+
+    <bean id="camelInIe" class="org.camunda.bpm.camel.spring.CamelServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
+        <property name="camelContext" ref="camelContextInwardImageExchange"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "FXA_Reporting", "FXA_Reporting\FXA_Reporting.rptproj", "{B0E04F54-FFCF-4911-B76D-2DE0BC749518}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Development|Default = Development|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Debug|Default.ActiveCfg = Debug
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Debug|Default.Build.0 = Debug
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Debug|Default.Deploy.0 = Debug
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.DebugLocal|Default.Build.0 = DebugLocal
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Development|Default.ActiveCfg = DebugLocal
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Development|Default.Build.0 = DebugLocal
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Development|Default.Deploy.0 = DebugLocal
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Release|Default.ActiveCfg = Release
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Release|Default.Build.0 = Release
+		{B0E04F54-FFCF-4911-B76D-2DE0BC749518}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

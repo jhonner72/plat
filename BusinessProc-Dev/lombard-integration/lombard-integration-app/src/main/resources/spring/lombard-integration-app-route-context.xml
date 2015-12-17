@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <bean id="serviceRoute" abstract="true" class="com.fujixerox.aus.integration.service.ServiceRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+            />
+
+    <bean id="jobRoute" class="com.fujixerox.aus.integration.job.JobRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:exchangeName="lombard.service.job.queue"
+          p:options="${broker.options}"
+          p:jobStore-ref="jobStore"
+          p:jobToProcessMapper-ref="jobToProcessMapper"
+            />
+
+    <bean id="retryRoute" class="com.fujixerox.aus.integration.service.RetryRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+            />
+
+    <bean id="copyFileRoute" class="com.fujixerox.aus.outclearings.CopyFileRoute"
+          p:serviceName="lombard.service.copyfile"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="file"
+          p:predicate="copy"
+            />
+
+    <bean id="copyImagesToDipsServiceRoute" class="com.fujixerox.aus.inclearings.CopyImagesToDipsRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options="${broker.options}"
+            />
+
+</beans>

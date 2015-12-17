@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/UnpackageListing" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/UnpackageListing" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dips="http://lombard.aus.fujixerox.com/outclearings/ScannedListing">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/outclearings/ScannedListing" schemaLocation="ScannedListing.xsd"/>
+	<xs:element name="UnpackageListingRequest" type="tns:UnpackageListingRequest"/>
+	<xs:complexType name="UnpackageListingRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier represents the unique Id in the system and same as the name of the listingbatchheader.zip = JobIdentifier.zip. jobIdentifier is used to identify the images from bitloker
+Please refer the naming convention page on Wiki Page
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UnpackageListingResponse" type="tns:UnpackageListingResponse"/>
+	<xs:complexType name="UnpackageListingResponse">
+		<xs:sequence>
+			<xs:element name="scannedListing" type="dips:ScannedListingBatchHeader" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

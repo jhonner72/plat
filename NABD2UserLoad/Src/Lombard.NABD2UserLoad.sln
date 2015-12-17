@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.NABD2UserLoad.Service", "Lombard.NABD2UserLoad.Service\Lombard.NABD2UserLoad.Service.csproj", "{8D51ABEC-091A-46DE-AB9F-4C083840BB65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.NABD2UserLoad.Data", "Lombard.NABD2UserLoad.Data\Lombard.NABD2UserLoad.Data.csproj", "{B1C83AC1-9AB9-437B-A953-52D6614D2AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.NABD2UserLoad.Migrator", "Lombard.NABD2UserLoad.Migrator\Lombard.NABD2UserLoad.Migrator.csproj", "{A09D7792-947E-4A0D-94D0-27E3FABCBD8E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Lombard.NABD2UserLoad.Service\\Lombard.NABD2UserLoad.Service.csproj
+		SccProjectName1 = Lombard.NABD2UserLoad.Service
+		SccLocalPath1 = Lombard.NABD2UserLoad.Service
+		SccProjectUniqueName2 = Lombard.NABD2UserLoad.Data\\Lombard.NABD2UserLoad.Data.csproj
+		SccProjectName2 = Lombard.NABD2UserLoad.Data
+		SccLocalPath2 = Lombard.NABD2UserLoad.Data
+		SccProjectUniqueName3 = Lombard.NABD2UserLoad.Migrator\\Lombard.NABD2UserLoad.Migrator.csproj
+		SccProjectName3 = Lombard.NABD2UserLoad.Migrator
+		SccLocalPath3 = Lombard.NABD2UserLoad.Migrator
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D51ABEC-091A-46DE-AB9F-4C083840BB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D51ABEC-091A-46DE-AB9F-4C083840BB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D51ABEC-091A-46DE-AB9F-4C083840BB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D51ABEC-091A-46DE-AB9F-4C083840BB65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C83AC1-9AB9-437B-A953-52D6614D2AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C83AC1-9AB9-437B-A953-52D6614D2AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C83AC1-9AB9-437B-A953-52D6614D2AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C83AC1-9AB9-437B-A953-52D6614D2AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09D7792-947E-4A0D-94D0-27E3FABCBD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09D7792-947E-4A0D-94D0-27E3FABCBD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09D7792-947E-4A0D-94D0-27E3FABCBD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09D7792-947E-4A0D-94D0-27E3FABCBD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

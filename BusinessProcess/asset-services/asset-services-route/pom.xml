@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>asset-services-route</artifactId>
+    <packaging>jar</packaging>
+    <name>FXA Asset Services - Route</name>
+
+    <parent>
+        <groupId>com.fujixerox.aus.asset-services</groupId>
+        <artifactId>asset-services-base</artifactId>
+        <version>2.4.0-SNAPSHOT</version>
+        <relativePath>../asset-services-base/pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-mapping</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-metrics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

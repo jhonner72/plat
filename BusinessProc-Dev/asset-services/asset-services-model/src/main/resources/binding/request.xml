@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<jxb:bindings version="1.0"
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              jxb:extensionBindingPrefixes="xjc"
+        >
+
+    <jxb:bindings schemaLocation="../schema/request.xsd">
+        <jxb:globalBindings underscoreBinding="asWordSeparator">
+            <xjc:superClass name="com.fujixerox.aus.asset.model.beans.generated.request.RequestBase"/>
+            <xjc:simple/>
+        </jxb:globalBindings>
+        <jxb:schemaBindings>
+            <jxb:package name="com.fujixerox.aus.asset.model.beans.generated.request"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+</jxb:bindings>

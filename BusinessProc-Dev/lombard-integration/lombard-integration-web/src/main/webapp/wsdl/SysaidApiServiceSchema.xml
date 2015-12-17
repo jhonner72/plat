@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="http://api.ilient.com/" 
+			version="1.0" 
+			targetNamespace="http://api.ilient.com/">
+   <xs:element name="delete" type="tns:delete" />
+   <xs:element name="deleteResponse" type="tns:deleteResponse" />
+   <xs:element name="executeApiSysAidObjectAction" type="tns:executeApiSysAidObjectAction" />
+   <xs:element name="executeApiSysAidObjectActionResponse" type="tns:executeApiSysAidObjectActionResponse" />
+   <xs:element name="executeSelectQuery" type="tns:executeSelectQuery" />
+   <xs:element name="executeSelectQueryResponse" type="tns:executeSelectQueryResponse" />
+   <xs:element name="getApiSysAidObjectActions" type="tns:getApiSysAidObjectActions" />
+   <xs:element name="getApiSysAidObjectActionsResponse" type="tns:getApiSysAidObjectActionsResponse" />
+   <xs:element name="loadById" type="tns:loadById" />
+   <xs:element name="loadByIdResponse" type="tns:loadByIdResponse" />
+   <xs:element name="loadByStringId" type="tns:loadByStringId" />
+   <xs:element name="loadByStringIdResponse" type="tns:loadByStringIdResponse" />
+   <xs:element name="login" type="tns:login" />
+   <xs:element name="loginResponse" type="tns:loginResponse" />
+   <xs:element name="logout" type="tns:logout" />
+   <xs:element name="logoutResponse" type="tns:logoutResponse" />
+   <xs:element name="save" type="tns:save" />
+   <xs:element name="saveResponse" type="tns:saveResponse" />
+   <xs:complexType name="apiCatalogItem">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="CIId" type="xs:int" />
+               <xs:element name="catalogNumber" type="xs:string" minOccurs="0" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="manufacturer" type="xs:string" minOccurs="0" />
+               <xs:element name="model" type="xs:string" minOccurs="0" />
+               <xs:element name="name" type="xs:string" minOccurs="0" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="supplierID" type="xs:int" />
+               <xs:element name="version" type="xs:int" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiSysaidObject" abstract="true">
+      <xs:sequence />
+   </xs:complexType>
+   <xs:complexType name="apiCI">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="acceptDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="category" type="xs:string" minOccurs="0" />
+               <xs:element name="ciName" type="xs:string" minOccurs="0" />
+               <xs:element name="ciSubType" type="xs:int" />
+               <xs:element name="ciType" type="xs:int" />
+               <xs:element name="company" type="xs:int" />
+               <xs:element name="custDateField1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField10" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField11" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField12" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField13" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField14" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField15" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField16" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField17" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField18" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField19" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField20" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField21" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField22" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField23" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField24" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField25" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField26" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField27" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField28" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField29" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField3" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField30" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField31" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField32" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField33" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField34" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField35" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField36" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField37" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField38" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField39" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField4" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField40" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField41" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField42" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField43" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField44" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField45" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField46" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField47" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField48" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField49" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField5" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField50" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField6" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField7" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField8" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDateField9" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custIntField1" type="xs:int" />
+               <xs:element name="custIntField10" type="xs:int" />
+               <xs:element name="custIntField11" type="xs:int" />
+               <xs:element name="custIntField12" type="xs:int" />
+               <xs:element name="custIntField13" type="xs:int" />
+               <xs:element name="custIntField14" type="xs:int" />
+               <xs:element name="custIntField15" type="xs:int" />
+               <xs:element name="custIntField16" type="xs:int" />
+               <xs:element name="custIntField17" type="xs:int" />
+               <xs:element name="custIntField18" type="xs:int" />
+               <xs:element name="custIntField19" type="xs:int" />
+               <xs:element name="custIntField2" type="xs:int" />
+               <xs:element name="custIntField20" type="xs:int" />
+               <xs:element name="custIntField21" type="xs:int" />
+               <xs:element name="custIntField22" type="xs:int" />
+               <xs:element name="custIntField23" type="xs:int" />
+               <xs:element name="custIntField24" type="xs:int" />
+               <xs:element name="custIntField25" type="xs:int" />
+               <xs:element name="custIntField26" type="xs:int" />
+               <xs:element name="custIntField27" type="xs:int" />
+               <xs:element name="custIntField28" type="xs:int" />
+               <xs:element name="custIntField29" type="xs:int" />
+               <xs:element name="custIntField3" type="xs:int" />
+               <xs:element name="custIntField30" type="xs:int" />
+               <xs:element name="custIntField31" type="xs:int" />
+               <xs:element name="custIntField32" type="xs:int" />
+               <xs:element name="custIntField33" type="xs:int" />
+               <xs:element name="custIntField34" type="xs:int" />
+               <xs:element name="custIntField35" type="xs:int" />
+               <xs:element name="custIntField36" type="xs:int" />
+               <xs:element name="custIntField37" type="xs:int" />
+               <xs:element name="custIntField38" type="xs:int" />
+               <xs:element name="custIntField39" type="xs:int" />
+               <xs:element name="custIntField4" type="xs:int" />
+               <xs:element name="custIntField40" type="xs:int" />
+               <xs:element name="custIntField41" type="xs:int" />
+               <xs:element name="custIntField42" type="xs:int" />
+               <xs:element name="custIntField43" type="xs:int" />
+               <xs:element name="custIntField44" type="xs:int" />
+               <xs:element name="custIntField45" type="xs:int" />
+               <xs:element name="custIntField46" type="xs:int" />
+               <xs:element name="custIntField47" type="xs:int" />
+               <xs:element name="custIntField48" type="xs:int" />
+               <xs:element name="custIntField49" type="xs:int" />
+               <xs:element name="custIntField5" type="xs:int" />
+               <xs:element name="custIntField50" type="xs:int" />
+               <xs:element name="custIntField6" type="xs:int" />
+               <xs:element name="custIntField7" type="xs:int" />
+               <xs:element name="custIntField8" type="xs:int" />
+               <xs:element name="custIntField9" type="xs:int" />
+               <xs:element name="custListField1" type="xs:int" />
+               <xs:element name="custListField10" type="xs:int" />
+               <xs:element name="custListField11" type="xs:int" />
+               <xs:element name="custListField12" type="xs:int" />
+               <xs:element name="custListField13" type="xs:int" />
+               <xs:element name="custListField14" type="xs:int" />
+               <xs:element name="custListField15" type="xs:int" />
+               <xs:element name="custListField16" type="xs:int" />
+               <xs:element name="custListField17" type="xs:int" />
+               <xs:element name="custListField18" type="xs:int" />
+               <xs:element name="custListField19" type="xs:int" />
+               <xs:element name="custListField2" type="xs:int" />
+               <xs:element name="custListField20" type="xs:int" />
+               <xs:element name="custListField21" type="xs:int" />
+               <xs:element name="custListField22" type="xs:int" />
+               <xs:element name="custListField23" type="xs:int" />
+               <xs:element name="custListField24" type="xs:int" />
+               <xs:element name="custListField25" type="xs:int" />
+               <xs:element name="custListField26" type="xs:int" />
+               <xs:element name="custListField27" type="xs:int" />
+               <xs:element name="custListField28" type="xs:int" />
+               <xs:element name="custListField29" type="xs:int" />
+               <xs:element name="custListField3" type="xs:int" />
+               <xs:element name="custListField30" type="xs:int" />
+               <xs:element name="custListField31" type="xs:int" />
+               <xs:element name="custListField32" type="xs:int" />
+               <xs:element name="custListField33" type="xs:int" />
+               <xs:element name="custListField34" type="xs:int" />
+               <xs:element name="custListField35" type="xs:int" />
+               <xs:element name="custListField36" type="xs:int" />
+               <xs:element name="custListField37" type="xs:int" />
+               <xs:element name="custListField38" type="xs:int" />
+               <xs:element name="custListField39" type="xs:int" />
+               <xs:element name="custListField4" type="xs:int" />
+               <xs:element name="custListField40" type="xs:int" />
+               <xs:element name="custListField41" type="xs:int" />
+               <xs:element name="custListField42" type="xs:int" />
+               <xs:element name="custListField43" type="xs:int" />
+               <xs:element name="custListField44" type="xs:int" />
+               <xs:element name="custListField45" type="xs:int" />
+               <xs:element name="custListField46" type="xs:int" />
+               <xs:element name="custListField47" type="xs:int" />
+               <xs:element name="custListField48" type="xs:int" />
+               <xs:element name="custListField49" type="xs:int" />
+               <xs:element name="custListField5" type="xs:int" />
+               <xs:element name="custListField50" type="xs:int" />
+               <xs:element name="custListField6" type="xs:int" />
+               <xs:element name="custListField7" type="xs:int" />
+               <xs:element name="custListField8" type="xs:int" />
+               <xs:element name="custListField9" type="xs:int" />
+               <xs:element name="custLongTextField1" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField10" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField11" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField12" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField13" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField14" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField15" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField16" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField17" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField18" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField19" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField2" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField20" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField21" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField22" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField23" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField24" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField25" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField26" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField27" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField28" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField29" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField3" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField30" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField31" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField32" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField33" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField34" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField35" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField36" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField37" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField38" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField39" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField4" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField40" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField41" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField42" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField43" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField44" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField45" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField46" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField47" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField48" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField49" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField5" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField50" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField6" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField7" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField8" type="xs:string" minOccurs="0" />
+               <xs:element name="custLongTextField9" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField1" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField10" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField11" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField12" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField13" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField14" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField15" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField16" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField17" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField18" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField19" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField2" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField20" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField21" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField22" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField23" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField24" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField25" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField26" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField27" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField28" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField29" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField3" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField30" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField31" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField32" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField33" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField34" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField35" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField36" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField37" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField38" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField39" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField4" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField40" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField41" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField42" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField43" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField44" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField45" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField46" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField47" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField48" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField49" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField5" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField50" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField6" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField7" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField8" type="xs:string" minOccurs="0" />
+               <xs:element name="custTextField9" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="historyVersion" type="xs:int" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="location" type="xs:int" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="owner" type="xs:string" minOccurs="0" />
+               <xs:element name="ownerGroup" type="xs:string" minOccurs="0" />
+               <xs:element name="priority" type="xs:int" />
+               <xs:element name="serialNumber" type="xs:string" minOccurs="0" />
+               <xs:element name="status" type="xs:int" />
+               <xs:element name="subCategory" type="xs:string" minOccurs="0" />
+               <xs:element name="supplier" type="xs:int" />
+               <xs:element name="supplyDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="thirdLevelCategory" type="xs:string" minOccurs="0" />
+               <xs:element name="users" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiServiceRequest">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="agreement" type="xs:int" />
+               <xs:element name="archive" type="xs:boolean" />
+               <xs:element name="assignCounter" type="xs:int" />
+               <xs:element name="assignedGroup" type="xs:string" minOccurs="0" />
+               <xs:element name="assignedTo" type="xs:string" minOccurs="0" />
+               <xs:element name="CIId" type="xs:int" />
+               <xs:element name="category" type="xs:string" minOccurs="0" />
+               <xs:element name="cc" type="xs:string" minOccurs="0" />
+               <xs:element name="changeCategory" type="xs:int" />
+               <xs:element name="closeTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="closureInformation" type="xs:int" />
+               <xs:element name="computerID" type="xs:string" minOccurs="0" />
+               <xs:element name="currentSupportLevel" type="xs:int" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="description" type="xs:string" minOccurs="0" />
+               <xs:element name="dueDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="emailAccount" type="xs:string" minOccurs="0" />
+               <xs:element name="escalation" type="xs:int" />
+               <xs:element name="followupActualDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="followupPlannedDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="followupText" type="xs:string" minOccurs="0" />
+               <xs:element name="followupUser" type="xs:string" minOccurs="0" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="impact" type="xs:int" />
+               <xs:element name="insertTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="location" type="xs:int" />
+               <xs:element name="maxSupportLevel" type="xs:int" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="parentLink" type="xs:int" />
+               <xs:element name="priority" type="xs:int" />
+               <xs:element name="projectID" type="xs:int" />
+               <xs:element name="reopenCounter" type="xs:int" />
+               <xs:element name="requestUser" type="xs:string" minOccurs="0" />
+               <xs:element name="resolution" type="xs:string" minOccurs="0" />
+               <xs:element name="responsibleManager" type="xs:string" minOccurs="0" />
+               <xs:element name="solution" type="xs:string" minOccurs="0" />
+               <xs:element name="source" type="xs:int" />
+               <xs:element name="srSubType" type="xs:int" />
+               <xs:element name="srType" type="xs:int" />
+               <xs:element name="status" type="xs:int" />
+               <xs:element name="subCategory" type="xs:string" minOccurs="0" />
+               <xs:element name="submitUser" type="xs:string" minOccurs="0" />
+               <xs:element name="successRating" type="xs:int" />
+               <xs:element name="taskID" type="xs:int" />
+               <xs:element name="thirdLevelCategory" type="xs:string" minOccurs="0" />
+               <xs:element name="title" type="xs:string" minOccurs="0" />
+               <xs:element name="updateTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="updateUser" type="xs:string" minOccurs="0" />
+               <xs:element name="urgency" type="xs:int" />
+               <xs:element name="userManager" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:int" />
+               <xs:element name="workaround" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiComputer">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="agentVersion" type="xs:string" minOccurs="0" />
+               <xs:element name="biosType" type="xs:string" minOccurs="0" />
+               <xs:element name="building" type="xs:string" minOccurs="0" />
+               <xs:element name="CIId" type="xs:int" />
+               <xs:element name="catalogNumber" type="xs:string" minOccurs="0" />
+               <xs:element name="collectionParams" type="xs:string" minOccurs="0" />
+               <xs:element name="collectionType" type="xs:int" />
+               <xs:element name="company" type="xs:int" />
+               <xs:element name="companySerial" type="xs:string" minOccurs="0" />
+               <xs:element name="computerID" type="xs:string" minOccurs="0" />
+               <xs:element name="computerName" type="xs:string" minOccurs="0" />
+               <xs:element name="cpuCount" type="xs:int" />
+               <xs:element name="cpuModel" type="xs:string" minOccurs="0" />
+               <xs:element name="cpuSpeed" type="xs:int" />
+               <xs:element name="cpuVendor" type="xs:string" minOccurs="0" />
+               <xs:element name="cubic" type="xs:string" minOccurs="0" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="department" type="xs:int" />
+               <xs:element name="description" type="xs:string" minOccurs="0" />
+               <xs:element name="deviceCurrentCarrier" type="xs:string" minOccurs="0" />
+               <xs:element name="deviceHomeCarrier" type="xs:string" minOccurs="0" />
+               <xs:element name="deviceICC" type="xs:string" minOccurs="0" />
+               <xs:element name="deviceIMEI" type="xs:string" minOccurs="0" />
+               <xs:element name="deviceOwnership" type="xs:int" />
+               <xs:element name="devicePhoneNumber" type="xs:string" minOccurs="0" />
+               <xs:element name="devicePolicy" type="xs:int" />
+               <xs:element name="deviceStatus" type="xs:int" />
+               <xs:element name="disable" type="xs:boolean" />
+               <xs:element name="disksCount" type="xs:int" />
+               <xs:element name="disksSize" type="xs:int" />
+               <xs:element name="displayAdapter" type="xs:string" minOccurs="0" />
+               <xs:element name="displayMemory" type="xs:int" />
+               <xs:element name="displayResolution" type="xs:string" minOccurs="0" />
+               <xs:element name="externalSerial" type="xs:string" minOccurs="0" />
+               <xs:element name="floor" type="xs:string" minOccurs="0" />
+               <xs:element name="freeMemBanks" type="xs:int" />
+               <xs:element name="groupName" type="xs:string" minOccurs="0" />
+               <xs:element name="ipAddress" type="xs:string" minOccurs="0" />
+               <xs:element name="lastMaintenanceDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="locationIdx" type="xs:int" />
+               <xs:element name="macAddress" type="xs:string" minOccurs="0" />
+               <xs:element name="maintenanceSupplierID" type="xs:int" />
+               <xs:element name="memBanks" type="xs:int" />
+               <xs:element name="memoryPhysical" type="xs:long" />
+               <xs:element name="monitor" type="xs:string" minOccurs="0" />
+               <xs:element name="monitorSerial" type="xs:string" minOccurs="0" />
+               <xs:element name="OSName" type="xs:string" minOccurs="0" />
+               <xs:element name="OSPlatform" type="xs:string" minOccurs="0" />
+               <xs:element name="OSServicePack" type="xs:string" minOccurs="0" />
+               <xs:element name="OSVersion" type="xs:string" minOccurs="0" />
+               <xs:element name="occupiedMemBanks" type="xs:int" />
+               <xs:element name="packetsIn" type="xs:float" />
+               <xs:element name="packetsOut" type="xs:float" />
+               <xs:element name="parentAsset" type="xs:string" minOccurs="0" />
+               <xs:element name="purchaseDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="purchasePrice" type="xs:float" />
+               <xs:element name="serial" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText1" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText10" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText11" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText12" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText13" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText14" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText15" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText16" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText17" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText18" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText19" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText2" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText20" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText3" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText4" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText5" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText6" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText7" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText8" type="xs:string" minOccurs="0" />
+               <xs:element name="snmpCustText9" type="xs:string" minOccurs="0" />
+               <xs:element name="supplierID" type="xs:int" />
+               <xs:element name="systemManufacturer" type="xs:string" minOccurs="0" />
+               <xs:element name="systemModel" type="xs:string" minOccurs="0" />
+               <xs:element name="updateTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="userName" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:int" />
+               <xs:element name="warrantyExpirationDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiSoftware">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="CIId" type="xs:int" />
+               <xs:element name="company" type="xs:int" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="freeware" type="xs:boolean" />
+               <xs:element name="historyVersion" type="xs:int" />
+               <xs:element name="inst_names" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+               <xs:element name="licenses" type="xs:int" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="productName" type="xs:string" minOccurs="0" />
+               <xs:element name="purchaseDate" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="softwareID" type="xs:int" />
+               <xs:element name="supplierID" type="xs:int" />
+               <xs:element name="supportExpiration" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="vendor" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiCompany">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="address" type="xs:string" minOccurs="0" />
+               <xs:element name="address2" type="xs:string" minOccurs="0" />
+               <xs:element name="agreement" type="xs:int" />
+               <xs:element name="agreementEnd" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="agreementStart" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="city" type="xs:string" minOccurs="0" />
+               <xs:element name="country" type="xs:string" minOccurs="0" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="expiration_Time" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="fax" type="xs:string" minOccurs="0" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="name" type="xs:string" minOccurs="0" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="phone" type="xs:string" minOccurs="0" />
+               <xs:element name="state" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:int" />
+               <xs:element name="zip" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiSupplier">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="account" type="xs:string" minOccurs="0" />
+               <xs:element name="address" type="xs:string" minOccurs="0" />
+               <xs:element name="contact" type="xs:string" minOccurs="0" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="email" type="xs:string" minOccurs="0" />
+               <xs:element name="fax" type="xs:string" minOccurs="0" />
+               <xs:element name="mobile" type="xs:string" minOccurs="0" />
+               <xs:element name="name" type="xs:string" minOccurs="0" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="phone" type="xs:string" minOccurs="0" />
+               <xs:element name="phone2" type="xs:string" minOccurs="0" />
+               <xs:element name="supplierID" type="xs:int" />
+               <xs:element name="version" type="xs:int" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiSysAidUser">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="admin" type="xs:boolean" />
+               <xs:element name="agreement" type="xs:int" />
+               <xs:element name="building" type="xs:string" minOccurs="0" />
+               <xs:element name="carNumber" type="xs:string" minOccurs="0" />
+               <xs:element name="cellphone" type="xs:string" minOccurs="0" />
+               <xs:element name="company" type="xs:int" />
+               <xs:element name="cubic" type="xs:string" minOccurs="0" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="department" type="xs:int" />
+               <xs:element name="disable" type="xs:boolean" />
+               <xs:element name="displayName" type="xs:string" minOccurs="0" />
+               <xs:element name="email" type="xs:string" minOccurs="0" />
+               <xs:element name="emailNotifications" type="xs:boolean" />
+               <xs:element name="enableLoginToEup" type="xs:boolean" />
+               <xs:element name="expirationTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="firstName" type="xs:string" minOccurs="0" />
+               <xs:element name="floor" type="xs:string" minOccurs="0" />
+               <xs:element name="lastName" type="xs:string" minOccurs="0" />
+               <xs:element name="location" type="xs:int" />
+               <xs:element name="loginDomain" type="xs:string" minOccurs="0" />
+               <xs:element name="loginUser" type="xs:string" minOccurs="0" />
+               <xs:element name="manager" type="xs:boolean" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="password" type="xs:string" minOccurs="0" />
+               <xs:element name="phone" type="xs:string" minOccurs="0" />
+               <xs:element name="secondaryEmail" type="xs:string" minOccurs="0" />
+               <xs:element name="sms" type="xs:string" minOccurs="0" />
+               <xs:element name="userManagerName" type="xs:string" minOccurs="0" />
+               <xs:element name="userName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiProject">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="assignedGroup" type="xs:string" minOccurs="0" />
+               <xs:element name="category" type="xs:int" />
+               <xs:element name="company" type="xs:int" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="description" type="xs:string" minOccurs="0" />
+               <xs:element name="endTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="incidentTitle" type="xs:string" minOccurs="0" />
+               <xs:element name="manager" type="xs:string" minOccurs="0" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="progress" type="xs:int" />
+               <xs:element name="rawEstimation" type="xs:int" />
+               <xs:element name="requestGroup" type="xs:string" minOccurs="0" />
+               <xs:element name="startTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="status" type="xs:int" />
+               <xs:element name="title" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:int" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiTask">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="category" type="xs:int" />
+               <xs:element name="ciId" type="xs:int" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="customDateFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:string" />
+                                 <xs:element name="value" minOccurs="0" type="xs:dateTime" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="customFields">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="key" minOccurs="0" type="xs:anyType" />
+                                 <xs:element name="value" minOccurs="0" type="xs:anyType" />
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="description" type="xs:string" minOccurs="0" />
+               <xs:element name="endTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="estimation" type="xs:int" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="notes" type="xs:string" minOccurs="0" />
+               <xs:element name="progress" type="xs:int" />
+               <xs:element name="projectID" type="xs:int" />
+               <xs:element name="startTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="status" type="xs:int" />
+               <xs:element name="taskDependency" type="xs:int" />
+               <xs:element name="taskDependencyType" type="xs:int" />
+               <xs:element name="title" type="xs:string" minOccurs="0" />
+               <xs:element name="version" type="xs:int" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiComputerItem">
+      <xs:sequence>
+         <xs:element name="accountId" type="xs:string" minOccurs="0" />
+         <xs:element name="computerId" type="xs:string" minOccurs="0" />
+         <xs:element name="itemDisplay" type="xs:string" minOccurs="0" />
+         <xs:element name="itemType" type="xs:string" minOccurs="0" />
+         <xs:element name="license" type="xs:string" minOccurs="0" />
+         <xs:element name="value" type="xs:string" minOccurs="0" />
+         <xs:element name="version" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="apiComputerItemList">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="accountId" type="xs:string" minOccurs="0" />
+               <xs:element name="computerId" type="xs:string" minOccurs="0" />
+               <xs:element name="computerItems" type="tns:apiComputerItem" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="apiServiceRequestActivity">
+      <xs:complexContent>
+         <xs:extension base="tns:apiSysaidObject">
+            <xs:sequence>
+               <xs:element name="ciId" type="xs:int" />
+               <xs:element name="custDate1" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custDate2" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="custInt1" type="xs:int" />
+               <xs:element name="custInt2" type="xs:int" />
+               <xs:element name="custInt3" type="xs:int" />
+               <xs:element name="custInt4" type="xs:int" />
+               <xs:element name="custList1" type="xs:int" />
+               <xs:element name="custList2" type="xs:int" />
+               <xs:element name="custNotes" type="xs:string" minOccurs="0" />
+               <xs:element name="custText1" type="xs:string" minOccurs="0" />
+               <xs:element name="custText2" type="xs:string" minOccurs="0" />
+               <xs:element name="description" type="xs:string" minOccurs="0" />
+               <xs:element name="fromTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="id" type="xs:int" />
+               <xs:element name="srID" type="xs:int" />
+               <xs:element name="toTime" type="xs:dateTime" minOccurs="0" />
+               <xs:element name="totalTimeStr" type="xs:string" minOccurs="0" />
+               <xs:element name="user" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="login">
+      <xs:sequence>
+         <xs:element name="accountId" type="xs:string" minOccurs="0" />
+         <xs:element name="userName" type="xs:string" minOccurs="0" />
+         <xs:element name="password" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="loginResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:long" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="delete">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="deleteResponse">
+      <xs:sequence />
+   </xs:complexType>
+   <xs:complexType name="executeSelectQuery">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+         <xs:element name="condition" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="executeSelectQueryResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="loadByStringId">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+         <xs:element name="id" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="loadByStringIdResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:apiSysaidObject" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="logout">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="logoutResponse">
+      <xs:sequence />
+   </xs:complexType>
+   <xs:complexType name="save">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="saveResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:anyType" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="executeApiSysAidObjectAction">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+         <xs:element name="actionName" type="xs:string" minOccurs="0" />
+         <xs:element name="actionParams" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="executeApiSysAidObjectActionResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="loadById">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+         <xs:element name="id" type="xs:anyType" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="loadByIdResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:apiSysaidObject" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getApiSysAidObjectActions">
+      <xs:sequence>
+         <xs:element name="sessionId" type="xs:long" />
+         <xs:element name="apiSysObj" type="tns:apiSysaidObject" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getApiSysAidObjectActionsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/reporting" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/reporting">
+	<xs:element name="DeliverBatchReportRequest" type="tns:DeliverBatchReportRequest"/>
+	<xs:complexType name="DeliverBatchReportRequest">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="DeliverBatchReportResponse" type="tns:DeliverBatchReportResponse"/>
+	<xs:complexType name="DeliverBatchReportResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

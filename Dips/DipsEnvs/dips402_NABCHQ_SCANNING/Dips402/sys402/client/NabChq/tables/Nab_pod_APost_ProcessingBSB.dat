@@ -1,0 +1,14 @@
+//Indexing Sort Option: ALPHA
+//Modification History:New captureBSB list have been requested for Aus Post 
+//2015-10-26		Shraddha		Created
+//_______________________________________________________________________
+// Column 1 = Processing State
+// Column 2 = BSB
+//
+NSW,082265 
+VIC,083309
+TAS,083309
+QLD,084265 
+SA,085265
+NT,085265
+WA,086265

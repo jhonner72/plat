@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/CreateAdjLettersFolderJob?location=%2FNABDCPECM_SVC_E&amp;name=CreateAdjLettersFolderJob" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="CreateAdjLettersFolderJob" title="Creates Adj Letters Folder and Apply ACL" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" runMode="Week(s)" methodTraceLevel="10">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/CreateFolders?name=CreateFolders#//@dataModel"/>
+    <methodArguments>-daysFolderPathsSepByComma &quot;/AdjustmentLetters&quot;</methodArguments>
+    <methodArguments>-folderObjType &quot;fxa_folder&quot;</methodArguments>
+    <methodArguments>-docbase_name &quot;NAB&quot;</methodArguments>
+    <methodArguments>-daysFolderPathsSepByComma &quot;/AdjustmentLetters&quot;</methodArguments>
+    <methodArguments>-folderACLName &quot;fxa_adj_letters_folder_acl&quot;</methodArguments>
+    <methodArguments>-folderACLDomain &quot;dm_dbo&quot;</methodArguments>
+    <methodArguments>-user_name &quot;NABDCPECM_SVC_E&quot;</methodArguments>
+    <methodArguments>-monthFolderPathSepByComma &quot;/AdjustmentLetters&quot;</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/UnpackageBatchVoucher" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/UnpackageBatchVoucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dips="http://lombard.aus.fujixerox.com/outclearings/ScannedVoucher" xmlns:r="http://lombard.aus.fujixerox.com/common/Receipt">
+	<xs:import namespace="http://lombard.aus.fujixerox.com/outclearings/ScannedVoucher"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:element name="UnpackageBatchVoucherRequest" type="tns:UnpackageBatchVoucherRequest"/>
+	<xs:complexType name="UnpackageBatchVoucherRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier represents the unique Id in the system and same as the name of the batch.zip = JobIdentifier.zip
+batch.xml = JobIdentifier.xml
+Please refer the naming convention page on Wiki Page
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="receivedFile" type="r:ReceivedFile" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UnpackageBatchVoucherResponse" type="tns:UnpackageBatchVoucherResponse"/>
+	<xs:complexType name="UnpackageBatchVoucherResponse">
+		<xs:sequence>
+			<xs:element name="batch" type="dips:ScannedBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanned batch elements</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

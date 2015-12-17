@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="checkDuplicateFileRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileResponse"
+          p:serviceName="lombard.service.outclearings.checkduplicatefile"
+          p:exchangeName="lombard.service.repository.checkduplicatefile"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.repository.checkduplicatefile"
+          p:consumeType="com.fujixerox.aus.lombard.outclearings.checkduplicatefile.CheckDuplicateFileRequest"
+          p:subject="voucher"
+          p:predicate="checkduplicatefile"
+          p:produce="true"
+          p:consume="true"
+          p:transformResponse="true"
+            />
+            
+    <bean id="unpackageVoucherRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherResponse"
+          p:serviceName="lombard.service.outclearings.unpackagevoucher"
+          p:exchangeName="lombard.service.outclearings.unpackagevoucher"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.unpackagevoucher"
+          p:consumeType="com.fujixerox.aus.lombard.outclearings.unpackagebatchvoucher.UnpackageBatchVoucherRequest"
+          p:subject="voucher"
+          p:predicate="unpackage"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="recogniseCourtesyAmountRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.recognisecourtesyamount.RecogniseBatchCourtesyAmountResponse"
+          p:serviceName="lombard.service.outclearings.recognisecourtesyamount"
+          p:exchangeName="lombard.service.outclearings.recognisecourtesyamount"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.recognisecourtesyamount"
+          p:consumeType="Lombard.Adapters.A2iaAdapter.Messages.XsdImports.RecogniseBatchCourtesyAmountRequest:Lombard.Adapters.A2iaAdapter"
+          p:subject="courtesyamount"
+          p:predicate="recognise"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="validateCodelineRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.validatecodeline.ValidateBatchCodelineResponse"
+          p:serviceName="lombard.service.outclearings.validatecodeline"
+          p:exchangeName="lombard.service.outclearings.validatecodeline"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.validatecodeline"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.ValidateBatchCodelineRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="codeline"
+          p:predicate="validate"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+            
+    <bean id="correctCodelineRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.correctcodeline.CorrectBatchCodelineResponse"
+          p:serviceName="lombard.service.outclearings.correctcodeline"
+          p:exchangeName="lombard.service.outclearings.correctcodeline"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.correctcodeline"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.CorrectBatchCodelineRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="codeline"
+          p:predicate="correct"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="validateTransactionRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.validatetransaction.ValidateBatchTransactionResponse"
+          p:serviceName="lombard.service.outclearings.validatetransaction"
+          p:exchangeName="lombard.service.outclearings.validatetransaction"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.validatetransaction"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.ValidateBatchTransactionRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="transaction"
+          p:predicate="validate"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="correctTransactionRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.correcttransaction.CorrectBatchTransactionResponse"
+          p:serviceName="lombard.service.outclearings.correcttransaction"
+          p:exchangeName="lombard.service.outclearings.correcttransaction"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.correcttransaction"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.CorrectBatchTransactionRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="transaction"
+          p:predicate="correct"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="checkThirdPartyRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.outclearings.checkthirdparty.CheckThirdPartyBatchResponse"
+          p:serviceName="lombard.service.outclearings.checkthirdparty"
+          p:exchangeName="lombard.service.outclearings.checkthirdparty"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.checkthirdparty"
+          p:consumeType="Lombard.Adapters.DipsAdapter.Messages.CheckThirdPartyBatchRequest:Lombard.Adapters.DipsAdapter"
+          p:subject="thirdparty"
+          p:predicate="check"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="storeBatchVoucherRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherResponse"
+          p:serviceName="lombard.service.outclearings.storebatchvoucher"
+          p:exchangeName="lombard.service.repository.storevouchers"
+          p:routingKey="NSBD"
+          p:queueName="lombard.service.outclearings.storebatchvoucher"
+          p:consumeType="com.fujixerox.aus.lombard.repository.storebatchvoucher.StoreBatchVoucherRequest"
+          p:subject="vouchers"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="raiseVoucherProcessDuplicateIncidentRoute" class="com.fujixerox.aus.integration.service.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options-ref="brokerOptions"
+          p:serviceName="lombard.service.outclearings.voucherprocess.checkduplicatefile.incident"
+          p:subject="vouchers"
+          p:predicate="duplicate"
+            />
+
+</beans>

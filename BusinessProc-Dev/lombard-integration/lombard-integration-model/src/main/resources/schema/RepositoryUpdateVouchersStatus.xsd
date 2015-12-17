@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/repository/UpdateVouchersStatus" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/repository/UpdateVouchersStatus" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher" xmlns:r="http://lombard.aus.fujixerox.com/common/Receipt">
+	<xs:annotation>
+		<xs:documentation>Update the status of a collection of vouchers that reside in the bit locker.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Receipt" schemaLocation="Receipt.xsd"/>
+	<xs:element name="UpdateVouchersStatusResponse" type="tns:UpdateVouchersStatusResponse"/>
+	<xs:complexType name="UpdateVouchersStatusResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="UpdateVouchersStatusRequest" type="tns:UpdateVouchersStatusRequest"/>
+	<xs:complexType name="UpdateVouchersStatusRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The location in the bit locker of the vouchers to update.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherTransition" type="r:DocumentExchangeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The type of voucher transition.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherStatus" type="vtns:VoucherStatus" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The new status the voucher has transitioned to.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transitionDate" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The date/time when the voucher state transition occurred.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="filename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Any filename that may have been associated with the transition of the voucher status.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

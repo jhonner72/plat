@@ -1,0 +1,150 @@
+//CREATING TEST USERS IN SIT
+create dm_user object 
+set user_name= 'fxa_voucher' 
+set user_login_name= 'fxa_voucher'
+set user_source= 'inline password'
+set user_password= 'fxa_voucher'
+set description='Created for Voucher Processing'
+set user_address='yogesh.jankin@aus.fujixerox.com'
+set home_docbase='NAB'
+set acl_name='fxa_voucher_acl'
+set acl_domain='dm_dbo'
+set client_capability=4
+set default_folder='/Temp'
+set user_group_name='fxa_image_importer_grp'
+set user_privileges=0
+set user_xprivileges=24
+set workflow_disabled=1
+go
+create dm_user object 
+set user_name= 'fxa_dishonour' 
+set user_login_name= 'fxa_dishonour'
+set user_source= 'inline password'
+set user_password= 'fxa_dishonour'
+set description='Created for Dishonour Processing'
+set user_address='yogesh.jankin@aus.fujixerox.com'
+set home_docbase='NAB'
+set acl_name='fxa_voucher_acl'
+set acl_domain='dm_dbo'
+set client_capability=4
+set default_folder='/Temp'
+set user_group_name='fxa_write_grp'
+set user_privileges=0
+set user_xprivileges=24
+set workflow_disabled=1
+go
+create dm_user object 
+set user_name= 'fxa_job_runner' 
+set user_login_name= 'fxa_job_runner'
+set user_source= 'inline password'
+set user_password= 'fxa_job_runner'
+set description='Created for running all the Jobs'
+set user_address='bpo_np.support@aus.fujixerox.com'
+set home_docbase='NAB'
+set acl_name='fxa_voucher_acl'
+set acl_domain='dm_dbo'
+set client_capability=8
+set default_folder='/Temp'
+set user_group_name='fxa_admin'
+set user_privileges=16
+set user_xprivileges=8
+set workflow_disabled=1
+go
+create dm_user object set user_name='nvg01' set user_login_name='nvg01' set user_source='inline password' set user_password='nvg01' set description='Member of nab version group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nvg02' set user_login_name='nvg02' set user_source='inline password' set user_password='nvg02' set description='Member of nab version group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nvg03' set user_login_name='nvg03' set user_source='inline password' set user_password='nvg03' set description='Member of nab version group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nadmin01' set user_login_name='nadmin01' set user_source='inline password' set user_password='nadmin01' set description='Member of nab admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='nab_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nadmin02' set user_login_name='nadmin02' set user_source='inline password' set user_password='nadmin02' set description='Member of nab admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='nab_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nadmin03' set user_login_name='nadmin03' set user_source='inline password' set user_password='nadmin03' set description='Member of nab admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='nab_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nag01' set user_login_name='nag01' set user_source='inline password' set user_password='nag01' set description='Member of nab all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nag02' set user_login_name='nag02' set user_source='inline password' set user_password='nag02' set description='Member of nab all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nag03' set user_login_name='nag03' set user_source='inline password' set user_password='nag03' set description='Member of nab all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fiig01' set user_login_name='fiig01' set user_source='inline password' set user_password='fiig01' set description='Member of fxa image importer group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_image_importer_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fiig02' set user_login_name='fiig02' set user_source='inline password' set user_password='fiig02' set description='Member of fxa image importer group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_image_importer_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fiig03' set user_login_name='fiig03' set user_source='inline password' set user_password='fiig03' set description='Member of fxa image importer group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_image_importer_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fadmin01' set user_login_name='fadmin01' set user_source='inline password' set user_password='fadmin01' set description='Member of fxa admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='fxa_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fadmin02' set user_login_name='fadmin02' set user_source='inline password' set user_password='fadmin02' set description='Member of fxa admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='fxa_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fadmin03' set user_login_name='fadmin03' set user_source='inline password' set user_password='fadmin03' set description='Member of fxa admin' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=8 set default_folder='/Temp' set user_group_name='fxa_admin' set user_privileges=8 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fag01' set user_login_name='fag01' set user_source='inline password' set user_password='fag01' set description='Member of fxa all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fag02' set user_login_name='fag02' set user_source='inline password' set user_password='fag02' set description='Member of fxa all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fag03' set user_login_name='fag03' set user_source='inline password' set user_password='fag03' set description='Member of fxa all group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_all_group' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='frg01' set user_login_name='frg01' set user_source='inline password' set user_password='frg01' set description='Member of fxa read group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_read_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='frg02' set user_login_name='frg02' set user_source='inline password' set user_password='frg02' set description='Member of fxa read group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_read_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='frg03' set user_login_name='frg03' set user_source='inline password' set user_password='frg03' set description='Member of fxa readg roup' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_read_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fvg01' set user_login_name='fvg01' set user_source='inline password' set user_password='fvg01' set description='Member of fxa version group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fvg02' set user_login_name='fvg02' set user_source='inline password' set user_password='fvg02' set description='Member of fxa version group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fvg03' set user_login_name='fvg03' set user_source='inline password' set user_password='fvg03' set description='Member of fxa version roup' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_version_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fwg01' set user_login_name='fwg01' set user_source='inline password' set user_password='fwg01' set description='Member of fxa write group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_write_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fwg02' set user_login_name='fwg02' set user_source='inline password' set user_password='fwg02' set description='Member of fxa write group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_write_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='fwg03' set user_login_name='fwg03' set user_source='inline password' set user_password='fwg03' set description='Member of fxa write group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='fxa_write_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmw01' set user_login_name='dmw01' set user_source='inline password' set user_password='dmw01' set description='Member of dm world' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmw02' set user_login_name='dmw02' set user_source='inline password' set user_password='dmw02' set description='Member of dm world' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmw03' set user_login_name='dmw03' set user_source='inline password' set user_password='dmw03' set description='Member of dm world' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmo01' set user_login_name='dmo01' set user_source='inline password' set user_password='dmo01' set description='Member of dm owner' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmo02' set user_login_name='dmo02' set user_source='inline password' set user_password='dmo02' set description='Member of dm owner' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='dmo03' set user_login_name='dmo03' set user_source='inline password' set user_password='dmo03' set description='Member of dm owner' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='dm_browse_all' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+//New NAB Groups
+create dm_user object set user_name='nrvg01' set user_login_name='nrvg01' set user_source='inline password' set user_password='nrvg01' set description='Member of NAB read voucher group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_voucher_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nrvg02' set user_login_name='nrvg02' set user_source='inline password' set user_password='nrvg02' set description='Member of NAB read voucher group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_voucher_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nrvg03' set user_login_name='nrvg03' set user_source='inline password' set user_password='nrvg03' set description='Member of NAB read voucher group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_voucher_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_voucher_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nrrg01' set user_login_name='nrrg01' set user_source='inline password' set user_password='nrrg01' set description='Member of NAB read report group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_report_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nrrg02' set user_login_name='nrrg02' set user_source='inline password' set user_password='nrrg02' set description='Member of NAB read report group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_report_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object set user_name='nrrg03' set user_login_name='nrrg03' set user_source='inline password' set user_password='nrrg03' set description='Member of NAB read report group' set user_address='bpo_np.support@aus.fujixerox.com' set home_docbase='NAB' set acl_name='fxa_dishonour_report_acl' set acl_domain='dm_dbo' set client_capability=4 set default_folder='/Temp' set user_group_name='nab_read_report_grp' set user_privileges=0 set user_xprivileges=24 set workflow_disabled=1
+go
+create dm_user object 
+set user_name= 'fxa_im_user' 
+set user_login_name= 'fxa_im_user'
+set user_source= 'inline password'
+set user_password= 'fxa_im_user#01'
+set description='Created for CVOL,CVOL2 Image Mark View'
+set user_address='fxa_im_user@aus.fujixerox.com'
+set home_docbase='NAB'
+set acl_name='fxa_registered_tables_acl'
+set acl_domain='dm_dbo'
+set client_capability=4
+set default_folder='/Temp'
+set user_group_name='fxa_read_grp'
+set user_privileges=0
+set user_xprivileges=0
+set workflow_disabled=1
+go
+
+

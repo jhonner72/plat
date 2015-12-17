@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configuration>
+   <runtime>
+      <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+		 <dependentAssembly>
+            <assemblyIdentity name="Emc.Documentum.FS.Services.Search"
+                              publicKeyToken="f7c256ad97a54f3d"
+                              culture="neutral" />
+            <bindingRedirect oldVersion="6.5.0.322-7.1.0.0"
+                             newVersion="7.1.0.0" />
+         </dependentAssembly>
+      </assemblyBinding>
+   </runtime>
+</configuration>
+
+
+

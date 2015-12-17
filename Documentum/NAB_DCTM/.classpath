@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.emc.ide.external.dfs.DFS_CONTAINER"/>
+	<classpathentry kind="src" output="Web Services/bin/classes" path="Web Services/src"/>
+	<classpathentry kind="src" output="Web Services/bin/classes" path="Web Services/bin/gen-src"/>
+	<classpathentry kind="lib" path="C:/Program Files/Documentum/Shared/dfc.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Documentum/Shared/log4j.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DocumentumCoreProject"/>
+	<classpathentry kind="lib" path="D:/Ajit/Composer/buildPathErrorResolve/sqljdbc4.jar/sqljdbc4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,37 @@
+// Column 1: Batch Header BSB
+// Column 2: Customer Name
+// Column 3: Customer Code
+// Column 4: NAB Client Number
+// Column 5: Locked Box Type Code
+// Column 6: Credit Note Flag
+// Column 7: Maximum Amount
+// Column 8: Settlement BSB
+// Column 9: Settlement Account
+// Column 10: Settlement EAD
+// Column 11: Settlement Trancode
+
+991304,991304 - Bayside City Council,LBC1,004690,Standard,0,9999999999,083004,584272279,0DD304,60,G:\dips402\sys402\client\NabChq\Resources\BaysideCouncil.bmp
+994700,994700 - CGU Insurance Limited - Account Services,LCG1,004700,CGU,0,9999999999,082941,153399038,0DD700,60,G:\dips402\sys402\client\NabChq\Resources\CGU.bmp
+991305,991305 - CGU Insurance - Premium Payment,LCG2,001305,CGUA,0,9999999999,082941,163110011,0DD305,60,G:\dips402\sys402\client\NabChq\Resources\CGU.bmp
+991308,991308 - City Of Yarra,LCY1,005217,Standard,0,9999999999,083004,895460402,0DD308,60,G:\dips402\sys402\client\NabChq\Resources\CityOfYarra.bmp
+991313,991313 - East Gippsland Shire Council,LEG1,001651,Standard,0,9999999999,083519,654375709,0DD313,60,G:\dips402\sys402\client\NabChq\Resources\EastGippsland.bmp
+991004,991004 - European Article Numbering Australia,LEA1,003004,EANA,0,9999999999,082001,696157718,0DD004,60,G:\dips402\sys402\client\NabChq\Resources\EANA.bmp
+991309,991309 - Glenelg Shire Council,LGS1,002819,Standard,0,9999999999,083841,515983982,0DD309,60,G:\dips402\sys402\client\NabChq\Resources\GlenelgShireCouncil.bmp
+991206,991206 - Hill Shire Council,LHS1,000015,Standard,0,9999999999,082155,509201761,0DD206,60,G:\dips402\sys402\client\NabChq\Resources\HillShireCouncil.bmp
+991307,991307 - Maroondah City Council,LMC1,001860,Standard,0,9999999999,083171,515321719,0DD307,60,G:\dips402\sys402\client\NabChq\Resources\MaroondahCouncil.bmp
+991211,991211 - MLC Limited,LML1,002521,Standard,0,9999999999,082401,562337094,0DD211,60,G:\dips402\sys402\client\NabChq\Resources\MLCLimited.bmp
+992030,992030 - Officeworks,LOW1,002030,Officeworks,1,9999999999,083001,591421770,0DD030,60,G:\dips402\sys402\client\NabChq\Resources\Officeworks.bmp
+991201,991201 - Pittwater Council,LPC1,000303,Standard,0,9999999999,082294,193757922,0DD201,60,G:\dips402\sys402\client\NabChq\Resources\PittWaterCouncil.bmp
+991314,991314 - RDNS Homecare - Cheques,LRD2,001625,Standard,0,9999999999,083170,143239203,0DD314,60,G:\dips402\sys402\client\NabChq\Resources\RDNS.bmp
+991022,991022 - Royal Childrens Hospital Appeal,LRC1,,RCHA,0,9999999999,083019,515131712,0DD022,60,G:\dips402\sys402\client\NabChq\Resources\RCHAppeal.bmp
+991316,991316 - Royal District Nursing Service (RDNS) Limited,LRD1,008430,Standard,0,9999999999,083155,636965094,0DD316,60,G:\dips402\sys402\client\NabChq\Resources\RDNS.bmp
+991205,991205 - St Vincent’s Mater Health Hospital,LSV1,003911,Standard,0,9999999999,082057,509413705,0DD205,60,G:\dips402\sys402\client\NabChq\Resources\StVincentMater.bmp
+991210,991210 - St. Vincent's and Mater Health Limited,LSV3,004597,Standard,0,9999999999,082048,595332468,0DD210,60,G:\dips402\sys402\client\NabChq\Resources\StVincentHealth.bmp
+991212,991212 - St Vincents Curran Foundation,LSV6,004603,Standard,0,9999999999,082057,028349941,0DD212,60,G:\dips402\sys402\client\NabChq\Resources\StVincentCurran.bmp
+991208,991208 - St. Vincent's Hospital Sydney Limited,LSV2,004472,Standard,0,9999999999,082057,509413617,0DD208,60,G:\dips402\sys402\client\NabChq\Resources\StVincentHealth.bmp
+991209,991209 - St. Vincent's Private Hospital Sydney Limited,LSV4,004657,Standard,0,9999999999,082048,509412489,0DD209,60,G:\dips402\sys402\client\NabChq\Resources\StVincentPrivate.bmp
+991207,991207 - Trustee of St. Vincent's Hospital,LSV5,004357,Standard,0,9999999999,082057,175330054,0DD207,60,G:\dips402\sys402\client\NabChq\Resources\StVincentHealth.bmp
+991202,991202 - MLC Limited - Cards,LML2,002521,Standard,0,9999999999,082401,562337094,0DD202,60,G:\dips402\sys402\client\NabChq\Resources\MLCLimited.bmp
+991002,991002 - National Credit Card Payments,LNC1,000002,NCCP,0,9999999999,083996,455464506,0DD002,60,G:\dips402\sys402\client\NabChq\Resources\NABCRTCardPayments.bmp
+991302,991302 - RDNS Homecare - Cards,LRD3,001625,Standard,0,9999999999,083170,143239203,0DD302,60,G:\dips402\sys402\client\NabChq\Resources\RDNS.bmp
+991317,991317 - Royal District Nursing Service (RDNS) Limited,LRD1,006563,Standard,0,9999999999,083155,636965094,0DD317,60,G:\dips402\sys402\client\NabChq\Resources\RDNS.bmp

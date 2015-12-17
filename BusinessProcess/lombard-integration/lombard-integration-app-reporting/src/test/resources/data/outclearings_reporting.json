@@ -1,0 +1,76 @@
+{
+  "job": {
+    "jobIdentifier":"#JOB_IDENTIFIER#",
+    "initiatingJobIdentifier":null,
+    "processIdentifier":null,
+    "subject":"report",
+    "predicate":"generation",
+    "status":0,
+    "activity":[
+      {
+        "subject": "report",
+        "predicate": "prepare",
+        "request" : {
+          "@type": "com.fujixerox.aus.lombard.reporting.metadata.ReportRequest",
+          "businessDay" : "2015-06-16",
+          "frequency" : "EndOfDay"
+        }
+      }
+    ]
+  },
+  "activityCount": 2,
+  "activities": [
+    {
+      "activityName": "lombard.service.reporting.executereport",
+      "exchangeName": "lombard.service.reporting.executereport",
+      "routingKey": "NRPT",
+      "queueName": "lombard.service.reporting.executereport",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.reporting.ExecuteBatchReportRequest",
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "batchName" : "",
+        "reports" : [
+          {
+            "outputFilename" : "PROD.FXA.BQL.RPT.AIR.AIR.%1$tY%1$tm%1$td.%3$s",
+            "outputFormatType" : "CSV",
+            "parameters" : [
+                {
+                  "name" : "processdate",
+                  "value": "2015-06-16"
+                },
+                {
+                  "name" : "stateordinal",
+                  "value": "4"
+                }
+            ],
+            "reportName" : "BQL_All_Items_Report"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.reporting.ExecuteBatchReportResponse"
+      }
+    },
+    {
+      "activityName": "lombard.service.reporting.storerepositoryreports",
+      "exchangeName": "lombard.service.reporting.storerepositoryreports",
+      "routingKey": "NRPT",
+      "queueName": "lombard.service.reporting.storerepositoryreports",
+      "request": {
+        "@type": "com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsRequest",
+        "jobIdentifier": "#JOB_IDENTIFIER#",
+        "reports": [
+          {
+            "formatType" : "CSV",
+            "reportOutputFilename" : "PROD.FXA.BQL.RPT.AIR.AIR.20150616.4.CSV",
+            "reportProcessingDate" : "2015-06-16",
+            "reportType" : "BQL_All_Items_Report"
+          }
+        ]
+      },
+      "response": {
+        "@type": "com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsResponse"
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmHistoryExtractor", "BpmHistoryExtractor\BpmHistoryExtractor.csproj", "{0F0AB950-CE1D-4B0F-A9B1-1407CAE7DC02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentumFileReceiptExtractor", "DocumentumFileReceiptExtractor\DocumentumFileReceiptExtractor.csproj", "{F6EBCBCD-6EDA-4D6B-BAA1-B6B25182560E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmActivityExtractor", "BpmActivityExtractor\BpmActivityExtractor.csproj", "{AEC0A567-FC28-40B5-AA49-322806D2090D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmActivityExtractor.UnitTests", "BpmActivityExtractor.UnitTests\BpmActivityExtractor.UnitTests.csproj", "{F3B3175C-ED52-4ADC-B4C4-B70537F5E14C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmInstanceExtractor", "BpmInstanceExtractor\BpmInstanceExtractor.csproj", "{B692C403-6AF3-43A9-9CD5-742F43A6200B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMProcessDefinitionExtractor", "BPMProcessDefinitionExtractor\BPMProcessDefinitionExtractor.csproj", "{C2AFEC6B-0D5C-4774-A167-AEF0F96EE5B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmJobExtractor", "BpmJobExtractor\BpmJobExtractor.csproj", "{C968630F-C028-4467-978B-B507F10F239A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BpmHistoryExtractor\\BpmHistoryExtractor.csproj
+		SccProjectName1 = BpmHistoryExtractor
+		SccLocalPath1 = BpmHistoryExtractor
+		SccProjectUniqueName2 = DocumentumFileReceiptExtractor\\DocumentumFileReceiptExtractor.csproj
+		SccProjectName2 = DocumentumFileReceiptExtractor
+		SccLocalPath2 = DocumentumFileReceiptExtractor
+		SccProjectUniqueName3 = BpmActivityExtractor\\BpmActivityExtractor.csproj
+		SccProjectName3 = BpmActivityExtractor
+		SccLocalPath3 = BpmActivityExtractor
+		SccProjectUniqueName4 = BpmActivityExtractor.UnitTests\\BpmActivityExtractor.UnitTests.csproj
+		SccProjectName4 = BpmActivityExtractor.UnitTests
+		SccLocalPath4 = BpmActivityExtractor.UnitTests
+		SccProjectUniqueName5 = BpmInstanceExtractor\\BpmInstanceExtractor.csproj
+		SccProjectName5 = BpmInstanceExtractor
+		SccLocalPath5 = BpmInstanceExtractor
+		SccProjectUniqueName6 = BPMProcessDefinitionExtractor\\BPMProcessDefinitionExtractor.csproj
+		SccProjectName6 = BPMProcessDefinitionExtractor
+		SccLocalPath6 = BPMProcessDefinitionExtractor
+		SccProjectUniqueName7 = BpmJobExtractor\\BpmJobExtractor.csproj
+		SccProjectName7 = BpmJobExtractor
+		SccLocalPath7 = BpmJobExtractor
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F0AB950-CE1D-4B0F-A9B1-1407CAE7DC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0AB950-CE1D-4B0F-A9B1-1407CAE7DC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0AB950-CE1D-4B0F-A9B1-1407CAE7DC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0AB950-CE1D-4B0F-A9B1-1407CAE7DC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6EBCBCD-6EDA-4D6B-BAA1-B6B25182560E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EBCBCD-6EDA-4D6B-BAA1-B6B25182560E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EBCBCD-6EDA-4D6B-BAA1-B6B25182560E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EBCBCD-6EDA-4D6B-BAA1-B6B25182560E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC0A567-FC28-40B5-AA49-322806D2090D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC0A567-FC28-40B5-AA49-322806D2090D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC0A567-FC28-40B5-AA49-322806D2090D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC0A567-FC28-40B5-AA49-322806D2090D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B3175C-ED52-4ADC-B4C4-B70537F5E14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B3175C-ED52-4ADC-B4C4-B70537F5E14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B3175C-ED52-4ADC-B4C4-B70537F5E14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B3175C-ED52-4ADC-B4C4-B70537F5E14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B692C403-6AF3-43A9-9CD5-742F43A6200B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B692C403-6AF3-43A9-9CD5-742F43A6200B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B692C403-6AF3-43A9-9CD5-742F43A6200B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B692C403-6AF3-43A9-9CD5-742F43A6200B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2AFEC6B-0D5C-4774-A167-AEF0F96EE5B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2AFEC6B-0D5C-4774-A167-AEF0F96EE5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2AFEC6B-0D5C-4774-A167-AEF0F96EE5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2AFEC6B-0D5C-4774-A167-AEF0F96EE5B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C968630F-C028-4467-978B-B507F10F239A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C968630F-C028-4467-978B-B507F10F239A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C968630F-C028-4467-978B-B507F10F239A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C968630F-C028-4467-978B-B507F10F239A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3 @@
+ALTER TYPE fxa_voucher DROP fxa_ptqa_complete_flag,fxa_ptqa_processed_date PUBLISH
+GO
+ALTER TYPE fxa_report MODIFY fxa_report_type CHAR(50)

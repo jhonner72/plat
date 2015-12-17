@@ -1,0 +1,280 @@
+<form script="tabs.js" stylesheet="tabs.css">
+  <label>Jcape Monitoring</label>
+  <description>Support Alert Error and Analyse JSCAPE loging</description>
+  <fieldset submitButton="false">
+    <input type="time" searchWhenChanged="true" token="field3">
+      <label></label>
+      <default>
+        <earliest>-4h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="jscape_base">
+    <query>index=jscape_mft | transaction eventId | eval intval=tonumber(duration)| eval "end time"=_time + duration |convert timeformat="%Y-%m-%d %H:%M:%S" ctime("end time")|rename _time as "start time"|convert timeformat="%Y-%m-%d %H:%M:%S" ctime("start time") | table _time trigger eventId "start time" "end time" eventId duration intval _raw</query>
+    <earliest>$field3.earliest$</earliest>In progress<latest>$field3.latest$</latest>
+  </search>
+  <row id="all_Connectivity">
+    <panel>
+      <chart>
+        <title>Jscape MFT Connectivity has failed</title>
+        <search base="jscape_base">
+          <query>| search  error |  stats count by trigger</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Connectivity in Jscape MFT</title>
+        <search base="jscape_base">
+          <query>|  stats count as Volumes by trigger</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">bottom</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Support Alert Error and Analyse JSCAPE loging</title>
+      <html>
+        <ul class="nav nav-tabs" id="tabs">
+		  <li class="active">
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="all_dropzone">Jscape's outbound/inbound drop zone over threshold</a>
+          </li>
+          <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="all_bpm" data-token="control_token_bpm_threshold">Jscape transition into BPM over threshold</a>
+          </li>
+		  <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="batches" data-token="control_token_batches">Files/Batches Fail to Export via JSCAPE</a>
+          </li>
+         
+          <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="fiserv_Connectivity_Error,fiserv_Connectivity" data-token="control_token_fiserv">All Connectivity between Fiserv &amp; Jscape</a>
+          </li>
+          <li>
+            <a href="#" class="toggle-tab" data-toggle="tab" data-elements="bpm_Connectivity_Error,bpm_Connectivity" data-token="control_token_bpm_comms">All Connectivity between DMS &amp; Jscape</a>
+          </li>
+		  
+        </ul>
+      </html>
+    </panel>
+  </row>
+  <row id="fiserv_Connectivity_Error">
+    <panel>
+      <table>
+        <title>Connectivity between Fiserv &amp; Jscape MFT has failed</title>
+        <search>
+          <query>search $control_token_fiserv$ index=jscape_mft trigger="Send IE to FSV" error |eval triggerMsg=mvindex(split(_raw,"\"trigger="),0) |  eval message1=mvindex(split(triggerMsg," - - - - - - - "),1) | eval time=mvindex(split(triggerMsg," - - - - - - - "),0) | eval message2=ltrim(rtrim(mvindex(split(_raw,action),1),"\" --"),";message=") | eval details=if(isnull(message2) or message2="",message1,message2) | rename tag as status|  table time eventId action details</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">90</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="fiserv_Connectivity">
+    <panel>
+      <table>
+        <title>All Connectivity between Fiserv &amp; Jscape</title>
+        <search>
+          <query>search $control_token_fiserv$ index=jscape_mft trigger="Send IE to FSV"  |eval triggerMsg=mvindex(split(_raw,"\"trigger="),0) |  eval message1=mvindex(split(triggerMsg," - - - - - - - "),1) | eval time=mvindex(split(triggerMsg," - - - - - - - "),0) | eval message2=ltrim(rtrim(mvindex(split(_raw,action),1),"\" --"),";message=") | eval details=if(isnull(message2) or message2="",message1,message2) | rename tag as status|  table time eventId action trigger details status</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="bpm_Connectivity_Error">
+    <panel>
+      <table>
+        <title>Connectivity between DMS &amp; Jscape MFT has failed</title>
+        <search>
+          <query>search $control_token_bpm_comms$ index=jscape_mft trigger=*DMS error  |eval triggerMsg=mvindex(split(_raw,"\"trigger="),0) |  eval message1=mvindex(split(triggerMsg," - - - - - - - "),1) | eval time=mvindex(split(triggerMsg," - - - - - - - "),0) | eval message2=ltrim(rtrim(mvindex(split(_raw,action),1),"\" --"),";message=") | eval details=if(isnull(message2) or message2="",message1,message2) |  table time eventId action trigger details</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="refresh.auto.interval">30</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="bpm_Connectivity">
+    <panel>
+      <table>
+        <title>All Connectivity between DMS &amp; Jscape</title>
+        <search>
+          <query>search $control_token_bpm_comms$ index=jscape_mft trigger=*DMS |eval triggerMsg=mvindex(split(_raw,"\"trigger="),0) |  eval message1=mvindex(split(triggerMsg," - - - - - - - "),1) | eval time=mvindex(split(triggerMsg," - - - - - - - "),0) | eval message2=ltrim(rtrim(mvindex(split(_raw,action),1),"\" --"),";message=") | eval details=if(isnull(message2) or message2="",message1,message2) |  table time eventId action trigger details</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">9</option>
+      </table>
+    </panel>
+  </row>
+  <row id="batches">
+    <panel>
+      <table>
+        <title></title>
+        <search>
+          <query>search $control_token_batches$ index="jscape_mft" error OR failed| dedup eventId | eval cause=rtrim(mvindex(split(_raw,"message="),1),"\" --") |convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS time| eval destination=mvindex(split(trigger,"to "),1)| rename trigger as source  | table time source destination cause | where cause!=""</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="all_bpm">
+    <panel>
+      <title>Jscape transition into BPM over threshold</title>
+      <input type="text" searchWhenChanged="true" token="timeDuration">
+        <label>BPM Process Threshold (minutes)</label>
+        <default>5</default>
+      </input>
+      <table>
+        <search>
+          <query>search $control_token_bpm_threshold$ index=camunda | dedup BusinessKey|  eval GUID=BusinessKey | eval Status="Processing" | table GUID Status Filename | append [search index="jscape_mft" GUID=* | dedup GUID | eval Status="Pending" | table _time GUID Status ]  | dedup GUID | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | table _time Time GUID Status | where Status="Pending" and relative_time(now(),"-$timeDuration$M") &gt;= _time | fields - _time</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="charting.drilldown">none</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row id="all_dropzone">
+    <panel>
+      <input type="text" searchWhenChanged="true" token="inboundThreshold">
+        <label>Inbound Threshold (seconds)</label>
+        <default>5</default>
+      </input>
+      <table>
+        <title>Inbound DropZone</title>
+        <search base="jscape_base">
+          <query>| search Inbound | where intval&gt;=$inboundThreshold$ |fields - _time | fields - _raw | fields - intval</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="charting.drilldown">none</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <input type="text" searchWhenChanged="true" token="outboundThreshold">
+        <label>Outbound Threshold (seconds)</label>
+        <default>5</default>
+      </input>
+      <table>
+        <title>Outbound DropZone</title>
+        <search base="jscape_base">
+          <query>| search Outbound | where intval&gt;=$outboundThreshold$ | fields - _time | fields - _raw | fields - intval</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="charting.drilldown">none</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <input type="text" searchWhenChanged="true" token="coinThreshold">
+        <label>COIN Threshold (seconds)</label>
+        <default>5</default>
+      </input>
+      <table>
+        <title>COIN DropZone</title>
+        <search base="jscape_base">
+          <query>| search "Send IE to *"  | where intval&gt;=$coinThreshold$ | fields - _time | fields - _raw | fields - intval</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="refresh.auto.interval">60</option>
+        <option name="charting.drilldown">none</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <!-- Used by LockedBox -->
+    <entry key="fxa_account_number" value="voucher.accountNumber"/>
+    <entry key="fxa_amount" value="voucher.amount"/>
+    <entry key="fxa_aux_dom" value="voucher.auxDom"/>
+    <entry key="fxa_bsb" value="voucher.bsbNumber"/>
+    <entry key="fxa_drn" value="voucher.documentReferenceNumber"/>
+    <entry key="fxa_classification" value="voucher.documentType" key_type="string" value_type="DocumentTypeEnum"/>
+    <entry key="fxa_extra_aux_dom" value="voucher.extraAuxDom"/>
+    <entry key="fxa_processing_date" value="voucher.processingDate" key_type="time" value_type="date"/>
+    <entry key="fxa_trancode" value="voucher.transactionCode"/>
+	<entry key="fxa_customer_link_no" value="voucherProcess.customerLinkNumber"/>
+</map>
+

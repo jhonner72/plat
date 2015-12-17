@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scan:ScannedListingBatchHeader xmlns:scan="http://lombard.aus.fujixerox.com/outclearings/ScannedListing">
+ <listingProcessingDate>2015-07-07</listingProcessingDate>
+ <batchNumber>68200027</batchNumber>
+ <workType>NABCHQ_LISTINGS</workType>
+ <batchType>OTC_Listings</batchType>
+ <operator>a</operator>
+ <unitId>083</unitId>
+ <captureBsb>083029</captureBsb>
+ <collectingBsb>083054</collectingBsb>
+ <transactionCode>22</transactionCode>
+ <auxDom>6590</auxDom>
+ <extraAuxDom></extraAuxDom>
+ <accountNumber>0000000090</accountNumber>
+ <documentReferenceNumber>A83000018</documentReferenceNumber>
+ <listingPages>
+  <documentReferenceNumber>A83000019</documentReferenceNumber>
+  <inactiveFlag>false</inactiveFlag>
+ </listingPages>
+</scan:ScannedListingBatchHeader>

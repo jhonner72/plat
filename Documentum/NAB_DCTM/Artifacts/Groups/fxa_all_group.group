@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" urn="urn:com.emc.ide.artifact.group/fxa_all_group?name=fxa_all_group" categoryId="com.emc.ide.artifact.group" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="group:Group" groupName="fxa_all_group" groupAddress="" description="" groupDisplayName="fxa_all_group">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

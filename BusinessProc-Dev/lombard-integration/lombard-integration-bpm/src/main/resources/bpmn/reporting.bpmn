@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ssbp="www.sparxsystems.com.au/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="EAPK_ADFEE1FF_A13A_4924_87C2_D18A85BC53C5" exporter="Enterprise Architect" exporterVersion="12.0.1208" targetNamespace="www.sparxsystems.com.au/bpmn20">
+  <bpmn:process id="EAID_7388FA74_40C0_406a_820A_FB3B53591A99" name="Reporting" isExecutable="true">
+    <bpmn:serviceTask id="EAID_4AA3165E_D931_4da9_B2A9_108BC44115BE" camunda:expression="${camelRpt.sendTo('direct:lombard-service-reporting-executereport-request')}" name="Execute Report" implementation="##unspecified">
+      <bpmn:documentation>Given a report group execute a collection of reports, storing the results in a specific job folder in the bit locker.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_2" name="" sourceRef="EAID_4AA3165E_D931_4da9_B2A9_108BC44115BE" targetRef="ReceiveTask_1"/>
+    <bpmn:startEvent id="EAID_95BC91FB_D34B_49f5_8053_6E1859C92DC7" name="Start Reporting">
+      <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1" name="" sourceRef="EAID_95BC91FB_D34B_49f5_8053_6E1859C92DC7" targetRef="EAID_4AA3165E_D931_4da9_B2A9_108BC44115BE"/>
+    <bpmn:endEvent id="EAID_9C0B1AD2_92E3_45ca_B27D_E4108D479EB2" name="End Reporting">
+      <bpmn:incoming>SequenceFlow_19</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_1" camunda:expression="${camelRpt.sendTo('direct:lombard-service-reporting-copyfile-request')}" name="CopyReportFiles">
+      <bpmn:incoming>SequenceFlow_17</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_3" name="" sourceRef="ServiceTask_1" targetRef="EAID_643D230F_97F5_4311_B31B_DD7720F5616F"/>
+    <bpmn:serviceTask id="EAID_643D230F_97F5_4311_B31B_DD7720F5616F" camunda:expression="${camelRpt.sendTo('direct:lombard-service-reporting-storerepositoryreports-request')}" name="Store Reports in Documentum" implementation="##unspecified">
+      <bpmn:documentation>Send the reports to the relevant end points. </bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_18</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_18" name="" sourceRef="EAID_643D230F_97F5_4311_B31B_DD7720F5616F" targetRef="ReceiveTask_2"/>
+    <bpmn:receiveTask id="ReceiveTask_1" name="Wait Execute Report" messageRef="Message_1">
+      <bpmn:incoming>SequenceFlow_2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_17</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_17" name="" sourceRef="ReceiveTask_1" targetRef="ServiceTask_1"/>
+    <bpmn:receiveTask id="ReceiveTask_2" name="WaitStoreReports in Documentum" messageRef="Message_2">
+      <bpmn:incoming>SequenceFlow_18</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_19" name="" sourceRef="ReceiveTask_2" targetRef="EAID_9C0B1AD2_92E3_45ca_B27D_E4108D479EB2"/>
+  </bpmn:process>
+  <bpmn:message id="Message_1" name="lombard.service.reporting.executereport.response"/>
+  <bpmn:message id="Message_2" name="lombard.service.reporting.storerepositoryreports.response"/>
+  <bpmndi:BPMNDiagram documentation="The report process will be initiated when a timer event occurs. The raising of the event will place a job in the job queue with " id="EAID_84F7CCB2_4FF9_4873_BC6D_6166A4BE03DB" name="Reporting-Business Process View">
+    <bpmndi:BPMNPlane id="EAID_PL000000_4FF9_4873_BC6D_6166A4BE03DB" bpmnElement="EAID_7388FA74_40C0_406a_820A_FB3B53591A99">
+      <bpmndi:BPMNShape id="EAID_DO000000_4FF9_4873_BC6D_6166A4BE03DB" bpmnElement="EAID_95BC91FB_D34B_49f5_8053_6E1859C92DC7">
+        <dc:Bounds height="30.0" width="30.0" x="54.0" y="48.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_D34B_49f5_8053_6E1859C92DC7" labelStyle="EAID_LS000000_4FF9_4873_BC6D_6166A4BE03DB">
+          <dc:Bounds height="22.0" width="93.0" x="22.0" y="81.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000001_4FF9_4873_BC6D_6166A4BE03DB" bpmnElement="EAID_4AA3165E_D931_4da9_B2A9_108BC44115BE">
+        <dc:Bounds height="60.0" width="110.0" x="149.0" y="33.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_D931_4da9_B2A9_108BC44115BE" labelStyle="EAID_LS000000_4FF9_4873_BC6D_6166A4BE03DB"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000002_4FF9_4873_BC6D_6166A4BE03DB" bpmnElement="EAID_643D230F_97F5_4311_B31B_DD7720F5616F">
+        <dc:Bounds height="60.0" width="110.0" x="612.0" y="36.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_97F5_4311_B31B_DD7720F5616F" labelStyle="EAID_LS000000_4FF9_4873_BC6D_6166A4BE03DB"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EAID_DO000003_4FF9_4873_BC6D_6166A4BE03DB" bpmnElement="EAID_9C0B1AD2_92E3_45ca_B27D_E4108D479EB2">
+        <dc:Bounds height="30.0" width="30.0" x="864.0" y="48.0"/>
+        <bpmndi:BPMNLabel id="EAID_LBL000000_92E3_45ca_B27D_E4108D479EB2" labelStyle="EAID_LS000000_4FF9_4873_BC6D_6166A4BE03DB">
+          <dc:Bounds height="25.0" width="110.0" x="825.0" y="79.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="EAID_DO000000_4FF9_4873_BC6D_6166A4BE03DB" targetElement="EAID_DO000001_4FF9_4873_BC6D_6166A4BE03DB">
+        <di:waypoint xsi:type="dc:Point" x="84.0" y="63.0"/>
+        <di:waypoint xsi:type="dc:Point" x="149.0" y="63.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="145.0" y="63.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_14" bpmnElement="ReceiveTask_1">
+        <dc:Bounds height="60.0" width="110.0" x="149.0" y="146.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="EAID_DO000001_4FF9_4873_BC6D_6166A4BE03DB" targetElement="_BPMNShape_ReceiveTask_14">
+        <di:waypoint xsi:type="dc:Point" x="204.0" y="93.0"/>
+        <di:waypoint xsi:type="dc:Point" x="204.0" y="146.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="201.0" y="118.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ReceiveTask_15" bpmnElement="ReceiveTask_2">
+        <dc:Bounds height="60.0" width="110.0" x="612.0" y="146.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_17" bpmnElement="SequenceFlow_17" sourceElement="_BPMNShape_ReceiveTask_14" targetElement="_BPMNShape_ServiceTask_43">
+        <di:waypoint xsi:type="dc:Point" x="259.0" y="176.0"/>
+        <di:waypoint xsi:type="dc:Point" x="311.0" y="176.0"/>
+        <di:waypoint xsi:type="dc:Point" x="311.0" y="118.0"/>
+        <di:waypoint xsi:type="dc:Point" x="311.0" y="66.0"/>
+        <di:waypoint xsi:type="dc:Point" x="396.0" y="66.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="308.0" y="158.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_18" bpmnElement="SequenceFlow_18" sourceElement="EAID_DO000002_4FF9_4873_BC6D_6166A4BE03DB" targetElement="_BPMNShape_ReceiveTask_15">
+        <di:waypoint xsi:type="dc:Point" x="667.0" y="96.0"/>
+        <di:waypoint xsi:type="dc:Point" x="667.0" y="146.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="664.0" y="119.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_19" bpmnElement="SequenceFlow_19" sourceElement="_BPMNShape_ReceiveTask_15" targetElement="EAID_DO000003_4FF9_4873_BC6D_6166A4BE03DB">
+        <di:waypoint xsi:type="dc:Point" x="722.0" y="176.0"/>
+        <di:waypoint xsi:type="dc:Point" x="817.0" y="176.0"/>
+        <di:waypoint xsi:type="dc:Point" x="817.0" y="63.0"/>
+        <di:waypoint xsi:type="dc:Point" x="864.0" y="63.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="814.0" y="146.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_43" bpmnElement="ServiceTask_1">
+        <dc:Bounds height="60.0" width="110.0" x="396.0" y="36.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="_BPMNShape_ServiceTask_43" targetElement="EAID_DO000002_4FF9_4873_BC6D_6166A4BE03DB">
+        <di:waypoint xsi:type="dc:Point" x="506.0" y="66.0"/>
+        <di:waypoint xsi:type="dc:Point" x="612.0" y="66.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="581.0" y="66.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="EAID_LS000000_4FF9_4873_BC6D_6166A4BE03DB">
+      <dc:Font name="ARIAL" size="8.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

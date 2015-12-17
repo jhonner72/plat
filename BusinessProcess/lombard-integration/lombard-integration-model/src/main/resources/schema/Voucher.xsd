@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/common/Voucher" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vtns="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:simpleType name="QueryLinkTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CUSTOMER_LINK_NUMBER"/>
+			<xs:enumeration value="TRANSACTION_LINK_NUMBER"/>
+			<xs:enumeration value="NONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExpertBalanceReason">
+		<xs:annotation>
+			<xs:documentation>Identifies  a reason or description why a record has been flagged to undergo DIPS Expert Balancing.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HighValue">
+				<xs:annotation>
+					<xs:documentation>Item flagged as high-value item.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ListPay">
+				<xs:annotation>
+					<xs:documentation>The batch is listpay.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SuspectFraud">
+				<xs:annotation>
+					<xs:documentation>An item was flagged as suspect fraud / requiring fraud review.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Unbalanced">
+				<xs:annotation>
+					<xs:documentation>The batch failed not auto-balancing.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Unprocessable">
+				<xs:annotation>
+					<xs:documentation>An item was identified as unprocessable.
+
+TODO: Confirm?</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="None">
+				<xs:annotation>
+					<xs:documentation>No reason. Expert balancing was not required.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Voucher" type="vtns:Voucher"/>
+	<xs:complexType name="Voucher">
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account number on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount in cents on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB on the codeline of the voucher. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="vtns:DocumentTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document Type indicates the document classification or type, such as  credit (e.g. deposit slip), debit (e.g. cheque), or others (e.g. batch headers, surplus items, etc).
+
+Within upstream processes, if document type of the voucher is determined by the transaction code by DIPS at the time of scanning. The impact is that during upstream, the document type will be in the 3-character DIPS form.
+
+Within downstream processes, Documentum will use the 2-character form, so document type will be in the 2-character form until DIPS or Documentum Adapter is involved (where it will revert to the 3-character form).
+
+Note: For Surplus Items, the Document Type will be 'SP'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Processing date of when the voucher is scanned. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction code on the voucher:
+
+Debit items denoted by:
+
+	- Blank  
+	- 00 to 49  
+	- 900 to 949  
+
+Credit items denoted by:
+
+	- 50 to 99  
+	- 950 to 999  
+
+
+22 denotes a batch header</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RegionOfInterest" type="vtns:RegionOfInterest"/>
+	<xs:complexType name="RegionOfInterest">
+		<xs:annotation>
+			<xs:documentation>Region of interest (ROI) of an image given as 4 point coordinates.
+
+Note: This is not currently used in the NAB solution.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="height" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dependent on A2iA implementation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="left" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dependent on A2iA implementation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="top" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dependent on A2iA implementation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="width" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dependent on A2iA implementation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="APPresentmentTypeEnum">
+		<xs:annotation>
+			<xs:documentation>This is for the exchange mode in the ECL file.
+
+E = Electronic. The item has been passed to the ledger institution via electronic presentment.
+M = Manual. The item must be exchanged manually.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="M"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ForValueTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Inward_For_Value"/>
+			<xs:enumeration value="Inward_Non_For_Value"/>
+			<xs:enumeration value="Outward_For_Value"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WorkTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Scanning batch work type identification.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BQL_INWARDFV"/>
+			<xs:enumeration value="BQL_POD"/>
+			<xs:enumeration value="NABCHQ_APOST"/>
+			<xs:enumeration value="NABCHQ_INWARDFV"/>
+			<xs:enumeration value="NABCHQ_INWARDNFV"/>
+			<xs:enumeration value="NABCHQ_LBOX"/>
+			<xs:enumeration value="NABCHQ_LISTINGS">
+				<xs:annotation>
+					<xs:documentation>NABCHQ_LISTINGS</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NABCHQ_POD"/>
+			<xs:enumeration value="NABCHQ_SURPLUS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="VoucherBatch" type="vtns:VoucherBatch"/>
+	<xs:complexType name="VoucherBatch">
+		<xs:annotation>
+			<xs:documentation>Voucher Attributes that pertain to the batch from which it was scanned.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="batchAccountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The account number on the batch header:
+
+Institution lodgement - Over the Counter (Unencoded) - 0000000012
+Express Business Deposit (will include cash) - 0000000014
+Express Cheque Deposits (cheque only) - 0000000016
+Locked Box - 0000000017
+Institution lodgement at TPC (Unencoded) - 0000000019
+Institution lodgement at TPC (Proof of Deposit) - 0000000022
+Set sub-trancode field where the input trancode is equal to 94, 95 or 96. - 0000000027
+Institution lodgement at TPC (encoded) - 0000000029
+BUNDLE TYPE 6 (Inclearings) - 0000000040
+BUNDLE TYPE 7 (Outclearings ?customer encoded) Not used for Fiserv processing - 0000000041
+Australia Post - GIRO Post - 0000000080
+Australia Post - Business Post - 0000000081
+RESERVED - COGHLANS (Ian Jones) - 0000000088</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The classification of the batch type:
+For Voucher Processing:
+
+	- OTC - Over the counter
+	- ECD - Express Cheque Deposit
+	- EBD - Express Business Deposit
+	- SmartATM's
+	- Merchant Envelopes
+
+
+For Locked Box, refer to the 4 digit code below:
+
+	- LCG1 - CGU Insurance Limited - Account Services
+	- LML1 - MLC Limited
+	- LCS1 - Computershare
+	- LRD1 - Royal District Nursing Service (RDNS) Limited
+	- LSV1 - St. Vincent's Matar Health Sydney
+	- LBC1 - Bayside City Council
+	- LCW1 - City of Whitehorse - Animal Registration
+	- LCW2 - City of Whitehorse
+	- LCY1 - City of Yarra
+	- LEG1 - East Gippsland Shire Council
+	- LRD2 - RDNS Homecare Limited
+	- LGS1 - Glenelg Shire Council
+	- LMC1 - Maroondah City Council
+	- LPC1 - Pittwater Council
+	- LSV2 - St. Vincent's Hospital Sydney Limited
+	- LSV3 - St. Vincent's and Matar Health Sydney
+	- LSV4 - St. Vincent's Private Hospital Sydney Limited
+	- LHS1 - The Hills Shire Council
+	- LSV5 - Trustee of St. Vincent's Hospital
+	- LNC1 - National Credit Card Payments
+	- LEA1 - EAN Australia Limited
+	- LRC1 - Royal Children's Hospital (RCH)
+	- LOW1 - Officeworks Superstores Pty Ltd
+
+
+Please refer to Customer Id and Customer of Locked Box Value Processing listed in wiki page: http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/Solution%20Architecture%20-%20Business%20Processes.aspx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="captureBsb" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB at capture site per state</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="client" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dips Client, 'NabChq' for clean cheque sprint
+
+Note: DEPRECATED ATTRIBUTE</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB of the collecting Branch. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingState" type="vtns:StateEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scannedBatchNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique Batch identifier - 8 character </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="source" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Source of batch, scanned, FileServ etc.
+
+Note: DEPRECATED ATTRIBUTE</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subBatchType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sub type classification of Batch:
+
+	- SIN - Singles   
+	- MLT - Multiples   
+	- CHO - Cheque Only   
+	- RMO - Remittance Only (Credit Cards)   
+	- LPS - List Pays 
+
+
+Sub batch type specification on wiki: http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/_layouts/15/xlviewer.aspx?id=/sites/ProjectCollection/bpsprojects/lombard/Lombard%20Documents/DIPS%20Scanning/DIPS%20Job%20Selection.xlsx</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Scanning device Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="workType" type="vtns:WorkTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>DIPS Job Type. The possible values are:
+
+	- NABCHQ_POD  
+	- NABCHQ_LBOX  
+	- NABCHQ_LISTINGS  
+	- NABCHQ_APOST  
+	- NABCHQ_SURPLUS  
+	- NABCHQ_INWARDFV  
+	- BQL_POD  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VoucherProcess" type="vtns:VoucherProcess"/>
+	<xs:complexType name="VoucherProcess">
+		<xs:annotation>
+			<xs:documentation>Voucher attributes that have resulted from its processing.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="adjustedBy" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Operator who adjusted the transaction</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adjustedFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>marked as true for the individual vouchers adjusted. This is required by Adjustment Reports.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adjustmentDescription" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adjustment	Adjustment 
+Code		Description
+
+51		NAB Writeoff &lt; $10
+52		Error in Additions
+53		Total Brought Forward Incorrectly
+54		Cash Received differs to Customer Listings
+55		Chq/Merch Env incorrectly listed
+56		Chq/Merch Env listed, not received
+57		Multi Credit, correct Credit unknown
+58		No Deposit Listing Received
+59		Foreign Item, unable to process
+60		Other
+76		Chq/Merch Env rcvd not listed
+77		No credit received</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adjustmentLetterRequired" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>True if adjustment letter needs to be generated for NAB based on business rules mentioned at 
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Lombard%20Documents/Adjustments/Adjustment%20Rules.xlsx?Web=1 </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adjustmentReasonCode" type="vtns:AdjustmentReasonCodeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adjustment	Adjustment 
+Code		Description
+
+51		NAB Writeoff &lt; $10
+52		Error in Additions
+53		Total Brought Forward Incorrectly
+54		Cash Received differs to Customer Listings
+55		Chq/Merch Env incorrectly listed
+56		Chq/Merch Env listed, not received
+57		Multi Credit, correct Credit unknown
+58		No Deposit Listing Received
+59		Foreign Item, unable to process
+60		Other
+76		Chq/Merch Env rcvd not listed
+77		No credit received</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="alternateAccountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alternate/optional account number for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="alternateAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alternate/optional auxiliary domestic value for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="alternateBsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alternate/optional BSB for the voucher.
+
+Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="alternateExAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alternate/optional extra auxiliary domestic for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="alternateTransactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Alternate/optional transaction code for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="apMatchAttempts" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="apPresentmentType" type="vtns:APPresentmentTypeEnum" minOccurs="1" maxOccurs="1" nillable="true"/>
+			<xs:element name="creditNoteFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the voucher is a credit note (only relevant to some LockedBox items).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="customerLinkNumber" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Customer Link Number is used by AusPost or Locked box customer to link the bulk credit with the debit vouchers.
+
+The format of this number will be the same as the DRN.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentRetrievalDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+			<xs:element name="documentRetrievalFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The fxa_doc_retr_flag which is used for marking the vouchers to be retrieved and paper returned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueType" type="vtns:ForValueTypeEnum" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Indicate if the voucher is a For Value vouchers. The possible values are:
+
+	- Inward_For_Value 
+	- Inward_Non_For_Value 
+	- Outward_For_Value 
+
+
+This field is set to outward for value in voucher processing if the forValueIndicator !="". For outward for value voucher, credit vouchers should be included in the Tier 1 image exchange file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="highValueFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>High Value Flag marked by Expert balancer operator.
+High Value Reference table for will be provided by NAB which will have Bank and Max threshold as fields.
+If NAB voucher and amount is more then the threshold. voucher marked for NAB suspense account
+If agency bank voucher and amount is more then the threshold. voucher marked for NAB suspense account
+If BoQ voucher in Queensland bank and amount is more then the threshold. voucher marked for BoQ suspense account.
+Please refer the High Value process maps for conditions.
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Lombard%20Documents/BA%20Working%20Documents/NAB%20Cheque%20Digitisation%20Process%20Maps%20v1.4.vsd</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inactiveFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="insertedCreditType" type="vtns:InsertedCreditTypeEnum" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>This field identifies the voucher in respects to it's type as an inserted credit. For items that are not an inserted credit, this will be NONE.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isGeneratedBulkCredit" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field is used to indicate if the voucher record is the generated bulk credit for Locked Box, Corporate, Australia Post transaction.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isGeneratedVoucher" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identify if the voucher was generated by Dips as a subsequent voucher. There is no image with this voucher.
+Integration layer will check this flag and add the voucher in the original batch before saving it to documentum.
+The DefaultValue is false and set to true by DIPS when a subsequent voucher is created.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isReservedForBalancing" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Flag on the voucher to identify that it is being used to balance a transaction in ExpertBalancing. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isRetrievedVoucher" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field indicates whether voucher was retrieved from Documentum for use by another process. If true, the record already exists in Documentum and will need to be updated rather than inserted when it is saved back into Documentum.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="listingPageNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="manualRepair" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valid values are 1 or 0. Show "1" if one or more fields have been manually entered or altered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="micrFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="operatorId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="postTransmissionQaAmountFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by dips to mark if the voucher required Post transmission QA on amount field. This flag will be used by Documentum workflow for post transmission QA process. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaCodelineFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by dips to mark if the voucher required Post transmission QA on codeline fields. This flag will be used by Documentum workflow for post transmission QA process. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preAdjustmentAmount" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>the original amount before any adjustments</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="presentationMode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This is determined at DIPS stage when the operator cannot correct the codeline and set the acct number to a suspense acct. The possible values are:
+
+	- E = Electronic   
+	- M = Manual (this happens when the user mark a Non NAB/Agency Bank voucher to the other bank’s suspense account).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rawMICR" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="rawOCR" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="releaseFlag" type="vtns:ReleaseStatusEnum" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Release status flag, relevant to Documentum Day 2 workflows.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="repostFromDRN" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="repostFromProcessingDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+			<xs:element name="surplusItemFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates the voucher is allocation to the Surplus Item pool.
+
+Note: This does not mean it 'was' a surplus item previously once it is released from the pool during day 2 processing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="suspectFraud" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="thirdPartyCheckFailed" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Third Party Check terminal will check the vouchers marked for third party check and if that fails the third party check. The vouchers will be removed from the transaction , adjust/balance the transaction and process as normal. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdPartyMixedDepositReturnFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>In the event where a multi credit ECD is received and one credit is a NAB deposit and the other is an Agent Bank deposit.
+NAB’s requirement is to remove the transaction from further processing and return back to NAB.
+
+thirdPartyMixedDepositReturnFlag will be set to true by dips and save in Documentum
+
+If Y – No VIFS or IE created, items to be populated on the NAB ECD Exceptions Report, vouchers retrieved and returned to NAB.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="thirdPartyPoolFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This will be set by Dips and will be used to represent the third party suspense pool.
+The agency bank vouchers marked third party failed should not be part of this pool.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionLinkNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The transaction number that links all the credits/debits transactions together.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unencodedECDReturnFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>unencodedECDReturnFlag to identify certain agent bank ECD deposits which are unencoded. These item will not require TPC and will be removed from further processing i.e. no VIF or IE. However we still need to populate the Agent Bank’s ECD Exceptions report with these items.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unprocessable" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>An unprocessable voucher is something like a foreign currency cheque (i.e. not allowed via COIN), a gift certificate, IOU, or some other junk that is not a voucher or document type that we process.
+
+True if voucher was not able to process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherDelayedIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>D - Indicator that image is delayed
+N - Indicator that image has been sent on a delayed basis
+or Blank</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DocumentTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Document Type indicates the document classification or type, such as  credit (e.g. deposit slip), debit (e.g. cheque), or others (e.g. batch headers, surplus items, etc).
+
+This enumeration covers both the DIPS 3-character form codes, and the Documentum 2-character versions.
+
+The relationship is:
+
+	- Debit - Dr / DBT 
+	- Credit - Cr / CRT 
+	- Branch Header - Bh / HDR 
+	- Surplus - Sp / SP </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CRT">
+				<xs:annotation>
+					<xs:documentation>Credit (i.e. deposit slip) - (DIPS/BPM value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DBT">
+				<xs:annotation>
+					<xs:documentation>Debit (i.e. cheque) - (DIPS/BPM value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HDR">
+				<xs:annotation>
+					<xs:documentation>Batch header (DIPS/BPM value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Bh">
+				<xs:annotation>
+					<xs:documentation>Batch header (Documentum/repository value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Cr">
+				<xs:annotation>
+					<xs:documentation>Credit (Documentum/repository value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Dr">
+				<xs:annotation>
+					<xs:documentation>Debit (Documentum/repository value)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Sp">
+				<xs:annotation>
+					<xs:documentation>Surplus item (Shared BPM/DIPS/Documentum/repository value)
+
+Note: "SP" is not supported due to Java binding case insensitivity.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SUP">
+				<xs:annotation>
+					<xs:documentation>DEPRECATED VALUE.
+
+This was supposed to be the DIPS document type, but in DIPS it is "SP". As the Java binding framework used does not support SP and Sp in the same enumeration, this will require better alignment with the Sp type.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityEnum">
+		<xs:annotation>
+			<xs:documentation>Tier One Financial Institutions</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BQL"/>
+			<xs:enumeration value="NAB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTypeEnumStore">
+		<xs:annotation>
+			<xs:documentation>DIPS has documentType as 3 character , however business is expecting 2 character. So before storing it to documentum mapping is required between DocumentTypeEnum and DocumentTypeEnumStore
+
+Debit - DR
+Credit - CR
+Branch Header - BH
+Surplus - SP</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Bh"/>
+			<xs:enumeration value="Cr"/>
+			<xs:enumeration value="Dr"/>
+			<xs:enumeration value="Sp"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VoucherStatus">
+		<xs:annotation>
+			<xs:documentation>Each voucher transititions through a number of states as it procesed. The possible status transitions for each Document Exchange are:
+
+- IMAGE_EXCHANGE_INBOUND: Completed
+- IMAGE_EXCHANGE_OUTBOUND: New -&gt; InProgress -&gt; Completed
+- INWARD_FOR_VALUE: New -&gt; InProgress -&gt; Completed
+- INWARD_NON_FOR_VALUE: Completed
+- VIF_OUTBOUND: New -&gt; InProgress -&gt; Sent
+- VIF_ACK_OUTBOUND: New -&gt; InProgress -&gt; Completed
+
+Suspense pool variants of *_OUTBOUND do not start at New, but rather are: OnHold first, followed by New etc. or final status Withdrawn.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Completed">
+				<xs:annotation>
+					<xs:documentation>The voucher has been transmitted successfully via Image Exchange.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Error">
+				<xs:annotation>
+					<xs:documentation>The voucher has error during Image Exchange transmission.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="InProgress">
+				<xs:annotation>
+					<xs:documentation>The voucher is currently being transmitted via Image Exchange process.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="New">
+				<xs:annotation>
+					<xs:documentation>The voucher is ready for Image Exchange processing.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OnHold">
+				<xs:annotation>
+					<xs:documentation>The voucher is "on hold" and not till be processed. The expectation is that the hold will be released by other processes at a later date.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Pending"/>
+			<xs:enumeration value="Sent"/>
+			<xs:enumeration value="Withdrawn"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodelineStatus" type="vtns:CodelineStatus"/>
+	<xs:complexType name="CodelineStatus">
+		<xs:sequence>
+			<xs:element name="accountNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account number Status 
+on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount in cents on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="bsbNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB on the codeline of the voucher. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCodeStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number generated for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AdjustmentReasonDescriptionEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BQL Writeoff &lt; $10"/>
+			<xs:enumeration value="Cash Received differs to Customer Listings"/>
+			<xs:enumeration value="Chq/Merch Env incorrectly listed"/>
+			<xs:enumeration value="Chq/Merch Env listed"/>
+			<xs:enumeration value="Chq/Merch Env listed not received"/>
+			<xs:enumeration value="Chq/Merch Env rcvd not listed"/>
+			<xs:enumeration value="correct Credit unknown"/>
+			<xs:enumeration value="Cutomer Other"/>
+			<xs:enumeration value="Error in Additions"/>
+			<xs:enumeration value="Foreign Item"/>
+			<xs:enumeration value="Foreign Item unable to process"/>
+			<xs:enumeration value="Multi Credit"/>
+			<xs:enumeration value="NAB Writeoff &lt; $10"/>
+			<xs:enumeration value="No credit received"/>
+			<xs:enumeration value="No Deposit Listing Received"/>
+			<xs:enumeration value="not received"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Teller - Cash slip incorrect"/>
+			<xs:enumeration value="Teller - No cash slip"/>
+			<xs:enumeration value="Total Brought Forward Incorrectly"/>
+			<xs:enumeration value="unable to process"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StateEnum">
+		<xs:annotation>
+			<xs:documentation>The states where the VIF files are created for (as compared to all Australian states).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NSW">
+				<xs:annotation>
+					<xs:documentation>Standard abbreviation for New South Wales.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QLD">
+				<xs:annotation>
+					<xs:documentation>Standard abbreviation for Queensland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SA">
+				<xs:annotation>
+					<xs:documentation>Standard abbreviation for South Australia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VIC">
+				<xs:annotation>
+					<xs:documentation>Standard abbreviation for Victoria.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WA">
+				<xs:annotation>
+					<xs:documentation>Standard abbreviation for Western Australia.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="VoucherInformation" type="vtns:VoucherInformation"/>
+	<xs:complexType name="VoucherInformation">
+		<xs:sequence>
+			<xs:element name="voucher" type="vtns:Voucher" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voucherBatch" type="vtns:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>State where the documents were scanned</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherImage" type="vtns:VoucherImage" minOccurs="0" maxOccurs="2"/>
+			<xs:element name="voucherProcess" type="vtns:VoucherProcess" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>D - Indicator that image is delayed
+N - Indicator that image has been sent on a delayed basis
+or Blank</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AdjustmentReasonCodeEnum">
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="51"/>
+			<xs:enumeration value="52"/>
+			<xs:enumeration value="53"/>
+			<xs:enumeration value="54"/>
+			<xs:enumeration value="55"/>
+			<xs:enumeration value="56"/>
+			<xs:enumeration value="57"/>
+			<xs:enumeration value="58"/>
+			<xs:enumeration value="59"/>
+			<xs:enumeration value="60"/>
+			<xs:enumeration value="61"/>
+			<xs:enumeration value="62"/>
+			<xs:enumeration value="63"/>
+			<xs:enumeration value="64"/>
+			<xs:enumeration value="65"/>
+			<xs:enumeration value="66"/>
+			<xs:enumeration value="67"/>
+			<xs:enumeration value="68"/>
+			<xs:enumeration value="69"/>
+			<xs:enumeration value="70"/>
+			<xs:enumeration value="71"/>
+			<xs:enumeration value="75"/>
+			<xs:enumeration value="76"/>
+			<xs:enumeration value="77"/>
+			<xs:enumeration value="78"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="VoucherImage" type="vtns:VoucherImage"/>
+	<xs:complexType name="VoucherImage">
+		<xs:sequence>
+			<xs:element name="content" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Image content represented as base64 encoded string</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The name of the file that this Image object refers to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ReleaseStatusEnum">
+		<xs:annotation>
+			<xs:documentation>Release flag statuses. Predominant use case is to track Day 2 and beyond suspense pool item processing status.
+
+Expected state transitions are: blank -&gt; ((release -&gt; release_sent) OR (reject_by_user) OR (reject_by_system)). </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="reject">
+				<xs:annotation>
+					<xs:documentation>DEPRECATED - Initial Surplus day 2 rejection. Superseded by reject_by_user &amp; reject_by_system.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="release">
+				<xs:annotation>
+					<xs:documentation>Indicates 'Release' status.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="release_sent">
+				<xs:annotation>
+					<xs:documentation>Indicates that an item has been scheduled for processing/transfer after being released.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="reject_by_user">
+				<xs:annotation>
+					<xs:documentation>Indicates that an item was rejected by user action.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="reject_by_system">
+				<xs:annotation>
+					<xs:documentation>Identifies that an item was rejected as the result of system processing (e.g. automated ageing rules).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InsertedCreditTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Identifies the inserted credit "type".</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ADJUSTMENT_CREDIT">
+				<xs:annotation>
+					<xs:documentation>Adjustment record (where the suspense account details are pre-populated)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MISSING_CUSTOMER_CREDIT">
+				<xs:annotation>
+					<xs:documentation>Inserted blank credit record (where operator inputs the deposit details)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NONE">
+				<xs:annotation>
+					<xs:documentation>None.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="POSTED_SUSPENSE_CREDIT">
+				<xs:annotation>
+					<xs:documentation>Inserted credit record (where the suspense account details are pre-populated)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Lombard.Dips.Server.Setup", "Lombard.Dips.Server.Setup\Lombard.Dips.Server.Setup.wixproj", "{2EE0ED46-AE7F-498C-BACC-96874260E330}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Lombard.Dips.Station.Setup", "Lombard.Dips.Station.Setup\Lombard.Dips.Station.Setup.wixproj", "{C1B91840-CB12-4D7C-AD37-044C65135F57}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Lombard.Dips.ScannerBundle.Setup", "Lombard.Dips.ScannerBundle.Setup\Lombard.Dips.ScannerBundle.Setup.wixproj", "{DBCF7EBF-C90D-407E-9431-2171C16A8974}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Lombard.Dips.Scanner.Setup", "Lombard.Dips.Scanner.Setup\Lombard.Dips.Scanner.Setup.wixproj", "{B756EE76-D683-4586-9C33-5102F874F370}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Lombard.Dips.Scanner.Setup\\Lombard.Dips.Scanner.Setup.wixproj
+		SccProjectName1 = Lombard.Dips.Scanner.Setup
+		SccLocalPath1 = Lombard.Dips.Scanner.Setup
+		SccProjectUniqueName2 = Lombard.Dips.ScannerBundle.Setup\\Lombard.Dips.ScannerBundle.Setup.wixproj
+		SccProjectName2 = Lombard.Dips.ScannerBundle.Setup
+		SccLocalPath2 = Lombard.Dips.ScannerBundle.Setup
+		SccProjectUniqueName3 = Lombard.Dips.Server.Setup\\Lombard.Dips.Server.Setup.wixproj
+		SccProjectName3 = Lombard.Dips.Server.Setup
+		SccLocalPath3 = Lombard.Dips.Server.Setup
+		SccProjectUniqueName4 = Lombard.Dips.Station.Setup\\Lombard.Dips.Station.Setup.wixproj
+		SccProjectName4 = Lombard.Dips.Station.Setup
+		SccLocalPath4 = Lombard.Dips.Station.Setup
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EE0ED46-AE7F-498C-BACC-96874260E330}.Debug|x86.ActiveCfg = Debug|x86
+		{2EE0ED46-AE7F-498C-BACC-96874260E330}.Debug|x86.Build.0 = Debug|x86
+		{2EE0ED46-AE7F-498C-BACC-96874260E330}.Release|x86.ActiveCfg = Release|x86
+		{2EE0ED46-AE7F-498C-BACC-96874260E330}.Release|x86.Build.0 = Release|x86
+		{C1B91840-CB12-4D7C-AD37-044C65135F57}.Debug|x86.ActiveCfg = Debug|x86
+		{C1B91840-CB12-4D7C-AD37-044C65135F57}.Debug|x86.Build.0 = Debug|x86
+		{C1B91840-CB12-4D7C-AD37-044C65135F57}.Release|x86.ActiveCfg = Release|x86
+		{C1B91840-CB12-4D7C-AD37-044C65135F57}.Release|x86.Build.0 = Release|x86
+		{DBCF7EBF-C90D-407E-9431-2171C16A8974}.Debug|x86.ActiveCfg = Debug|x86
+		{DBCF7EBF-C90D-407E-9431-2171C16A8974}.Debug|x86.Build.0 = Debug|x86
+		{DBCF7EBF-C90D-407E-9431-2171C16A8974}.Release|x86.ActiveCfg = Release|x86
+		{DBCF7EBF-C90D-407E-9431-2171C16A8974}.Release|x86.Build.0 = Release|x86
+		{B756EE76-D683-4586-9C33-5102F874F370}.Debug|x86.ActiveCfg = Debug|x86
+		{B756EE76-D683-4586-9C33-5102F874F370}.Debug|x86.Build.0 = Debug|x86
+		{B756EE76-D683-4586-9C33-5102F874F370}.Release|x86.ActiveCfg = Release|x86
+		{B756EE76-D683-4586-9C33-5102F874F370}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

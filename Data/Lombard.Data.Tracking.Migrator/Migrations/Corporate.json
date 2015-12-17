@@ -1,0 +1,32 @@
+{
+    "corporateDetails": [
+        {
+            "corporateGroupCode": "CAI1",
+            "corporateName": "AIA"
+        },
+        {
+            "corporateGroupCode": "CCO1",
+            "corporateName": "Coles"
+        },
+        {
+            "corporateGroupCode": "CKM1",
+            "corporateName": "Kmart"
+        },
+        {
+            "corporateGroupCode": "CSP1",
+            "corporateName": "SuperPartners"
+        },
+        {
+            "corporateGroupCode": "CML1",
+            "corporateName": "Meryll Lynch"
+        }, 
+        {
+            "corporateGroupCode": "COW1",
+            "corporateName": "Officeworks"
+        },
+        {
+            "corporateGroupCode": "CLL1",
+            "corporateName": "Liquorland"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+//Indexing Sort Option: ALPHA
+//Description: BSBAccount combinations for Merchant Summary Debits
+//Modification History:
+//2015-06-05        Dinesh      Created
+// Columns = BSB+Account , MODulus (MOD10/NOMOD/INVAL), Comment 
+// ______________________________________________________________________________________
+
+0820121200029,NOMOD
+0820121200125,NOMOD
+0830121234009,NOMOD
+0830121236506,NOMOD

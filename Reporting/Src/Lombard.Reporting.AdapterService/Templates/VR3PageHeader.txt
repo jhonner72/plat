@@ -1,0 +1,16 @@
+﻿                                                         Batch Item Detail Report
+                                                                 Date Printed {0:MM/dd/yyHH:mm:ss}                                                      Page #{1,2}
+ Selection Criteria
+ Dates :       {2:MM/dd/yy}
+ Worksources   {3} - {4}
+ Batches :      ALL
+ Transport :    ALL
+ Batch Status   ALL
+ Item Detail    Rejected and Non Rejected Items   Both Debit and Credits
+
+ Worksource    {3}
+ Batch #       {5}
+ Mode          {6}
+ DP #          {7}
+                                                                                                      Amount
+     Seq #            Type      Trans #        Aux Dom            BSB          Account Number           Paid Difference Skip  Reject  Missing

@@ -1,0 +1,80 @@
+{
+    "job":
+    {
+        "jobIdentifier":"#JOB_IDENTIFIER#",
+        "initiatingJobIdentifier":null,
+        "processIdentifier":null,
+        "subject":"listing",
+        "predicate":"collect",
+        "status":0
+    },
+    "activityCount": 20,
+    "activities": [
+        {
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.unpackagelisting",
+            "exchangeName": "lombard.service.outclearings.unpackagelisting",
+            "routingKey": "NSBI",
+            "queueName": "lombard.service.outclearings.unpackagelisting",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.unpackagelisting.UnpackageListingRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#"
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.unpackagelisting.UnpackageListingResponse",
+                "batch": {
+                    "listingProcessingDate": "2015-07-07",
+                    "batchNumber": "68200025",
+                    "workType": "NABCHQ_LISTINGS",
+                    "batchType": "OTC_Listings",
+                    "operator": "a",
+                    "unitId": "083",
+                    "captureBsb": "083029",
+                    "collectingBsb": "083054",
+                    "transactionCode": "22",
+                    "auxDom": "6590",
+                    "extraAuxDom": "6590",
+                    "accountNumber": "0000000090",
+                    "documentReferenceNumber": "A83000014",
+                    "listingPages": {
+                        "documentReferenceNumber": "A83000015",
+                        "inactiveFlag": "false"
+                    }
+                }
+            }
+        },
+        {
+            "implemented" : true,
+            "activityName": "lombard.service.outclearings.storelisting",
+            "exchangeName": "lombard.service.outclearings.storelisting",
+            "routingKey": "NSBI",
+            "queueName": "lombard.service.outclearings.storelisting",
+            "request": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.storelisting.StoreListingRequest",
+                "jobIdentifier": "#JOB_IDENTIFIER#",
+                "scannedListing": {
+                    "listingProcessingDate": "2015-07-07",
+                    "batchNumber": "68200025",
+                    "workType": "NABCHQ_LISTINGS",
+                    "batchType": "OTC_Listings",
+                    "operator": "a",
+                    "unitId": "083",
+                    "captureBsb": "083029",
+                    "collectingBsb": "083054",
+                    "transactionCode": "22",
+                    "auxDom": "6590",
+                    "extraAuxDom": "6590",
+                    "accountNumber": "0000000090",
+                    "documentReferenceNumber": "A83000014",
+                    "listingPages": {
+                        "documentReferenceNumber": "A83000015",
+                        "inactiveFlag": "false"
+                    }
+                }
+            },
+            "response": {
+                "@type": "com.fujixerox.aus.lombard.outclearings.storelisting.StoreListingResponse"
+            }
+        }
+    ]
+}

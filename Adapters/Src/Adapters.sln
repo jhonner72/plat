@@ -1,0 +1,164 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.Data", "Lombard.Adapters.Data\Lombard.Adapters.Data.csproj", "{0578E26D-6CC3-4D82-BB75-F252DE89D98C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QA", "QA", "{7B5D493B-EF4C-46F2-8DE9-B0E2993EF962}"
+	ProjectSection(SolutionItems) = preProject
+		QA\LombardSettings.StyleCop = QA\LombardSettings.StyleCop
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MftAdapter", "MftAdapter", "{7CC4998C-A470-4BBB-889A-D6709F6CF916}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DipsAdapter", "DipsAdapter", "{9729F45D-8B88-40DA-B805-C25216FC050C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.MftAdapter", "Lombard.Adapters.MftAdapter\Lombard.Adapters.MftAdapter.csproj", "{CAD8F897-1C2C-440E-A25E-ED4888433F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.MftAdapter.UnitTests", "Lombard.Adapters.MftAdapter.UnitTests\Lombard.Adapters.MftAdapter.UnitTests.csproj", "{4F0F5664-ED52-4F6E-9E5C-03D52FD00977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.MftAdapter.IntegrationTests", "Lombard.Adapters.MftAdapter.IntegrationTests\Lombard.Adapters.MftAdapter.IntegrationTests.csproj", "{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A2iaAdapter", "A2iaAdapter", "{521B1F17-7C56-418A-8A91-91F651740C6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.DipsAdapter", "Lombard.Adapters.DipsAdapter\Lombard.Adapters.DipsAdapter.csproj", "{2D50D634-D464-4E39-B253-A8738CC561FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.DipsAdapter.IntegrationTests", "Lombard.Adapters.DipsAdapter.IntegrationTests\Lombard.Adapters.DipsAdapter.IntegrationTests.csproj", "{2E7DEF1A-7625-4EB5-8065-74C795BC76AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{BAA3B3F9-39B2-4906-ACFB-9EB1DB58E9D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.Data.Migrator", "Lombard.Adapters.Data.Migrator\Lombard.Adapters.Data.Migrator.csproj", "{F48F0025-8723-4E45-8CA2-8A14437A0643}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombard.Adapters.DipsAdapter.UnitTests", "Lombard.Adapters.DipsAdapter.UnitTests\Lombard.Adapters.DipsAdapter.UnitTests.csproj", "{BACCE373-C752-4473-A57E-22272619BECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FujiXerox.Adapters.A2iaAdapter", "FujiXerox.Adapters.A2iaAdapter\FujiXerox.Adapters.A2iaAdapter.csproj", "{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FujiXerox.Adapters.A2iaAdapter.Test", "FujiXerox.Adapters.A2iaAdapter.Test\FujiXerox.Adapters.A2iaAdapter.Test.csproj", "{1F93F69F-278E-481A-9411-41E6B421AA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FujiXerox.Adapters.DipsAdapter", "FujiXerox.Adapters.DipsAdapter\FujiXerox.Adapters.DipsAdapter.csproj", "{1C9120E5-67DB-419A-83B4-8462227645BB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccProjectUniqueName0 = Lombard.Adapters.MftAdapter\\Lombard.Adapters.MftAdapter.csproj
+		SccProjectTopLevelParentUniqueName0 = Adapters.sln
+		SccProjectName0 = Lombard.Adapters.MftAdapter
+		SccAuxPath0 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath0 = Lombard.Adapters.MftAdapter
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = Lombard.Adapters.MftAdapter.UnitTests\\Lombard.Adapters.MftAdapter.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName1 = Adapters.sln
+		SccProjectName1 = Lombard.Adapters.MftAdapter.UnitTests
+		SccAuxPath1 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath1 = Lombard.Adapters.MftAdapter.UnitTests
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = Lombard.Adapters.MftAdapter.IntegrationTests\\Lombard.Adapters.MftAdapter.IntegrationTests.csproj
+		SccProjectTopLevelParentUniqueName2 = Adapters.sln
+		SccProjectName2 = Lombard.Adapters.MftAdapter.IntegrationTests
+		SccAuxPath2 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath2 = Lombard.Adapters.MftAdapter.IntegrationTests
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = Lombard.Adapters.Data\\Lombard.Adapters.Data.csproj
+		SccProjectTopLevelParentUniqueName3 = Adapters.sln
+		SccProjectName3 = Lombard.Adapters.Data
+		SccAuxPath3 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath3 = Lombard.Adapters.Data
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = Lombard.Adapters.DipsAdapter\\Lombard.Adapters.DipsAdapter.csproj
+		SccProjectTopLevelParentUniqueName4 = Adapters.sln
+		SccProjectName4 = Lombard.Adapters.DipsAdapter
+		SccAuxPath4 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath4 = Lombard.Adapters.DipsAdapter
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = Lombard.Adapters.DipsAdapter.IntegrationTests\\Lombard.Adapters.DipsAdapter.IntegrationTests.csproj
+		SccProjectTopLevelParentUniqueName5 = Adapters.sln
+		SccProjectName5 = Lombard.Adapters.DipsAdapter.IntegrationTests
+		SccAuxPath5 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath5 = Lombard.Adapters.DipsAdapter.IntegrationTests
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = Lombard.Adapters.Data.Migrator\\Lombard.Adapters.Data.Migrator.csproj
+		SccProjectTopLevelParentUniqueName6 = Adapters.sln
+		SccProjectName6 = Lombard.Adapters.Data.Migrator
+		SccAuxPath6 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath6 = Lombard.Adapters.Data.Migrator
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName7 = Lombard.Adapters.DipsAdapter.UnitTests\\Lombard.Adapters.DipsAdapter.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName7 = Adapters.sln
+		SccProjectName7 = Lombard.Adapters.DipsAdapter.UnitTests
+		SccAuxPath7 = http://tfs.bps.epn.local:8080/tfs/bpsprojects
+		SccLocalPath7 = Lombard.Adapters.DipsAdapter.UnitTests
+		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0578E26D-6CC3-4D82-BB75-F252DE89D98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0578E26D-6CC3-4D82-BB75-F252DE89D98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0578E26D-6CC3-4D82-BB75-F252DE89D98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0578E26D-6CC3-4D82-BB75-F252DE89D98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD8F897-1C2C-440E-A25E-ED4888433F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD8F897-1C2C-440E-A25E-ED4888433F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD8F897-1C2C-440E-A25E-ED4888433F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD8F897-1C2C-440E-A25E-ED4888433F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0F5664-ED52-4F6E-9E5C-03D52FD00977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0F5664-ED52-4F6E-9E5C-03D52FD00977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0F5664-ED52-4F6E-9E5C-03D52FD00977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0F5664-ED52-4F6E-9E5C-03D52FD00977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D50D634-D464-4E39-B253-A8738CC561FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D50D634-D464-4E39-B253-A8738CC561FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D50D634-D464-4E39-B253-A8738CC561FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D50D634-D464-4E39-B253-A8738CC561FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7DEF1A-7625-4EB5-8065-74C795BC76AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7DEF1A-7625-4EB5-8065-74C795BC76AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7DEF1A-7625-4EB5-8065-74C795BC76AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7DEF1A-7625-4EB5-8065-74C795BC76AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F48F0025-8723-4E45-8CA2-8A14437A0643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48F0025-8723-4E45-8CA2-8A14437A0643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48F0025-8723-4E45-8CA2-8A14437A0643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48F0025-8723-4E45-8CA2-8A14437A0643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACCE373-C752-4473-A57E-22272619BECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACCE373-C752-4473-A57E-22272619BECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACCE373-C752-4473-A57E-22272619BECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACCE373-C752-4473-A57E-22272619BECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F93F69F-278E-481A-9411-41E6B421AA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F93F69F-278E-481A-9411-41E6B421AA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F93F69F-278E-481A-9411-41E6B421AA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F93F69F-278E-481A-9411-41E6B421AA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9120E5-67DB-419A-83B4-8462227645BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9120E5-67DB-419A-83B4-8462227645BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9120E5-67DB-419A-83B4-8462227645BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9120E5-67DB-419A-83B4-8462227645BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0578E26D-6CC3-4D82-BB75-F252DE89D98C} = {BAA3B3F9-39B2-4906-ACFB-9EB1DB58E9D1}
+		{CAD8F897-1C2C-440E-A25E-ED4888433F4F} = {7CC4998C-A470-4BBB-889A-D6709F6CF916}
+		{4F0F5664-ED52-4F6E-9E5C-03D52FD00977} = {7CC4998C-A470-4BBB-889A-D6709F6CF916}
+		{3CD9CF1C-EBC5-482F-B336-DF50BE1012D9} = {7CC4998C-A470-4BBB-889A-D6709F6CF916}
+		{2D50D634-D464-4E39-B253-A8738CC561FA} = {9729F45D-8B88-40DA-B805-C25216FC050C}
+		{2E7DEF1A-7625-4EB5-8065-74C795BC76AF} = {9729F45D-8B88-40DA-B805-C25216FC050C}
+		{F48F0025-8723-4E45-8CA2-8A14437A0643} = {BAA3B3F9-39B2-4906-ACFB-9EB1DB58E9D1}
+		{BACCE373-C752-4473-A57E-22272619BECA} = {9729F45D-8B88-40DA-B805-C25216FC050C}
+		{9732CD57-82B7-4DA5-A57C-E1F42EC2A3DC} = {521B1F17-7C56-418A-8A91-91F651740C6B}
+		{1F93F69F-278E-481A-9411-41E6B421AA66} = {521B1F17-7C56-418A-8A91-91F651740C6B}
+		{1C9120E5-67DB-419A-83B4-8462227645BB} = {9729F45D-8B88-40DA-B805-C25216FC050C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

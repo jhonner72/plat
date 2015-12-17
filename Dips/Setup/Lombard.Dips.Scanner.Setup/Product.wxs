@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="$(var.Name)" Language="1033" Version="$(var.Version)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="Lombard.Dips.Scanner.Setup" Level="1">
+      <ComponentRef Id="License.dat" />
+      <ComponentGroupRef Id="IniFilesComponent"/>
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="SilverBulletTechnology" Name="Silver Bullet Technology">
+          <Directory Id="Ranger" Name="Ranger">
+            <Directory Id="ScannerPlugin" Name="Scanner Plug-ins">
+              <Directory Id="INSTALLFOLDER" Name="Burroughs-SmartPVA" />
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="DataSilverBulletTechnology" Name="Silver Bullet Technology">
+          <Directory Id="DataRanger" Name="Ranger">
+            <Directory Id="DataScannerPlugin" Name="Scanner Plug-ins">
+              <Directory Id="DATAINSTALLFOLDER" Name="Burroughs-SmartPVA" />
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <Component Id="License.dat" Directory="INSTALLFOLDER" Guid="{9b81db9c-a693-4cbf-bba7-a48c6d598fe6}">
+      <File Id="License.dat" KeyPath="yes" Source="$(var.Source)\RangerInstall\License.dat" />
+    </Component>
+    <ComponentGroup Id="IniFilesComponent" Directory="DATAINSTALLFOLDER">
+      <Component Id="Burroughs_SmartPVA.ini" Guid="{a26abc38-f123-41ec-ae84-859bf60f2998}">
+        <File Id="Burroughs_SmartPVA.ini" KeyPath="yes" Source="$(var.Source)\Burroughs-SmartPVA.ini" />
+      </Component>
+      <Component Id="GenericOptions.ini" Guid="{75ae5b72-3f35-4d8a-ae24-16630c40e8f5}">
+        <File Id="GenericOptions.ini" KeyPath="yes" Source="$(var.Source)\GenericOptions.ini" />
+      </Component>
+      <Component Id="RangerData.ini" Guid="{39bec04c-0f54-4e98-984a-9ecb7918f1f0}">
+        <File Id="RangerData.ini" KeyPath="yes" Source="$(var.Source)\RangerData.ini" />
+      </Component>
+      <Component Id="TransportInfo.ini" Guid="{ac6fe2df-b4d9-453c-8741-f8a26fdd4fd3}">
+        <File Id="TransportInfo.ini" KeyPath="yes" Source="$(var.Source)\TransportInfo.ini" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

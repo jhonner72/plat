@@ -1,0 +1,405 @@
+{
+    "maxQuerySize": 7998,
+    "ackFileWaitPeriod": "PT1M",
+    "slaPeriod": "PT10M",
+    "targets": [
+        {
+            "workType": "NABCHQ_POD",
+            "targetDetails": [
+                {
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "state": "SA",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "085384",
+                    "captureBsb": "085015"
+                },
+                {
+                    "state": "WA",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "086038",
+                    "captureBsb": "086016"
+                },
+                {
+                    "state": "QLD",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "084024",
+                    "captureBsb": "084014"
+                },
+                {
+                    "state": "QLD",
+                    "financialInstitution": "BQL",
+                    "collectingBsb": "124001",
+                    "captureBsb": "124001"
+                }
+            ]
+        },
+        {
+            "workType": "NABCHQ_LBOX",
+            "targetDetails": [
+                {
+                    "batchType": "LCG1",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LCG2",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LML1",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LML2",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LCS1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LRD1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LSV1",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LSV6",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LBC1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LCW1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LCY1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LEG1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LRD2",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LRD3",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LRD4",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LGS1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LMC1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LPC1",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LSV2",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LSV3",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LSV4",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LHS1",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LSV5",
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082082"
+                },
+                {
+                    "batchType": "LNC1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LEA1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LRC1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                },
+                {
+                    "batchType": "LOW1",
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083340"
+                }
+            ]
+        },
+        {
+            "workType": "NABCHQ_APOST",
+            "targetDetails": [
+                {
+                    "state": "NSW",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "082037",
+                    "captureBsb": "082265"
+                },
+                {
+                    "state": "VIC",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "083029",
+                    "captureBsb": "083309"
+                },
+                {
+                    "state": "SA",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "085384",
+                    "captureBsb": "085265"
+                },
+                {
+                    "state": "WA",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "086038",
+                    "captureBsb": "086265"
+                },
+                {
+                    "state": "QLD",
+                    "financialInstitution": "NAB",
+                    "collectingBsb": "084024",
+                    "captureBsb": "084265"
+                }
+            ]
+        }
+    ],
+    "recordTypeCodes": [
+        {
+            "code": "C",
+            "transactionCode": "111"
+        },
+        {
+            "code": "C",
+            "transactionCode": "222"
+        },
+        {
+            "code": "P",
+            "bsb": "377872"
+        },
+        {
+            "code": "P",
+            "bsb": "377873"
+        },
+        {
+            "code": "P",
+            "bsb": "377874"
+        },
+        {
+            "code": "P",
+            "bsb": "377876"
+        },
+        {
+            "code": "P",
+            "bsb": "377877"
+        },
+        {
+            "code": "P",
+            "bsb": "377878"
+        },
+        {
+            "code": "P",
+            "bsb": "401795"
+        },
+        {
+            "code": "P",
+            "bsb": "430327"
+        },
+        {
+            "code": "P",
+            "bsb": "430328"
+        },
+        {
+            "code": "P",
+            "bsb": "430329"
+        },
+        {
+            "code": "P",
+            "bsb": "430330"
+        },
+        {
+            "code": "P",
+            "bsb": "433687"
+        },
+        {
+            "code": "P",
+            "bsb": "455701"
+        },
+        {
+            "code": "P",
+            "bsb": "455702"
+        },
+        {
+            "code": "P",
+            "bsb": "455703"
+        },
+        {
+            "code": "P",
+            "bsb": "455704"
+        },
+        {
+            "code": "P",
+            "bsb": "471527"
+        },
+        {
+            "code": "P",
+            "bsb": "490292"
+        },
+        {
+            "code": "P",
+            "bsb": "490289"
+        },
+        {
+            "code": "P",
+            "bsb": "531355"
+        },
+        {
+            "code": "P",
+            "bsb": "531356"
+        },
+        {
+            "code": "P",
+            "bsb": "531357"
+        },
+        {
+            "code": "P",
+            "bsb": "531358"
+        },
+        {
+            "code": "P",
+            "bsb": "531359"
+        },
+        {
+            "code": "P",
+            "bsb": "552061"
+        },
+        {
+            "code": "P",
+            "bsb": "552270"
+        },
+        {
+            "code": "P",
+            "bsb": "555001"
+        },
+        {
+            "code": "P",
+            "bsb": "556733"
+        },
+        {
+            "code": "P",
+            "bsb": "558388"
+        }
+    ]
+}
+
+

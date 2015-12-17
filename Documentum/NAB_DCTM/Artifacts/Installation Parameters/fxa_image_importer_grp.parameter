@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.groupparameter/fxa_image_importer_grp?artifactURI=file:/C:/Yogesh/FXA/WORKSPACE/TFS_LOMBARD/Main/Documentum/NAB_DCTM/Artifacts/Installation%20Parameters/fxa_image_importer_grp.parameter" categoryId="com.emc.ide.groupparameter" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="installparameter:GroupParameter" name="fxa_image_importer_grp" description="Accessor to Parameterized ACL" defaultValue="fxa_image_importer_grp"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

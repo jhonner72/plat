@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89F60CCF-2DFF-4918-80C5-A263240C1A0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lombard.Adapters.A2iaAdapter.IntegrationTests</RootNamespace>
+    <AssemblyName>Lombard.Adapters.A2iaAdapter.IntegrationTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyNetQ">
+      <HintPath>..\packages\EasyNetQ.0.47.6.373\lib\net40\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lombard.Common, Version=2.4.35680.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lombard.Common.2.4.35680.0\lib\net45\Lombard.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.4.3.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog">
+      <HintPath>..\packages\Serilog.1.4.204\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extras.Attributed">
+      <HintPath>..\packages\Serilog.Extras.Attributed.1.4.204\lib\portable-net45+win+wp80\Serilog.Extras.Attributed.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx">
+      <HintPath>..\packages\Serilog.1.4.204\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>..\packages\System.IO.Abstractions.2.0.0.113\lib\net40\System.IO.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow">
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigurationHelper.cs" />
+    <Compile Include="Features\CreateBatchPayloads.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateBatchPayloads.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ProcessChequeImageUsingA2Ia.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcessChequeImageUsingA2Ia.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ProcessMultipleBatches.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcessMultipleBatches.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\ProcessChequeImageUsingA2IaSteps.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Features\CreateBatchPayloads.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateBatchPayloads.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ProcessChequeImageUsingA2Ia.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ProcessChequeImageUsingA2Ia.feature.cs</LastGenOutput>
+    </None>
+    <Compile Include="Hooks\AutoReadCarBus.cs" />
+    <None Include="Features\ProcessMultipleBatches.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ProcessMultipleBatches.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63aa\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ab\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ac\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ad\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ae\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63af\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63ba\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bb\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bc\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63bd\VOUCHER_17032015_000111226_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000030_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000031_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000032_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000033_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000034_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000035_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000036_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000037_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000038_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000039_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000040_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000041_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000042_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000043_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000044_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000045_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000046_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000047_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000048_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000049_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000050_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000051_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000052_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000053_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000054_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000055_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000056_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000057_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000058_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_13072015_185000059_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000757_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000758_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000759_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000760_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000761_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000762_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000763_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000764_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000765_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000766_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000767_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000768_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000769_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000770_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000771_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000772_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000773_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000774_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000775_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000776_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_16062015_142000777_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_17032015_000111222_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_17032015_000111223_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_17032015_000111224_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_17032015_000111225_FRONT.TIF" />
+    <Content Include="TestData\NSBD-765fe520-fdfc-4cd0-ae6c-63196ddf63be\VOUCHER_17032015_000111226_FRONT.TIF" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\OctoPack.3.0.31\tools\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.0.31\tools\OctoPack.targets')" />
+  <Target Name="EnsureOctoPackImported" BeforeTargets="BeforeBuild" Condition="'$(OctoPackImported)' == ''">
+    <Error Condition="!Exists('..\packages\OctoPack.3.0.31\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="You are trying to build with OctoPack, but the NuGet targets file that OctoPack depends on is not available on this computer. This is probably because the OctoPack package has not been committed to source control, or NuGet Package Restore is not enabled. Please enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\OctoPack.3.0.31\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="OctoPack cannot be run because NuGet packages were restored prior to the build running, and the targets file was unavailable when the build started. Please build the project again to include these packages in the build. You may also need to make sure that your build server does not delete packages prior to each build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

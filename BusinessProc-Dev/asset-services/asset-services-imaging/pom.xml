@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>asset-services-imaging</artifactId>
+    <packaging>jar</packaging>
+    <name>FXA Asset Services - Imaging</name>
+    <version>0.0.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.fujixerox.aus.asset-services</groupId>
+        <artifactId>asset-services-base</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath>../asset-services-base/pom.xml</relativePath>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.media</groupId>
+                <artifactId>jai_imageio</artifactId>
+                <version>${javax.media.jai_imageio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>it.geosolutions.imageio-ext</groupId>
+                <artifactId>imageio-ext-tiff</artifactId>
+                <version>${it.geosolutions.imageio-ext.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fujixerox.aus.asset-services</groupId>
+            <artifactId>asset-services-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.media</groupId>
+            <artifactId>jai_imageio</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>it.geosolutions.imageio-ext</groupId>
+            <artifactId>imageio-ext-tiff</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

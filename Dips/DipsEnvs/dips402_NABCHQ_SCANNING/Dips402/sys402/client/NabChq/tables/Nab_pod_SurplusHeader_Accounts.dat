@@ -1,0 +1,35 @@
+//Indexing Sort Option: ALPHA
+//Description: Contains Header Accounts for Surplus Item Batches
+//Modification History:
+//2015-05-05        Dinesh      Created
+//2015-06-25        Dinesh      Modified (Added key for BQL Queensland)
+//2015-06-30        Shraddha    Modified (Added mappings for Listings)
+//2015-08-04        Dinesh    	Modified (Minor corrections in the desc)
+// Format:
+//Key, Bank, Bank Code, Collecting BSB, Batch Header Account
+//
+
+01-National Australia Bank,NAB,083000,0000000099
+02-Bank of Queensland,BQL,124000,0000000099
+03-Macquarie Bank Ltd,MBL,182000,0000000099
+04-JP Morgan Chase N.A,CMB,212000,0000000099
+05-Arab Bank Ltd,ARA,917000,0000000099
+06-Citigroup Ltd,CTI,242000,0000000099
+07-Bendigo & Adelaide Bank Ltd (BBL 633),BBL,633000,0000000099
+08-Bendigo & Adelaide Bank Ltd (ADL 610),ADL,610000,0000000099
+09-HSBC Bank Australia Ltd,HBA,342000,0000000099
+10-Hongkong and Shanghai,HSB,985000,0000000099
+11-Bank of Sydney,LBA,942000,0000000099
+12-Industrial & Commercial Bank of China,IBK,819000,0000000099
+13-Overseas-Chinese Banking Group,OCB,452000,0000000099
+14-Royal Bank of Scotland,RBS,952000,0000000099
+15-CUSCAL Ltd,CRU,802000,0000000099
+16-Mecu,MCU,313000,0000000099
+17-QT Mutual Bank,QTM,514000,0000000099
+18-Community First CU Ltd,CFC,512000,0000000099
+19-Australian Defence CU,ADC,642000,0000000099
+20-Teachers Credit Union,TCU,812000,0000000099
+21-Capricornia Credit Union,CAP,813000,0000000099
+22-Credit Union Australia Ltd,CUA,814000,0000000099
+23-Police Department CU,PCU,815000,0000000099
+24-Warwick Credit Union,WCU,817000,0000000099

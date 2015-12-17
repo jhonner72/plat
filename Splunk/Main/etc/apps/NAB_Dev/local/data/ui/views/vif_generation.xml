@@ -1,0 +1,168 @@
+<form>
+  <label>VIF Generation</label>
+  <description>Dashboard for monitoring VIF file generation and transmission</description>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="time" searchWhenChanged="true" token="SharedTimePicker">
+      <label></label>
+      <default>
+        <earliest>-2d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="CamundaVif">
+    <query>index="camunda" source="BpmInstanceVif" | transaction BusinessKey | eval Status=if(mvindex(EndTime,0,0)=="null","Processing","Completed") | table _time BusinessKey Status</query>
+    <earliest>$SharedTimePicker.earliest$</earliest>In progress<latest>$SharedTimePicker.latest$</latest>
+  </search>
+  <search id="JscapeVif">
+    <query>index="jscape_mft" trigger="Send VIF to *"  | transaction eventId | eval endPoint=trigger | table _time eventId endPoint trigger VifOutboundFilename | join eventId type=outer [search index="jscape_mft" trigger="Send VIF to *" "trigger error" | eval VifOutboundFilename="Error" | eval endPoint="Error" | table eventId VifOutboundFilename endPoint] | fields - eventId</query>
+    <earliest>$SharedTimePicker.earliest$</earliest>In progress<latest>$SharedTimePicker.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Vif File Generation and Transmission</title>
+      <chart>
+        <title>Vif Files Generated</title>
+        <search base="CamundaVif">
+          <query>| timechart count by Status</query>
+        </search>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.fieldColors">{"Processing":0xFFCC00,"Completed":0x73A550}</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Number of files</option>
+      </chart>
+      <chart>
+        <title>Vif files transmitted by Jscape</title>
+        <search base="JscapeVif">
+          <query>| timechart count by endPoint</query>
+        </search>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.fieldColors">{"Send VIF to NAB":0x73A550}</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleY.text">Files Sent</option>
+        <option name="charting.axisTitleX.text">Time</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Vif Files being Generated</title>
+      <single>
+        <title>Number of files in progress</title>
+        <search base="CamundaVif">
+          <query>| where Status = "Processing" | stats count | rangemap field=count low=0-0 default=elevated</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">files in progress</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <table>
+        <title>Files in progress</title>
+        <search base="CamundaVif">
+          <query>| where Status = "Processing"</query>
+        </search>
+        <drilldown target="My New Window">
+          <link>bpm_vif_instance?form.businessKey=$row.BusinessKey$</link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Vif Files Generated</title>
+      <single>
+        <title>Number of Generated</title>
+        <search base="CamundaVif">
+          <query>| where Status = "Completed" | stats count | rangemap field=count elevated=0-0 default=low</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">generated</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <table>
+        <title>Files Generated</title>
+        <search base="CamundaVif">
+          <query>| where Status = "Completed"</query>
+        </search>
+        <drilldown target="My New Window">
+          <link>bpm_vif_instance?form.businessKey=$row.BusinessKey$</link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Transmitted by Jscape</title>
+      <single>
+        <title>Number of files sent by Jscape</title>
+        <search base="JscapeVif">
+          <query>| stats count | rangemap field=count elevated=0-0 default=low</query>
+          <earliest>$SharedTimePicker.earliest$</earliest>
+          <latest>$SharedTimePicker.latest$</latest>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">files sent by Jscape</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <table>
+        <title>Files sent by Jscape</title>
+        <search base="JscapeVif">
+          <query>| fields - endPoint</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,186 @@
+<form script="table_icons_rangemap.js" stylesheet="table_decorations.css, bpm_legend.css">
+  <label>BPM - Reporting</label>
+  <description>Dashboard that shows status of the reporting business process</description>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="time" searchWhenChanged="true" token="timePicker">
+      <label>Select a time:</label>
+      <default>
+        <earliest>-1d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmInstanceReporting | dedup ProcessInstanceId sortby +EndTime | eval Status = if(EndTime == "null", "high", "low")  | convert timeformat="%Y-%m-%d %H:%M" ctime(_time) AS Time | Table _time Time ProcessInstanceId BusinessKey Status |  join ProcessInstanceId type=outer [search index="camunda" source=BpmActivityReporting State=2 | eval Status = case(State==2, "severe") | table ProcessInstanceId Status] | sort -Time</query>
+    <earliest>$timePicker.earliest$</earliest>
+    <latest>$timePicker.latest$</latest>
+  </search>
+  <search id="ReportBaseQuery">
+    <query>index=adapters source=*ReportingAdapter-*.log NRPT | eval GUID="NRPT-" + mvindex(split(mvindex(split(mvindex(split(_raw,"NRPT-"),1),"\""),0),"\\"),0) | eval Status = "Created" | where isnotnull(FileName) AND GUID=="$BusinessKey_tok$" | dedup FileName | table _time GUID FileName Status | join FileName type=outer [search index="jscape_mft" trigger="Send Reports to *" " has been deleted" OR "trigger error"| eval EndPoint=trigger | eval Status=if(searchmatch("trigger error"),"Error","Sent") | table _raw _time FileName EndPoint Status | eval camundaTime=strptime("$ProcessTime_tok$","%Y-%m-%d %H:%M")| convert mktime(_time) as eventTime | where eventTime &gt;= camundaTime AND eventTime &lt; relative_time(camundaTime,"+2M") | eval FileName=if(isnull(FileName),rtrim(mvindex(split(_raw,"\\NAB\\"),1),"' has been deleted\" - -"),rtrim(FileName,".zip")) | table FileName Status EndPoint]</query>
+    <earliest>$timePicker.earliest$</earliest>
+    <latest>$timePicker.latest$</latest>
+  </search>
+  <row>
+    <panel>
+      <title>Report Generation Last Successful Run</title>
+      <single>
+        <search base="baseQuery">
+          <query>| where Status="low" | head 1 | eval range=if(Time&gt;strftime(relative_time(now(),"-1d@d"),"%Y-%m-%dT%H:%M:%S.%3N"),"low","severe")</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="beforeLabel">Last ran at:</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Report Generation Process</title>
+      <html src="bpm_legend.html">
+      </html>
+      <table id="table1">
+        <title>Report Process instance in progress/completed</title>
+        <search base="baseQuery">
+          <query>| rename BusinessKey as "Business Key"| rename Status AS range | eval Reports = "Reports Sent" | eval "Camunda BPM" = "Process Status"  | table Time "Business Key" range Reports "Camunda BPM"</query>
+        </search>
+        <drilldown target="My New Window">
+          <condition field="Reports">
+            <set token="ProcessTime_tok">$click.value$</set>
+            <set token="BusinessKey_tok">$row.Business Key$</set>
+          </condition>
+          <condition field="Camunda BPM">
+            <link>bpm_report_generation_instance?form.businessKey=$row.Business Key$</link>
+          </condition>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+    <panel>
+      <title>BPM Reporting Timechart</title>
+      <chart>
+        <search base="baseQuery">
+          <query>| eval Status=case(Status=="low","Completed",Status=="high","Processing",Status=="severe","Cancelled") | timechart count by Status</query>
+        </search>
+        <option name="charting.legend.placement">bottom</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.fieldColors">{"Cancelled":0xFF0000,"Processing":0xFFCC00,"Completed":0x73A550}</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleY.text">Number of Processes</option>
+      </chart>
+    </panel>
+  </row>
+  <row depends="$ProcessTime_tok$">
+    <panel>
+      <title>Transmitted by Jscape</title>
+      <single>
+        <search base="ReportBaseQuery">
+          <query>| stats count by Status | where Status == "Sent" | table count|rangemap field=count elevated=0-0 default=low</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">reports sent by Jscape</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <single>
+        <search base="ReportBaseQuery">
+          <query>| stats count by Status | where Status == "Created" | table count | rangemap field=count low=0-0 default=elevated</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">reports only stored in documentum</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+      </single>
+      <single>
+        <search base="ReportBaseQuery">
+          <query>| stats count | rangemap field=count elevated=0-0 default=low</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">total reports created</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+      <single>
+        <title>Reports with Errors</title>
+        <search base="ReportBaseQuery">
+          <query>| stats count by Status | where Status == "Error" | table count | rangemap field=count low=0-0 default=high</query>
+        </search>
+        <option name="classField">range</option>
+        <option name="afterLabel">report errors</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+      </single>
+      <table>
+        <title>Reports Created and Sent via Jscape</title>
+        <search base="ReportBaseQuery">
+          <query></query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Reports Sent via Jscape</title>
+      <chart>
+        <search base="ReportBaseQuery">
+          <query>| stats count by EndPoint</query>
+        </search>
+        <option name="charting.legend.placement">bottom</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.axisTitleY.text">Number of Reports</option>
+      </chart>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,256 @@
+{
+    "agencyBanks": [
+        {
+            "agencyBankGroupCode": "ARA",
+            "agencyBankName": "Arab Bank Australia Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "ADC",
+            "agencyBankName": "Australian Defence Credit Union",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",                
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",                
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "BQL",
+            "agencyBankName": "Bank of Queensland Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",                
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",                
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "LBA",
+            "agencyBankName": "Bank of Sydney Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",                
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "BBL",
+            "agencyBankName": "Bendigo and Adelaide Bank Limited (BBL)",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",                
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",                
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "ADL",
+            "agencyBankName": "Bendigo and Adelaide Bank Limited (ADL)",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",                
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CAP",
+            "agencyBankName": "Capricornian Ltd (The)",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",                
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",                
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CTI",
+            "agencyBankName": "Citigroup Pty Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_IPOD_Errors_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CFC",
+            "agencyBankName": "Community First Credit Union Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CUA",
+            "agencyBankName": "Credit Union Australia Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CRU",
+            "agencyBankName": "Cuscal Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "HBA",
+            "agencyBankName": "HSBC Bank Australia Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "IBK",
+            "agencyBankName": "Industrial and Commercial Bank of China Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "CMB",
+            "agencyBankName": "JP Morgan Chase Bank, NA",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "MBL",
+            "agencyBankName": "Macquarie Bank Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Single_Item_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_IPOD_Errors_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "MCU",
+            "agencyBankName": "mecu Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "OCB",
+            "agencyBankName": "Oversea-Chinese Banking Corporation Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "PCU",
+            "agencyBankName": "Police Bank Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "QTM",
+            "agencyBankName": "QT Mutual Bank Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "TCU",
+            "agencyBankName": "Teachers Mutual Bank Limited",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "HSB",
+            "agencyBankName": "The Hong Kong & Shanghai Banking Corporation Limited, Australia Branch",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "RBS",
+            "agencyBankName": "The Royal Bank of Scotland PLC, Australia Branch",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        },
+        {
+            "agencyBankGroupCode": "WCU",
+            "agencyBankName": "Warwick Credit Union Ltd",
+            "includeReports": [
+                "Agency_Adjustments_Letter_Report",
+                "Agency_ECD_Exception_Return_All_Items_Report",
+                "Agency_Inward_For_Value_DR_Report",
+                "Agency_Surplus_Items_Report",
+                "Agency_Unprocessable_Paper_Report"
+            ]
+        }
+    ]
+}

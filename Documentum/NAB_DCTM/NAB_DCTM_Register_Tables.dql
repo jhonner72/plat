@@ -1,0 +1,62 @@
+---- Version History ---------------------------------------------------------------------------------
+-- Consider Sprint 26 as Baseline
+------------------------------------------------------------------------------------------------------
+--- Version 1.1. :- Date: 31 Aug 2015 - Sprint 27 Drop 1 bug : Unregister table and register with new
+----       additional fields (fxa_voucher_audit)by Ajit Dangal TFS [TBD]
+------------------------------------------------------------------------------------------------------
+
+REGISTER TABLE  dm_dbo.report_types(type_name String(64))
+go
+update dm_registered object set owner_table_permit=15 set world_table_permit = 7 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name = 'report_types'
+go
+REGISTER TABLE dm_dbo.fxa_voucher_audit
+(
+	i_chronicle_id string(40),
+	subject_area string(50),
+	attribute_name string(50),
+	pre_value string(50),
+	post_value string(50),	
+	modified_date date
+)
+go
+update dm_registered object set owner_table_permit=15 set world_table_permit = 7 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name ='fxa_voucher_audit'
+go
+REGISTER TABLE dm_dbo.fxa_voucher_stripzero_view
+(
+r_object_id string(16),
+object_name string(255),
+i_chronicle_id string(16),
+r_version_label string(32),
+fxa_processing_date date,
+fxa_m_batch_number string(32),
+fxa_m_balanced_sequence string(20),
+fxa_migration_batch_no string(64),
+fxa_checksum string(60),
+fxa_checksum_type string(10),
+fxa_dishonoured boolean,
+fxa_extra_aux_dom string(17),
+fxa_aux_dom string(20),
+fxa_bsb string(6),
+fxa_account_number string(17),
+fxa_tran_link_no string(60),
+fxa_amount string(13),
+fxa_drn string(16),
+fxa_classification string(2),
+fxa_m_entry_number string(6),
+fxa_m_bal_seq_for_deposit string(4),
+fxa_m_cr_drn string(16)
+)
+go
+update dm_registered object set owner_table_permit=15 set world_table_permit = 1 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name ='fxa_voucher_stripzero_view'
+go
+REGISTER TABLE dm_dbo.fxa_file_receipt(file_id string(50), filename string(100), received_datetime date, transmission_datetime date, exchange string(50))
+go
+update dm_registered object set owner_table_permit=15 set world_table_permit = 7 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name ='fxa_file_receipt'
+go
+REGISTER TABLE dm_dbo.fxa_voucher_im_view
+(
+	r_object_id string(16)
+)
+go
+update dm_registered object set owner_table_permit=15 set world_table_permit = 7 set group_table_permit = 7 set acl_name='fxa_registered_tables_acl' set acl_domain='dm_dbo' where table_name ='fxa_voucher_im_view'
+go

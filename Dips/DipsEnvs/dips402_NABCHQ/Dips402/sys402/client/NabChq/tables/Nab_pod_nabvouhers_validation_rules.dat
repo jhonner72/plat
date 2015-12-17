@@ -1,0 +1,93 @@
+//Indexing Sort Option: ALPHA
+//Description: TranCode Classifications
+//			   Note: As there are some duplicate TranCodes, so some of the TransCodes have been appended with ClassificationCode
+//Modification History:
+//2015-05-05        Dinesh      Created
+//2015-06-05        Dinesh      Modified (Added Other Debit Item Validation Rules)
+//2015-06-17        Dinesh      Modified (Modified GL Account Rules as per clarifications from NAB)
+//2015-06-22        Dinesh      Modified (Added Rules for NBFID3A and modified as per APCA updates)
+//2015-06-24        Dinesh      Modified (Modified rules for Cash Slip (CHSSLP))
+//2015-06-26        Dinesh      Modified (Added rules for BQL_QLD)
+//2015-07-14        Dinesh      Modified (Modified CDV Rules- Mod Validation taken out for GLDB and GLCR)
+// Format:
+//TranCode Classification,SerNumBlank Blank Check Required,SerNum Range Check Required,SerNumRangeMin, SerNumRangeMax,
+//EAD Blank Check Required,EAD Range Check Required,EADRangeMin, EADRangeMax,ModulusCheckRequired,ModulusScheme,AmountCheckRequired,MaxAmountDigits
+//
+
+CADB1,1,0,0,0,1,0,0,0,1,11,1,12
+CADB2,1,1,6,8,0,1,1,6,1,11,1,12
+CADB3,1,1,6,8,1,0,0,0,1,11,1,12
+CADB4,0,1,7,7,1,0,0,0,1,11,1,12
+CADB5,1,1,6,8,1,0,0,0,1,11,1,12
+CADB6,0,0,1,3,1,1,1,12,1,11,1,12
+CADB7,0,1,6,6,1,0,0,0,1,11,1,12
+CADB8,1,1,1,8,0,1,1,9,1,11,1,12
+CADB9,0,0,6,8,1,0,0,0,1,11,1,12
+
+CACR1,1,0,0,0,1,0,0,0,1,11,1,12
+CACR2,1,1,1,4,1,1,1,6,1,11,1,12
+CACR3,1,1,1,4,0,1,4,12,1,11,1,12
+CACR4,1,1,1,4,1,0,0,0,1,11,1,12
+CACR5,0,1,3,3,1,1,1,12,1,11,1,12
+
+GLDB1,1,0,0,0,1,0,0,0,0,0,1,12
+GLDB2,0,1,6,6,1,0,0,0,0,0,1,12
+GLDB3,0,1,6,6,1,0,0,0,0,0,1,12
+GLDB4,1,0,0,0,1,0,0,0,0,0,1,12
+GLDB5,1,0,0,0,1,0,0,0,0,0,1,12
+
+GLCR1,1,0,0,0,1,0,0,0,0,0,1,12
+GLCR2,0,1,6,6,1,0,0,0,0,0,1,12
+GLCR3,0,1,6,6,1,0,0,0,0,0,1,12
+GLCR4,4,0,0,0,1,0,0,0,0,0,1,12
+GLCR5,4,0,0,0,1,0,0,0,0,0,1,12
+
+PCVD,0,1,6,6,1,0,0,0,1,11,1,12
+PCVC,0,1,6,6,1,0,0,0,1,11,1,12
+
+
+NBFID1,1,0,0,0,1,0,0,0,1,10,1,12
+NBFID2,1,1,6,7,0,1,1,6,1,10,1,12
+NBFID3,0,1,7,7,1,0,0,0,1,10,1,10
+NBFID3A,0,1,6,7,1,0,0,0,1,10,1,12
+NBFID4,0,1,7,7,1,0,0,0,1,10,1,10
+NBFID5,1,1,6,7,1,0,0,0,1,10,1,12
+NBFID6,0,1,6,6,1,0,0,0,1,10,1,12
+NBFID7,1,1,6,7,0,1,1,9,1,10,1,12
+NBFID8,0,1,6,6,1,0,0,0,1,10,1,10
+
+NBFIC1,1,0,0,0,1,0,0,0,1,10,1,12
+NBFIC2,1,1,1,4,1,1,1,6,1,10,1,12
+NBFIC3,1,1,1,4,0,1,4,12,1,10,1,12
+NBFIC4,1,1,1,4,1,0,0,0,1,10,1,12
+
+//American Exp TC
+AETC,0,1,6,6,1,0,0,0,1,9,1,10
+
+//Thomas Cook TC
+TCTC,0,1,7,7,1,0,0,0,0,0,1,10
+
+//NAB Credit Cards
+NABCCAEX,1,0,0,0,1,0,0,0,1,10C,1,10
+NABCCVCC,1,0,0,0,1,0,0,0,1,10C,1,10
+NABCCNCC,1,0,0,0,1,0,0,0,1,10C,1,10
+NABCCVGC,1,0,0,0,1,0,0,0,1,10C,1,10
+
+//Cash Slip Voucher
+CSHSLP,1,1,6,9,1,0,0,0,0,0,1,10
+
+//Sub Total Voucher
+SUBTV,1,0,0,0,1,0,0,0,0,0,1,10
+
+//Merchant Summary Debits
+MSDBT,0,1,6,6,1,0,0,0,0,0,1,12
+
+//BQL_QLD Debit Vouchers
+BVD,0,1,6,6,1,0,0,0,0,0,1,12
+BCD,0,1,6,6,1,0,0,0,0,0,1,12
+
+//BQL_QLD Credit Vouchers
+BVC,1,0,0,0,1,0,0,0,0,0,1,12
+BCC,1,0,0,0,0,1,6,6,0,0,1,12
+BVPC,0,1,6,6,1,0,0,0,1,11B,1,12
+BVCC,1,0,0,0,1,0,0,0,0,0,1,12

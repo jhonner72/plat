@@ -1,0 +1,93 @@
+<form>
+  <label>Camunda Monitoring</label>
+  <fieldset submitButton="false">
+    <input type="time" token="field1" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-1d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>BPM Processes Fail</title>
+      <table>
+        <search>
+          <query>index=camunda source="bpmJob*" |dedup BusinessKey| eval GUID=BusinessKey|  convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time| rename ProcessName as "Process"| rename ActivityName as "Activity"|table GUID Process Activity</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">6</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Camunda Activities Run Longer than Configuration Time</title>
+      <input type="text" token="field2" searchWhenChanged="true">
+        <label>Configuration Time (Minutes)</label>
+        <default>30</default>
+      </input>
+      <table>
+        <search>
+          <query>index=camunda source="bpmActivity*" |eval GUID=BusinessKey| eval Seconds=Duration/1000| where not EndTime="null" and Seconds &gt;= 60*$field2$ |eval "End Time"=mvindex(split(replace(EndTime, "T", " "),"."),0) |eval Duration=tostring(Seconds, "duration")|convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time|table Time GUID Name Duration</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">2</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Camunda Errors</title>
+      <input type="time" token="field3">
+        <label></label>
+        <default>
+          <earliest>-5d@d</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <table>
+        <search>
+          <query>index=camunda source=*Lombard.log error |transaction ID| eval GUID=rtrim(ID,"#-#") | convert timeformat="%Y-%m-%d %H:%M:%S" ctime(_time) AS Time | rename rabbitmq_CORRELATIONID as CorrelationId |eval messages=mvIndex(split(mvIndex(split(_raw,"caught: "),1),"Message History"),0) |eval messages=if(isnull(messages),mvIndex(split(_raw,"Cause: "),1),messages)|eval messages=if(isnull(messages), mvIndex(split(_raw, "ProcessEngineException: "),1),messages)| table Time CorrelationId GUID messages</query>
+          <earliest>$field3.earliest$</earliest>
+          <latest>$field3.latest$</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Camunda Log - 10 latest events</title>
+      <event>
+        <title>Lombard.log</title>
+        <search>
+          <query>index=camunda source=*Lombard.log | head 10</query>
+        </search>
+        <option name="count">2</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">0</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <fields>[]</fields>
+      </event>
+    </panel>
+  </row>
+</form>

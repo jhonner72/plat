@@ -1,0 +1,2 @@
+broker.options=connectionFactory=rabbitConnectionFactory&autoDelete=false&declare=false&autoAck=false&concurrentConsumers=2&threadPoolSize=10&prefetchEnabled=true&prefetchCount=1&prefetchGlobal=false
+sharedConsumer=false

@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Voucher Viewer</title>
+<style>
+  html,body{ 
+    overflow: hidden;
+    font-family: helvetica, arial, sans-serif; 
+    font-size: 12px;
+    width: 100%; 
+    height: 100%;
+  } 
+
+</style>
+<script type="text/javascript">
+
+  var debug = getURLParameter('debug');	
+  var docbase = getURLParameter('docbase');
+  var locale = getURLParameter('locale');
+  var username = getURLParameter('username');
+  var password = getURLParameter('password');
+  var r_object_id = getURLParameter('r_object_id');
+   var conType = getURLParameter('contentType');
+  var format = getURLParameter('format');
+  var downloadFormat = 'pdf';
+  if (format=="c2pdf") {
+    downloadFormat = '_DEFAULT_';
+  }
+  var documentIdMatch = r_object_id.match(/^09/);
+
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+  }
+
+  function resizeToMax(id){
+    myImage = new Image() 
+    var img = document.getElementById(id);
+    myImage.src = img.src; 
+    if (myImage.width > myImage.height){
+      img.style.width = "100%";
+    } else {
+      img.style.height = "100%";
+    }
+  }
+function updateProgress(evt) 
+{
+   if (evt.lengthComputable) 
+   {  //evt.loaded the bytes browser receive
+      //evt.total the total bytes seted by the header
+      //
+	  //alert('progress');
+     var percentComplete = (evt.loaded / evt.total)*100;  
+     $('#progressbar').progressbar( "option", "value", percentComplete );
+   } 
+} 
+  function loadViewer() {
+    var aHtml = new Array();
+    var h = 0;
+    var d2DownloadLink;
+    var hostName = window.location.hostname;
+    var port = window.location.port;
+	var protocol = window.location.protocol;
+
+    if (debug=="true") {
+      aHtml[h++] = 'hostName=' + hostName + '<br/>';
+      aHtml[h++] = 'port=' + port + '<br/>';
+      aHtml[h++] = 'docbase=' + docbase + '<br/>';
+      aHtml[h++] = 'locale=' + locale + '<br/>';
+      aHtml[h++] = 'username=' + username + '<br/>';
+      aHtml[h++] = 'password=' + password + '<br/>';
+      aHtml[h++] = 'format=' + format + '<br/>';
+      aHtml[h++] = 'downloadFormat=' + downloadFormat + '<br/>';
+      aHtml[h++] = 'r_object_id=' + r_object_id + '<br/>';
+	  aHtml[h++] = 'documentIdMatch=' + documentIdMatch + '<br/>';
+	  aHtml[h++] = 'Type=' + conType + '<br/>';
+      aHtml[h++] = '<br/>';
+    }
+	//alert(conType);
+    if (docbase==null) {
+      aHtml[h++] = 'Please make sure docbase=$DOCBASE is included in widget config URL.<br/>';
+    } else if (username==null) {
+      aHtml[h++] = 'Please make sure username=$LOGIN is included in widget config URL.<br/>';
+    } else if (password==null) {
+      aHtml[h++] = 'Please make sure password=$TICKET is included in widget config URL.<br/>';
+    } else if (locale==null) {
+      aHtml[h++] = 'Please make sure locale=en is included in widget config URL.<br/>';
+    } else if (r_object_id==null) {
+      aHtml[h++] = 'Waiting for you to select a voucher.<br/><br/>';
+    } else if (documentIdMatch==null) {
+      aHtml[h++] = 'NOTICE:  The selected object is not a document.  No action for this widget.<br/><br/>';
+    } else if (conType == 'tiff'){
+		//alert('in tiff');
+		if(!port){
+			d2DownloadLink = protocol +"//"+ hostName +  '/VoucherViewer/Convert.jsp?debug='+ debug +'&_docbase=' + docbase + '&_locale=' + locale + '&_username=' + username + '&_password=' + password + '&id=' + r_object_id + '&format=' + downloadFormat + '&event_name=d2_view' + '&debugJsp=debugJsp&diffCtx=true';		
+		}else{
+			d2DownloadLink = protocol +"//"+ hostName + ':' + port + '/VoucherViewer/Convert.jsp?debug='+ debug +'&_docbase=' + docbase + '&_locale=' + locale + '&_username=' + username + '&_password=' + password + '&id=' + r_object_id + '&format=' + downloadFormat + '&event_name=d2_view' + '&debugJsp=debugJsp&diffCtx=true';		
+		}
+		
+		//alert(d2DownloadLink);
+		if (debug=="true"){
+		 aHtml[h++] = 'd2DownloadLink=' + d2DownloadLink + '<br/>'; 
+		 var start = new Date().getTime();
+		}
+
+		//Get Content-Type 		
+		var xhr = new XMLHttpRequest();			
+     		xhr.open('GET', d2DownloadLink, false);
+	  		xhr.onreadystatechange = function() { //Handler function for call back on state change.
+				if(xhr.readyState == 4) {
+					//alert('res');
+					//alert(xhr.responseText);
+					//aHtml[h++] = 'link Content-Type=' + xhr.responseText + '<br/>'; 
+					}
+		}
+
+      xhr.send(null);
+      var imgPath = xhr.getResponseHeader("Image-Path");
+	  //alert (imgPath);
+
+	  //alert(d2DownloadLink);
+      if (debug=="true") {
+        var end = new Date().getTime();
+		var time = end - start;
+		aHtml[h++] = 'link Content-Type=' + imgPath + '<br/>'; 
+		aHtml[h++] = 'Execution time to get link Content-Type=' + time + ' secs<br/><br/>';
+      }
+
+      //alert(imgPath);
+	  if(imgPath){
+		aHtml[h++] = '<iframe src="' + imgPath + '" height="97%" width="97%">';
+		}else{
+		aHtml[h++] = 'NOTICE: <br/><br/> Unable to display Voucher. Please click on Voucher again.';
+		aHtml[h++] = '<br/><br/> ------------------------------------------------------------------------------';
+		aHtml[h++] = '<br/><br/> Contact administrator if error persists!!';
+		aHtml[h++] = '<br/><br/> WORKAROUND: Please double click to open Voucher with default windows application';
+		}
+	  
+    }else{
+		aHtml[h++] = 'NOTICE:  The selected object is not a tiff.  No action for this widget.<br/><br/>';
+	}
+
+    var sHtml = aHtml.join("");
+    document.getElementById("rootDiv").innerHTML = sHtml;
+  }
+</script>
+</head>
+<body onload="loadViewer();">
+<div id="rootDiv" height="100%" width="100%"></div>
+</body>
+</html>

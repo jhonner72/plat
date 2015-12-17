@@ -1,0 +1,7 @@
+//BSB or bank code, 
+//weights for digit 1,2,3,4,5,6(left to right), 
+//divisor (e.g. 11 if modulus 11 used), 
+//split 2 digit products in mod calculation (1 for true) - if modulus calculation results in a 2/3 digit number, should each of its digits be added as well?
+ 
+ 
+12,32,16,8,4,2,0,11,0

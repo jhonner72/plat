@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:cxf="http://camel.apache.org/schema/cxf" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+					       http://www.springframework.org/schema/beans/spring-beans.xsd
+					       http://camel.apache.org/schema/spring 
+					       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="incidentService" class="com.fujixerox.aus.incident.api.IncidentServiceImpl" />
+
+    <bean id="rabbitConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+        <property name="host" ref="brokerHostname"/>
+        <property name="port" ref="brokerPort"/>
+        <property name="username" ref="brokerUsername"/>
+        <property name="password" ref="brokerPassword"/>
+    </bean>
+
+    <bean id="objectMapper" factory-method="createWithAnnotations" class="com.fujixerox.aus.lombard.JaxbMapperFactory" />
+
+    <bean id="json-gson" class="org.apache.camel.component.jackson.JacksonDataFormat">
+        <constructor-arg index="0" ref="objectMapper"/>
+        <constructor-arg index="1"><null/></constructor-arg>
+    </bean>
+
+    <!-- Camel -->
+    <bean id="incidentRoute" class="com.fujixerox.aus.incident.route.IncidentRoute"
+          p:port-ref="brokerPort"
+          p:hostname-ref="brokerHostname"
+          p:options-ref="brokerOptions"  
+          p:incidentHost-ref="incidentHost"
+          p:incidentAccount-ref="incidentAccount"
+          p:incidentUsername-ref="incidentUsername"
+          p:incidentPassword-ref="incidentPassword"
+     />
+	
+    <camel:camelContext id="camelContext">
+        <camel:routeBuilder ref="incidentRoute" />
+    </camel:camelContext>
+
+</beans>

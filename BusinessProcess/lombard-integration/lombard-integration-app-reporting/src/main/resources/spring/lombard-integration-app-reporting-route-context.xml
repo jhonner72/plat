@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <!-- Camel Outclearings Routes -->
+
+    <bean id="executeReportRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.reporting.ExecuteBatchReportResponse"
+          p:serviceName="lombard.service.reporting.executereport"
+          p:exchangeName="lombard.service.reporting.executereport"
+          p:routingKey="NRPT"
+          p:queueName="lombard.service.reporting.executereport"
+          p:consumeType="Lombard.Reporting.AdapterService.Messages.XsdImports.ExecuteBatchReportRequest:Lombard.Reporting.AdapterService"
+          p:subject="report"
+          p:predicate="execute"
+          p:transformResponse="true"
+          p:consume="true"
+          p:produce="true"
+            />
+
+    <bean id="copyReportFileRoute" parent="copyFileRoute"
+          p:serviceName="lombard.service.reporting.copyfile"
+          p:consumeType="com.fujixerox.aus.lombard.common.copyfile.CopyFileRequest"
+          p:subject="report"
+          p:predicate="copy"
+            />
+            
+    <bean id="storeReportRoute" parent="serviceRoute"
+          p:responseClass="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsResponse"
+          p:serviceName="lombard.service.reporting.storerepositoryreports"
+          p:exchangeName="lombard.service.reporting.storerepositoryreports"
+          p:routingKey="NRPT"
+          p:queueName="lombard.service.reporting.storerepositoryreports"
+          p:consumeType="com.fujixerox.aus.lombard.reporting.storerepositoryreports.StoreBatchRepositoryReportsRequest"
+          p:subject="report"
+          p:predicate="store"
+          p:consume="true"
+          p:produce="true"
+            />
+
+</beans>

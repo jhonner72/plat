@@ -1,0 +1,26 @@
+{
+  "voucher" :
+  {
+    "accountNumber": "12345678",
+    "amount": 2001,
+    "auxDom": "333",
+    "bsbNumber": "000999",
+    "documentReferenceNumber": "000111222",
+    "documentType": "DBT",
+    "extraAuxDom": "999",
+    "processingDate": "2014-12-31",
+    "transactionCode": "22"
+  },
+  "voucherProcess" :
+  {
+    "forValueType": "Inward_For_Value"
+  },
+  "voucherBatch" :
+  {
+    "workType": "NABCHQ_INWARDFV",
+    "scannedBatchNumber": "111",
+    "processingState": "VIC",
+    "captureBsb": "083029",
+    "collectingBank": "083029"
+  }
+}

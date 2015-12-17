@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CheckDuplicateFile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://lombard.aus.fujixerox.com/outclearings/CheckDuplicateFile">
+	<xs:element name="CheckDuplicateFileRequest" type="s1:CheckDuplicateFileRequest"/>
+	<xs:complexType name="CheckDuplicateFileRequest">
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="filename" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The filename to match against the receipt table.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CheckDuplicateFileResponse" type="s1:CheckDuplicateFileResponse"/>
+	<xs:complexType name="CheckDuplicateFileResponse">
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="isDuplicatedFile" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>false = file does not exist in Receipt table
+true = file exists in Receipt table</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

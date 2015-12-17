@@ -1,0 +1,41 @@
+//Contains prefixes for various Types of NAB Credit Cards
+//
+//Sort Option: Numeric
+//Format: Card Prefix, Card Provider
+//
+//Modification History
+//2015-05-29	Dinesh		Created
+//
+
+377872,AEX	//American Express		
+377873,AEX	//American Express		
+377874,AEX	//American Express		
+377876,AEX	//American Express		
+377877,AEX	//American Express		
+377878,AEX	//American Express		
+401795,VCC	//Visa Classic Card		
+430327,NCC	//NAB Card		
+430328,NCC	//NAB Card
+430329,NCC	//NAB Card
+430330,NCC	//NAB Card
+433687,NCC	//NAB Card
+455701,NCC	//NAB Card
+455702,NCC	//NAB Card
+455703,NCC	//NAB Card
+455704,NCC	//NAB Card
+471527,NCC	//NAB Card
+490292,VGC	//Visa Gold Card		
+490289,VCC	//Visa Classic Card		
+531355,NCC	//NAB Card
+531356,NCC	//NAB Card
+531357,NCC	//NAB Card
+531358,NCC	//NAB Card
+531359,NCC	//NAB Card
+552061,NCC	//NAB Card
+552270,NCC	//NAB Card
+555001,NCC	//NAB Card
+556733,NCC	//NAB Card
+558388,NCC	//NAB Card
+558741,NCC	//NAB Card
+558836,NCC	//NAB Card
+561058,NCC	//NAB Card

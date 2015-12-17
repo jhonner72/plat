@@ -1,0 +1,54 @@
+// National Bank NBFI's
+// Changed by: A. Lee
+// Date Last Changed: 14/04/00
+// Columns = BSB , MODulus (MOD10/NOMOD/INVAL), Comment 
+// ______________________________________________________________________________________
+082034,MOD10, //Cassa Commerciale – ACT
+082045,MOD10, //Bendigo Bank – NSW
+082047,MOD10, //Cassa Commerciale – NSW
+082049,MOD10, //Bendigo Bank – ACT
+082105,MOD10, //Trustees RC Diocese - Armidale**
+082142,MOD10, //Chase Manhattan Bank Aust**
+082154,MOD10, //First State Premier CMT**
+082170,MOD10, //Cuscal Nsw**
+082190,MOD10, //Colonial Mutual Funds Limited *
+082339,MOD10, //MLC Aust Trust *
+082363,MOD10, //NRMA Building Society NSW*
+082382,MOD10, //MLC Prime Cash Fund*
+082395,NOMOD, //Tower Trust Ltd
+082396,MOD10, //MLC Cash Management Trust*
+082456,MOD10,
+082462,MOD10, //Challenger Financial Services
+082463,MOD10, //Challenger Managed Funds
+082685,MOD10, //Maitland Mutual Building Society
+082925,NOMOD, //Cuscal Act*
+082940,MOD10,
+082941,MOD10,
+083052,MOD10, //Merrill lynch Aust Cash Mgmnt Trust *
+083126,MOD10, //Interstar Mortgage Perpetl ATF
+083133,MOD10, //Cassa Commerciale – VIC
+083188,MOD10, //NAB NBFI
+083422,MOD10, //Cuscal Vic*
+083428,MOD10, //Accident Compensation Commission*
+083452,MOD10, //NRMA Building Society Vic*
+083455,MOD10, //Premium Collection Agents*
+083545,MOD10,
+083613,MOD10, //Rural Finance Corp
+083728,MOD10, //Bendigo Bank – VIC
+083847,MOD10, //JB Were Capital Markets Ltd*
+083973,MOD10, //JB Were Securities Ltd *
+084045,MOD10, //Bendigo Bank – QLD
+084058,MOD10, //Cassa Commerciale – QLD
+084132,MOD10, 
+084179,MOD10, //CUSSL*
+084352,MOD10, //Roman Catholic Diocese - Cairns *
+085037,MOD10, //Bendigo Bank – SA
+085040,MOD10, //Cassa Commerciale – SA
+085109,MOD10, //Cuscal SA Trading*
+085118,MOD10, //Cuscal SA Nt*
+085229,MOD10, //Elders Pastoral SA*
+085249,MOD10, //Cuscal SA Saving *
+086044,MOD10, //Bendigo Bank – WA
+086047,MOD10, //Cassa Commerciale – WA
+086505,MOD10, //Cuscal WA Corp *
+086509,MOD10, //Cuscal WA Member*

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/outclearings/CorrectCodeline" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/outclearings/CorrectCodeline" xmlns:v="http://lombard.aus.fujixerox.com/common/Voucher">
+	<xs:annotation>
+		<xs:documentation>Interface message schemas for the codeline correction service.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://lombard.aus.fujixerox.com/common/Voucher" schemaLocation="Voucher.xsd"/>
+	<xs:element name="CorrectCodelineRequest" type="tns:CorrectCodelineRequest"/>
+	<xs:complexType name="CorrectCodelineRequest">
+		<xs:annotation>
+			<xs:documentation>Voucher-level codeline correction request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account Number of the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of account number on the voucher as per codeline validation function:
+
+	- True: if codeline is valid. 
+	- False: if codeline is not valid  and need to correct as per codeline correction function.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount in cents on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountConfidenceLevel" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Confidence level of captured amount using Courtesy Amount Recognition functionality.
+
+Values 0-999:
+
+	- 0     : Low confidence
+	- 999 : High confidence</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amountStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of amount on the voucher as per codeline validation function:
+
+	- True: if codeline is valid 
+	- False: if codeline is not valid  and need to correct as per codeline correction function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Auxiliary Domestic on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of Auxiliary Domestic on the voucher as per codeline validation function:
+
+	- True: if codeline is valid 
+	- False: if codeline is not valid  and need to correct as per codeline correction function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB on the codeline of the voucher. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumberStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of BSB Number on the voucher as per codeline validation function:
+
+	- True: if codeline is valid 
+	- False: if codeline is not valid  and need to correct as per codeline correction function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="capturedAmount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Captured amount using Courtesy Amount Recognition functionality.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>TODO: Unsure of why we map this. Collecting bank cannot be modified, and is a batch level parameter (already available in batch request). Most likely needed for inward for value, and is duplicated for practicality.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creditNoteFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the voucher is a credit note (only relevant to some LockedBox items).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number of the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="v:DocumentTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document type of the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDomStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of Extra Auxiliary Domestic on the voucher as per codeline validation function:
+
+	- True: if codeline is valid 
+	- False: if codeline is not valid  and need to correct as per codeline correction function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueType" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher For Value indicator.
+
+TODO: Confirm the value mapping / use
+
+Note: This is only really relevant to Codeline Correction in Inward For Value processing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Processing date of the voucher.
+Date format: YYYY-MM-DD
+
+Note: This field should match the voucherBatch processing date, but is duplicated at the voucher level for practicality.
+
+TODO: clarify whether this is actually inwards for value only!
+
+TODO: confirm format specification I copied from earlier with interface.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="repostFromDRN" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identifier to the original voucher for repost.
+
+Note: This is only really relevant to Codeline Correction in Inward For Value processing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="repostFromProcessingDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Identifier to the original voucher for repost.
+
+Note: This is only really relevant to Codeline Correction in Inward For Value processing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction code of the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCodeStatus" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status of transaction Code on the voucher as per codeline validation function:
+
+	- True: if codeline is valid 
+	- False: if codeline is not valid  and need to correct as per codeline correction function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CorrectBatchCodelineResponse" type="tns:CorrectBatchCodelineResponse"/>
+	<xs:complexType name="CorrectBatchCodelineResponse">
+		<xs:annotation>
+			<xs:documentation>Batch-level request processing response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="voucher" type="tns:CorrectCodelineResponse" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of voucher-level responses from codeline correction.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch context details. 
+
+Note: this information is not modified and should be a duplicate of the request batch information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CorrectBatchCodelineRequest" type="tns:CorrectBatchCodelineRequest"/>
+	<xs:complexType name="CorrectBatchCodelineRequest">
+		<xs:annotation>
+			<xs:documentation>Batch-level processing request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Represents the unique Id of the unit of work in the system for voucher processing.
+
+The jobIdentifier is the key to access file-based voucher resources based on the convention page on the team wiki:
+http://ausbps-sydev11/sites/ProjectCollection/bpsprojects/lombard/Team%20Wiki/File%20Name%20Conventions.aspx </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucher" type="tns:CorrectCodelineRequest" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Collection of vouchers requiring codeline correction.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="voucherBatch" type="v:VoucherBatch" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher batch details provided for context.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CorrectCodelineResponse" type="tns:CorrectCodelineResponse"/>
+	<xs:complexType name="CorrectCodelineResponse">
+		<xs:annotation>
+			<xs:documentation>Voucher-level codeline correction processing response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accountNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Account Number on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Amount in cents on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="auxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Auxiliary Domestic on the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bsbNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>BSB on the codeline of the voucher. Full 6 digit BSB number including leading zeros. Must be valid BSB number in Australia as per APCA publications. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectingBank" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Collecting bank for the voucher.
+
+TODO: Confirm how it is used (probably inward for value) as it is potentially redundant.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creditNoteFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the voucher is a credit note (only relevant to some LockedBox items).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dips_override" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>DIPS override indicator used by DIPS during inward for value processing to track changes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceNumber" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unique document reference number for the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentType" type="v:DocumentTypeEnum" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Document type for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extraAuxDom" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Extra Auxiliary Domestic on the voucher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forValueIndicator" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This field is set in DIPS to identify if the voucher is Outward For Value:
+
+	- For NAB or NAB's agency banks, the field will be set to "c" or "d" for credit and debit respectively.
+	- For other banks, the field will be set to "C" or "D" for credit and debit respectively.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="manualRepair" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valid values are 1 or 0. Show "1" if one or more fields have been manually entered or altered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="operatorID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>User Id for the operator who opened the image and worked on it. This is required for reporting/Audit purposes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaAmountFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by dips to mark if the voucher required Post transmission QA on amount field. This flag will be used by Documentum workflow for post transmission QA process. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postTransmissionQaCodelineFlag" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This flag will be set by dips to mark if the voucher required Post transmission QA on codeline fields. This flag will be used by Documentum workflow for post transmission QA process. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="presentationMode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>This is determined at DIPS stage when the operator cannot correct the codeline and set the acct number to a suspense acct. The possible values are:
+
+	- E = Electronic   
+	- M = Manual (this happens when the user mark a Non NAB/Agency Bank voucher to the other bank’s suspense account.) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="processingDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher Processing Date from Inwards for Value.
+
+TODO: clarify whether this is actually inwards for value only as the description would suggest.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="repostFromDRN" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Repost DRN from inwards for value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="repostFromProcessingDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Repost processing date from inwards for value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetEndPoint" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The agent/bank that the outclearing files should go.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction code for the voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactionLink" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Voucher transaction link (relevant to repost only).
+
+TODO: Confirm my description, but I can only see this being potentially used during inward for value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unprocessable" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>True if voucher was not able to be processed (e.g. foreign currency, gift vouchers, and other junk).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

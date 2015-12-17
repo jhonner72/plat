@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<context:property-placeholder location="classpath:properties-component.txt"/>
+
+    <bean id="repositoryHostname" class="java.lang.String">
+        <constructor-arg value="172.21.116.154"/>
+    </bean>
+    <bean id="repositoryPort" class="java.lang.String">
+        <constructor-arg value="1489"/>
+    </bean>
+    <bean id="repositoryUsername" class="java.lang.String">
+        <constructor-arg value="NABDctmAdpt_SVC_D"/>
+    </bean>
+    <bean id="repositoryPassword" class="java.lang.String">
+        <constructor-arg value="!7_n@bbP4syd_12"/>
+    </bean>    
+    <bean id="brokerHostname" class="java.lang.String">
+        <constructor-arg value="localhost"/>
+    </bean>
+    <bean id="brokerPort" class="java.lang.String">
+        <constructor-arg value="5672"/>
+    </bean>
+    <bean id="brokerUsername" class="java.lang.String">
+        <constructor-arg value="lombard"/>
+    </bean>
+    <bean id="brokerPassword" class="java.lang.String">
+        <constructor-arg value="lombard"/>
+    </bean>
+	<bean id="fileDropPath" class="java.lang.String">
+        <constructor-arg value="src/test/resources/data/fileDropPath"/>
+    </bean>
+    <bean id="lockerPath" class="java.lang.String">
+        <constructor-arg value="src/test/resources/data/bitLockerPath"/>
+    </bean>
+
+    <import resource="classpath:/spring/repository-services-app-context.xml" />
+</beans>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<project name="headless-install" default="install-project">
+  <target name="install-project" description="Install the project to the specified repository .dfc .properties must be configured">
+    <emc.install dar="NAB_DCTM_X.dar" docbase="#{DocBase}" username="#{DctmUsername}" password="#{DctmPassword}" domain="#{DctmDomain}" inputfile="noadmin.xml" />
+  </target>
+</project>

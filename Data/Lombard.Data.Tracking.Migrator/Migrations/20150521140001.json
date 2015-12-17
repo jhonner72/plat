@@ -1,0 +1,25 @@
+{
+  "stateOrdinals": [
+    {
+      "state": "NSW",
+      "ordinal": "2"
+    },
+    {
+      "state": "VIC",
+      "ordinal": "3"
+    },
+    {
+      "state": "QLD",
+      "ordinal": "4"
+    },
+    {
+      "state": "SA",
+      "ordinal": "5"
+    },
+    {
+      "state": "WA",
+      "ordinal": "6"
+    }
+  ]
+}
+

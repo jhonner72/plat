@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>NAB_DCTM_X</name>
+	<comment>Project Created by Ajit for additional artifacts not covered by NAB_DCTM project</comment>
+	<projects>
+		<project>DocumentumCoreProject</project>
+		<project>TCMReferenceProject</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.emc.ide.external.dfs.dfsbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.emc.ide.builder.documentumBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.emc.ide.project.dmBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.emc.ide.builder.documentumNature</nature>
+		<nature>com.emc.ide.project.dmProjectNatureId</nature>
+		<nature>com.emc.ide.external.dfs.DfsNature</nature>
+	</natures>
+</projectDescription>

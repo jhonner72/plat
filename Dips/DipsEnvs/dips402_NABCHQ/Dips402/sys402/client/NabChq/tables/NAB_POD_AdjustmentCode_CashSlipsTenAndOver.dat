@@ -1,0 +1,8 @@
+//Indexing Sort Option: ALPHA
+//Description: Adjustment Codes for Cash Slip Accounts with Amounts Ten and Over (Applies to Adjustment Codes TOCSP in NAB_POD_AdjustmentRules Table)
+//Modification History:
+//2015-06-04        Dinesh      Created
+//_______________________________________________________________________
+//Display String,AdjustmentCode, Adjustment Description
+70 - Teller - No cash slip,70,Teller - No cash slip
+71 - Teller - Cash slip incorrect,71,Teller - Cash slip incorrect

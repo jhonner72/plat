@@ -1,0 +1,8 @@
+ALTER TYPE fxa_document SET DEFAULT STORAGE 'encrypted_filestore_01' PUBLISH
+go
+update dm_server_config object set default_acl=1
+go
+ALTER TYPE fxa_voucher DROP fxa_dishonour_status PUBLISH
+go
+ALTER TYPE fxa_voucher DROP fxa_unprocessable PUBLISH
+go

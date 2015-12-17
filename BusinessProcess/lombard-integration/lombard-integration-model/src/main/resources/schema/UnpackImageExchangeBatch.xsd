@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/inclearings/UnpackImageExchangeBatch" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/inclearings/UnpackImageExchangeBatch">
+	<xs:element name="UnpackImageExchangeBatchRequest" type="tns:UnpackImageExchangeBatchRequest"/>
+	<xs:complexType name="UnpackImageExchangeBatchRequest">
+		<xs:sequence>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>jobIdentifier is used to identify the directory to locate the inbound Image Exchange file </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UnpackImageExchangeBatchResponse" type="tns:UnpackImageExchangeBatchResponse"/>
+	<xs:complexType name="UnpackImageExchangeBatchResponse">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

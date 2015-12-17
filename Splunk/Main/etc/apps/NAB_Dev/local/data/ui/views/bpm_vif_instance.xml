@@ -1,0 +1,213 @@
+<form stylesheet="single_decorations.css, bpm_legend.css">
+  <label>BPM VIF Instance</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="text" token="businessKey" searchWhenChanged="true">
+      <label>Business Key</label>
+    </input>
+  </fieldset>
+  <search id="baseQuery">
+    <query>index="camunda" source=BpmActivityVif BusinessKey=$businessKey$ | sort -_time  
+| eval TimerEndTime=if(Name="RetrieveAcknowledgmentFileTimer",EndTime,"null") 
+| eval RetrieveEndTime=if((Name="RetrieveValueInstructionFileAck" OR Name="FileRetrieved")AND TimerEndTime=="null" AND EndTime=="null",TimerEndTime, EndTime)    
+| eval value = if (State=2, "severe",if((Name="RetrieveValueInstructionFileAck" OR Name="FileRetrieved"), if(RetrieveEndTime == "null", "high", "low"),if(EndTime == "null", "high", "low")))  |table  value Name StartTime EndTime</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <search id="loopbaseQuery" base="baseQuery">
+    <query>|dedup StartTime | search Name="RetrieveValueInstructionFileAck" OR Name="FileRetrieved" OR Name="RetrieveAcknowledgmentFileTimer" |head 4</query>
+    <earliest>0</earliest>
+    <latest></latest>
+  </search>
+  <row>
+    <panel>
+      <html src="bpm_legend.html">
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Start VIF Generation Process</title>
+        <search base="baseQuery">
+          <query>| search Name="Value Instruction File Start Process"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Get Vouchers for VIF</title>
+        <search base="baseQuery">
+          <query>| Search Name="GetVouchersForValueInstructionFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Get Vouchers</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitGetVouchers"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Create VIF</title>
+        <search base="baseQuery">
+          <query>| search Name="CreateValueInstructionFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Create VIF</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitCreateVIF"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Send VIF</title>
+        <search base="baseQuery">
+          <query>| search Name="SendValueInstructionFile"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Update VIF Vouchers' Status</title>
+        <search base="baseQuery">
+          <query>| search Name="UpdateVauleInstructionFileVouchersStatus"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Update Vouchers</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitUpdateVouchers"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Number of Iterations</title>
+        <search base="baseQuery">
+          <query>| where not EndTime="null" | stats count by Name | Where Name ="RetrieveAcknowledgmentFileTimer"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">count</option>
+        <option name="field">count</option>
+      </single>
+      <single>
+        <title>Retrieve VIF Ack Loop</title>
+        <search base="loopbaseQuery">
+          <query>| search Name="RetrieveAcknowledgmentFileTimer"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>      
+    </panel>
+    
+    <panel>
+      <single>
+        <title>Wait Process VIF Ack</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitProcessValueInstructionFileAck"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Update VIF Vouchers' Ack Status</title>
+        <search base="baseQuery">
+          <query>| search Name="UpdateValueInstructionFileVouchersAckStatus"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Wait Update VIF Vouchers' Ack Status</title>
+        <search base="baseQuery">
+          <query>| search Name="WaitUpdateValueInstructionFileVouchersAckStatus"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>End VIF Generation Process</title>
+        <search base="baseQuery">
+          <query>| search Name="Value Instruction File End Process"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="classField">value</option>
+        <option name="field">value</option>
+        <option name="additionalClass">icon-only</option>
+      </single>
+    </panel>
+  </row>
+</form>

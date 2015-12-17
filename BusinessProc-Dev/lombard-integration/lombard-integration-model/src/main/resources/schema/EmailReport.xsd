@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://lombard.aus.fujixerox.com/reporting/EmailReport" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://lombard.aus.fujixerox.com/reporting/EmailReport">
+	<xs:element name="Email" type="tns:Email"/>
+	<xs:complexType name="Email">
+		<xs:sequence>
+			<xs:element name="body" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="cc" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="from" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="jobIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="outputFilename" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="reportName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="subject" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="to" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
