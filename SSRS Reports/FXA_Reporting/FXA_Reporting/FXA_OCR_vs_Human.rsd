@@ -23,12 +23,24 @@
         <DataField>Items through CAR</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
+      <Field Name="Batch_Headers">
+        <DataField>Batch Headers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
       <Field Name="Total_Vouchers_Processed">
         <DataField>Total Vouchers Processed</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="Pass_CAR_confidence_level">
         <DataField>Pass CAR confidence level</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Generated_Vouchers">
+        <DataField>Generated_Vouchers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Vouchers">
+        <DataField>Vouchers</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="Fail_CAR_confidence_level">

@@ -13,8 +13,8 @@
   </DataSources>
   <DataSets>
     <ProjectItem>
-      <Name>AB_Adjustments_Letter.rsd</Name>
-      <FullPath>AB_Adjustments_Letter.rsd</FullPath>
+      <Name>AB_Adjustments.rsd</Name>
+      <FullPath>AB_Adjustments.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>AB_ECD_Exception_Single_Item.rsd</Name>
@@ -99,6 +99,10 @@
     <ProjectItem>
       <Name>NAB_Billing_Clearings_Inward.rsd</Name>
       <FullPath>NAB_Billing_Clearings_Inward.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>NAB_Billing_Clearings_Outward.rsd</Name>
+      <FullPath>NAB_Billing_Clearings_Outward.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>NAB_Billing_Dishonours.rsd</Name>
@@ -288,15 +292,11 @@
       <Name>pProcessingState.rsd</Name>
       <FullPath>pProcessingState.rsd</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>NAB_Billing_Clearings_Outward.rsd</Name>
-      <FullPath>NAB_Billing_Clearings_Outward.rsd</FullPath>
-    </ProjectItem>
   </DataSets>
   <Reports>
     <ProjectItem>
-      <Name>Agency_Adjustments_Letter_Report.rdl</Name>
-      <FullPath>Agency_Adjustments_Letter_Report.rdl</FullPath>
+      <Name>Agency_Adjustments_Report.rdl</Name>
+      <FullPath>Agency_Adjustments_Report.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Agency_ECD_Exception_Return_All_Items_Report.rdl</Name>
